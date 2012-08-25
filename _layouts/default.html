@@ -7,7 +7,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>{% if page.title %} {{ page.title }} - {% endif %} hop.ie</title>
-    <meta name="description" content="{% if page.description %}{{ page.description }}{% else %}Thoughts from Donovan's brain{% endif %}">
+    <meta name="description" content="{% if page.description %}{{ page.description }}{% else %}Thoughts from Pavel's brain{% endif %}">
     <meta name="viewport" content="width=device-width">
     <link rel="stylesheet" href="/stylesheets/screen.css">
     {% if page.newstylesheet %}
@@ -20,13 +20,12 @@
     <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular" rel="stylesheet" type="text/css">
     <link rel="canonical" href="{{ page.url | canonical }}">
-    <link rel="alternate" type="application/rss+xml" href="http://feeds.feedburner.com/hopie" title="hop.ie" />
     <script src="/javascripts/modernizr.js"></script>
 </head>
 <body {% if page.bodyTag %}{{page.bodyTag}}{% endif %}>
   <div class="page-container">
   	<header>
-  		<h1 class="bouncer-container"><a href="/">Donovan Hutchinson</a></h1>
+  		<h1 class="bouncer-container"><a href="/">Pavel Popov</a></h1>
   	</header>
 
   	<div class="page clearfix">
@@ -37,9 +36,9 @@
   </div>
 	<footer class="clearfix">
 	  <section class="footer-content">
-	    <p>I am <a href="http://twitter.com/donovanh">@donovanh</a> on twitter.</p>
-	    <p>Brought to you by the power of <a href="http://jekyllrb.com/">Jekyll</a> and <a href="http://pages.github.com">GitHub Pages</a>. See the <a href="https://github.com/donovanh/donovanh.github.com">source code</a>!</p>
-		  <p>&copy; 2012 Donovan Hutchinson</p>
+	    <p>I am <a href="http://twitter.com/schmooser">@schmooser</a> on twitter.</p>
+	    <p>Brought to you by the power of <a href="http://jekyllrb.com/">Jekyll</a> and <a href="http://pages.github.com">GitHub Pages</a>. Theme by <a href="http://hop.ie/">Donovan Hutchinson</a>. See the <a href="https://github.com/schmooser/schmooser.github.com">source code</a>!</p>
+		  <p>&copy; 2012 Pavel Popov</p>
 		</section>
 	</footer>
 
@@ -66,22 +65,5 @@
   {% endif %}
 {% endfor %}
 
-
-  <script type="text/javascript">
-
-    var _gaq = _gaq || [];
-    
-    _gaq.push(['_setAccount', 'UA-3481417-23']);
-    _gaq.push(['_setDomainName', 'hop.ie']);
-    _gaq.push(['_setSiteSpeedSampleRate', 10]);
-    _gaq.push(['_trackPageview']);
-
-    (function() {
-      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-
-  </script>
 </body>
 </html>
