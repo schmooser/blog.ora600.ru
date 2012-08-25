@@ -7,7 +7,7 @@ tags: [blog, bash]
 ---
 I wrote some notes in russian to my main blog – [iseetheline.ru](iseetheline.ru). It's powered by blog engine named [Aegea](http://blogengine.ru). It has beautiful minimalistic design which I like, it installs simply, it has many features like drag-and-drop image uploading, saving to drafts, tagging, built-in comments, search, rss, support of plugins and so on. But it lacks in three things. 
 
-1. Posts should be written using wiki-formatting. I HATE wiki-formatting. I love markdown. I can't even remember the rules to write links, images and so on.
+1. Posts should be written using wiki-formatting via web-interface. I HATE wiki-formatting. I love markdown. I love vim. I can't even remember the rules of wiki-formatting to write links, images and so on.
 2. It's written on php and is not open-source. That's why I can't modify it to my needs.
 3. It doesn't have syntax highlighting by default.
 
@@ -22,8 +22,21 @@ The process is a kind of straightforward:
 1. Search suitable open-source theme on the [page with existing sites](http://wiki.github.com/mojombo/jekyll/sites) using Jekyll
 2. Fork it on [Github](http://github.com)
 3. Rename repo to `<yourname>.github.com`
-4. Clone a repo to a local machine using `git clone https://github.com/<yourname>/<yourname>.github.com.com`
+4. Clone a repo to a local machine using `git clone https://github.com/<yourname>/<yourname>.github.com.git`
 5. Delete all posts from `_posts` directory, edit theme to your needs, edit CNAME file to point the correct domain, edit Jekyll's `_config.yml`
 6. Write new post with `rake post title="<new title>"`
 7. Commit it with `git commit -a`
 8. Push it to the github with `git push origin master`
+
+To simplify my life and to transform my OS X 10.8.1 (the update was released today) to ultimate blogging machine, I made some tweaks:
+
+1. Added an alias to search in [DuckDuckGo](http://duckduckgo.com) with links:
+  {% highlight bash %}
+  ddg()
+  {
+   links duckduckgo.com/?q="$1"
+  }
+  alias ddg=ddg
+  {% endhighlight %}
+  If I need a link while writing a post I made `ddg "my query"` and grab link from there
+2. Installed a gem `cheat` to display information about various comands right in the terminal 
