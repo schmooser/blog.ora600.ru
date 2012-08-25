@@ -1,7 +1,9 @@
-Hop.ie
-======
+iseetheline.ru
+==============
 
-Random thoughts and updates as I go through the journey of creating and deploying web things. I can be contacted at [@donovanh](http://twitter.com/donovanh) or d@hop.ie.
+Personal blog of Pavel Popov. I learn English, so I decide to start a blog to improve my language abilities.
+
+I can be contacted at [@schmooser](http://twitter.com/schmooser) or schmooser@gmail.com.
 
 This site is running on [Jekyll](http://jekyllrb.org) and [Github Pages](http://pages.github.com).
 
