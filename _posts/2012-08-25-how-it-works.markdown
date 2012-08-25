@@ -42,8 +42,6 @@ To simplify my life and to transform my OS X 10.8.1 (the update was released tod
     If I need a link while writing a post I made `ddg "my query"` and grab link from there
 
 2.  Installed a gem `cheat` to display information about various comands right in the terminal:
-    {% highlight bash %}
         sudo gem install cheat
-    {% endhighlight %}
    
 
