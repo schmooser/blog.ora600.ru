@@ -1,4 +1,4 @@
 auto: true
-permalink: /blog/:title
+permalink: /:title
 pygments: true
 
