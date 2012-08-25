@@ -33,11 +33,13 @@ To simplify my life and to transform my OS X 10.8.1 (the update was released tod
 
 1.  Added an alias in `.bash_profile` to search in [DuckDuckGo](http://duckduckgo.com) with links:
 
+        {% highlight bash %}
         ddg()
         {
          links duckduckgo.com/?q="$1"
         }
         alias ddg=ddg
+        {% endhighlight %}
 
     If I need a link while writing a post I made `ddg "my query"` and grab link from there
 
