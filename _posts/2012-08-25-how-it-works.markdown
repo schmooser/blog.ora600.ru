@@ -27,16 +27,22 @@ The process is a kind of straightforward:
 6. Write new post with `rake post title="<new title>"`
 7. Commit it with `git commit -a`
 8. Push it to the github with `git push origin master`
+9. Point the domain name of the blog (CNAME in step 5) to `<yourname>.github.com`
 
 To simplify my life and to transform my OS X 10.8.1 (the update was released today) to ultimate blogging machine, I made some tweaks:
 
-1. Added an alias to search in [DuckDuckGo](http://duckduckgo.com) with links:
-  {% highlight bash %}
-  ddg()
-  {
-   links duckduckgo.com/?q="$1"
-  }
-  alias ddg=ddg
-  {% endhighlight %}
-  If I need a link while writing a post I made `ddg "my query"` and grab link from there
-2. Installed a gem `cheat` to display information about various comands right in the terminal 
+1. Added an alias in `.bash_profile` to search in [DuckDuckGo](http://duckduckgo.com) with links:
+   {% highlight bash %}
+   ddg()
+   {
+    links duckduckgo.com/?q="$1"
+   }
+   alias ddg=ddg
+   {% endhighlight %}
+   If I need a link while writing a post I made `ddg "my query"` and grab link from there
+2. Installed a gem `cheat` to display information about various comands right in the terminal:
+   {% highlight bash %}
+     sudo gem install cheat
+   {% endhighlight %}
+   
+
