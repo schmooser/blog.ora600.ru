@@ -5,6 +5,8 @@ description: "A few tips for setting up more than one sidebar in a Wordpress the
 category: 
 tags: [wordpress]
 ---
+Fucking holy shit, it works!
+
 While <a href="http://www.wordpress.org">Wordpress</a> was originally developed for use as a blogging tool, it is frequently used to control entire websites. By default, most themes will have the same sidebar on each page. This guide will show how to set up multiple named sidebars and control the content of each individually. This guide assumes you have access to the theme files.
 
 ## Step 1: Define your sidebars
