@@ -21,9 +21,9 @@ The process is a kind of straightforward:
 
 1. Search suitable open-source theme on the [page with existing sites](http://wiki.github.com/mojombo/jekyll/sites) using Jekyll
 2. Fork it on [Github](http://github.com)
-3. Rename repo to #<yourname>.github.com#
-4. Clone a repo to a local machine using #git clone https://github.com/<yourname>/<yourname>.github.com.com#
-5. Delete all posts from #_posts# directory, edit theme to your needs, edit CNAME file to point the correct domain, edit Jekyll's #_config.yml#
-6. Write new post with #rake post title="<new title>"#
-7. Commit it with #git commit -a#
-8. Push it to the github with #git push origin master#
+3. Rename repo to `<yourname>.github.com`
+4. Clone a repo to a local machine using `git clone https://github.com/<yourname>/<yourname>.github.com.com`
+5. Delete all posts from `_posts` directory, edit theme to your needs, edit CNAME file to point the correct domain, edit Jekyll's `_config.yml`
+6. Write new post with `rake post title="<new title>"`
+7. Commit it with `git commit -a`
+8. Push it to the github with `git push origin master`
