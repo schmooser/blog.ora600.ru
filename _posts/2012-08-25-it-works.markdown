@@ -10,7 +10,7 @@ It works!
 
 This is my new blog, powered by static site generator [Jekyll](http://jekyllrb.com).
 
-Theme was forked from [Danovan Hutchinson](http://hop.ie). It has light [solarized](ethanschoonover.com/solarized)-like colors and support highlighting for many languages.
+Theme is forked from [Danovan Hutchinson](http://hop.ie). It has light [solarized](ethanschoonover.com/solarized)-like colors and supports highlighting for many languages.
 
 I will post here stuff about my work, about some computer research and will write about my life events. This blog will be in English to practise my writing skills.
 
