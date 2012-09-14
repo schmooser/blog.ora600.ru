@@ -10,7 +10,7 @@ tags: [bash]
 
         curl -s http://checkip.dyndns.org | sed 's/[a-zA-Z/<> :]//g'
 
-2.  It's convinient to move around panes in iTerm2 with &#8997;&#8984;+arrow
+2.  It's convenient to move around panes in iTerm2 with &#8997;&#8984;+arrow
 
 3.  You can copy terminal's command output to system clipboard by piping it to `pbcopy` program:
 
