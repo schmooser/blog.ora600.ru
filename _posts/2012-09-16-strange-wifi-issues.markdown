@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Strange WiFi issues"
-description: "I've experiences some strange WiFi problems on my iPad"
+description: "I've experienced some strange WiFi problems on my iPad"
 category: 
 tags: [ipad, wifi]
 ---
@@ -16,7 +16,8 @@ Today my problems continued. Then guests gone. And everything became fine. iPad 
 
 But, after iPad gone to sleep and I woke it up the Internet was missed again. After turning WiFi off and on it became working.
 
-Finally, I hopely fixed the problems by turning off DHCP on router and by writing static IP's on all of my network devices.
+Finally, I hopely fixed the problems by turning off DHCP on router and by writing static IP's on all of my network devices. The article on iPad WiFi problems is [this][wi-fi-list-of-fixes]. The first comment is very helpful.
 
-[FreePing]: http://itunes.apple.com/us/app/free-ping/id430758871?mt=8
-[apple-wifi-troubleshooting]: http://support.apple.com/kb/TS1398?viewlocale=en_US&locale=en_US
+[FreePing]: http://itunes.apple.com/us/app/free-ping/id430758871
+[apple-wifi-troubleshooting]: http://support.apple.com/kb/TS1398
+[wi-fi-list-of-fixes]: http://appletoolbox.com/2010/04/ipad-wi-fi-problems-comprehensive-list-of-fixes/
