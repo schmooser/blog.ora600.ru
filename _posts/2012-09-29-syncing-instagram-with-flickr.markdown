@@ -28,12 +28,13 @@ The only idea I have about binding photos is to calculate some statistical prope
 
 ## Approach
 
+To be continued...
 
 
 [Flickr]: http://flickr.com
 [Instagram]: http://instagr.am
 [Germany and Holland]: http://localhost
 [Spain]: http://localhost
-[IFFT]: http://ifttt.com 
+[IFTTT]: http://ifttt.com 
 [stackoverflow-image-comparison-algorithm]: http://stackoverflow.com/questions/1819124/image-comparison-algorithm
 [installing-scipy-numpy]: /2012/09/30/installing-scipy-and-numpy-in-macosx.html
