@@ -26,7 +26,7 @@ Try to run Python and type:
         Type "help", "copyright", "credits" or "license" for more information.
         >>>import cx_Oracle
 
-If there is no errors then you have `cx_Oracle` successfully installed. I have an error:
+If there is no errors then you have `cx_Oracle` successfully installed. I had an error:
 
         >>> import cx_Oracle
         Traceback (most recent call last):
@@ -37,7 +37,7 @@ May be, that's because I have Oracle 11g installed, but downloaded cx_Oracle for
 
         $rpm -qa | grep -i oracle
         
-Then uninstall a 
+Then uninstall it: 
 
         $sudo rpm -e cx_Oracle-5.1.2-1
 
