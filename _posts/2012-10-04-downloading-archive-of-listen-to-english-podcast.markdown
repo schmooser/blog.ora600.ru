@@ -12,7 +12,7 @@ There is no 'Download all' button, in order to download an episode you have to g
 
 I decided to I wrote simple python script which loops from 1 till 500 and downloads all of mp3's.
 
-{% highlight python %}
+{% highlight %}
 # -*- coding: utf-8 -*-
 import urllib2
 
@@ -41,7 +41,7 @@ This script also checks whether the response of server is not like `Fatal error 
 
 After the script done its work I checked whether downloaded files are a valid mp3's. To do this I used on OS X 10.8 console tool `afinfo`, which shows information about audio file:
 
-{% highlight bash %}
+{% highlight %}
 for item in `ls -rS *.mp3`
 do
   a=`afinfo $item 2> /dev/null | grep "bit rate" | wc -l`
@@ -59,7 +59,7 @@ Now we have normal mp3s. How to import them into iTunes into Podcast section in 
 
 All I have to do is to add ID3v2 tags into mp3s. How to do this? I found a couple of tools for OS X to dealing with ID3 tags, but only one – [ID3 Editor][id3-editor] – has a command line tool (i.e. to batch processing which i need) and ability to edit podcast tags. The script of batch operation on files looks like this:
 
-{% highlight bash %}
+{% highlight %}
 pcfd="http://feeds.feedburner.com/ListenToEnglish-LearnEnglish"
 for item in `ls *.mp3`
 do
