@@ -6,7 +6,7 @@ category: english
 tags: [english, python, bash, itunes, podcast]
 ---
 
-I like to listen Listen to English podcast. It's host Peter Carter choose interesting topics and have a nice english pronunciation. I started to listen the podcast about one and a half year ago. Since then there were a dozen of a new episodes. I also listened all old episodes available if iTunes. Unfortunately, the RSS feed of the podcast consists only about 30 episodes and now the oldest one is about 2 year old. The total number of episodes is about 300, so I decided to download them from archive section on [podcast's site][listen-to-english].
+I like to listen Listen to English podcast. It's host Peter Carter choose interesting topics and have a nice english pronunciation. I started to listen the podcast about one and a half year ago. Since then there were a dozen of a new episodes. I also listened all old episodes available on iTunes. Unfortunately, the RSS feed of the podcast consists only about 30 episodes and now the oldest one is about 2 year old. The total number of episodes is about 300, so I decided to download them from archive section on [podcast's site][listen-to-english].
 
 There is no 'Download all' button, in order to download an episode you have to go on episode's page and check on download link. The link looks like this – http://www.listen-to-english.com/get.php?web=j55.mp3 where `55` before `mp3` is the id of an episode.
 
