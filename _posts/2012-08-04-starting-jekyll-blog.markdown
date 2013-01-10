@@ -2,7 +2,7 @@
 layout: post
 title: "Starting Jekyll blog"
 description: "Few words about this blog"
-category: 
+category: blog
 tags: [blog]
 ---
 

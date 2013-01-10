@@ -1,8 +1,8 @@
 ---
 layout: post
 title: "Installing Oracle XE 11gR2 on CentOS 6.3"
-description: ""
-category: 
+description: "This post covers installation of Oracle XE on CentOS"
+category: oracle
 tags: [oracle, centos]
 ---
 

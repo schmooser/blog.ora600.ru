@@ -2,7 +2,7 @@
 layout: post
 title: "How it works"
 description: "Description of the setup of Jekyll-based blog and some toughts about working in terminal"
-category: 
+category: blog
 tags: [blog, bash]
 ---
 I wrote some notes in russian to my main blog – [iseetheline.ru](iseetheline.ru). It's powered by blog engine named [Aegea](http://blogengine.ru). It has beautiful minimalistic design which I like, it installs simply, it has many features like drag-and-drop image uploading, saving to drafts, tagging, built-in comments, search, rss, support of plugins and so on. But it lacks in three things. 
