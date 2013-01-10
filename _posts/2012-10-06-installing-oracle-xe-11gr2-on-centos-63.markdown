@@ -12,7 +12,9 @@ tags: [oracle, centos]
 
 I found a solution in [Arne Kroger's blog][solution] — if you'll check errors in log files, mentioned inerror message, with `cat *.log | grep ORA-` you'll see that it can't find a host with your system name. All you have to do is edit `/etc/hosts` file adding the line
 
-> 127.0.0.1	centos63
+{% highlight config %}
+127.0.0.1	centos63
+{% endhighlight %}
 
 After restarting of `oracle-xe configure` everything should be fine.
 
