@@ -2,7 +2,7 @@
 layout: post
 title: "Strange WiFi issues"
 description: "I've experienced some strange WiFi problems on my iPad"
-category: 
+category: life
 tags: [ipad, wifi]
 ---
 

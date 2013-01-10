@@ -2,7 +2,7 @@
 layout: post
 title: "Syncing Instagram with Flickr"
 description: "In this post I am announcing a script to synchronization Instagram with Flickr using high-res photos"
-category: 
+category: projects
 tags: [flickr, instagram, progr, python]
 ---
 

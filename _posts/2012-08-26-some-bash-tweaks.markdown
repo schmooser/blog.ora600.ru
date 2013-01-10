@@ -2,7 +2,7 @@
 layout: post
 title: "Some bash tweaks"
 description: "A little tweaks I found useful"
-category: 
+category: linux
 tags: [bash]
 ---
 
