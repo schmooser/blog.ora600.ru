@@ -23,7 +23,8 @@ I install with `yum install` this packages to work efficiently:
 * sudo
 * unzip
 * man
-    
+
+
 ##Java
 To install JRE download appropriate .tar.gz for your distribution, then unpack it into `/usr/java/` and make symlinks `current` and `latest` pointed to it. In my case it was:
 
