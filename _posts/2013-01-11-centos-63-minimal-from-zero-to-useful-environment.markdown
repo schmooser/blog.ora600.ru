@@ -31,7 +31,7 @@ To install JRE download appropriate .tar.gz for your distribution, then unpack i
         ln -s jre1.7.0_10 current
         ln -s jre1.7.0_10 latest
 
-    Then add `/usr/java/current/bin` into your `~/.profile` file:
+Then add `/usr/java/current/bin` into your `~/.profile` file:
     
         export PATH=$PATH:/usr/java/current/bin
         
