@@ -3,19 +3,30 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
 <head>
-  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-  <title>{{ page.title }}</title>
-  <meta name="author" content="Pavel Popov" />
-  <meta name="description" content="Personal blog by Pavel Popov. Pavel is an Oracle database developer." />
+  <meta charset="utf-8">
+  <title>
+    {% if page.title %}
+      {{ page.title }} &ndash;
+    {% endif %}
+    {{ site.name }}
+  </title>
+
+  <meta name="author" content="{{ site.name }}" />
+  <meta name="description" content="{{ site.description }}" />
+
+  <link rel="alternate" type="application/rss+xml" href="/atom.xml" />
+
   <link rel="stylesheet" href="/css/base.css" type="text/css" media="screen, projection" />
-  <link rel="stylesheet" href="/css/plugins/pygments.css" type="text/css" />
-  <link href="/webfonts/ss-social.css" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="/webfonts/ss-social.css" />
   <link media="only screen and (max-device-width: 480px)" href="/css/iphone.css" type="text/css" rel="stylesheet" />
   <link media="only screen and (device-width: 768px)" href="/css/iphone.css" type="text/css" rel="stylesheet" />
   <link href='http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz' rel='stylesheet' type='text/css'>
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js"></script>
-  <script type="text/javascript" src="/js/compiled/application.js"></script>
+
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+  <script type="text/javascript" src="/js/application.js"></script>
+
   <script type="text/javascript">
     $(document).ready(function() {
       {{ page.script }}
@@ -27,31 +38,26 @@
   <section class="sidebar">
 
     <a href="/">
-      <img src="http://www.gravatar.com/avatar/a612694052327727eb594250a8ac9ce9?s=75" height="75" width="75" class="avatar" />
+      <img src="{{ site.gravatar_url }}?s=150" height="75" width="75" class="avatar" />
     </a>
 
     <section class="name">
       <a href="/">
-        <span id="pavel">Pavel</span>
-        <span id="popov">Popov</span>
+        <span id="fname">{{ site.name|split:' '|first }}</span>
+        <span id="lname">{{ site.name|split:' '|last }}</span>
       </a>
     </section>
 
     <section class="meta">
-      <a href="https://twitter.com/schmooser" class="ss-icon ss-social-circle">twitter</a>
-      <a href="http://flickr.com/photos/schmooser" class="ss-icon ss-social-circle">flickr</a>
-      <a href="http://schmooser.tumblr.com" class="ss-icon ss-social-circle">tumblr</a>
+      <a href="https://twitter.com/{{ site.twitter }}" class="ss-icon ss-social-circle">twitter</a>
+      <a href="http://flickr.com/photos/{{ site.flickr }}" class="ss-icon ss-social-circle">flickr</a>
+      <a href="{{ site.tumblr_url }}" class="ss-icon ss-social-circle">tumblr</a>
+      <a href="/atom.xml" class="ss-icon ss-social-circle">rss</a>
     </section>
 
     <section class="sections">
       <ul>
-        <li><a href="/about">about</a></li>
-        <li><a href="http://iseetheline.ru">russian blog</a></li>
-    <!--
-        <li><a href="/screencasts">videos</a></li>
-        <li><a href="/projects">projects</a></li>
-        <li><a href="/talks">talks</a></li>
-    -->
+        <li><a href="/about">about me</a></li>
       </ul>
     </section>
 

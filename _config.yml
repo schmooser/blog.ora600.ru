@@ -1,3 +1,15 @@
-auto: true
+markdown: rdiscount
 pygments: true
-permalink: pretty
+permalink: /:title
+auto: true
+rdiscount:
+  extensions: [smart]
+
+name: Pavel Popov
+url: http://iseetheline.ru
+description: A blog about staff I like.
+twitter: schmooser
+github: schmooser
+flickr: schmooser
+tumblr_url: http://schmooser.tumblr.com
+gravatar_url: http://gravatar.com/avatar/a612694052327727eb594250a8ac9ce9
