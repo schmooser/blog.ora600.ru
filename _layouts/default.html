@@ -24,7 +24,7 @@
       {% include description.html %}
       </div>
     {% else %}
-      <h1><a href="{{ site.url }}">{{ site.title }}</a></h1>
+      <h1><a href="{{ site.url | append: '/' }}">{{ site.title }}</a></h1>
     {% endif %}
 
       <div class="menu">

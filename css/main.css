@@ -8,7 +8,7 @@ body {
   font-family: Helvetica, Arial, sans-serif;
   background: white;
   color: black;
-  font-size: 13px;
+  font-size: 14px;
   margin: 3.5em 0;
   padding: 0;
   max-width: 1140px;
@@ -33,6 +33,9 @@ h1, h2, h3, h4 {
   h1 a, h2 a, h3 a, h4 a {
     color: black;
     border-color: rgba(0, 0, 0, 0.33); }
+    h1 a:visited, h2 a:visited, h3 a:visited, h4 a:visited {
+      color: black;
+      border-color: rgba(0, 0, 0, 0.33); }
 
 h1 {
   font-size: 2em; }
@@ -67,7 +70,6 @@ p {
 
 .menu {
   margin-top: 1em; }
-
 
 .note {
   margin-bottom: 3em;

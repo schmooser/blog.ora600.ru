@@ -1,4 +1,4 @@
-$font-size: 13px;
+$font-size: 14px;
 $text-size: 15px;
 
 $note-margin: 3em;
@@ -49,6 +49,10 @@ h1, h2, h3, h4 {
     a {
         color: $black;
         border-color: rgba($black, 0.33);
+        &:visited {
+            color: $black;
+            border-color: rgba($black, 0.33);
+        }
     }
 }
 

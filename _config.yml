@@ -1,6 +1,7 @@
+#url: http://iseetheline.ru
 permalink: /:title
 paginate: 7
-url: http://schmooser.github.io
+future: false
 
 
 title: О скитаниях вечных и о Земле
