@@ -66,7 +66,8 @@ p {
     border-color: rgba(0, 0, 0, 0.33); }
 
 .note {
-  margin-bottom: 3em; }
+  margin-bottom: 3em;
+  font-size: 15px; }
 
 .note .date {
   letter-spacing: .12em;
