@@ -1,5 +1,7 @@
 permalink: /:title
 paginate: 5
+url: http://schmooser.github.io
+
 
 title: О скитаниях вечных и о Земле
 author: Павел Попов
