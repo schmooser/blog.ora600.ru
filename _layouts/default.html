@@ -20,13 +20,13 @@
 
       {% if page.url == '/index.html' %}
       <h1>{{ site.title }}</h1>
+      <div class="description">
+        {% include description.html %}
+      </div>
       {% else %}
       <h1><a href="{{ site.url }}">{{ site.title }}</a></h1>
       {% endif %}
 
-      <p class="description">
-        {% include description.html %}
-      </p>
       <div class="menu">
         {% include menu.html %}
       </div>
