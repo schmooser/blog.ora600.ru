@@ -18,14 +18,14 @@
   <body>
     <div class="header">
 
-      {% if page.url == '/index.html' %}
+    {% if page.url == '/index.html' %}
       <h1>{{ site.title }}</h1>
       <div class="description">
-        {% include description.html %}
+      {% include description.html %}
       </div>
-      {% else %}
+    {% else %}
       <h1><a href="{{ site.url }}">{{ site.title }}</a></h1>
-      {% endif %}
+    {% endif %}
 
       <div class="menu">
         {% include menu.html %}
