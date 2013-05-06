@@ -8,6 +8,7 @@ layout: default
   <h1><a href="{{ post.url }}">{{ post.title }}</a></h1>
   <p class="date">{{ post.date | date_to_long_string }}</p>
   {{ page.date | date: '%d' | plus: 0 }} 
+  
 {% case page.date | date: '%m' | plus: 0 %} 
   {% when 1 %}
     января
