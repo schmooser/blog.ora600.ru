@@ -65,6 +65,10 @@ p {
     color: black;
     border-color: rgba(0, 0, 0, 0.33); }
 
+.menu {
+  margin-top: 1em; }
+
+
 .note {
   margin-bottom: 3em;
   font-size: 15px; }
