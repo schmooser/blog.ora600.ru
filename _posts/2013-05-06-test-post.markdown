@@ -1,0 +1,6 @@
+---
+layout: default
+title: Test post into a new Jekyll blog
+---
+
+This is a test post. 
