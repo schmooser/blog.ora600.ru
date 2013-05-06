@@ -5,7 +5,7 @@ title: "Downloading archive of Listen to English podcast"
 
 I like to listen Listen to English podcast. It's host Peter Carter choose interesting topics and have a nice english pronunciation. I started to listen the podcast about one and a half year ago. Since then there were a dozen of a new episodes. I also listened all old episodes available on iTunes. Unfortunately, the RSS feed of the podcast consists only about 30 episodes and now the oldest one is about 2 year old. The total number of episodes is about 300, so I decided to download them from archive section on [podcast's site][listen-to-english].
 
-There is no 'Download all' button, in order to download an episode you have to go on episode's page and check on download link. The link looks like this – http://www.listen-to-english.com/get.php?web=j55.mp3 where `55` before `mp3` is the id of an episode.
+There is no 'Download all' button, in order to download an episode you have to go on episode's page and check on download link. The link looks like this – `http://www.listen-to-english.com/get.php?web=j55.mp3` where `55` before `mp3` is the id of an episode.
 
 I decided to I wrote simple python script which loops from 1 till 500 and downloads all of mp3's.
 
@@ -34,7 +34,7 @@ for i in range(1,600):
 print 'Done'
 {% endhighlight %}
 
-This script also checks whether the response of server is not like `Fatal error ...`, because the episode's ids are sparse.
+This script also checks whether the response of server is not like `Fatal error ...`, because the episode's ids are sparsed.
 
 After the script done its work I checked whether downloaded files are a valid mp3's. To do this I used on OS X 10.8 console tool `afinfo`, which shows information about audio file:
 
