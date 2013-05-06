@@ -7,7 +7,36 @@ layout: default
 <div class="note">
   <h1><a href="{{ post.url }}">{{ post.title }}</a></h1>
   <p class="date">{{ post.date | date_to_long_string }}</p>
-  {{ post.date | date: '%d' | plus: 0}} 
+  {{ page.date | date: '%d' | plus: 0 }} 
+{% case page.date | date: '%m' | plus: 0 %} 
+  {% when 1 %}
+    января
+  {% when 2 %}
+    февраля
+  {% when 3 %}
+    марта
+  {% when 4 %}
+    апреля
+  {% when 5 %}
+    мая
+  {% when 6 %}
+    июня
+  {% when 7 %}
+    июля
+  {% when 8 %}
+    августа
+  {% when 9 %}
+    сентября
+  {% when 10 %}
+    октября
+  {% when 11 %}
+    ноября
+  {% when 12 %}
+    декабря
+{% endcase %} 
+{% if page.date | date: '%Y' != 'now' | date: '%Y' %}
+  {{ page.date | date: '%Y' }}
+{% endif %}
 
   <div class="text">
     {{ post.content }}
