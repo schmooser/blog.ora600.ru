@@ -34,6 +34,8 @@ layout: default
     ноября
   {% when 12 %}
     декабря
+  {% else %}
+    хрень
 {% endcase %} 
 {% if page.date | date: '%Y' != 'now' | date: '%Y' %}
   {{ page.date | date: '%Y' }}
