@@ -45,7 +45,7 @@ a {
 h1, h2, h3, h4 {
     font-weight: normal;
     line-height: 1em;
-    margin-bottom: 1px;
+    margin-bottom: 0.5em;
     a {
         color: $black;
         border-color: rgba($black, 0.33);
@@ -57,9 +57,9 @@ h1, h2, h3, h4 {
 }
 
 h1 {font-size: 2em;}
-h2 {font-size: 1.8em;}
-h3 {font-size: 1.6em;}
-h4 {font-size: 1.4em;}
+h2 {font-size: 1.6em;}
+h3 {font-size: 1.3em;}
+h4 {font-size: 1.1em;}
 
 p {
     max-width: 800px;
@@ -95,6 +95,19 @@ p {
 .note {
     margin-bottom: $note-margin;
     font-size: $text-size;
+    h1 {
+        margin-bottom: 0.1em;
+    }
+    .text {
+        ul li {
+            list-style-type: none;
+            text-indent: -1.5em;
+        }
+        ul li:before {
+            content: '\2014';
+            margin-right: 0.5em;
+        }
+    }
 }
 
 .note .date {

@@ -29,7 +29,7 @@ a {
 h1, h2, h3, h4 {
   font-weight: normal;
   line-height: 1em;
-  margin-bottom: 1px; }
+  margin-bottom: 0.5em; }
   h1 a, h2 a, h3 a, h4 a {
     color: black;
     border-color: rgba(0, 0, 0, 0.33); }
@@ -41,13 +41,13 @@ h1 {
   font-size: 2em; }
 
 h2 {
-  font-size: 1.8em; }
-
-h3 {
   font-size: 1.6em; }
 
+h3 {
+  font-size: 1.3em; }
+
 h4 {
-  font-size: 1.4em; }
+  font-size: 1.1em; }
 
 p {
   max-width: 800px;
@@ -74,6 +74,14 @@ p {
 .note {
   margin-bottom: 3em;
   font-size: 15px; }
+  .note h1 {
+    margin-bottom: 0.1em; }
+  .note .text ul li {
+    list-style-type: none;
+    text-indent: -1.5em; }
+  .note .text ul li:before {
+    content: '\2014';
+    margin-right: 0.5em; }
 
 .note .date {
   letter-spacing: .12em;
