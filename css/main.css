@@ -54,17 +54,19 @@ p {
   width: 80%;
   margin: 0 auto; }
 
-.header h1 {
-  font-size: 3.5em;
-  margin: 1em 0 0.4em 0; }
-.header h1, .header h1 a {
-  line-height: 1em; }
-.header h1 a:visited {
-  color: black;
-  border-color: rgba(0, 0, 0, 0.33); }
+.header {
+  margin-bottom: 3em; }
+  .header h1 {
+    font-size: 3.5em;
+    margin: 1em 0 0.4em 0; }
+  .header h1, .header h1 a {
+    line-height: 1em; }
+  .header h1 a:visited {
+    color: black;
+    border-color: rgba(0, 0, 0, 0.33); }
 
 .note {
-  margin: 3em 0; }
+  margin-bottom: 3em; }
 
 .note .date {
   letter-spacing: .12em;
@@ -73,15 +75,18 @@ p {
   font-weight: bold;
   color: #404040; }
 
-.footer p {
-  line-height: 1em;
-  margin: 0;
-  padding: 0; }
-.footer p.engine {
-  color: gray; }
-  .footer p.engine a {
-    color: gray;
-    border-color: rgba(128, 128, 128, 0.3); }
-    .footer p.engine a:hover {
+.footer {
+  margin-top: 6em;
+  margin-bottom: 3em; }
+  .footer p {
+    line-height: 1em;
+    margin: 0;
+    padding: 0; }
+  .footer p.engine {
+    color: gray; }
+    .footer p.engine a {
       color: gray;
       border-color: rgba(128, 128, 128, 0.3); }
+      .footer p.engine a:hover {
+        color: gray;
+        border-color: rgba(128, 128, 128, 0.3); }
