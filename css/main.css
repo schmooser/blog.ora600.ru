@@ -59,6 +59,9 @@ p {
   margin: 1em 0 0.4em 0; }
 .header h1, .header h1 a {
   line-height: 1em; }
+.header h1 a:visited {
+  color: black;
+  border-color: rgba(0, 0, 0, 0.33); }
 
 .note {
   margin: 3em 0; }
