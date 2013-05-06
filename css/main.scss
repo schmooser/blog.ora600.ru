@@ -1,5 +1,7 @@
 $font-size: 13px;
 
+$note-margin: 3em;
+
 $black: black;
 $white: white;
 $blue: #000099;
@@ -65,6 +67,9 @@ p {
 }
 
 .header {
+    
+    margin-bottom: $note-margin;
+    
     h1 {
         font-size: 3.5em;
         margin: 1em 0 0.4em 0;
@@ -79,7 +84,7 @@ p {
 }
 
 .note {
-    margin: 3em 0;
+    margin-bottom: $note-margin;
 }
 
 .note .date {
@@ -91,6 +96,9 @@ p {
 }
 
 .footer {
+    
+    margin-top: 2*$note-margin;
+    margin-bottom: $note-margin;
     
     p {
         line-height: 1em;
