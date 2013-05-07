@@ -14,4 +14,21 @@ lang: ru
 
 На примере:
 
-[<script src="http://pastebin.com/embed_js.php?i=JmVpKfT2"></script>](html)
+    file = open('text.txt', 'rw')
+     
+    # Прочитаем набор байтов из файла на диске
+    data = file.read()
+     
+    # Раскодируем набор байтов в юникодную строку
+    data = data.decode('utf-8')  # Кодировка может быть и другая
+     
+    # Теперь data - Юникод
+    # Закодируем юникодную строку обратно в набор байтов
+    data = data.encode('utf-8')
+     
+    # Запишем байты обратно на диск
+    file.write(data)
+     
+    file.close()
+
+[Сниппет на pastebin](http://pastebin.com/JmVpKfT2)
