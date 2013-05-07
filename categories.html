@@ -4,7 +4,7 @@ title: Разделы
 ---
 
 {% for category in site.categories %}
-  <h1><a href="#{{ category | first }}">{{ category | first | capitalize }}</a></h1>
+  <h1 id="{{ category | first }}">{{ category | first | capitalize }}</h1>
   <ul>
   {% for posts in category offset:1 %}
     {% for post in posts %}
