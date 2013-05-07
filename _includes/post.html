@@ -1,0 +1,19 @@
+{% if post %}
+  {% assign this = post %}
+  {% assign type = 'post' %}
+{% else %}
+  {% assign this = page %}
+  {% assign type = 'page' %}
+{% endif %}
+
+<div class="note">
+  {% if type == 'post' %}
+    <h1>{{ this.title }}</h1>
+  {% else %}
+    <h1><a href="{{ this.url }}">{{ this.title }}</a></h1>
+  {% endif %}  
+  <p class="date">{% include date.html %}</p>
+  <div class="text">
+    {{ content }}
+  </div>
+</div>
