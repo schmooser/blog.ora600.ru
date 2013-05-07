@@ -1,6 +1,6 @@
 ---
 layout: post
-title: ALTER TABLE tablename SET UNUSED COLUMN columnname 
+title: ALTER TABLE SET UNUSED COLUMN
 lang: ru
 category: oracle
 ---
