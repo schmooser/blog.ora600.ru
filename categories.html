@@ -3,8 +3,17 @@ layout: default
 title: Разделы
 ---
 
+{% assign categories = 'oracle, favourites' %}
+
 {% for category in site.categories %}
-  <h1 id="{{ category | first }}">{{ category | first | capitalize }}</h1>
+  {% assign name = category | first %}
+  <h1 id="{{ name }}">
+  {% if categories contains name %}
+      <a href="{{ site.url }}/{{ name }}.html">{{ name | capitalize }}</a>
+  {% else %} 
+    {{ name | capitalize }}
+  {% endif %}
+  </h1>
   <ul>
   {% for posts in category offset:1 %}
     {% for post in posts %}

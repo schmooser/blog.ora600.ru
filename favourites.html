@@ -1,0 +1,9 @@
+---
+layout: default
+title: Избранное
+---
+
+{% for post in site.categories.favourites %}
+  {% include post.html %}
+{% endfor %}
+

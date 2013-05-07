@@ -31,3 +31,10 @@
 {% if page_year != curr_year %}
   {{ page_year }}
 {% endif %}
+
+{% if post.path %}
+  <a class="edit" href="{{ site.edit_url | append: post.path }}">·</a>
+{% else %}
+  <a class="edit" href="{{ site.edit_url | append: page.path }}">·</a>
+{% endif %}
+

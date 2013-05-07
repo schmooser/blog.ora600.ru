@@ -1,4 +1,5 @@
-url: http://iseetheline.ru
+#url: http://iseetheline.ru
+url: http://localhost:4000
 markdown: rdiscount
 pygments: true
 permalink: /:title
@@ -12,3 +13,4 @@ title: Блог Павла Попова
 author: Павел Попов
 years: 2011&mdash;2013
 twitter: schmooser
+edit_url: https://github.com/schmooser/schmooser.github.io/blob/master/ 

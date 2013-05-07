@@ -125,3 +125,18 @@ p {
 
 .nav-post-prev {
   float: left; }
+
+a.edit {
+  border: none;
+  color: gray;
+  font-size: 0.5em; }
+
+a.rss {
+  color: #803000;
+  border: 1px solid;
+  padding: 1px;
+  border-radius: 3px;
+  font-size: 0.8em;
+  font-style: normal;
+  font-weight: bold;
+  font-spacing: 0.15em; }
