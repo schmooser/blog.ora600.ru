@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 1z0-047, разбор вопросов #1 
+title: 1z0-047, разбор вопросов \#1 
 lang: ru
 ---
 
@@ -14,7 +14,7 @@ lang: ru
 
 [Документация](http://docs.oracle.com/cd/B19306_01/server.102/b14200/functions093.htm)
 
-##инструкция WITH CHECK OPTION у VIEW
+##Инструкция WITH CHECK OPTION у VIEW
 
 Инструкция `WITCH CHECK OPTION` ограничивает DML операции над представлением строками, явно подпадающими в представление. Например, если в определении представления есть `WHERE job='CLERK'`, то вставить строку с `job='MANAGER'` в представление не получится.
 
