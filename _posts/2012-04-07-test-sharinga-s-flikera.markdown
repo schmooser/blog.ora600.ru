@@ -5,6 +5,7 @@ lang: ru
 ---
 
 Одиночное фото:
+
 ![Еда by schmooser, on Flickr](http://farm8.staticflickr.com/7255/6907247696_26b6c82187_z.jpg)
 
 И сет:
