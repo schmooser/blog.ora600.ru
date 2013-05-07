@@ -105,3 +105,10 @@ p {
       .footer p.engine a:hover {
         color: gray;
         border-color: rgba(128, 128, 128, 0.3); }
+
+.nav-next, .nav-prev {
+  background-color: #F0F0C0;
+  display: inline-block;
+  border-radius: 4px;
+  padding: 6px;
+}
