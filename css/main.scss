@@ -53,6 +53,10 @@ h1, h2, h3, h4 {
             color: $black;
             border-color: rgba($black, 0.33);
         }
+        &:hover {
+            color: $red;
+            border-color: rgba($red, 0.33);
+        }
     }
 }
 
