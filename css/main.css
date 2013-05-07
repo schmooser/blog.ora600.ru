@@ -106,9 +106,18 @@ p {
         color: gray;
         border-color: rgba(128, 128, 128, 0.3); }
 
-.nav-next, .nav-prev {
+.nav-next, .nav-prev, .nav-post-next, .nav-post-prev {
   background-color: #F0F0C0;
   display: inline-block;
   border-radius: 4px;
   padding: 6px;
+}
+
+.nav-post-next {
+  float: left;
+  margin-left: 5em;
+}
+
+.nav-post-prev {
+  float: left;
 }
