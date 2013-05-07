@@ -3,7 +3,7 @@ layout: default
 title: Разделы
 ---
 
-{% for category in site.categories %}
+{% for category in site.categories | sort %}
   <h1>{{ category | first }}</h1>
     <ul>
     {% for posts in category offset:1 %}
