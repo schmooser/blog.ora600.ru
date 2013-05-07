@@ -2,6 +2,7 @@
 layout: post
 title: 1z0-047, прохождение теста #1 
 lang: ru
+category: oracle
 ---
 
 Год спустя решил снова заняться получением сертификата Oracle. Сначала сдам экзамен 1z0-047 на Oracle SQL Expert.
