@@ -2,6 +2,22 @@
 layout: default
 ---
 
+{% if paginator.previous_page %}
+<div class="nav-prev">
+  {% if paginator.previous_page == 1%}
+    <a href="{{ site.url }}">Позднее</a>
+  {% else %}
+    <a href="{{ paginator.previous_page_path }}">Позднее</a>
+  {% endif %}
+</div>
+{% endif %}
+
 {% for post in paginator.posts %}
   {% include post.html %}
 {% endfor %}
+
+{% if paginator.next_page %}
+<div class="nav-next">
+  <a href="{{ paginator.next_page_path }}">Ранее</a>
+</div>
+{% endif %}
