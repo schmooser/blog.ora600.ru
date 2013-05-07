@@ -8,7 +8,7 @@ lang: ru
 
 ##NEXT_DAY
 
-![img](http://docs.oracle.com/cd/B19306_01/server.102/b14200/img/next_day.gif NEXT_DAY)
+![NEXT_DAY](http://docs.oracle.com/cd/B19306_01/server.102/b14200/img/next_day.gif)
 
 Возвращает дату — следующий день недели, указанный в `char` (название дня недели) после даты, указанной в `date`. Часы, минуты, секунды возвращаемого значения равны соответствующим значениям из `date`.
 
