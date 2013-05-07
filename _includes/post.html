@@ -1,11 +1,11 @@
 {% if post %}
   {% assign this = post %}
   {% assign type = 'post' %}
-  {% assign this_content = content %}
+  {% assign this_content = post.content %}
 {% else %}
   {% assign this = page %}
   {% assign type = 'page' %}
-  {% assign this_content = page.content %}
+  {% assign this_content = content %}
 {% endif %}
 
 <div class="note">
