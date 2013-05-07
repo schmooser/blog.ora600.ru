@@ -120,7 +120,7 @@ p {
 
 .footer {
     
-    margin-top: 2*$note-margin;
+    margin-top: 3*$note-margin;
     margin-bottom: $note-margin;
     
     p {
@@ -149,4 +149,18 @@ p {
   display: inline-block;
   border-radius: 4px;
   padding: 6px;
+}
+
+.nav-post-next, .nav-post-prev {
+  display: inline-block;
+  padding: 6px;
+}
+
+.nav-post-next {
+  float: left;
+  margin-left: 5em;
+}
+
+.nav-post-prev {
+  float: left;
 }
