@@ -4,12 +4,15 @@ title: Разделы
 ---
 
 {% for category in site.categories %}
-  <h1><a href="#{{ category | first }}">{{ category | first | capitalize }}</a></h1>
-    <ul>
-    {% for posts in category offset:1 %}
-      {% for post in posts %}
-        <li><a href="{{ site.url | append: post.url }}">{{ post.title }}</a></li>
-      {% endfor %}
+  <h1><a href="{{ site.url }}/categories.html#{{ category | first }}">
+        {{ category | first | capitalize }}
+      </a>
+  </h1>
+  <ul>
+  {% for posts in category offset:1 %}
+    {% for post in posts %}
+      <li><a href="{{ site.url | append: post.url }}">{{ post.title }}</a></li>
     {% endfor %}
-    </ul>
+  {% endfor %}
+  </ul>
 {% endfor %}
