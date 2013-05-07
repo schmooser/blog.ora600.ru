@@ -1,21 +1,23 @@
 {% if post %}
   {% assign this = post %}
   {% assign type = 'post' %}
-  {% assign this_content = post.content %}
+  {% assign text = post.content %}
 {% else %}
   {% assign this = page %}
   {% assign type = 'page' %}
-  {% assign this_content = content %}
+  {% assign text = content %}
 {% endif %}
 
 <div class="note">
-  {% if type == 'page' %}
-    <h1>{{ this.title }}</h1>
+  <h1>
+  {% if type == 'post' %}
+    <a href="{{ this.url }}">{{ this.title }}</a>
   {% else %}
-    <h1><a href="{{ this.url }}">{{ this.title }}</a></h1>
-  {% endif %}  
+    {{ this.title }}
+  {% endif %}
+  </h1>
   <p class="date">{% include date.html %}</p>
   <div class="text">
-    {{ this_content }}
+    {{ text }}
   </div>
 </div>
