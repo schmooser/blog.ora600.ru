@@ -34,7 +34,7 @@
 
 {% if post.path %}
   <a class="edit" href="{{ site.edit_url | append: post.path }}">·</a>
-{% elseif page.path %}
+{% elsif page.path %}
   <a class="edit" href="{{ site.edit_url | append: page.path }}">·</a>
 {% endif %}
 
