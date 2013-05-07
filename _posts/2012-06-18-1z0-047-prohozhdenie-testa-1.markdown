@@ -15,7 +15,7 @@ category: oracle
 
 * non-correlated subquery, correlated subquery, inline view
 * NATURAL JOIN
-* [инструкция WITH CHECK OPTION у VIEW]({% post_url 1z0-047-razbor-voprosov-1 %})
+* [Инструкция WITH CHECK OPTION у VIEW]({% post_url 2012-06-30-1z0-047-razbor-voprosov-1 %})
 * sequences — CURRVAL or CURVAL? Что будет для последовательности, заданной с START WITH и CYCLE, после 
   прохождения цикла. Она начнется с 1 или со START WITH?
 * GROUP BY CUBE, GROUP BY ROLLUP
@@ -29,12 +29,12 @@ category: oracle
 * модификация колонки в NOT NULL
 * EXTERNAL TABLES
 * DEFERRABLE constraints
-* [NEXT_DAY](http://iseetheline.ru/2012/06/30/2/)
+* [NEXT_DAY]({% post_url 2012-06-30-1z0-047-razbor-voprosov-1 %})
 * GRANT
 * create table t (a, b default sysdate, c) as select a, b, c from t1
 * MERGE
 * наследование GRANTов
-* [ALTER TABLE SET UNUSED column;]({% post_url 2012-03-09-alter-table-tablename-set-unused-column-columnname %})
+* [ALTER TABLE SET UNUSED COLUMN]({% post_url 2012-03-09-alter-table-set-unused-column %})
 * ALL INSERT, FIRST INSERT
-* ALTER TABLE DISABLE CONSTRAINT CASCADE;
+* ALTER TABLE DISABLE CONSTRAINT CASCADE
 * DICTIONARY view
