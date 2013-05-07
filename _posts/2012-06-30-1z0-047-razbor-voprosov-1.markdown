@@ -6,11 +6,16 @@ lang: ru
 
 Буду кратко описывать топики, выделенные после [первого прохождения теста](http://iseetheline.ru/2012/06/18/1/).
 
-==NEXT_DAY==
-[http://docs.oracle.com/cd/B19306_01/server.102/b14200/img/next_day.gif NEXT_DAY](img)
+##NEXT_DAY
+
+![img](http://docs.oracle.com/cd/B19306_01/server.102/b14200/img/next_day.gif NEXT_DAY)
+
 Возвращает дату — следующий день недели, указанный в `char` (название дня недели) после даты, указанной в `date`. Часы, минуты, секунды возвращаемого значения равны соответствующим значениям из `date`.
+
 [Документация](http://docs.oracle.com/cd/B19306_01/server.102/b14200/functions093.htm)
 
-==инструкция WITH CHECK OPTION у VIEW==
+##инструкция WITH CHECK OPTION у VIEW
+
 Инструкция `WITCH CHECK OPTION` ограничивает DML операции над представлением строками, явно подпадающими в представление. Например, если в определении представления есть `WHERE job='CLERK'`, то вставить строку с `job='MANAGER'` в представление не получится.
+
 [Документация](http://docs.oracle.com/cd/B19306_01/server.102/b14200/statements_8004.htm#i2117836)
