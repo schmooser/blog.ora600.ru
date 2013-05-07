@@ -70,6 +70,8 @@ p {
   .header h1 a:visited {
     color: black;
     border-color: rgba(0, 0, 0, 0.33); }
+  .header .description {
+    width: 60%; }
 
 .menu {
   margin-top: 1em; }
