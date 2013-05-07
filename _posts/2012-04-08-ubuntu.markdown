@@ -7,7 +7,8 @@ lang: ru
 
 Сюда я буду складывать свою конфигурацию сервера Убунту (Дебиана), чтобы не забыть.
 
-== Пакеты ==
+##Пакеты
+
   * sudo
   * proftpd-basic — фтп-сервер
   * python
@@ -20,8 +21,8 @@ lang: ru
   * python-pip
   * vim
 
-== .bashrc ==
+##.bashrc
 
-`export EDITOR=/usr/bin/vim`
-`alias pg='ps -edf | grep'`
-`alias l='ls -al'`
+    export EDITOR=/usr/bin/vim
+    alias pg='ps -edf | grep'
+    alias l='ls -al'
