@@ -8,6 +8,8 @@
   {% assign lang = post.lang %}
 {% elsif page.lang %}
   {% assign lang = page.lang %}
+{% else %}
+  {% assign lang = 'en' %}
 {% endif %}
 
 {{ dt | date: '%d' | plus: 0 }}
