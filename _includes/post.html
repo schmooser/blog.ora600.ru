@@ -16,7 +16,7 @@
     {{ this.title }}
   {% endif %}
   </h1>
-  <p class="date">{% include date.html %}</p>
+  <p class="date">{% include date.html | truncatewords: 3 %}</p>
   <div class="text">
     {{ text }}
   </div>
