@@ -1,14 +1,13 @@
 ---
 layout: post
 title: Brilliant Russian language 
-lang: ru
 ---
 
 Text on this picture:
 
 tumblr_mak373ZmTT1qznfpho1_400.jpg
 
-**The complex Russian language**
+##The complex Russian language
 
 There is a table behind us. There are glass and a fork on it. What are they doing? The glass is standing, but the fork is laying. If we stick the fork in the tabletop then the fork will be standing. So, vertical stuff stands and horizontal lie. 
 
@@ -22,4 +21,4 @@ It seems that sitting is the being's property, but a boot is sitting on the leg 
 
 And we russians are wondering why foreigners think that Russian is complicated and compare it to Chinese.
 
-This post on reddit – http://www.reddit.com/r/russian/comments/103a4z/complex_russian/
+[This post on reddit](http://www.reddit.com/r/russian/comments/103a4z/complex_russian/).
