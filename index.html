@@ -1,15 +1,6 @@
 ---
 layout: default
 ---
-
-<!-- This loops through the posts -->
 {% for post in site.posts %}
-<div class="note">
-  <h1><a href="{{ post.url }}">{{ post.title }}</a></h1>
-  <p class="date">{% include date.html %}</p>
-
-  <div class="text">
-    {{ post.content }}
-  </div>
-</div>
+  {% include post.html %}
 {% endfor %}
