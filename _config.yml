@@ -3,7 +3,7 @@ markdown: rdiscount
 pygments: true
 permalink: /:title
 future: false
-#paginate: 7
+paginate: 7
 
 rdiscount:
   extensions: [smart]
