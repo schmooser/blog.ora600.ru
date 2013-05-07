@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Карта моих путешествий 
-category: favourites
+category: favourites travel
 lang: ru
 ---
 
