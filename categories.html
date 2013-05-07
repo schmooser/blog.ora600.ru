@@ -6,7 +6,8 @@ title: Разделы
 {% for category in site.categories %}
   <h1>{{ category | first }}</h1>
     <ul>
-    {% for post in category | last %}
+    {% assign posts = category | last %}
+    {% for post inposts %}
       <li><a href="{{ site.url | append: post.url }}">{{ post.title }}</a></li>
     {% endfor %}
     </ul>
