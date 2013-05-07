@@ -1,4 +1,4 @@
-#url: http://iseetheline.ru
+url: http://iseetheline.ru
 markdown: rdiscount
 pygments: true
 permalink: /:title
