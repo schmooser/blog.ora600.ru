@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Установка и запуск Oracle Instant Client под Windows 
-categories: oracle, favourites
+categories: oracle favourites
 lang: ru
 ---
 
