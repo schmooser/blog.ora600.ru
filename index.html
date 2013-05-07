@@ -4,7 +4,7 @@ layout: default
 
 {% if paginator.previous_page %}
 <div class="nav-prev">
-  {% if paginator.previous_page == 1 %}
+  {% if paginator.page == 2 %}
     <a href="{{ site.url }}">Позднее</a>
   {% else %}
     <a href="{{ site.url}}/page{{ paginator.previous_page }}">Позднее</a>
