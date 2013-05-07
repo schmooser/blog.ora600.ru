@@ -106,10 +106,15 @@ p {
         color: gray;
         border-color: rgba(128, 128, 128, 0.3); }
 
-.nav-next, .nav-prev, .nav-post-next, .nav-post-prev {
+.nav-next, .nav-prev,  {
   background-color: #F0F0C0;
   display: inline-block;
   border-radius: 4px;
+  padding: 6px;
+}
+
+.nav-post-next, .nav-post-prev {
+  display: inline-block;
   padding: 6px;
 }
 
