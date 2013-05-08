@@ -1,7 +1,9 @@
 ---
+published: true
 layout: post
-title: Итоги 2011-го 
+title: "Итоги 2011-го"
 lang: ru
+
 ---
 
 Пора подводить итоги 2011-го года.
