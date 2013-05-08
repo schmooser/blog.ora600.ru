@@ -1,7 +1,9 @@
 ---
+published: true
 layout: post
-title: Баги и странности Informatica 
+title: Баги и странности Informatica
 lang: ru
+
 ---
 
 За время работы с Informatica Power Center 8.1 обнаружены следующие баги:
