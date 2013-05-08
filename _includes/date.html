@@ -1,40 +1,43 @@
-{% if post.date %}
-  {% assign dt = post.date %}
-{% else %}
-  {% assign dt = page.date %}
-{% endif %}
-
-{% if post.lang %}
-  {% assign lang = post.lang %}
-{% elsif page.lang %}
-  {% assign lang = page.lang %}
-{% else %}
-  {% assign lang = 'en' %}
-{% endif %}
-
-{{ dt | date: '%d' | plus: 0 }}
-
-{% if lang == 'ru' %}
-  {% assign mon = dt | date: '%m' | plus: 0 %} 
-  {% case mon %} 
-    {% when 1 %} января {% when 2 %} февраля {% when 3 %} марта {% when 4 %} апреля
-    {% when 5 %} мая {% when 6 %} июня {% when 7 %} июля {% when 8 %} августа
-    {% when 9 %} сентября {% when 10 %} октября {% when 11 %} ноября {% when 12 %} декабря
-  {% endcase %} 
-{% else %}
-  {{ dt | date: '%B'}}
-{% endif %}
-
-{% assign page_year = dt | date: '%Y' %}
-{% assign curr_year = site.time | date: '%Y' %}
-
-{% if page_year != curr_year %}
-  {{ page_year }}
-{% endif %}
+{% capture trim_whitespaces %}
+  {% if post.date %}
+    {% assign dt = post.date %}
+  {% else %}
+    {% assign dt = page.date %}
+  {% endif %}
+  
+  {% if post.lang %}
+    {% assign lang = post.lang %}
+  {% elsif page.lang %}
+    {% assign lang = page.lang %}
+  {% else %}
+    {% assign lang = 'en' %}
+  {% endif %}
+  
+  {% capture displayed %}
+  {{ dt | date: '%d' | plus: 0 }}
+  
+  {% if lang == 'ru' %}
+    {% assign mon = dt | date: '%m' | plus: 0 %} 
+    {% case mon %} 
+      {% when 1 %} января {% when 2 %} февраля {% when 3 %} марта {% when 4 %} апреля
+      {% when 5 %} мая {% when 6 %} июня {% when 7 %} июля {% when 8 %} августа
+      {% when 9 %} сентября {% when 10 %} октября {% when 11 %} ноября {% when 12 %} декабря
+    {% endcase %} 
+  {% else %}
+    {{ dt | date: '%B'}}
+  {% endif %}
+  
+  {% assign page_year = dt | date: '%Y' %}
+  {% assign curr_year = site.time | date: '%Y' %}
+  
+  {% if page_year != curr_year %}
+    {{ page_year }}
+  {% endif %}
+  {% endcapture %}
+{% endcapture %} {{ displayed }}
 
 {% if post.path %}
   <a class="edit" href="{{ site.edit_url | append: post.path }}">·</a>
 {% elsif page.path %}
   <a class="edit" href="{{ site.edit_url | append: page.path }}">·</a>
 {% endif %}
-
