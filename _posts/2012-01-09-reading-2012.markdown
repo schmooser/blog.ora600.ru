@@ -1,7 +1,9 @@
 ---
+published: true
 layout: post
-title: Чтение 2012 
+title: Чтение 2012
 lang: ru
+
 ---
 
 Итак, за год мне надо прочитать:
