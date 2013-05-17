@@ -1,6 +1,8 @@
 ---
 layout: post
 title: "Downloading archive of Listen to English podcast"
+description: "How to download podcast files from Internet and put them on iPod in Podcast section."
+category: projects
 ---
 
 I like to listen Listen to English podcast. It's host Peter Carter choose interesting topics and have a nice english pronunciation. I started to listen the podcast about one and a half year ago. Since then there were a dozen of a new episodes. I also listened all old episodes available on iTunes. Unfortunately, the RSS feed of the podcast consists only about 30 episodes and now the oldest one is about 2 year old. The total number of episodes is about 300, so I decided to download them from archive section on [podcast's site][listen-to-english].

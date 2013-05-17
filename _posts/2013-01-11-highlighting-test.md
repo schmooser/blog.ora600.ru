@@ -1,7 +1,6 @@
 ---
 layout: post
 title: "Highlighting test"
-description: ""
 category: blog 
 tags: [jekyll, highlighting, github_pages]
 ---

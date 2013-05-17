@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Installing cx_Oracle on CentOS 5.8"
-description: "Description of installation of python's module for Oracle database"
+description: "Description of installation of python's module for Oracle database."
 category: oracle
 tags: [oracle, centos, python]
 ---

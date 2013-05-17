@@ -1,7 +1,6 @@
 ---
 layout: post
 title: "CentOS 6.3 minimal from zero to useful environment"
-description: ""
 category: linux
 tags: [linux, oracle, centos, java]
 ---

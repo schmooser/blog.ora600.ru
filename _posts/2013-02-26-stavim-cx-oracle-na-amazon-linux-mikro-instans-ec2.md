@@ -2,6 +2,7 @@
 layout: post
 title: Ставим cx_Oracle на Amazon Linux (микро-инстанс EC2) 
 lang: ru
+category: oracle
 ---
 
 Чтобы поставить модуль cx_Oracle на Amazon Linux, надо сделать следующее:

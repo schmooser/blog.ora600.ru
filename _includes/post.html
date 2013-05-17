@@ -1,11 +1,13 @@
 {% if post %}
   {% assign this = post %}
   {% assign type = 'post' %}
-  {% assign text = post.content %}
+  {% assign text = this.content %}
+  {% assign description = this.description %}
 {% else %}
   {% assign this = page %}
   {% assign type = 'page' %}
   {% assign text = content %}
+  {% assign description = this.description %}
 {% endif %}
 
 <div class="note">
@@ -18,6 +20,13 @@
   </h1>
   <p class="date">{% include date.html %}</p>
   <div class="text">
+  {% if type == 'post' and description %}
+    {{ description }}
+    <p>
+      <a href="{{ this.url }}">{% if this.lang == 'ru' %}Далее...{% else %}Read more...{% endif %}</a>
+    </p>
+  {% else %}
     {{ text }}
+  {% endif %}
   </div>
 </div>
