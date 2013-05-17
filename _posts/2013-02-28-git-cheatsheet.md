@@ -1,10 +1,14 @@
 ---
-layout: post
-title: Cheatshit по git 
-lang: ru
+
+layout: post  
+title: Cheatsheet по git  
+lang: ru  
+tags: [git]  
+category: git  
+
 ---
 
-Буду собирать здесь часто выполняемые действия по гиту, этакий cheatshit. Все команды предваряются командой `git`.
+Буду собирать здесь часто выполняемые действия по гиту, этакий cheatsheet. Все команды предваряются командой `git`.
 
 * `checkout -b test origin/test` – получаем удаленный бранч origin/test в локальный test
 * `push origin :test` – удаляем удаленный бранч test
