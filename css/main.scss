@@ -10,54 +10,54 @@ $magenta: #660099;
 $red: #d04000;
 
 * {
-    line-height: 1.5em;   
-    box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
+  line-height: 1.5em;   
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
 }
 
 body {
-    font-family: Helvetica, Arial, sans-serif;
-    background: $white;
-    color: $black;
-    font-size: $font-size;
-    margin: 3.5em 0;
-    padding: 0;
-    max-width: 1140px;
-    min-width: 820px;
+  font-family: Helvetica, Arial, sans-serif;
+  background: $white;
+  color: $black;
+  font-size: $font-size;
+  margin: 3.5em 0;
+  padding: 0;
+  max-width: 1140px;
+  min-width: 820px;
 }
 
 a {
-    text-decoration: none;
-    border-bottom: 1px solid;
-    color: $blue;
-    border-color: rgba($blue, 0.33);
-    &:visited {
-        color: $magenta;
-        border-color: rgba($magenta, 0.33);
-    }
-    &:hover {
-        color: $red;
-        border-color: rgba($red, 0.33);
-    }
+  text-decoration: none;
+  border-bottom: 1px solid;
+  color: $blue;
+  border-color: rgba($blue, 0.33);
+  &:visited {
+    color: $magenta;
+    border-color: rgba($magenta, 0.33);
+  }
+  &:hover {
+    color: $red;
+    border-color: rgba($red, 0.33);
+  }
 }
 
 h1, h2, h3, h4 {
-    font-weight: normal;
-    line-height: 1em;
-    margin-bottom: 0.5em;
-    a {
-        color: $black;
-        border-color: rgba($black, 0.33);
-        &:visited {
-            color: $black;
-            border-color: rgba($black, 0.33);
-        }
-        &:hover {
-            color: $red;
-            border-color: rgba($red, 0.33);
-        }
+  font-weight: normal;
+  line-height: 1em;
+  margin-bottom: 0.5em;
+  a {
+    color: $black;
+    border-color: rgba($black, 0.33);
+    &:visited {
+      color: $black;
+      border-color: rgba($black, 0.33);
     }
+    &:hover {
+      color: $red;
+      border-color: rgba($red, 0.33);
+    }
+  }
 }
 
 h1 {font-size: 2em;}
@@ -66,88 +66,86 @@ h3 {font-size: 1.3em;}
 h4 {font-size: 1.1em;}
 
 p {
-    max-width: 800px;
-    margin: 0 0 1em 0;
+  max-width: 800px;
+  margin: 0 0 1em 0;
+}
+
+hr {
+  width: 2em;
+  margin: 2em 0;
 }
 
 .header, .content, .footer {
-    width: 80%;
-    margin: 0 auto;
+  width: 80%;
+  margin: 0 auto;
 }
 
 .header {
-    
-    margin-bottom: $note-margin;
-    
-    h1 {
-        font-size: 1.5em;
-        margin: 1em 0 0.4em 0;
-    }
-    h1, h1 a {
-        line-height: 1em;
-    }
-    h1 a:visited {
-        color: $black;
-        border-color: rgba($black, 0.33);
-    }
-
-    .description {
-        width: 60%;
-    }
+  margin-bottom: $note-margin;
+  h1 {
+    font-size: 1.5em;
+    margin: 1em 0 0.4em 0;
+  }
+  h1, h1 a {
+    line-height: 1em;
+  }
+  h1 a:visited {
+    color: $black;
+    border-color: rgba($black, 0.33);
+  }
+  .description {
+    width: 60%;
+  }
 }
 
 .menu {
-    margin-top: 1em;
+  margin-top: 1em;
 }
 
 .note {
-    margin-bottom: $note-margin;
-    h1 {
-        margin-bottom: 0.1em;
+  margin-bottom: $note-margin;
+  h1 {
+    margin-bottom: 0.1em;
+  }
+  .text {
+    ul li {
+      list-style-type: none;
+      text-indent: -1.5em;
     }
-    .text {
-        ul li {
-            list-style-type: none;
-            text-indent: -1.5em;
-        }
-        ul li:before {
-            content: '\2014';
-            margin-right: 0.5em;
-        }
+    ul li:before {
+      content: '\2014';
+      margin-right: 0.5em;
     }
+  }
 }
 
 .note .date {
-    letter-spacing: .12em;
-    text-transform: uppercase;
-    font-size: 0.9em;
-    font-weight: bold;
-    color: lighten($black, 25%)
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  font-size: 0.9em;
+  font-weight: bold;
+  color: lighten($black, 25%)
 }
 
 .footer {
-    
-    margin-top: 3*$note-margin;
-    margin-bottom: $note-margin;
-    
-    p {
-        line-height: 2em;
-        margin: 0;
-        padding: 0;
-    }
-    
-    p.engine {
+  margin-top: 3*$note-margin;
+  margin-bottom: $note-margin;
+  p {
+    line-height: 2em;
+    margin: 0;
+    padding: 0;
+  }
+  p.engine {
+    color: $grey;
+    a {
+      color: $grey;
+      border-color: rgba($grey, 0.3);
+      &:hover {
         color: $grey;
-        a {
-            color: $grey;
-            border-color: rgba($grey, 0.3);
-            &:hover {
-                color: $grey;
-                border-color: rgba($grey, 0.3);
-            }
-        }
+        border-color: rgba($grey, 0.3);
+      }
     }
-    
+  }
 }
 
 .nav-next, .nav-prev {
@@ -189,3 +187,14 @@ a.rss {
     spacing: 0.15em;
   }
 }
+
+ul.tags {
+  list-style-type: none;
+  li {
+    display: inline-block;
+    float: left;
+    margin-left: 1em;
+    padding: 3px;
+  }
+}
+

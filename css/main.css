@@ -56,6 +56,10 @@ p {
   max-width: 800px;
   margin: 0 0 1em 0; }
 
+hr {
+  width: 2em;
+  margin: 2em 0; }
+
 .header, .content, .footer {
   width: 80%;
   margin: 0 auto; }
@@ -141,3 +145,11 @@ a.rss {
   font-style: normal;
   font-weight: bold;
   font-spacing: 0.15em; }
+
+ul.tags {
+  list-style-type: none; }
+  ul.tags li {
+    display: inline-block;
+    float: left;
+    margin-left: 1em;
+    padding: 3px; }
