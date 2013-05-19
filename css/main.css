@@ -52,6 +52,14 @@ h3 {
 h4 {
   font-size: 1.1em; }
 
+pre code {
+  display: block;
+  padding: 1em;
+  margin: 1em;
+  max-width: 600px;
+  background-color: #e6e6e6;
+  word-wrap: break-word; }
+
 p {
   max-width: 800px;
   margin: 0 0 1em 0; }
