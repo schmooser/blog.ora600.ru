@@ -1,7 +1,9 @@
 ---
-layout: post
-title: TLO vs WhiteRa 
-lang: ru
+
+layout: post  
+title: TLO vs WhiteRa  
+lang: ru  
+
 ---
 
 У HuskyStarcraft появилась товарищеская серия "best of 7" между TLO (Z) и WhiteRa (T). Всегда полезно посмотреть, как между собой играют профессионалы. Особенно интересна третья игра, когда TLO построил у экспанда противника хэтчери.

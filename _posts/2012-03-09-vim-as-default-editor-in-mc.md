@@ -3,6 +3,7 @@
 layout: post  
 title: vim в качестве редактора по F4 в mc  
 lang: ru  
+category: vim
 
 ---
 
