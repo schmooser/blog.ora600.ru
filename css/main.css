@@ -68,6 +68,9 @@ hr {
   width: 2em;
   margin: 2em 0; }
 
+ul li {
+  list-style-type: lower-greek; }
+
 .header, .content, .footer {
   width: 80%;
   margin: 0 auto; }
@@ -92,12 +95,6 @@ hr {
   margin-bottom: 3em; }
   .note h1 {
     margin-bottom: 0.1em; }
-  .note .text ul li {
-    list-style-type: none;
-    text-indent: -1.5em; }
-  .note .text ul li:before {
-    content: '\2014';
-    margin-right: 0.5em; }
 
 .note .date {
   letter-spacing: .12em;

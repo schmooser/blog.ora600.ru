@@ -6,7 +6,7 @@ category: oracle
 ---
 
 Буду кратко описывать топики, выделенные после 
-[первого прохождения теста]({% post_url 2012-06-18-1z0-047-prohozhdenie-testa-1 %}).
+[первого прохождения теста][1].
 
 ##NEXT_DAY
 
@@ -16,7 +16,7 @@ category: oracle
 даты, указанной в `date`. Часы, минуты, секунды возвращаемого значения равны соответствующим 
 значениям из `date`.
 
-[Документация](http://docs.oracle.com/cd/B19306_01/server.102/b14200/functions093.htm)
+[Документация][NEXT_DAY_DOCS]
 
 ##Инструкция WITH CHECK OPTION у VIEW
 
@@ -25,4 +25,8 @@ category: oracle
 представления есть `WHERE job='CLERK'`, то вставить строку с `job='MANAGER'` в 
 представление не получится.
 
-[Документация](http://docs.oracle.com/cd/B19306_01/server.102/b14200/statements_8004.htm#i2117836)
+[Документация][WITH_CHECK_OPTION_DOCS]
+
+[1]: {% post_url 2012-06-18-1z0-047-test-passing-1 %}
+[NEXT_DAY_DOCS]: http://docs.oracle.com/cd/B19306_01/server.102/b14200/functions093.htm
+[WITH_CHECK_OPTION_DOCS]: http://docs.oracle.com/cd/B19306_01/server.102/b14200/statements_8004.htm#i2117836
