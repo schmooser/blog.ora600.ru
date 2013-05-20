@@ -11,13 +11,13 @@ title: Разделы
 
 {% for category in site.categories %}
   {% assign name = category | first %}
-  <h1 id="{{ name }}">
+  <h2 id="{{ name }}">
   {% if categories contains name %}
       <a href="{{ site.url }}/{{ name }}.html">{{ name | capitalize }}</a>
   {% else %} 
     {{ name | capitalize }}
   {% endif %}
-  </h1>
+  </h2>
   <ul>
   {% for posts in category offset:1 %}
     {% for post in posts %}
