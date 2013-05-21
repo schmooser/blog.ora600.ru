@@ -24,6 +24,8 @@ I found useful to put tips on vim into this page as I do with [git][git-cheatshe
 
   Found [here][copy].
 
+* To open window with command history (and copy from it, if you want), type `q:`. To open window with search history, type `q/`.
+
 [git-cheatsheet]: {% post_url 2013-02-28-git-cheatsheet %}
 [tips]: http://rayninfo.co.uk/vimtips.html
 [copy]: http://superuser.com/questions/167352/how-do-i-copy-command-output-in-vim
