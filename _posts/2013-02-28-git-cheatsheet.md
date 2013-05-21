@@ -4,7 +4,7 @@ layout: post
 title: Cheatsheet по git  
 lang: ru  
 tags: [git]  
-category: git  
+categories: git favourites  
 
 ---
 
@@ -14,4 +14,5 @@ category: git
 * `push origin :test` – удаляем удаленный бранч test
 * `diff --name-only [SHA1|TAG1] [SHA2|TAG2]` – посмотреть измененные файлы между коммитами
 * `show [SHA|TAG]:filename` – показывает файл каким он был в указанном коммите
-* `branch -m oldname newname` – переименовываем бранч oldname в newname.
+* `branch -m oldname newname` – переименовываем бранч oldname в newname
+* `merge -s ours` -- мерж со стратегией "брать файлы из текущей ветки". Нужно предварительно чекаутнуть ту ветку, чьи файлы нужно сохранить.
