@@ -2,7 +2,7 @@
 
 layout: post  
 categories: vim informatica  
-title: Sorting IPC transformations usage from log with vim  
+title: Sorting IPC transformations usage from log with VIM  
 
 ---
 
