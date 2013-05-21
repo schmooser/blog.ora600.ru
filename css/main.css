@@ -136,6 +136,14 @@ ul li {
 .nav-post-prev {
   float: left; }
 
+.small {
+  font-size: 0.7em;
+}
+
+.shaded {
+  color: grey;
+}
+
 a.edit {
   border: none;
   color: gray;
