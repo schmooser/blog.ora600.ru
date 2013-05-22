@@ -14,15 +14,15 @@ My [saved links][pinboard] on vim are on Pinboard.
 
 * To remove DOS `^M`'s use 
 
-        :%s/{Ctrl+V}{Ctrl+M}//g
+      :%s/{Ctrl+V}{Ctrl+M}//g
 
   or, as mentioned in tips above, with 
 
-        :%s/\r//g
+      :%s/\r//g
 
 * To copy into buffer `*` output of command use 
 
-        :redir @* | set guifont | redir END
+      :redir @* | set guifont | redir END
 
   Found [here][copy].
 
