@@ -6,7 +6,7 @@ category: vim
 
 ---
 
-I found useful to put tips on vim into this page as I do with [git][git]. All posts about vim I'll put into category "vim", so it's easy to find them. 
+I found useful to put tips on vim into this page as I [do][git] with git. All posts about vim I'll put into category "vim", so it's easy to find them. 
 
 My [saved links][pinboard] on vim are on Pinboard.
 
