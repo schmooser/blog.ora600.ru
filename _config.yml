@@ -9,9 +9,9 @@ paginate: 7
 rdiscount:
   extensions: [smart]
 
-title: Павел Попов
+title: Блог Павла Попова
 author: Павел Попов
 years: 2011&mdash;2013
 twitter: schmooser
-#edit_url: https://github.com/schmooser/schmooser.github.io/blob/master/ 
-edit_url: http://prose.io/#schmooser/schmooser.github.io/edit/master/
+edit_url: https://github.com/schmooser/schmooser.github.io/blob/master/ 
+#edit_url: http://prose.io/#schmooser/schmooser.github.io/edit/master/
