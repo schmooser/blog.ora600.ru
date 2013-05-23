@@ -71,6 +71,16 @@ hr {
 ul li {
   list-style-type: lower-greek; }
 
+blockquote {
+  padding-left: 1em;
+  border-left: 1px solid gray; }
+
+.small {
+  font-size: 0.7em; }
+
+.shaded {
+  color: grey; }
+
 .header, .content, .footer {
   width: 80%;
   margin: 0 auto; }
@@ -135,14 +145,6 @@ ul li {
 
 .nav-post-prev {
   float: left; }
-
-.small {
-  font-size: 0.7em;
-}
-
-.shaded {
-  color: grey;
-}
 
 a.edit {
   border: none;
