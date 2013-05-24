@@ -1,7 +1,7 @@
 ---
 
 layout: post  
-title: "Installing Oracle XE 11gR2 on CentOS 6.3"  
+title: "Installing Oracle XE 11gR2 on CentOS 6"  
 description: "This post covers installation of Oracle XE on CentOS"  
 category: oracle  
 tags: [oracle, centos]  
@@ -56,6 +56,8 @@ I found a solution in [Arne Kroger's blog][solution] — if you'll check errors 
 {% endhighlight %}
 
 After restarting of `oracle-xe configure` everything should be fine.
+
+Tested on CentOS 6.3 and 6.4.
 
 [Official documentation][oracle-xe-11gr2-official]
 
