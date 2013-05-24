@@ -65,13 +65,14 @@ h2 {font-size: 1.6em;}
 h3 {font-size: 1.3em;}
 h4 {font-size: 1.1em;}
 
+
 pre code {
   display: block;
   padding: 1em;
   margin: 1em;
   max-width: 600px;
   background-color: lighten($grey, 40%);
-  word-wrap: break-word;
+  overflow: scroll;
 }
 
 p {
@@ -134,8 +135,6 @@ blockquote {
   margin-bottom: $note-margin;
   h1 {
     margin-bottom: 0.1em;
-  }
-  .text {
   }
 }
 
