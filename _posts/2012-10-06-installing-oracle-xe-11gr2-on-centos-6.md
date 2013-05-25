@@ -87,11 +87,7 @@ Additional info in [this][change-ports] post by daust.
 
 ## Upgrading APEX
 
-Default APEX in Oracle XE is outdated. Download new version and install. Installation process is forward. Manual is [here][apex-install-guide].
-
-### Get distribution
-
-Download APEX, for example I downloaded `apex_4.2.2_en.zip`, unzipped it, 
+Default APEX in Oracle XE is outdated. Download new version and install. Upgrade process is [covered here][upgrade-apex]. Complete manual is [here][apex-install-guide].
 
 [Official documentation of Oracle XE.][oracle-xe-11gr2-official]
 
@@ -104,4 +100,5 @@ Tested on CentOS 6.3 and 6.4.
 [oracle-xe-11gr2-official]: http://docs.oracle.com/cd/E17781_01/index.htm
 [backup-post]: {% post_url 2013-05-24-install-oracle-xe-on-centos-6 %}
 [change-ports]: http://daust.blogspot.ru/2006/01/xe-changing-default-http-port.html
+[upgrade-apex]: http://www.oracle.com/technetwork/developer-tools/apex/upgrade-apex-for-xe-154969.html
 [apex-install-guide]: http://docs.oracle.com/cd/E37097_01/doc/install.42/e35123/toc.htm
