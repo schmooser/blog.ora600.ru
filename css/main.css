@@ -58,7 +58,7 @@ pre code {
   margin: 1em;
   max-width: 600px;
   background-color: #e6e6e6;
-  overflow: scroll; }
+  overflow: auto; }
 
 p {
   max-width: 800px;
