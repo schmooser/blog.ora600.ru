@@ -20,5 +20,5 @@ lang: ru
     a.open()
     a.codepage = dbf.CodePage('cp866')
 
-    dbf.export(a, filename=csv_file, encoding='cp1251', format='tab')
+    dbf.export(a, filename=csv_file, encoding='cp1251', format='csv')
       
