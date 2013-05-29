@@ -1,7 +1,10 @@
 ---
-layout: post
-title: Про юникод в питоне 
-lang: ru
+
+layout: post  
+title: Про юникод в питоне  
+lang: ru  
+category: python
+
 ---
 
 [Источник](http://www.linux.org.ru/forum/development/4004465?cid=4004513).
