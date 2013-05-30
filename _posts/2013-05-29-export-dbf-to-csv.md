@@ -37,7 +37,7 @@ lang: ru
     writer = csv.writer(open(csv_file, 'w'), delimiter = '\t', lineterminator='\n',
                         quotechar="'", quoting=csv.QUOTE_NONE)
                     
-    print db.fieldNames
+    # print db.fieldNames
 
     i = 0
     for rec in db:
