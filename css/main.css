@@ -52,13 +52,15 @@ h3 {
 h4 {
   font-size: 1.1em; }
 
+code, pre code {
+  font-size: 0.9em; }  
+
 pre code {
   display: block;
   padding: 1em;
   margin: 1em;
   background-color: #e6e6e6;
-  overflow: auto; 
-  font-size: 0.9em;
+  overflow: auto;   
   line-height: 1em; }
 
 p {
