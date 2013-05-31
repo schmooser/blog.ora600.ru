@@ -57,7 +57,9 @@ pre code {
   padding: 1em;
   margin: 1em;
   background-color: #e6e6e6;
-  overflow: auto; }
+  overflow: auto; 
+  font-size: 0.9em;
+  line-height: 1em; }
 
 p {
   max-width: 800px;
