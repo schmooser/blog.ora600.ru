@@ -1,8 +1,10 @@
----
-layout: post
-title: 1z0-047, разбор вопросов №1 
-lang: ru
-category: oracle
+---  
+
+layout: post  
+title: 1z0-047, разбор вопросов №1   
+lang: ru  
+categories: oracle 1z0-047  
+
 ---
 
 Буду кратко описывать топики, выделенные после 
