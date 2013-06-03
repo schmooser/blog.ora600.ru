@@ -17,7 +17,7 @@ category: python
 
     PCT = 14.99/100
     YEARS = 2
-    m = 12  # number of payments in year
+    m = 12  # number of payments in a year
 
     SUM = 100000
 
@@ -45,7 +45,7 @@ category: python
 
     iterate()
 
-Пример расчета:
+Пример расчета кредита в 100,000 на 2 года с процентной ставкой 14.99% годовых:
 
     MONTH       PERCENT   	PAYMENT   	REMAINDER 	EXTRA     
     1         	1249.17   	4848.19   	96400.98  	0.00      
@@ -75,4 +75,4 @@ category: python
     --------------------------------------------------------------------------------
     TOTAL     	16356.55  	116356.55 
 
-
+Формулу для аннуитета взял в [Википедии](http://ru.wikipedia.org/wiki/%D0%90%D0%BD%D0%BD%D1%83%D0%B8%D1%82%D0%B5%D1%82).
