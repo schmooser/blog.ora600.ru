@@ -48,7 +48,7 @@ category: python
 
 Пример расчета кредита в 100,000 на 2 года с процентной ставкой 14.99% годовых:
 
-    MONTH         PERCENT   	PAYMENT   	REMAINDER 	EXTRA     
+    MONTH       PERCENT   	PAYMENT   	REMAINDER 	EXTRA     
     1         	1249.17   	4848.19   	96400.98  	0.00      
     2         	1204.21   	4848.19   	92757.00  	0.00      
     3         	1158.69   	4848.19   	89067.50  	0.00      
