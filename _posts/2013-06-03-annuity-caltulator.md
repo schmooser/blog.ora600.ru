@@ -32,8 +32,7 @@ category: python
                                                             'REMAINDER', 'EXTRA'))
       for i in range(YEARS*m):
         percent = remainder*PCT/m
-        remainder += percent    
-        
+        remainder += percent        
         payment = min(K*SUM + extra, remainder)
         remainder = max(0, remainder - payment)
         totals['percents'] += percent
