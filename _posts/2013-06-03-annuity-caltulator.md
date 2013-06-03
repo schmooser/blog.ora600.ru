@@ -17,7 +17,7 @@ category: python
 
     PCT = 14.99/100
     YEARS = 2
-    m = 12  # number of payments in a year
+    m = 12  # number of payments in year
 
     SUM = 100000
 
@@ -26,16 +26,18 @@ category: python
     def iterate():
       global SUM, K, YEARS, m
       remainder = SUM
+      extra = 0  # extra monthly payment 
       totals = {'percents': 0, 'payments': 0}
       print('{:<10}\t{:<10}\t{:<10}\t{:<10}\t{:<10}'.format('MONTH', 'PERCENT', 'PAYMENT',
                                                             'REMAINDER', 'EXTRA'))
       for i in range(YEARS*m):
         percent = remainder*PCT/m
-        payment = K*SUM
-        extra = 0
-        remainder = max(0, remainder + percent - payment - extra)
+        remainder += percent    
+        
+        payment = min(K*SUM + extra, remainder)
+        remainder = max(0, remainder - payment)
         totals['percents'] += percent
-        totals['payments'] += payment + extra
+        totals['payments'] += payment
         print('{:<10}\t{:<10.2f}\t{:<10.2f}\t{:<10.2f}\t{:<10.2f}'.format(i+1, percent, payment,
                                                                           remainder, extra))
         if remainder == 0: break
@@ -47,7 +49,7 @@ category: python
 
 Пример расчета кредита в 100,000 на 2 года с процентной ставкой 14.99% годовых:
 
-    MONTH       PERCENT   	PAYMENT   	REMAINDER 	EXTRA     
+    MONTH         PERCENT   	PAYMENT   	REMAINDER 	EXTRA     
     1         	1249.17   	4848.19   	96400.98  	0.00      
     2         	1204.21   	4848.19   	92757.00  	0.00      
     3         	1158.69   	4848.19   	89067.50  	0.00      
