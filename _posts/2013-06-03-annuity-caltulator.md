@@ -35,7 +35,7 @@ category: python
         extra = 0
         remainder = max(0, remainder + percent - payment - extra)
         totals['percents'] += percent
-        totals['payments'] += payment
+        totals['payments'] += payment + extra
         print('{:<10}\t{:<10.2f}\t{:<10.2f}\t{:<10.2f}\t{:<10.2f}'.format(i+1, percent, payment,
                                                                           remainder, extra))
         if remainder == 0: break
