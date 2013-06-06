@@ -1,4 +1,5 @@
 ---
+published: true
 layout: post
 lang: ru
 category: blog
