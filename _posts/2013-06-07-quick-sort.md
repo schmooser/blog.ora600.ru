@@ -22,11 +22,13 @@ I tried to realize this in Python. That's what I get:
     def qsort(input):
       if input == []: return [] 
       x, xs = input[0], input[1:]
-      bigger = qsort(filter(lambda e: e >= x, xs))
-      smaller = qsort(filter(lambda e: e < x, xs))
+      bigger = qsort(filter(lambda e: e >= x, [ a for a in xs ]))
+      smaller = qsort(filter(lambda e: e < x, [ a for a in xs ]))
       return smaller + [x] + bigger
 
 It works pretty well:
 
     >>> qsort([4,2,6,3,6,4,23,76,3,5,2])
-    [2, 2, 3, 3, 4, 4, 5, 6, 6, 23, 76]
+    [2, 2, 3, 3, 4, 4, 5, 6, 6, 23, 76]    
+    >>> qsort('Sample text')
+    [' ', 'S', 'a', 'e', 'e', 'l', 'm', 'p', 't', 't', 'x']
