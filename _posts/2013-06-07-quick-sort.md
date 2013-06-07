@@ -32,3 +32,6 @@ It works pretty well:
     [2, 2, 3, 3, 4, 4, 5, 6, 6, 23, 76]    
     >>> qsort('Sample text')
     [' ', 'S', 'a', 'e', 'e', 'l', 'm', 'p', 't', 't', 'x']
+
+[learn-haskell]: http://learnyouahaskell.com/chapters
+[haskell-qsort]: http://learnyouahaskell.com/recursion#quick-sort
