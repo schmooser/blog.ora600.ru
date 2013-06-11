@@ -14,10 +14,9 @@ To get this do the following:
 
 1. Check your parameters `MEMORY_TARGET` and `MEMORY_MAX_TARGET`. Mine was set to ~400M both. You need to increase them to 1G. Due to unavailability to set `MEMORY_MAX_TARGET` in runtime we have to set it in spfile and restart the instance.
 
-2.
-        SQL> ALTER SYSTEM SET MEMORY_MAX_TARGET=1G SCOPE=SPFILE;
-        SQL> ALTER SYSTEM SET MEMORY_TARGET=1G SCOPE=SPFILE;
-        SQL> SHUTDOWN IMMEDIATE;
+2.    SQL> ALTER SYSTEM SET MEMORY_MAX_TARGET=1G SCOPE=SPFILE;
+      SQL> ALTER SYSTEM SET MEMORY_TARGET=1G SCOPE=SPFILE;
+      SQL> SHUTDOWN IMMEDIATE;
 
 3. Check for available shared memory in order to pass through ORA-00845. Use `df -h` and look for size of `/dev/shm`. It should be at least as your `MEMORY_TARGET` size. If it's lesser — increase it with
 
