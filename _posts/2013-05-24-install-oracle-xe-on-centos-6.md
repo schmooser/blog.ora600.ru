@@ -525,7 +525,7 @@ If you need to install Oracle GlassFish or GlassFish CE (basic installation is t
 If you want to be an outlaw and use Tomcat, you can use my Tomcat 6 installation guide [here][tomcat-6], or my Tomcat 7 installation guide [here][tomcat-7].
 
 [original-post]: http://www.davidghedini.com/pg/entry/install_oracle_11g_xe_on
-[my-post]: {% post_url 2012-10-06-installing-oracle-xe-11gr2-on-centos-63 %}
+[my-post]: {% post_url 2012-10-06-installing-oracle-xe-11gr2-on-centos-6 %}
 [oracle-xe-docs]: http://download.oracle.com/docs/cd/E17781_01/install.112/e18802/toc.htm
 [listener]: http://www.oracle.com/technetwork/developer-tools/apex-listener/overview/index.html
 [glassfish]: http://www.davidghedini.com/pg/entry/install_glassfish_3_1_on
