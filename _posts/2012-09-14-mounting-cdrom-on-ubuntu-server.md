@@ -1,10 +1,12 @@
 ---
+
 layout: post
-title: "Mounting CDROM on Ubuntu Server"
-description: "How to mount cdrom on freshly installed Ubuntu Server"
+title: Mounting CDROM on Ubuntu Server
+description: How to mount cdrom on freshly installed Ubuntu Server
 category: linux
-tags: [linux, ubuntu]
+
 ---
+
 1. Create directory
 
         sudo mkdir /mnt/cdrom

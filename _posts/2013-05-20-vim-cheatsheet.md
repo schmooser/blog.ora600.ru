@@ -6,9 +6,12 @@ category: vim
 
 ---
 
-I found useful to put tips on vim into this page as I [do][git] with git. All posts about vim I'll put into category "vim", so it's easy to find them. 
+I found useful to put tips on vim into this page as I [do][git] with git. All
+posts about vim I'll put into category "vim", so it's easy to find them. 
 
-My [saved links][pinboard] on vim are on Pinboard.
+* My [saved links][pinboard] on vim are on Pinboard.
+
+* My `.vimrc` and list of used plugins is on the [GitHub][rbddotfiles]
 
 * Very useful [list of VIM's tricks and tips][tips].
 
@@ -16,7 +19,8 @@ My [saved links][pinboard] on vim are on Pinboard.
 
       :%s/{Ctrl+V}{Ctrl+M}//g
 
-  or, as mentioned in tips above, with 
+  On Windows use Ctrl+Q instead of Ctrl+V.
+  Or, as mentioned in tips above, use
 
       :%s/\r//g
 
@@ -24,12 +28,17 @@ My [saved links][pinboard] on vim are on Pinboard.
 
       :redir @* | set guifont | redir END
 
-  Found [here][copy].
+  Founded [here][copy].
 
-* To open window with command history (and copy from it, if you want), type `q:`. To open window with search history, type `q/`. Read more [here][cmd].
+* To copy to system clipboard copy to `+` buffer with `"+y`. To paste from
+  system clipboard paste from `+` buffer with `"+p`.
+
+* To open window with command history (and copy from it, if you want), type
+  `q:`. To open window with search history, type `q/`. Read more [here][cmd].
 
 [git]: {% post_url 2013-02-28-git-cheatsheet %}
 [tips]: http://rayninfo.co.uk/vimtips.html
 [copy]: http://superuser.com/questions/167352/how-do-i-copy-command-output-in-vim
 [cmd]: http://vim.wikia.com/wiki/Using_command-line_history
 [pinboard]: https://pinboard.in/u:schmooser/t:vim/
+[rbddotfiles]: https://github.com/schmooser/rbddotfiles

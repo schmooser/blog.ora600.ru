@@ -1,7 +1,10 @@
 ---
-layout: post
-title: Считаем количество строк во всех таблицах в схеме 
-lang: ru
+
+layout: post  
+title: Считаем количество строк во всех таблицах в схеме  
+lang: ru  
+category: oracle  
+
 ---
 
     DECLARE
@@ -20,5 +23,5 @@ lang: ru
       END LOOP;
     END;
     /
-    
+
 [gist](https://gist.github.com/schmooser/4409100)

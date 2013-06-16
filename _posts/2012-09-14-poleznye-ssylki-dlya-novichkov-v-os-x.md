@@ -1,7 +1,9 @@
 ---
+
 layout: post
 title: Полезные ссылки для новичков в OS X 
 lang: ru
+
 ---
 
 * [Apple OS X’s Built in Dictionary](http://gizmodo.com/198888/apple-os-xs-built-in-dictionary?tag=gadgetssoftware)

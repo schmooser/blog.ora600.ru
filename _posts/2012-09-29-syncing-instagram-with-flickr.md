@@ -1,20 +1,37 @@
 ---
-layout: post
-title: "Syncing Instagram with Flickr"
-description: "In this post I am announcing a script to synchronization Instagram with Flickr using high-res photos"
-category: projects
-tags: [flickr, instagram, progr, python]
+
+layout: post  
+title: Syncing Instagram with Flickr  
+description: In this post I am announcing a script to synchronization
+             Instagram with Flickr using high-res photos  
+category: projects  
+
 ---
 
 ##Problem 
 
-In my opinion, [Flickr] is the best photo service online. It's abilities to organize photos and beautiful design makes me happy using It. From other hand, [Instagram] is the best portable camera app with huge user community, nice pre-defined filters and social features. 
+In my opinion, [Flickr] is the best photo service online. It's abilities to
+organize photos and beautiful design makes me happy using It. From other hand,
+[Instagram] is the best portable camera app with huge user community, nice
+pre-defined filters and social features.
 
-I know 2 options to copy photos from Intagram to Flickr. You can upload (share) your photo to Flickr right from Instagram via sharing options. Unfortunately, you have to share each photo directly, and it's so annoying. And you can use a service [IFTTT], which can copy each new photo from Instagram photostream to Flickr. I had used this approach in my previous vacations in [Germany and Holland] and [Spain] in 2012.
+I know 2 options to copy photos from Intagram to Flickr. You can upload (share)
+your photo to Flickr right from Instagram via sharing options. Unfortunately,
+you have to share each photo directly, and it's so annoying. And you can use a
+service [IFTTT], which can copy each new photo from Instagram photostream to
+Flickr. I had used this approach in my previous vacations in
+[Germany and Holland] and [Spain] in 2012.
 
-The common problem with both this options is that Instagram saves in it's servers only the small-sized photo. Currently, it's a 612x612 px. So, the same small photo goes to Flickr. The original photo is saved to your phone and has in case of my girlfriend's iPhone 4S the size of 2048x2048 px. I'd like to have a mechanizm to putting the full-sized photos from iPhone to Flickr with replacing small Instagram photos. 
+The common problem with both this options is that Instagram saves in it's
+servers only the small-sized photo. Currently, it's a 612x612 px. So, the same
+small photo goes to Flickr. The original photo is saved to your phone and has
+in case of my girlfriend's iPhone 4S the size of 2048x2048 px. I'd like to have
+a mechanizm to putting the full-sized photos from iPhone to Flickr with
+replacing small Instagram photos.
 
-I've decided to write synchronization script. It should be works like this: you put photos from iPhone into a local folder in your computer. Then run a script and it does everything. 
+I've decided to write synchronization script. It should be works like this: you
+put photos from iPhone into a local folder in your computer. Then run a script
+and it does everything.
 
 ##Limits
 

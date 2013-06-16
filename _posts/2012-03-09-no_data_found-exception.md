@@ -1,8 +1,10 @@
 ---
+
 layout: post
 title: NO_DATA_FOUND exception 
 lang: ru
 category: oracle
+
 ---
 
 Oracle генерирует исключение `NO_DATA_FOUND` в нескольких ситуациях:
