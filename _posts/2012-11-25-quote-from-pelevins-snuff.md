@@ -1,7 +1,10 @@
 ---
-layout: post
-title: Цитата из Пелевина (S.N.U.F.F.) 
-lang: ru
+
+layout: post  
+title: Цитата из Пелевина (S.N.U.F.F.)  
+lang: ru  
+category: books  
+
 ---
 
 > Но вот что значит быть «русским»?  
