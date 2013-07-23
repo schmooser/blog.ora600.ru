@@ -34,11 +34,20 @@ posts about vim I'll put into category "vim", so it's easy to find them.
   system clipboard paste from `+` buffer with `"+p`.
 
 * To open window with command history (and copy from it, if you want), type
-  `q:`. To open window with search history, type `q/`. Read more [here][cmd].
+  `q:`. To open window with search history, type `q/`. Read more on [Vim
+  wikia][cmd].
 
-[git]: {% post_url 2013-02-28-git-cheatsheet %}
+* To format long lines as limited, say for 80 chars, use `:set tw=80` and then
+  do `gq` on the line.
+
+  Article on [Vim wikia][automatic-word-wrapping].
+
 [tips]: http://rayninfo.co.uk/vimtips.html
 [copy]: http://superuser.com/questions/167352/how-do-i-copy-command-output-in-vim
 [cmd]: http://vim.wikia.com/wiki/Using_command-line_history
 [pinboard]: https://pinboard.in/u:schmooser/t:vim/
 [rbddotfiles]: https://github.com/schmooser/rbddotfiles
+[automatic-word-wrapping]: http://vim.wikia.com/wiki/Automatic_word_wrapping
+
+[git]: {% post_url 2013-02-28-git-cheatsheet %}
+
