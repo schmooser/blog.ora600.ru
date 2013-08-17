@@ -3,7 +3,7 @@
 layout: post  
 title: Cheatsheet по git  
 lang: ru  
-categories: git favourites  
+categories: git favourites cheatsheet  
 
 ---
 

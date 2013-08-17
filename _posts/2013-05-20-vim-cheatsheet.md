@@ -2,7 +2,7 @@
 
 layout: post  
 title: VIM cheatsheet  
-category: vim  
+categories: vim cheatsheet  
 
 ---
 

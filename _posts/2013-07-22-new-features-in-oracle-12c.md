@@ -9,7 +9,8 @@ title: 12 новых функций Oracle 12c
 
 По мотивам этого замечательного видео Тома Кайта
 
-<iframe width="560" height="315" src="//www.youtube.com/embed/ekTTXoHBmWw" frameborder="0" allowfullscreen></iframe>
+<iframe width="560" height="315" src="//www.youtube.com/embed/ekTTXoHBmWw" frameborder="0" allowfullscreen>
+</iframe>
 
 напишу, о чем Том говорит.
 
@@ -20,8 +21,8 @@ title: 12 новых функций Oracle 12c
    который потом использовать в запросе, не создавая объект в БД.
    Видимо, можно написать что-то вроде:
 
-        with function f(n number) 
-          return number as 
+        with function f(n number)
+          return number as
           begin
             return 1;
           end
@@ -87,8 +88,8 @@ ONLINE-статуса дата-файлов.
 рамках одного столбца или в рамках нескольких?
 
     Улучшился сбор статистики. Она теперь собирается на лету при операциях
-загрузки данных в пустую таблицу (`create as select`, `insert /*+ append */`,
-`bulk operations`). А если в пустую партицию?
+загрузки данных в пустую таблицу (`create table as select`, `insert /*+ append */`,
+bulk operations). А если в пустую партицию?
 
 
 9. UNDO во временном табличном пространстве. Раньше временные таблицы (Global
