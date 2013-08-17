@@ -80,7 +80,7 @@ Install zsh if you prefer it to bash with `# yum install zsh`.
 
 By default CentOS opens only ssh port. To open other ports you have to modify
 iptables rules. Manual for using iptables in CentOS is in the [official
-documentation][cenotos-iptables].
+documentation][centos-iptables].
 
 My usual settings are:
 
