@@ -67,7 +67,8 @@ pre code {
   margin: 1em;
   background-color: #e6e6e6;
   overflow: auto;
-  line-height: 1.2em; }
+  line-height: 1.2em; 
+  white-space: pre-line;}
 
 p {
   max-width: 800px;
