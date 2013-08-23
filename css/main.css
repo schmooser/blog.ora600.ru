@@ -80,6 +80,9 @@ hr {
 
 ul li {
   list-style-type: lower-greek; }
+  
+ul > li > ul {
+  margin: 1em 0; }
 
 blockquote {
   padding-left: 1em;
