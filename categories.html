@@ -7,14 +7,14 @@ title: Разделы
 
 <h1>{{ page.title }}</h1>
 
-{% assign categories = 'oracle, favourites, informatica' %}
+{% assign categories = 'oracle, favourites, informatica, travel' %}
 
 {% for category in site.categories %}
   {% assign name = category | first %}
   <h2 id="{{ name }}">
   {% if categories contains name %}
       <a href="{{ site.url }}/{{ name }}.html">{{ name | capitalize }}</a>
-  {% else %} 
+  {% else %}
     {{ name | capitalize }}
   {% endif %}
   </h2>
