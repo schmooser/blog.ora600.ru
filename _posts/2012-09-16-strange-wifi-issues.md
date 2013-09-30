@@ -1,12 +1,13 @@
 ---
 layout: post
-title: "Strange WiFi issues"
+title: Strange WiFi issues
 description: "I've experienced some strange WiFi problems on my iPad"
+published: true
 ---
 
-Yesterday, there were a my girlfriend's guests in our home. They stayed for a night. 
+Yesterday, there were my girlfriend's guests in our home. They stayed for a night. 
 I am not a friend of them, so I decided to go to bedroom and lay on with reading web with iPad. 
-But, when I tried to browse the web, I had found than Internet is not working. 
+But when I tried to browse the web, I had found than Internet is not working. 
 WiFi connection is alive, iPad has an IP and router's address but I can't browse the web. 
 If I switch WiFi off and on Internet appears but for a dozen of seconds. Then it vanishes again. 
 I tried to find some kind of ping utility for iPad. With a number of retries I downloaded a 
