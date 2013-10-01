@@ -28,3 +28,5 @@ Examples:
 
         MAX(1)
         ------
+               <- Here is 1 row with NULL value
+        
