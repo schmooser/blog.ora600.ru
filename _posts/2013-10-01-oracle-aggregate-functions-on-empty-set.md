@@ -1,5 +1,5 @@
 ---
-published: false
+published: true
 category: oracle
 layout: post
 title: Aggregate functions in Oracle on empty data set
@@ -28,4 +28,3 @@ Examples:
 
         MAX(1)
         ------
-             
