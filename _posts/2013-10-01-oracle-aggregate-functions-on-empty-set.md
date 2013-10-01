@@ -18,15 +18,16 @@ set in result.
 
 Examples:
 
-        SQL> SELECT count(*) FROM dual WHERE 1=2;
+    SQL> SELECT count(*) FROM dual WHERE 1=2;
 
-        COUNT(*)
-        --------
-              0
+    COUNT(*)
+    --------
+           0
 
-        SQL> SELECT max(1) FROM dual WHERE 1=2;
+    SQL> SELECT max(1) FROM dual WHERE 1=2;
 
-        MAX(1)
-        ------
-               <- Here is 1 row with NULL value
-        
+    MAX(1)
+    ------
+           <- Here is 1 row with NULL value
+           
+    
