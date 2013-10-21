@@ -57,7 +57,6 @@ code, pre code {
 
 code {
   padding: 0.1em;
-  border: 1px solid gray;
   border-radius: 2px;
   white-space: nowrap; }
 
@@ -67,6 +66,7 @@ pre code {
   margin: 1em;
   background-color: #e6e6e6;
   overflow: auto;
+  border: 1px solid gray;
   line-height: 1.2em; 
   white-space: pre; }
 
