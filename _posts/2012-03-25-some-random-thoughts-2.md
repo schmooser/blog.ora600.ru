@@ -1,10 +1,9 @@
 ---
-
-layout: post  
-title: Мысли вслух  
-lang: ru  
-categories: life books  
-
+layout: post
+title: Мысли вслух
+lang: ru
+categories: life books
+published: false
 ---
 
 * Дочитываю первую в жизни повесть на английском языке. 1922 Стивена Кинга.
