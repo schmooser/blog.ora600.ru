@@ -2,8 +2,7 @@
 layout: post
 title: О пользовании интернетом
 lang: ru
-category: life
-published:false
+published: false
 ---
 
 Давно я мучался с обилием интернет-сервисов, предоставляющих похожие, но
