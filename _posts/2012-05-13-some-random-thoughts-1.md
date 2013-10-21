@@ -1,10 +1,9 @@
 ---
-
-layout: post  
-title: Обрывки мыслей #1  
-lang: ru  
-category: life  
-
+layout: post
+title: Обрывки мыслей #1
+lang: ru
+category: life
+published: false
 ---
 
 - Отличный сервис Pinterest, надо попробовать использовать. Отличная замена
