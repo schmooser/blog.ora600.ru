@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Pin and UnPin objects in Microsoft VSS
+title: Pin and unpin objects in Microsoft VSS
 lang: en
 category: lifehack
 ---
@@ -43,3 +43,6 @@ Usage:
     C:> pin_all.bat "$/Patches/v1.123"
     C:> unpin_all.bat "$/Patches/v1.123"
     
+By default VSS doesn't operate on projects recursively. If your patch consists of multiple
+folders consider turning on operation on projects recursively in VSS's options. Then `pin_all`
+and `unpin_all` will operate on folder you provide and all of it's ancestors.
