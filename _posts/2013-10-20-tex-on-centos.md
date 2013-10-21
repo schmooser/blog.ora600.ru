@@ -1,10 +1,8 @@
 ---
-
-layout: post  
-title: LaTeX on CentOS  
-categories: tex linux  
-lang: en  
-
+layout: post
+title: LaTeX on CentOS
+categories: latex linux
+lang: en
 ---
 
 I've installed TeX on CentOS 6.3.
