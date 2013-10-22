@@ -1,7 +1,7 @@
 ---
 layout: post
 lang: ru
-title: Использование опции clip в gnuplot
+title: Опция clip в gnuplot
 category: gnuplot
 ---
 
