@@ -1,10 +1,8 @@
 ---
-
-layout: post  
-lang: ru  
-title: Аннуитетный калькулятор  
-category: python  
-
+layout: post
+lang: ru
+title: Аннуитетный калькулятор
+category: python
 ---
 
 Написал на Питоне коротенький аннуитетный калькулятор, рассчитывающий размер
@@ -79,4 +77,9 @@ category: python
     --------------------------------------------------------------------------------
     TOTAL     	16356.55  	116356.55 
 
-Формулу для аннуитета взял в [Википедии](http://ru.wikipedia.org/wiki/%D0%90%D0%BD%D0%BD%D1%83%D0%B8%D1%82%D0%B5%D1%82).
+Формулу для аннуитета взял в [Википедии][wiki-annuity].
+
+[Исходный код][source] на ГитХабе.
+
+[wiki-annuity]: http://ru.wikipedia.org/wiki/%D0%90%D0%BD%D0%BD%D1%83%D0%B8%D1%82%D0%B5%D1%82
+[source]: https://github.com/schmooser/cloaked-adventure/blob/master/annuity_calc.py
