@@ -71,19 +71,20 @@ code, pre code {
 
 code {
   padding: 0.1em;
-  border: 1px solid gray;
   border-radius: 2px;
-  white-space: nowrap;
+  //white-space: nowrap;
 }
 
 pre code {
   display: block;
   padding: 1em;
   margin: 1em;
+  border: 1px solid gray;
   //max-width: 600px;
   background-color: lighten($grey, 40%);
   overflow: auto;
   line-height: 1.2em;
+  width: 80%;
 }
 
 p {
@@ -228,3 +229,16 @@ ul.tags {
   }
 }
 
+.category {
+  display: block;
+  float: left;
+  width: 30%;
+  margin: 1em;
+  h2 {
+    text-align: center;
+  }
+}
+
+.clear {
+  clear: both
+}

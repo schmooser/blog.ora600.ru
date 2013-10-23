@@ -11,18 +11,22 @@ title: Разделы
 
 {% for category in site.categories %}
   {% assign name = category | first %}
-  <h2 id="{{ name }}">
-  {% if categories contains name %}
-      <a href="{{ site.url }}/{{ name }}.html">{{ name | capitalize }}</a>
-  {% else %}
-    {{ name | capitalize }}
-  {% endif %}
-  </h2>
-  <ul>
-  {% for posts in category offset:1 %}
-    {% for post in posts %}
-      <li><a href="{{ site.url | append: post.url }}">{{ post.title }}</a></li>
+  <div class="category">
+    <h2 id="{{ name }}">
+    {% if categories contains name %}
+        <a href="{{ site.url }}/{{ name }}.html">{{ name | capitalize }}</a>
+    {% else %}
+      {{ name | capitalize }}
+    {% endif %}
+    </h2>
+    <ul>
+    {% for posts in category offset:1 %}
+      {% for post in posts %}
+        <li><a href="{{ site.url | append: post.url }}">{{ post.title }}</a></li>
+      {% endfor %}
     {% endfor %}
-  {% endfor %}
-  </ul>
+    </ul>
+  </div>
 {% endfor %}
+
+<div class="clear"></div>

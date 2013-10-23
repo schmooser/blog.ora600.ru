@@ -57,18 +57,17 @@ code, pre code {
 
 code {
   padding: 0.1em;
-  border-radius: 2px;
-  white-space: nowrap; }
+  border-radius: 2px; }
 
 pre code {
   display: block;
   padding: 1em;
   margin: 1em;
+  border: 1px solid gray;
   background-color: #e6e6e6;
   overflow: auto;
-  border: 1px solid gray;
-  line-height: 1.2em; 
-  white-space: pre; }
+  line-height: 1.2em;
+  width: 80%; }
 
 p {
   max-width: 800px;
@@ -80,9 +79,6 @@ hr {
 
 ul li {
   list-style-type: lower-greek; }
-  
-ul > li > ul {
-  margin: 1em 0; }
 
 blockquote {
   padding-left: 1em;
@@ -183,3 +179,14 @@ ul.tags {
     float: left;
     margin-left: 1em;
     padding: 3px; }
+
+.category {
+  display: block;
+  float: left;
+  width: 30%;
+  margin: 1em; }
+  .category h2 {
+    text-align: center; }
+
+.clear {
+  clear: both; }
