@@ -1,34 +1,27 @@
 ---
-
-layout: post  
-title: Cheatsheet по git  
-lang: ru  
-categories: git favourites cheatsheet  
-
+layout: post
+title: Cheatsheet по git
+lang: ru
+categories: git cheatsheet
 ---
 
 Буду собирать здесь часто выполняемые действия по гиту, этакий cheatsheet.
 
 Полезные ссылки по гиту, которые я сохранил, можно посмотреть на
-[пинборде][pinboard].
+[pinboard].
 
-* `git checkout -b test origin/test` – получаем удаленный бранч origin/test в
-  локальный test
-* `git push origin :test` – удаляем удаленный бранч test
-* `git diff --name-only [SHA1|TAG1] [SHA2|TAG2]` – посмотреть измененные файлы
-  между коммитами
-* `git show [SHA|TAG]:filename` – показывает файл каким он был в указанном
-  коммите
-* `git branch -m oldname newname` – переименовываем бранч oldname в newname
-* `git merge -s recursive -X ours` - мерж со стратегией "при совпадении брать
-  файлы из текущей ветки". Нужно предварительно чекаутнуть ту ветку, чьи файлы
-  нужно сохранить. Не путать со стратегией `git merge -s ours`. Эта просто
-  берет текущую ветку за основу, все измененные и новые файлы из мержимых веток
+* `git checkout -b test origin/test` -- получаем удаленный бранч origin/test в  локальный test
+* `git push origin :test` -- удаляем удаленный бранч test
+* `git diff --name-only [SHA1|TAG1] [SHA2|TAG2]` -- посмотреть измененные файлы между коммитами
+* `git show [SHA|TAG]:filename` -- показывает файл каким он был в указанном коммите
+* `git branch -m oldname newname` -- переименовываем бранч oldname в newname
+* `git merge -s recursive -X ours` -- мерж со стратегией "при совпадении брать  файлы из текущей ветки". Нужно предварительно чекаутнуть ту ветку, чьи файлы нужно сохранить. Не путать со стратегией `git merge -s ours`. Эта просто берет текущую ветку за основу, все измененные и новые файлы из соединяемых веток
   отбрасываются. [Подробнее][merge].
-* `git add -u` - добавляет всю ветку в стейджинговую область для коммита.
-  Удобно, когда удаляешь много файлов и не хочется вручную писать для каждого
-  `git rm <filename>`.
+* `git add -u` -- добавляет всю ветку в стейджинговую область для коммита.  Удобно, когда удаляешь много файлов и не хочется вручную писать для каждого `git rm <filename>`
+* `^` и `~` нотация -- способ обратиться к родительскому коммиту. Например, `HEAD~` будет родительским коммитом. Между `^` и `~` есть разница: `~` это линейный уровень по родителям (первый родитель, первый родитель первого родителя, первый родитель первого родителя первого родителя и т.д.), `^` -- способ обратиться ко второму родителю (у коммита может быть несколько предков). Более подробно описано у [Paul Boxley] в блоге.
+  Например, если после добавления в стейджинг файлов, хочется посмотреть diff, то просто `git diff filename` не поможет, нужно пользоваться `git diff HEAD~ filename`.
 
 
-[pinboard]: https://pinboard.in/u:schmooser/t:git/
+[Pinboard]: https://pinboard.in/u:schmooser/t:git/
 [merge]: https://www.kernel.org/pub/software/scm/git/docs/git-merge.html
+[Paul Boxley]: http://paulboxley.com/blog/2011/06/git-caret-and-tilde
