@@ -21,7 +21,7 @@ body {
   background: $white;
   color: $black;
   font-size: $font-size;
-  margin: 3.5em 0;
+  margin: 3.5em auto;
   padding: 0;
   max-width: 1140px;
   min-width: 820px;
@@ -99,6 +99,7 @@ hr {
 
 ul li {
   list-style-type: lower-greek;
+  margin: 1em;
 }
 
 blockquote {

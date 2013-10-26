@@ -1,15 +1,13 @@
 ---
-
-layout: post  
-title: Установка и запуск Oracle Instant Client под Windows  
-categories: oracle favourites  
-lang: ru  
-
+layout: post
+title: Установка и запуск Oracle Instant Client под Windows
+category: oracle
+lang: ru
 ---
 
 1. Скачиваем нужную версию Oracle Instant Client. Нужна версия, совместимая с ПО, 
    которое предполагается использовать. Например, для 32-х битного PL/SQL Developer 
-   нужна 32-х битная же версия Instant Client. Пакеты я брал Basic и SQL*Plus.
+   нужна 32-х битная же версия Instant Client. Пакеты я брал Basic и SQL\*Plus.
 2. Распаковываем в произвольную папку. Я распаковал оба пакета в одну и ту же папку 
    `C:\Program Files (x86)\Oracle\instantclient_11_2`
 3. Создаем две переменных среды:
@@ -31,4 +29,4 @@ lang: ru
          )
         )
 
-5. Запускаем sqlplus или PL/SQL Developer. Работаем.
+5. Запускаем `sqlplus` или PL/SQL Developer. Работаем.

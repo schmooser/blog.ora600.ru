@@ -9,7 +9,7 @@ body {
   background: white;
   color: black;
   font-size: 15px;
-  margin: 3.5em 0;
+  margin: 3.5em auto;
   padding: 0;
   max-width: 1140px;
   min-width: 820px; }
@@ -78,7 +78,8 @@ hr {
   margin: 2em 0; }
 
 ul li {
-  list-style-type: lower-greek; }
+  list-style-type: lower-greek;
+  margin: 1em; }
 
 blockquote {
   padding-left: 1em;
@@ -116,9 +117,6 @@ blockquote {
   margin-bottom: 3em; }
   .note h1 {
     margin-bottom: 0.1em; }
-  .note ul li {
-    margin-top: 1.5em;
-  }
 
 .note .date {
   letter-spacing: .12em;
