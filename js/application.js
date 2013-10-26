@@ -1,5 +1,5 @@
 $(function() {
-    $('span.photos').fotorama({
+    $('.photos').fotorama({
        'nav': 'dots'
      });
 
