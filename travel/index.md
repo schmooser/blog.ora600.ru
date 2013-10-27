@@ -1,8 +1,6 @@
 ---
-
-layout: default  
-title: Путешествия  
-
+layout: default
+title: Путешествия
 ---
 
 # {{ page.title }}
