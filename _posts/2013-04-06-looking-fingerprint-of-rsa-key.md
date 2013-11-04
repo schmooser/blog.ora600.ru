@@ -7,7 +7,7 @@ lang: ru
 Чтобы просмотреть fingerprint ключа, надо сделать:
 
 
-    $ssh-keygen -lf keyname
+    $ ssh-keygen -lf keyname
 
 
 Подробнее можно почитать [тут](http://www.lysium.de/blog/index.php?/archives/186-How-to-get-ssh-server-fingerprint-information.html).
