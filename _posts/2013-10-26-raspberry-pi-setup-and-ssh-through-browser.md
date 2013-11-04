@@ -3,6 +3,7 @@ layout: post
 title: Установка Raspberry Pi и настройка SSH через браузер
 lang: ru
 category: "Raspberry Pi"
+disqus_id: 2013-10-26-raspberry-pi-setup-and-ssh-through-browser
 ---
 
 Настало время поставить что-нибудь дельное на мой Raspberry Pi Model A.

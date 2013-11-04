@@ -3,7 +3,7 @@
 #markdown: rdiscount
 markdown: kramdown
 pygments: true
-permalink: /:title
+permalink: /:title/
 future: false
 paginate: 7
 
@@ -17,9 +17,11 @@ author_en: Pavel Popov
 years: 2011&mdash;2013
 twitter: schmooser
 
-
-
 edit_url: https://github.com/schmooser/schmooser.github.io/blob/master/
 #edit_url: http://prose.io/#schmooser/schmooser.github.io/edit/master/
 
 feedburner_url: http://feeds.feedburner.com/pavelpopov/rss
+
+disqus_shortname: iseetheline
+disqus_url: http://iseetheline.ru
+

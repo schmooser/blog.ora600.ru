@@ -3,17 +3,19 @@
   {% assign type = 'post' %}
   {% assign text = this.content %}
   {% assign description = this.description %}
+  {% assign disqus = this.disqus_id %}
 {% else %}
   {% assign this = page %}
   {% assign type = 'page' %}
   {% assign text = content %}
   {% assign description = this.description %}
+  {% assign disqus = this.disqus_id %}
 {% endif %}
 
 <div class="note">
   <h1>
   {% if type == 'post' %}
-    <a href="{{ this.url }}/">{{ this.title }}</a>
+    <a href="{{ this.url }}">{{ this.title }}</a>
   {% else %}
     {{ this.title }}
   {% endif %}
@@ -23,10 +25,17 @@
   {% if type == 'post' and description %}
     {{ description }}
     <p>
-      <a href="{{ this.url }}">{% if this.lang == 'ru' %}Далее...{% else %}Read more...{% endif %}</a>
+      <a href="{{ this.url }}">
+        {% if this.lang == 'ru' %}Далее...{% else %}Read more...{% endif %}
+      </a>
     </p>
   {% else %}
     {{ text }}
+    {% if type == 'post' and disqus %}
+      <a href="{{ this.url }}#disqus_thread">
+        {% if this.lang == 'ru' %}Комментарии{% else %}Comments{% endif %}
+      </a>
+    {% endif %}
   {% endif %}
   </div>
 </div>
