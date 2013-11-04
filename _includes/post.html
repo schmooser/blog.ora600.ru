@@ -2,15 +2,14 @@
   {% assign this = post %}
   {% assign type = 'post' %}
   {% assign text = this.content %}
-  {% assign description = this.description %}
-  {% assign disqus = this.disqus_id %}
+  {% assign disqus = this.path %}
 {% else %}
   {% assign this = page %}
   {% assign type = 'page' %}
   {% assign text = content %}
-  {% assign description = this.description %}
-  {% assign disqus = this.disqus_id %}
 {% endif %}
+
+{% assign description = this.description %}
 
 <div class="note">
   <h1>

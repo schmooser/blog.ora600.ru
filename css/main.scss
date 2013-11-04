@@ -160,7 +160,7 @@ blockquote {
 }
 
 .footer {
-  margin-top: 3*$note-margin;
+  margin-top: $note-margin;
   margin-bottom: $note-margin;
   p {
     line-height: 2em;
@@ -187,18 +187,24 @@ blockquote {
   padding: 6px;
 }
 
+.nav-post {
+  margin-top: 2em;
+  width: 90%;
+}
+
 .nav-post-next, .nav-post-prev {
   display: inline-block;
-  padding: 6px;
+  //padding: 6px;
+  width: 49%;
 }
 
 .nav-post-next {
-  float: left;
-  margin-left: 5em;
+  padding-left: 2em;
 }
 
 .nav-post-prev {
-  float: left;
+  padding-right: 2em;
+  text-align: right;
 }
 
 a.edit {
@@ -245,6 +251,6 @@ ul.tags {
 }
 
 #disqus_thread {
-  margin: 2em auto;
-  width: 80%;
+  margin-top: 2em;
+  max-width: 800px;
 }

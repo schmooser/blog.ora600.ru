@@ -5,12 +5,12 @@ layout: default
 {% include post.html %}
 
 
-{% if page.disqus_id %}
+{% if site.disqus_shortname %}
   <div id="disqus_thread"></div>
   <script type="text/javascript">
       var disqus_shortname = '{{ site.disqus_shortname }}';
-      var disqus_identifier = '{{ page.disqus_id }}';
-      var disqus_url = '{{ site.disqus_url }}{{ page.id}}';
+      var disqus_identifier = '{{ post.path }}';
+      var disqus_url = '{{ site.disqus_url }}{{ page.id }}';
 
       (function() {
           var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
@@ -21,15 +21,17 @@ layout: default
   <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 {% endif %}
 
+<div class="nav-post">
 {% if page.previous %}
   <div class="nav-post-prev">
-    ← <a href="{{ page.previous.url }}/">{{ page.previous.title }}</a>
+    ← <a href="{{ page.previous.url }}">{{ page.previous.title }}</a>
   </div>
 {% endif %}
 
 {% if page.next %}
   <div class="nav-post-next">
-    <a href="{{ page.next.url }}/">{{ page.next.title }}</a> →
+    <a href="{{ page.next.url }}">{{ page.next.title }}</a> →
   </div>
 {% endif %}
+</div>
 

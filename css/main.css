@@ -126,7 +126,7 @@ blockquote {
   color: #404040; }
 
 .footer {
-  margin-top: 9em;
+  margin-top: 3em;
   margin-bottom: 3em; }
   .footer p {
     line-height: 2em;
@@ -147,16 +147,20 @@ blockquote {
   border-radius: 4px;
   padding: 6px; }
 
+.nav-post {
+  margin-top: 2em;
+  width: 90%; }
+
 .nav-post-next, .nav-post-prev {
   display: inline-block;
-  padding: 6px; }
+  width: 49%; }
 
 .nav-post-next {
-  float: left;
-  margin-left: 5em; }
+  padding-left: 2em; }
 
 .nav-post-prev {
-  float: left; }
+  padding-right: 2em;
+  text-align: right; }
 
 a.edit {
   border: none;
@@ -193,5 +197,5 @@ ul.tags {
   clear: both; }
 
 #disqus_thread {
-  margin: 2em auto;
-  width: 80%; }
+  margin-top: 2em;
+  max-width: 800px; }
