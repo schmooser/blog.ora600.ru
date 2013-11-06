@@ -18,10 +18,16 @@ category: informatica
     param_dir=/informatica/pc/server/infa_shared/DEV/Param/
     bin_dir=/informatica/pc/server/bin 
     cp $param_dir/wf_CALC.param $param_dir/wf_CALC_1712.param
-    $bin_dir/pmcmd startworkflow -service SERVICE_NAME -domain DOMAIN_NAME -user username -password pwd -folder FOLDER_NAME -paramfile $param_dir/wf_WFNAME_1712.param  -runinsname wf_WFNAME_1712 wf_WFNAME
+
+    $bin_dir/pmcmd startworkflow -service SERVICE_NAME -domain DOMAIN_NAME
+                                 -user username -password pwd
+                                 -folder FOLDER_NAME
+                                 -paramfile $param_dir/wf_WFNAME_1712.param
+                                 -runinsname wf_WFNAME_1712
+                                 wf_WFNAME
 
 
-### ToDo
+### To Do
 
 * добавить скриншоты настроек параллельного запуска
 * добавить анализ скорости выполнения задачи от количества параллельных инстансов
