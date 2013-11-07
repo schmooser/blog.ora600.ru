@@ -1,9 +1,8 @@
 ---
-
-layout: post  
-title: VIM cheatsheet  
-categories: vim cheatsheet  
-
+layout: post
+title: VIM cheatsheet
+categories: vim cheatsheet
+lang: en
 ---
 
 I found useful to put tips on vim into this page as I [do][git] with git. All
@@ -41,6 +40,13 @@ posts about vim I'll put into category "vim", so it's easy to find them.
   do `gq` on the line.
 
   Article on [Vim wikia][automatic-word-wrapping].
+
+* To convert file line-endings from dos format (\r\n) to unix format (\n) or vice versa use
+
+    :set fileformat=unix|dos|mac
+
+  More in `:help fileformat`.
+
 
 [tips]: http://rayninfo.co.uk/vimtips.html
 [copy]: http://superuser.com/questions/167352/how-do-i-copy-command-output-in-vim
