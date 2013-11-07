@@ -43,7 +43,7 @@ posts about vim I'll put into category "vim", so it's easy to find them.
 
 * To convert file line-endings from dos format (\r\n) to unix format (\n) or vice versa use
 
-    :set fileformat=unix|dos|mac
+      :set fileformat=unix|dos|mac
 
   More in `:help fileformat`.
 
