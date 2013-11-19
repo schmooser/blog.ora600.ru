@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Creating non-reusable session from reusable session in Informatica
+title: Creating non-reusable object from reusable object in Informatica
 category: informatica
 lang: en
 ---
