@@ -5,7 +5,7 @@ title: Direct-Path Insert in Oracle Database
 category: oracle
 ---
 
-I found interesting description in Oracle's [documentation] regarding Direct-Path insert limitations. Direct-Path insert can be done via `insert /*+ append */ into table ...` or via `[sqlldr]` or by Informatica PowerCenter by specifying bulk insert type.
+I found interesting description in Oracle's [documentation] regarding Direct-Path insert limitations. Direct-Path insert can be done via `insert /*+ append */ into table ...` or via [SQL*Loader] or by Informatica PowerCenter by specifying bulk insert type.
 
 Here they are:
 
@@ -32,7 +32,7 @@ Here they are:
 > * A transaction containing a direct-path INSERT statement cannot be or become distributed.
 
 [documentation]: http://docs.oracle.com/cd/B19306_01/server.102/b14200/statements_9014.htm
-[sqlldr]: {% post_url 2012-03-09-speed-of-direct-path-load %}
+[SQL*Loader]: {% post_url 2012-03-09-speed-of-direct-path-load %}
 
 
 
