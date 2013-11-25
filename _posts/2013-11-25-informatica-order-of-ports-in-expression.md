@@ -1,12 +1,12 @@
 ---
 layout: post
 category: informatica
-published: false
+published: true
 lang: ru
-title: Порядок портов в Expression
+title: Порядок портов в Expression Informatica PowerCenter
 ---
 
-Оказывается порядок портов в expression имеет значение. Например если сделать так:
+Оказывается, порядок портов в expression в Informatica PowerCenter имеет значение. Например если сделать так:
 
     Номер порта	Имя	Значение
     1		v_A	v_B
