@@ -3,6 +3,7 @@ layout: post
 lang: ru
 title: MongoDB на OpenVZ
 category: MongoDB
+published: true
 ---
 
 Для проекта [instaflickr] решил установить на своем виртуальном хостинге 
