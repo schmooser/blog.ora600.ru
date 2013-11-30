@@ -121,9 +121,14 @@ blockquote {
 .note .date {
   letter-spacing: .12em;
   text-transform: uppercase;
-  font-size: 0.9em;
+  font-size: 0.8em;
   font-weight: bold;
-  color: #404040; }
+  color: gray;
+  margin: 0.5em 0 1em 0; }
+  .note .date span {
+    float: left; }
+    .note .date span a {
+      margin-left: 1em; }
 
 .footer {
   margin-top: 3em;
@@ -199,3 +204,12 @@ ul.tags {
 #disqus_thread {
   margin-top: 2em;
   max-width: 800px; }
+
+ul.categories {
+  list-style-type: none;
+  line-height: 1em;
+  margin: 0; }
+  ul.categories li {
+    display: inline-block;
+    float: left;
+    margin: 0 0 0 1em; }

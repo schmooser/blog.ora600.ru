@@ -12,6 +12,7 @@
   {% assign lang = 'en' %}
 {% endif %}
 
+<span>
 {{ dt | date: '%d' | plus: 0 }}
 
 {% if lang == 'ru' %}
@@ -33,7 +34,22 @@
 {% endif %}
 
 {% if post.path %}
-  <a class="edit" href="{{ site.edit_url | append: post.path }}" target="_blank">·</a>
+  <a class="edit" href="{{ site.edit_url | append: post.path }}" target="_blank">· </a>
 {% elsif page.path %}
-  <a class="edit" href="{{ site.edit_url | append: page.path }}" target="_blank">·</a>
+  <a class="edit" href="{{ site.edit_url | append: page.path }}" target="_blank">· </a>
 {% endif %}
+</span>
+
+{% if post.categories %}
+  {% assign categories = post.categories %}
+{% elsif page.categories %}
+  {% assign categories = page.categories %}
+{% endif %}
+
+<ul class="categories">
+  {% for category in categories %}
+  <li>{{ category }}</li>
+  {% endfor %}
+</ul>
+
+<div class="clear"></div>

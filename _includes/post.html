@@ -19,7 +19,9 @@
     {{ this.title }}
   {% endif %}
   </h1>
-  <p class="date">{% include date.html %}</p>
+  <div class="date">
+    {% include date.html %}
+  </div>
   <div class="text">
   {% if type == 'post' and description %}
     {{ description }}

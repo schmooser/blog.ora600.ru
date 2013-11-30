@@ -2,7 +2,7 @@
 layout: post
 language: en
 title: Install PIL with JPEG support on CentOS
-categories: python linus
+categories: python linux
 ---
 
 In order to install PIL with JPEG support on CentOS 6, you need to install these two packages:
