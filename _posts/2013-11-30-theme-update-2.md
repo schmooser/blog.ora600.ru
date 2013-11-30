@@ -1,6 +1,6 @@
 ---
 layout: post
-language: ru
+lang: ru
 title: Обновление темы блога
 category: blog
 ---
