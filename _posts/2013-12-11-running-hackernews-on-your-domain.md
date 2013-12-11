@@ -2,6 +2,7 @@
 layout: post
 lang: ru
 title: Запуск HackerNews на своем сайте
+published: true
 ---
 
 Оказывается, движок форума [HackerNews] это open-source проект и такой же движок можно развернуть на своем сервере. Я обнаружил это наткнувшись на статью [Ken Shirriff's blog: Inside the news.yc ranking formula], в которой детально описывается формула, как рассчитывается вес статьи и ее позиция в выдаче на форуме.
