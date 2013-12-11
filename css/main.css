@@ -77,16 +77,6 @@ hr {
   width: 2em;
   margin: 2em 0; }
 
-ul li {
-  list-style-type: lower-greek;
-  margin: 1em; }
-
-blockquote {
-  padding-left: 1em;
-  border-left: 1px solid gray;
-  font-size: 0.9em;
-  max-width: 700px; }
-
 .small {
   font-size: 0.7em; }
 
@@ -117,6 +107,15 @@ blockquote {
   margin-bottom: 3em; }
   .note h1 {
     margin-bottom: 0.1em; }
+  .note ul li {
+    list-style-type: lower-greek;
+    margin: 1em; 
+    width: 80%; }
+  .note blockquote {
+    padding-left: 1em;
+    border-left: 1px solid gray;
+    font-size: 0.9em;
+    max-width: 700px; }
 
 .note .date {
   letter-spacing: .12em;
