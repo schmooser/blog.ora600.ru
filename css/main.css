@@ -104,6 +104,7 @@ hr {
   margin-top: 1em; }
 
 .note {
+  text-align: justify;
   margin-bottom: 3em; }
   .note h1 {
     margin-bottom: 0.1em; }
