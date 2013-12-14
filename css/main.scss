@@ -97,18 +97,6 @@ hr {
   margin: 2em 0;
 }
 
-ul li {
-  list-style-type: lower-greek;
-  margin: 1em;
-}
-
-blockquote {
-  padding-left: 1em;
-  border-left: 1px solid $grey;
-  font-size: 0.9em;
-  max-width: 700px;
-}
-
 .small {
   font-size: 0.7em;
 }
@@ -148,6 +136,19 @@ blockquote {
   margin-bottom: $note-margin;
   h1 {
     margin-bottom: 0.1em;
+  }
+  ul li {
+    list-style-type: lower-greek;
+    margin: 1em;
+  }
+  li {
+    max-width: 700px;
+  }
+  blockquote {
+    padding-left: 1em;
+    border-left: 1px solid gray;
+    font-size: 0.9em;
+    max-width: 700px;
   }
 }
 
@@ -246,10 +247,10 @@ ul.tags {
 .category {
   display: block;
   float: left;
-  width: 30%;
-  margin: 1em;
+  width: 50%;
+  margin: 1em 0 1em 0;
   h2 {
-    text-align: center;
+    text-align: left;
   }
 }
 

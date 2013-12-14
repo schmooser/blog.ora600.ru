@@ -104,7 +104,6 @@ hr {
   margin-top: 1em; }
 
 .note {
-  text-align: justify;
   margin-bottom: 3em; }
   .note h1 {
     margin-bottom: 0.1em; }
@@ -194,10 +193,10 @@ ul.tags {
 .category {
   display: block;
   float: left;
-  width: 30%;
-  margin: 1em; }
+  width: 50%;
+  margin: 1em 0 1em 0; }
   .category h2 {
-    text-align: center; }
+    text-align: left; }
 
 .clear {
   clear: both; }
