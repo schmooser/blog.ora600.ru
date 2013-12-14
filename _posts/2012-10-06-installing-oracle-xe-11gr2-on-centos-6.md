@@ -16,7 +16,7 @@ Except some things.
 
 ## Swap file
 
-Oracle XE [requires][oracle-xe-swap] minimum 2 Gb of swap file. To verify your swap space use `#cat /proc/swaps`. If there is no enough swap size – add it. Manual is [here][swap]. I add it by using this:
+Oracle XE [requires][oracle-xe-swap] minimum 2 Gb of swap file. To verify your swap space use `# cat /proc/swaps`. If there is no enough swap size – add it. Manual is [here][swap]. I add it by using this:
 
 > ####5.2.3. Creating a Swap File
 >
