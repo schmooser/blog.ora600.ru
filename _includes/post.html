@@ -24,7 +24,9 @@
   </div>
   <div class="text">
   {% if type == 'post' and description %}
-    {{ description }}
+    <p>
+      {{ description }}
+    </p>
     <p>
       <a href="{{ this.url }}">
         {% if this.lang == 'ru' %}Далее...{% else %}Read more...{% endif %}
