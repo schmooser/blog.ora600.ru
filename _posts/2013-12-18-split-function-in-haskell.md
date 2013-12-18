@@ -3,14 +3,14 @@ layout: post
 lang: ru
 title: Функция split на Haskell
 category: haskell
-description: Пишу первую функцию на Haskell - split, разбивающую строку на массив из строк.
+description: Пишу первую функцию на Haskell &ndash; <code>split</code>, разбивающую строку на массив из строк.
 ---
 
 В проекте [OraVCS] для создания пользователя используется стандартное выражение:
 
     CREATE USER <username> IDENTIFIED BY <password> ...
 
-Имя пользователя и пароль задаются в строке соединения, которая имеет вид
+Имя пользователя и пароль задаются в параметрическом файле в строке соединения, которая имеет вид
 
     <username>/<password>@<database>
 
