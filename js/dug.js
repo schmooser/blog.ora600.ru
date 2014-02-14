@@ -18,7 +18,7 @@ var dug = function( opts ){
 	var options = {
 			target: null,
 			endpoint: '',
-			templateDelimiters: ['{{','}}'],
+			templateDelimiters: ['<<','>>'],
 			callbackParam: 'callback',
 			cacheExpire: 1000 * 60 * 2,
 			beforeRender: function(){},
@@ -183,7 +183,7 @@ var dug = function( opts ){
    	   		}
    	   		return val;
    		}
-   		var delims = delims || ['{{','}}'];
+   		var delims = delims || ['<<','>>'];
    		var scopeMatch = new RegExp(delims[0] + '[^' + delims[1] + ']*' + delims[1], 'igm' );
 	    var matches = tpl.match(scopeMatch);
 
