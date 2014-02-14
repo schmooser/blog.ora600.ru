@@ -25,7 +25,7 @@ Dug.js uses `{{` and `}}` as template delimiters, same as Jekyll's Liquid templa
 
 Now, when I want to include Flickr photoset to my post all I have to do is to include this code:
 
-    {% include photoset.html set=<FLICKR_SET_ID> %}
+    \{% include photoset.html set=<FLICKR_SET_ID> %\}
 
 Example of the result is here:
 
