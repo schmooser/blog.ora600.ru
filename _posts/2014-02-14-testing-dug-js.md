@@ -18,8 +18,8 @@ Let's try to use it to embed Flickr set to this page.
       template: '<span class="photos">\
                     <<#photoset.photo>>\
                       <img src="http://farm<<farm>>.static.flickr.com/<<server>>/<<id>>_<<secret>>_m.jpg" alt="<<title>>" />\
-                   <<photoset.photo>>\
-                 </span>\'
+                   <</photoset.photo>>\
+                 </span>'
     });
 </script>
 
