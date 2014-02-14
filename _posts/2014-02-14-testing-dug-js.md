@@ -2,6 +2,7 @@
 layout: post
 title: Testing Dug.js
 lang: en
+published: true
 set: 72157639673699056
 ---
 
