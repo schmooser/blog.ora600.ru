@@ -5,7 +5,7 @@
       callbackParam: 'jsoncallback',
       template: '<span class="photos">\
                     <<#photoset.photo>>\
-                      <img src="http://farm<<farm>>.static.flickr.com/<<server>>/<<id>>_<<secret>>.jpg" alt="<<title>>" />\
+                      <a href="http://farm<<farm>>.static.flickr.com/<<server>>/<<id>>_<<secret>>.jpg"><<title>></a>\
                    <</photoset.photo>>\
                  </span>'
     });
