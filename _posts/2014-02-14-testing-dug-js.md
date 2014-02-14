@@ -12,7 +12,7 @@ Let's try to use it to embed Flickr set to this page.
 
 <script>
     dug({
-      endpoint: 'http://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&api_key={{site.flickr_key}}&format=json&photoset_id={{page.set}}',
+      endpoint: 'http://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&api_key=2eabc9d4b3a1b7443b2900a729b8b4a8&format=json&photoset_id=72157639673699056',
       callbackParam: 'jsoncallback',
       template: '<div>\
           <ul class="photos">\
