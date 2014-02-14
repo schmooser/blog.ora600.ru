@@ -3,6 +3,7 @@ layout: post
 title: Testing Dug.js
 lang: en
 published: true
+description: I found on Hacker News the Dug.js -- script for transforming JSONP api endpoints to HTML-code. Let's try to use to embed Flickr set on this page.
 ---
 
 {% assign lcbs='{{' %}
@@ -10,7 +11,7 @@ published: true
 
 I found on [Hacker News][1] the [Dug.js][2] -- script for transforming JSONP api endpoints to HTML-code.
 
-Let's try to use it to embed Flickr set to this page.
+Let's try to use it to embed Flickr set on this page.
 
 Dug.js uses `{{ lcbs }}` and `{{ rcbs }}` as template delimiters, same as Jekyll's Liquid template engine. So, in order to use them simultaniosly, Dug.js should be set to use some other delimiters. I tried a few different and submit an [issue on Github][3]. Finally I found a `<<` and `>>` working as it supposed to. I set them inside dug.js itself and create template in Jekyll:
 
