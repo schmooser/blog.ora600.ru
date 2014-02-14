@@ -6,7 +6,7 @@ published: True
 set: 72157639673699056
 ---
 
-I found on [Hacker News][1] [Dug.js][2] -- script for transforming JSONP api endpoints to HTML-code.
+I found on [Hacker News][1] the [Dug.js][2] -- script for transforming JSONP api endpoints to HTML-code.
 
 Let's try to use it to embed Flickr set to this page.
 
