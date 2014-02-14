@@ -1,12 +1,34 @@
+
+<script>
+    console.log('template')
+    console.log('{{ include.template }}')
+</script>
+
+{% if include.template == 'thumbs' %}
+  {% assign options = 'fotorama_thumbs' %}
+{% else %}
+  {% assign options = 'fotorama_options' %}
+{% endif %}
+
+{% if include.template %}
+  {% assign template = include.template %}
+{% else %}
+  {% assign template = 'dots' %}
+{% endif %}
+
+
+<div id="set-{{ include.set }}" {{ data_nav }}></div>
+
 <script>
     dug({
-      endpoint: 'http://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&api_key={{site.flickr_key}}&format=json&photoset_id={{include.set}}',
+      endpoint: 'http://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&api_key={{site.flickr_key}}&format=json&photoset_id={{ include.set }}',
       templateDelimiters: ['<<','>>'],
       callbackParam: 'jsoncallback',
-      template: '<span class="photos">\
-                    <<#photoset.photo>>\
-                      <a href="http://farm<<farm>>.static.flickr.com/<<server>>/<<id>>_<<secret>>.jpg"><<title>></a>\
-                   <</photoset.photo>>\
-                 </span>'
+      target: 'set-{{ include.set }}',
+      success: function() {
+                 $('#set-{{ include.set }}').fotorama({{ options }});
+               },
+      template: dug_templates.{{ template }}
     });
 </script>
+

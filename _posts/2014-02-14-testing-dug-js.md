@@ -3,7 +3,7 @@ layout: post
 title: Testing Dug.js
 lang: en
 published: true
-description: I found on Hacker News the Dug.js -- script for transforming JSONP api endpoints to HTML-code. Let's try to use to embed Flickr set on this page.
+description: I found on Hacker News the Dug.js – script for transforming JSONP api endpoints to HTML-code. Let's try to use it to embed Flickr set on this page.
 ---
 
 {% assign lcbs='{{' %}
@@ -18,15 +18,15 @@ Dug.js uses `{{ lcbs }}` and `{{ rcbs }}` as template delimiters, same as Jekyll
 {% raw %}
 
     <script>
-    dug({
-      endpoint: 'http://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&api_key={{site.flickr_key}}&format=json&photoset_id={{include.set}}',
-      callbackParam: 'jsoncallback',
-      template: '<span class="photos">\
-                   <<#photoset.photo>>\
-                     <img src="http://farm<<farm>>.static.flickr.com/<<server>>/<<id>>_<<secret>>.jpg" alt="<<title>>" />\
-                   <</photoset.photo>>\
-                 </span>'
-    });
+      dug({
+        endpoint: 'http://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&api_key={{site.flickr_key}}&format=json&photoset_id={{include.set}}',
+        callbackParam: 'jsoncallback',
+        template: '<span class="photos">\
+                     <<#photoset.photo>>\
+                       <img src="http://farm<<farm>>.static.flickr.com/<<server>>/<<id>>_<<secret>>.jpg" alt="<<title>>" />\
+                     <</photoset.photo>>\
+                   </span>'
+      });
     </script>
 
 {% endraw %}
@@ -41,7 +41,7 @@ Now, when I want to include Flickr photoset to my post all I have to do is to in
 
 Example of the result is here:
 
-{% include photoset.html set=72157639673699056 %}
+{% include photoset.html set=72157639673699056 template='thumbs' %}
 
 [1]: https://news.ycombinator.com/item?id=7230411
 [2]: http://rog.ie/blog/dugjs-a-jsonp-to-html-script

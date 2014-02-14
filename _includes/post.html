@@ -2,7 +2,7 @@
   {% assign this = post %}
   {% assign type = 'post' %}
   {% assign text = this.content %}
-  {% assign disqus = this.path %}
+  {% assign disqus = site.disqus_shortname %}
 {% else %}
   {% assign this = page %}
   {% assign type = 'page' %}
