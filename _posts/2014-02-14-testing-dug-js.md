@@ -15,9 +15,6 @@ Let's try to use it to embed Flickr set to this page.
       endpoint: 'http://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&api_key={{site.flickr_key}}&format=json&photoset_id={{page.set}}',
       callbackParam: 'jsoncallback',
       template: '<div>\
-          <h1>\
-            <span>Flickr</span> \
-          </h1>\
           <ul class="photos">\
             {{#photoset.photo}}\
               <li>\
