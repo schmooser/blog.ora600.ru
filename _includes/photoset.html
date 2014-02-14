@@ -1,0 +1,12 @@
+<script>
+    dug({
+      endpoint: 'http://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&api_key={{site.flickr_key}}&format=json&photoset_id={{include.set}}',
+      templateDelimiters: ['<<','>>'],
+      callbackParam: 'jsoncallback',
+      template: '<span class="photos">\
+                    <<#photoset.photo>>\
+                      <img src="http://farm<<farm>>.static.flickr.com/<<server>>/<<id>>_<<secret>>.jpg" alt="<<title>>" />\
+                   <</photoset.photo>>\
+                 </span>'
+    });
+</script>
