@@ -4,12 +4,14 @@ title: Testing Dug.js
 lang: en
 published: true
 ---
-{% raw %}
+
 I found on [Hacker News][1] the [Dug.js][2] -- script for transforming JSONP api endpoints to HTML-code.
 
 Let's try to use it to embed Flickr set to this page.
 
 Dug.js uses `{{` and `}}` as template delimiters, same as Jekyll's Liquid template engine. So, in order to use them simultaniosly, Dug.js should be set to use some other delimiters. I tried a few different and submit an [issue on Github][3]. Finally I found a `<<` and `>>` working as it supposed to. I set them inside dug.js itself and create template in Jekyll:
+
+{% raw %}
 
     <script>
     dug({
@@ -23,7 +25,11 @@ Dug.js uses `{{` and `}}` as template delimiters, same as Jekyll's Liquid templa
     });
     </script>
 
+{% endraw %}
+
 Now, when I want to include Flickr photoset to my post all I have to do is to include this code:
+
+{% raw %}
 
     {% include photoset.html set=<FLICKR_SET_ID> %}
     
