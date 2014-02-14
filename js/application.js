@@ -1,3 +1,4 @@
+
 fotorama_options = {
     'dots': {
         'nav': 'dots'
@@ -7,12 +8,15 @@ fotorama_options = {
     }
 }
 
+
 function fotorama_option(name) {
     name = name == '' ? 'dots' : name;
     return fotorama_options[name]
 }
 
+
 FLICKR_BASE_URL = "http://farm{{farm}}.static.flickr.com/{{server}}/{{id}}_{{secret}}%SIZE%.jpg"
+
 
 dug_templates = {
     'thumbs': '{{#photoset.photo}}\
@@ -24,6 +28,7 @@ dug_templates = {
                     <a href="%FLICKR_URL%">{{title}}</a>\
              {{/photoset.photo}}'
 }
+
 
 function dug_template(name, size) {
     name = name == '' ? 'dots' : name;

@@ -149,6 +149,7 @@ var dug = function( opts ){
 
 	//private methods
 	function render( tpl, data, delims ){
+            console.log(data);
 		tpl = unescape(tpl);
 
 		function dotData( d,dotKey ){
