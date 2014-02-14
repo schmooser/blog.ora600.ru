@@ -4,7 +4,7 @@ title: Testing Dug.js
 lang: en
 published: true
 ---
-
+{% raw %}
 I found on [Hacker News][1] the [Dug.js][2] -- script for transforming JSONP api endpoints to HTML-code.
 
 Let's try to use it to embed Flickr set to this page.
@@ -25,8 +25,8 @@ Dug.js uses `{{` and `}}` as template delimiters, same as Jekyll's Liquid templa
 
 Now, when I want to include Flickr photoset to my post all I have to do is to include this code:
 
-{% raw %}
     {% include photoset.html set=<FLICKR_SET_ID> %}
+    
 {% endraw %}
 
 Example of the result is here:
