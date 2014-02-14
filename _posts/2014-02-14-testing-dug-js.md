@@ -41,3 +41,5 @@ Example of the result is here:
 
 [1]: https://news.ycombinator.com/item?id=7230411
 [2]: http://rog.ie/blog/dugjs-a-jsonp-to-html-script
+[3]: https://github.com/rogie/Dug.js/issues/6
+
