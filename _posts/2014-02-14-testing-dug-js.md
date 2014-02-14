@@ -17,7 +17,7 @@ Let's try to use it to embed Flickr set to this page.
       callbackParam: 'jsoncallback',
       template: '<span class="photos">\
                     <<#photoset.photo>>\
-                      <img src="http://farm<<farm>>.static.flickr.com/<<server>>/<<id>>_<<secret>>_m.jpg" alt="<<title>>" />\
+                      <img src="http://farm<<farm>>.static.flickr.com/<<server>>/<<id>>_<<secret>>.jpg" alt="<<title>>" />\
                    <</photoset.photo>>\
                  </span>'
     });
