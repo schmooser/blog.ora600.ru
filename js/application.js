@@ -19,18 +19,18 @@ FLICKR_BASE_URL = "http://farm{{farm}}.static.flickr.com/{{server}}/{{id}}_{{sec
 
 
 dug_templates = {
-    'thumbs': '{{#photoset.photo}}\
+    'thumbs': '{{#%ENDPOINT%.photo}}\
                 <a href="%FLICKR_URL%">{{title}}\
                   <img src="%FLICKR_THUMB_URL%" />\
                 </a>\
-               {{/photoset.photo}}',
-    'dots': '{{#photoset.photo}}\
+               {{/%ENDPOINT%.photo}}',
+    'dots': '{{#%ENDPOINT%.photo}}\
                     <a href="%FLICKR_URL%">{{title}}</a>\
-             {{/photoset.photo}}'
+             {{/%ENDPOINT%.photo}}'
 }
 
 
-function dug_template(name, size) {
+function dug_template(name, size, endpoint) {
     name = name == '' ? 'dots' : name;
     var template = dug_templates[name]
     var flickr_thumb_url = FLICKR_BASE_URL.replace(/%SIZE%/, '_t')
@@ -39,8 +39,9 @@ function dug_template(name, size) {
         flickr_url = FLICKR_BASE_URL.replace(/%SIZE%/, '');
     else
         flickr_url = FLICKR_BASE_URL.replace(/%SIZE%/, '_'+size);
-    template = template.replace(/%FLICKR_URL%/, flickr_url);
-    template = template.replace(/%FLICKR_THUMB_URL%/, flickr_thumb_url);
+    template = template.replace(/%FLICKR_URL%/g, flickr_url);
+    template = template.replace(/%FLICKR_THUMB_URL%/g, flickr_thumb_url);
+    template = template.replace(/%ENDPOINT%/g, endpoint);
     return template;
 }
 
