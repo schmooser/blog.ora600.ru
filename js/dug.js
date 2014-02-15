@@ -1,9 +1,9 @@
 /*
 
  @name		 Dug.js — A JSONP to HTML Script
- @author     Rogie King <rogiek@gmail.com>
+ @author  Rogie King <rogiek@gmail.com>
  @version	 1.0
- @license    WTFPL — http://en.wikipedia.org/wiki/WTFPL
+ @license WTFPL — http://en.wikipedia.org/wiki/WTFPL
  @donate	 My paypal email is rogiek@gmail.com if you want to buy me a brew.
 
 */
@@ -105,7 +105,7 @@ var dug = function( opts ){
 		get = function(){
 			dug.requests = (dug.requests == undefined? 1:dug.requests+1);
 			var get = document.createElement('script');
-			var	callkey = 'callback' + dug.requests,
+			var callkey = 'callback' + dug.requests,
 				kids = document.body.children,
 				script = document.scripts[document.scripts.length-1],
 				url = render(options.endpoint),
@@ -149,86 +149,84 @@ var dug = function( opts ){
 
 	//private methods
 	function render( tpl, data, delims ){
-            console.log(data);
+
 		tpl = unescape(tpl);
 
 		function dotData( d,dotKey ){
-   	   		var invert = '';
+			var invert = '';
 
-   	   		//run filters
-   	   		var filters = dotKey.split('|'),
-   	   			name 	= filters.shift();
+			//run filters
+			var filters = dotKey.split('|'),
+				name = filters.shift();
 
-   	   		if( name.indexOf("!") > -1 ){
-   	   			name = name.replace(/!/ig,'');
-   	   			invert = '!';
-   	   		}
-   	   		try{
-   	   			val = eval(invert + "d['" + name.split('.').join("']['") + "']");
-   	   			if( filters ){
-   	   				for( var i =0, max = filters.length; i < max; ++i ){
-   	   					var chunks = filters[i].split(':'),
-   	   						filter = chunks.shift(),
-   	   						params = chunks;
+			if( name.indexOf("!") > -1 ){
+				name = name.replace(/!/ig,'');
+				invert = '!';
+			}
+			try{
+				val = eval(invert + "d['" + name.split('.').join("']['") + "']");
+				if( filters ){
+					for( var i =0, max = filters.length; i < max; ++i ){
+						var chunks = filters[i].split(':'),
+							filter = chunks.shift(),
+							params = chunks;
 
-   	   					f = eval(filter);
+						f = eval(filter);
 
-	   	   				if( typeof f == 'function' ){
-	   	   					newval = f.apply(d,[val].concat(params) );
-	   	   				}
-	   	   				val = newval;
-	   	   			}
-   	   			}
-   	   		}catch(e){
-   	   			val = '';
-   	   		}
-   	   		return val;
-   		}
-   		var delims = delims || ['{{','}}'];
-   		var scopeMatch = new RegExp(delims[0] + '[^' + delims[1] + ']*' + delims[1], 'igm' );
-	    var matches = tpl.match(scopeMatch);
-
-	   	while( matches && matches.length > 0 ){
-		   	var m 			= matches[0],
-		   		tagMatch 	= new RegExp(delims[0] + '|' + delims[1],'ig'),
-		   		scopeName 	= m.replace(tagMatch,'');
-
-		   	// # = scope iterator
-		   	if( scopeName[0] == '#' ){
-		   		name = scopeName.slice(1,scopeName.length);
-		   		startFrag 	= tpl.indexOf( m );
-		   		endFrag 	= tpl.indexOf( m.replace('#','/') ) + m.length;
-		   		frag 		= tpl.substring( startFrag + m.length , endFrag - m.length );
-		   		dataFrag    = dotData( data, name );
-		   		rendered    = '';
-
-		   		//loop over the scope
-		   		if( dataFrag ){
-			   		if( dataFrag.constructor == Array ){
-			   			for( var i = 0, max = dataFrag.length; i < max; ++i ){
-			   				rendered += render( frag, dataFrag[i] );
-			   			}
-			   		}else{
-			   			rendered = render( frag, dataFrag, delims );
-			   		}
-			   		//recalculate fragment position (as contents may have shifted in flight)
-			   		startFrag 	= tpl.indexOf( m );
-		   			endFrag 	= tpl.indexOf( m.replace('#','/') ) + m.length;
-			   		tpl = tpl.slice(0,startFrag) + rendered + tpl.slice(endFrag,tpl.length);
-		   		}
-
-		   	// regular variable
-		   	} else {
-
-		   		val = dotData(data,scopeName) || '';
-		   		tpl = tpl.replace( m, val );
-
-		   	}
-
-		   	//find new matches
-		   	matches = tpl.match(scopeMatch);
+						if( typeof f == 'function' ){
+							newval = f.apply(d,[val].concat(params) );
+						}
+						val = newval;
+					}
+				}
+			}catch(e){
+				val = '';
+			}
+			return val;
 		}
-	   return tpl;
+		var delims = delims || ['{{','}}'];
+		var scopeMatch = new RegExp(delims[0] + '[^' + delims[1] + ']*' + delims[1], 'igm' );
+		var matches = tpl.match(scopeMatch);
+
+		if (!matches)
+			return tpl;
+
+		matches.forEach(function(m) {
+			tagMatch = new RegExp(delims[0] + '|' + delims[1],'ig');
+			scopeName = m.replace(tagMatch,'');
+
+			// # = scope iterator
+			if( scopeName[0] == '#' ){
+				name = scopeName.slice(1,scopeName.length);
+				startFrag = tpl.indexOf( m );
+				endFrag = tpl.indexOf( m.replace('#','/') ) + m.length;
+				frag = tpl.substring( startFrag + m.length , endFrag - m.length );
+				dataFrag = dotData( data, name );
+				rendered = '';
+
+				//loop over the scope
+				if( dataFrag ){
+					if( dataFrag.constructor == Array ){
+						for( var i = 0, max = dataFrag.length; i < max; ++i ){
+							rendered += render( frag, dataFrag[i] );
+						}
+					}else{
+						rendered = render( frag, dataFrag, delims );
+					}
+					//recalculate fragment position (as contents may have shifted in flight)
+					startFrag = tpl.indexOf( m );
+					endFrag = tpl.indexOf( m.replace('#','/') ) + m.length;
+					tpl = tpl.slice(0,startFrag) + rendered + tpl.slice(endFrag,tpl.length);
+				}
+
+			// regular variable
+			} else {
+
+				val = dotData(data,scopeName) || '';
+				tpl = tpl.replace( m, val );
+			}
+		});
+	return tpl;
 	}
 
 	//public methods (getter/setters)
@@ -254,9 +252,10 @@ var dug = function( opts ){
 	dug.render = render;
 	dug.extend = ext;
 	dug.cache  = cache;
-	dug.ago    = ago;
+	dug.ago = ago;
 
 	init( opts );
 }
 //so that we can read vars
 dug._script = document.scripts[document.scripts.length-1];
+

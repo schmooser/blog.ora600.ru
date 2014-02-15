@@ -41,7 +41,8 @@ Now, when I want to include Flickr photoset to my post all I have to do is to in
 
 Example of the result is here:
 
-{% include photoset.html set=72157639673699056 template='thumbs' image_size='z' %}
+{% include flickr/set.html set=72157639673699056 template='dots' image_size='b' %}
+{% include flickr/tags.html tags='bmwmuseum' template='thumbs' image_size='b' %}
 
 [1]: https://news.ycombinator.com/item?id=7230411
 [2]: http://rog.ie/blog/dugjs-a-jsonp-to-html-script

@@ -9,7 +9,7 @@
       success: function() {
                  $('#set-{{ include.set }}').fotorama(fotorama_option('{{ include.template }}'));
                },
-      template: dug_template('{{ include.template }}', '{{ include.image_size }}')
+      template: dug_template('{{ include.template }}', '{{ include.image_size }}', 'photoset')
     });
 </script>
 
