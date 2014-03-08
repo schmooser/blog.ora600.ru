@@ -4,8 +4,6 @@ title: Machine Learning
 lang: ru
 ---
 
-# Machine Learning
-
 Записался на курс [Machine Learning][1] на Coursera. Попробую целиком
 прослушать и сдать экзамен. Пока прослушал первую неделю, там было только
 вступление. На удивление, могу спокойно слушать и понимать английский язык
@@ -20,8 +18,8 @@ lang: ru
 > A computer program is said to learn from experience E, with respect to some
 > task T, and some performance measure P, if its performance on T as measured
 > by P improves with experience E.
-
-> Tom Mitchell
+>
+> _Tom Mitchell_
 
 
 Два типа ML:
