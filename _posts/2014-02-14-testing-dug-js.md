@@ -19,7 +19,7 @@ Dug.js uses `{{ lcbs }}` and `{{ rcbs }}` as template delimiters, same as Jekyll
 
     <script>
       dug({
-        endpoint: 'http://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&api_key={{site.flickr_key}}&format=json&photoset_id={{include.set}}',
+        endpoint: 'https://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&api_key={{site.flickr_key}}&format=json&photoset_id={{include.set}}',
         callbackParam: 'jsoncallback',
         template: '<span class="photos">\
                      <<#photoset.photo>>\
