@@ -1,30 +1,34 @@
-#url: http://iseetheline.ru
-#url: http://localhost:4000
-#markdown: rdiscount
+
 markdown: kramdown
-pygments: true
-permalink: /:title/
+highlighter: true
+permalink: pretty
 future: false
 paginate: 7
 
 rdiscount:
   extensions: [smart]
 
-title: Блог Павла Попова
-description: Блог Павла Попова об Oracle Database и Informatica Power Center
-author: Павел Попов
-author_en: Pavel Popov
-years: 2011&mdash;2013
-twitter: schmooser
+title: Павел Попов
+tagline: 'Записки'
+description: 'Переводы научно-популярных статей, английский язык, путешествия, программирование, СУБД.'
+#url: http://iseetheline.ru
+
+baseurl: /
+
+author:
+    name: Павел Попов
+    twitter: schmooser
+
+paginate: 7
 
 edit_url: https://github.com/schmooser/schmooser.github.io/blob/master/
-#edit_url: http://prose.io/#schmooser/schmooser.github.io/edit/master/
-#
 feedburner_url: http://feeds.feedburner.com/pavelpopov/rss
 
-#disqus_shortname: iseetheline
-disqus_url: http://iseetheline.ru
+disqus:
+    #shortname: iseetheline
+    url: http://iseetheline.ru
 
-flickr_key: f162f2bd093e4b60d2167158a4d67513
-flickr_user_id: 21960065@N03
+flickr:
+    key: f162f2bd093e4b60d2167158a4d67513
+    user_id: 21960065@N03
 

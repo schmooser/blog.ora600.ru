@@ -1,44 +1,30 @@
-{% if post %}
-  {% assign this = post %}
-  {% assign type = 'post' %}
-  {% assign text = this.content %}
-  {% assign disqus = site.disqus_shortname %}
-{% else %}
-  {% assign this = page %}
-  {% assign type = 'page' %}
-  {% assign text = content %}
-{% endif %}
 
-{% assign description = this.description %}
-
-<div class="note">
-  <h1>
-  {% if type == 'post' %}
-    <a href="{{ this.url }}">{{ this.title }}</a>
-  {% else %}
-    {{ this.title }}
-  {% endif %}
-  </h1>
-  <div class="date">
-    {% include date.html %}
-  </div>
-  <div class="text">
-  {% if type == 'post' and description %}
-    <p>
-      {{ description }}
-    </p>
-    <p>
-      <a href="{{ this.url }}">
-        {% if this.lang == 'ru' %}Далее...{% else %}Read more...{% endif %}
-      </a>
-    </p>
-  {% else %}
-    {{ text }}
-    {% if type == 'post' and disqus %}
-      <a href="{{ this.url }}#disqus_thread">
-        {% if this.lang == 'ru' %}Комментарии{% else %}Comments{% endif %}
-      </a>
-    {% endif %}
-  {% endif %}
-  </div>
+<div class="page">
+  <h1 class="page-title">{{ page.title }}</h1>
+  {{ content }}
 </div>
+
+<div class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    {% for post in site.posts %}
+      {% assign match = false %}
+      {% for category in post.categories %}
+        {% if page.categories contains category %}
+          {% assign match = true %}
+        {% endif %}
+      {% endfor %}
+      {% if match and page.url != post.url %}
+      <li>
+        <h3>
+          <a href="{{ post.url }}">
+            {{ post.title }}
+            <small>{{ post.date | date_to_string }}</small>
+          </a>
+        </h3>
+      </li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+</div>
+

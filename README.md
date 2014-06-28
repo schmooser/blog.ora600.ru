@@ -1,4 +1,4 @@
-schmooser.github.io
-===================
+# Pavel Popov
 
-Content of http://iseetheline.ru
+This is a blog by Pavel Popov.
+

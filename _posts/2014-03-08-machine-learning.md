@@ -3,6 +3,7 @@ layout: math
 title: Machine Learning
 lang: ru
 description: Очень краткие конспекты лекций по ML с Coursera
+category: ml
 ---
 
 Записался на курс [Machine Learning][1] на Coursera. Попробую целиком
