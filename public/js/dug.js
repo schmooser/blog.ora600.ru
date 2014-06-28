@@ -1,9 +1,9 @@
 /*
 
- @name		 Dug.js — A JSONP to HTML Script
+ @name		 Dug.js — A JSONP to HTML Script
  @author  Rogie King <rogiek@gmail.com>
  @version	 1.0
- @license WTFPL — http://en.wikipedia.org/wiki/WTFPL
+ @license WTFPL — http://en.wikipedia.org/wiki/WTFPL
  @donate	 My paypal email is rogiek@gmail.com if you want to buy me a brew.
 
 */

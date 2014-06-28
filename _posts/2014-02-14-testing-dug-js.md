@@ -3,6 +3,7 @@ layout: post
 title: Testing Dug.js
 lang: en
 published: true
+category: photo
 description: I found on Hacker News the Dug.js – script for transforming JSONP api endpoints to HTML-code. Let's try to use it to embed Flickr set on this page.
 ---
 
@@ -36,13 +37,13 @@ Now, when I want to include Flickr photoset to my post all I have to do is to in
 {% raw %}
 
     {% include photoset.html set=<FLICKR_SET_ID> %}
-    
+
 {% endraw %}
 
 Example of the result is here:
 
-{% include flickr/set.html set=72157639673699056 template='dots' image_size='b' %}
-{% include flickr/tags.html tags='bmwmuseum' template='thumbs' image_size='b' %}
+{% include flickr/set.html set=72157639673699056 template='dots' size='b' %}
+{% include flickr/tags.html tags='bmwmuseum' template='thumbs' size='b' %}
 
 [1]: https://news.ycombinator.com/item?id=7230411
 [2]: http://rog.ie/blog/dugjs-a-jsonp-to-html-script

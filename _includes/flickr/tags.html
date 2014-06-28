@@ -4,13 +4,13 @@
 
 <script>
     dug({
-      endpoint: 'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key={{site.flickr_key}}&format=json&user_id={{ site.flickr_user_id }}&tags={{ include.tags }}',
+      endpoint: 'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key={{site.flickr.key}}&format=json&user_id={{ site.flickr.user_id }}&tags={{ include.tags }}',
       callbackParam: 'jsoncallback',
       target: '{{ div_id }}',
       success: function() {
                  $('#{{ div_id }}').fotorama(fotorama_option('{{ include.template }}'));
                },
-      template: dug_template('{{ include.template }}', '{{ include.image_size }}', 'photos')
+      template: dug_template('{{ include.template }}', '{{ include.size }}', 'photos')
     });
 </script>
 

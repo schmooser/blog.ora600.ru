@@ -3,13 +3,13 @@
 
 <script>
     dug({
-      endpoint: 'https://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&api_key={{site.flickr_key}}&format=json&photoset_id={{ include.set }}',
+      endpoint: 'https://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&api_key={{site.flickr.key}}&format=json&photoset_id={{ include.set }}',
       callbackParam: 'jsoncallback',
       target: 'set-{{ include.set }}',
       success: function() {
                  $('#set-{{ include.set }}').fotorama(fotorama_option('{{ include.template }}'));
                },
-      template: dug_template('{{ include.template }}', '{{ include.image_size }}', 'photoset')
+      template: dug_template('{{ include.template }}', '{{ include.size }}', 'photoset')
     });
 </script>
 
