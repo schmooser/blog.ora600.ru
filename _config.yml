@@ -1,0 +1,36 @@
+
+markdown: kramdown
+highlighter: true
+permalink: :title/
+future: false
+paginate: 7
+
+rdiscount:
+  extensions: [smart]
+
+title: Pavel Popov's Blog
+tagline: Blog
+description: 'Just another blog'
+#url: http://iseetheline.ru
+
+baseurl: /en
+
+author:
+    name: Pavel Popov
+    twitter: schmooser
+    email: schmooser@gmail.com
+
+paginate: 7
+excerpt_separator: <!--more-->
+
+edit_url: https://github.com/schmooser/schmooser.github.io/blob/master/
+feedburner_url: http://feeds.feedburner.com/pavelpopov/rss
+
+disqus:
+    #shortname: iseetheline
+    url: http://iseetheline.ru
+
+flickr:
+    key: f162f2bd093e4b60d2167158a4d67513
+    user_id: 21960065@N03
+
