@@ -1,0 +1,16 @@
+---
+layout: default
+---
+
+<section class="archive row-1" role="main">
+  {% for post in site.posts %}
+    <ul class="archive-list content-area">
+      <li>
+        <time class="entry-timestamp">{{ post.date | date_to_string }}</time>
+        <br>
+        <a href="{{ post.url }}">{{ post.title }}</a>
+      </li>
+    </ul>
+  {% endfor %}
+</section>
+

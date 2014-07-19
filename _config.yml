@@ -1,25 +1,27 @@
 
 markdown: kramdown
 highlighter: true
-permalink: pretty
+permalink: :title/
 future: false
 paginate: 7
 
 rdiscount:
   extensions: [smart]
 
-title: Павел Попов
-tagline: 'Записки'
+title: Блог Павла Попова
+tagline: Блог
 description: 'Переводы научно-популярных статей, английский язык, путешествия, программирование, СУБД.'
 #url: http://iseetheline.ru
 
-baseurl: /
+baseurl: ""
 
 author:
     name: Павел Попов
     twitter: schmooser
+    email: schmooser@gmail.com
 
 paginate: 7
+excerpt_separator: <!--more-->
 
 edit_url: https://github.com/schmooser/schmooser.github.io/blob/master/
 feedburner_url: http://feeds.feedburner.com/pavelpopov/rss

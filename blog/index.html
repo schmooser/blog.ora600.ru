@@ -3,7 +3,7 @@ layout: default
 ---
 
 <section class="entry-list row-1" role="main">
-  {% for post in paginator.posts %}
+  {% for post in site.posts %}
     {% include post.html text=post.excerpt %}
   {% endfor %}
   <a href="{{ site.baseurl }}archive.html" class="archive-link">→</a>

@@ -5,6 +5,9 @@ title: Функция split на Haskell
 category: haskell
 description: Пишу первую функцию на Haskell &ndash; <code>split</code>, разбивающую строку на массив из строк.
 ---
+Пишу первую функцию на Haskell &ndash; <code>split</code>, разбивающую строку на массив из строк.
+
+<!--more-->
 
 В проекте [OraVCS] для создания пользователя используется стандартное выражение:
 
