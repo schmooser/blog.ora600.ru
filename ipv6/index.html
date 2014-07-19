@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Блог Павла Попова</title>
+  <meta name="title" content="Жизнь с IPv6">
+  <meta name="description" content="Павел Попов">
+
+  <meta property="og:url" content="/ipv6/">
+  <meta property="og:title" content="Жизнь с IPv6">
+  
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Павел Попов">
+  <link rel="icon" type="image/png" href="/public/favicon.ico">
+  <link rel="alternate" type="application/rss+xml" title="Блог Павла Попова" href="/blog-feed.xml">
+  <link href="http://fonts.googleapis.com/css?family=PT+Serif:400,700,400italic|PT+Sans:400,700,400italic|Roboto:100,300|Roboto+Slab:300,400&amp;subset=latin,cyrillic" rel="stylesheet">
+  <link href="/public/css/main.css" rel="stylesheet">
+
+  <!-- CSS -->
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+
+  <!-- Custom -->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+  <link href="http://fotorama.s3.amazonaws.com/4.4.9/fotorama.css" rel="stylesheet">
+  <script src="http://fotorama.s3.amazonaws.com/4.4.9/fotorama.js"></script>
+  <script src="/public/js/dug.js"></script>
+  <script src="/public/js/application.js"></script>
+</head>
+
+<body>
+<header class="row-1">
+  <nav class="title-nav" role="navigation">
+    <h1 class="title-nav-header"><a href="/">Павел Попов</a>
+      <span class="title-nav-slash">/</span>
+      <a href="/">Блог</a>
+    </h1>
+  </nav>
+</header>
+
+  <section class="single-entry row-1" role="main">
+  
+  
+  
+  
+
+
+
+
+<article class="entry">
+  <header class="entry-header">
+    <h1 class="entry-title">
+      <a href="/ipv6/">Жизнь с IPv6</a>
+    </h1>
+  </header>
+
+  <div class="entry-body content-area">
+    
+
+    <p>Недавно <a href="http://selectel.ru">Селектел</a> ввел плату за IPv4, что-то около 72
+рублей в месяц. Не много, чтобы отказываться, но у меня есть одна выключенная
+машина, жрущая за диски 1 рубль в день (30 рублей в месяц). Поэтому, я решил
+отказаться от IPv4 для этой машины. Теперь у нее гордый длинный адрес IPv6.
+Начал думать, что можно с ним сделать. Оказалось, что прописывать IP-адрес в DNS
+надо через запись типа AAAA вместо записи типа A. Также, меня это удивило больше
+всего, в адресе IPv6 не 6 байт, как я думал исходя из названия, а 16. Таким
+образом это 32 шестнадцатеричных числа, при записи их объединяют в 8 групп по 4
+числа. Подробнее в <a href="http://ru.wikipedia.org/wiki/IPv6">Википедии</a>. Пинговать
+сервер с адресом IPv6 надо командой <code>ping6</code>, обычный <code>ping</code> ее не понимает.  </p>
+
+<p>Чтобы посмотреть корректность определения адреса IPv6 в DNS надо использовать
+следующий синтаксис nslookup:</p>
+
+<pre><code>$nslookup
+&gt;set q=all host
+</code></pre>
+
+<p>Прописал IPv6 адрес машины в DNS, попробую поработать с ним, опишу позже здесь,
+как все проходит.</p>
+
+<p>А происходит страшное. После миграции с Е2 на jekyll, машина, на которой
+крутился старый блог стала мне не нужна и я постепенно забрал оттуда все
+остальное, отключил у нее IPv4 и выключил ее.</p>
+
+<p>Сегодня я захотел пописать пост про Oracle, для этого мне нужен работающий
+инстанс. Он как раз стоит на машине в Селектеле с IPv6. Включил ее, прописал в
+DNS ее адрес, пытаюсь зайти – и не получается. Все утилиты говорят <code>no route to
+host</code> а <code>nslookup</code> говорит, что такой опции <code>set q=all</code> нет. В общем,
+потыкавшись немного я пока решил забить на IPv6.</p>
+
+
+    
+  </div>
+
+  
+  <footer class="entry-footer">
+    <time class="entry-timestamp">19 Jan 2013</time>
+  </footer>
+  
+</article>
+
+</section>
+
+
+
+  <!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+(function (d, w, c) {
+    (w[c] = w[c] || []).push(function() {
+        try {
+            w.yaCounter21201856 = new Ya.Metrika({id:21201856,
+                    clickmap:true,
+                    trackLinks:true,
+                    accurateTrackBounce:true});
+        } catch(e) { }
+    });
+
+    var n = d.getElementsByTagName("script")[0],
+        s = d.createElement("script"),
+        f = function () { n.parentNode.insertBefore(s, n); };
+    s.type = "text/javascript";
+    s.async = true;
+    s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
+
+    if (w.opera == "[object Opera]") {
+        d.addEventListener("DOMContentLoaded", f, false);
+    } else { f(); }
+})(document, window, "yandex_metrika_callbacks");
+</script>
+<noscript><div><img src="//mc.yandex.ru/watch/21201856" style="position:absolute; left:-9999px;" alt="" /></div>
+</noscript>
+<!-- /Yandex.Metrika counter -->
+
+</body>
+</html>

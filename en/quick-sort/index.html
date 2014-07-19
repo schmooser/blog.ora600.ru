@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pavel Popov's Blog</title>
+  <meta name="title" content="Quick sort in Haskell and Python">
+  <meta name="description" content="Pavel Popov">
+
+  <meta property="og:url" content="/quick-sort/">
+  <meta property="og:title" content="Quick sort in Haskell and Python">
+  
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Pavel Popov">
+  <link rel="icon" type="image/png" href="/en/public/favicon.ico">
+  <link rel="alternate" type="application/rss+xml" title="Pavel Popov's Blog" href="/blog-feed.xml">
+  <link href="http://fonts.googleapis.com/css?family=PT+Serif:400,700,400italic|PT+Sans:400,700,400italic|Roboto:100,300|Roboto+Slab:300,400&amp;subset=latin,cyrillic" rel="stylesheet">
+  <link href="/en/public/css/main.css" rel="stylesheet">
+
+  <!-- CSS -->
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/en/public/apple-touch-icon-precomposed.png">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+
+  <!-- Custom -->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+  <link href="http://fotorama.s3.amazonaws.com/4.4.9/fotorama.css" rel="stylesheet">
+  <script src="http://fotorama.s3.amazonaws.com/4.4.9/fotorama.js"></script>
+  <script src="/en/public/js/dug.js"></script>
+  <script src="/en/public/js/application.js"></script>
+</head>
+
+<body>
+<header class="row-1">
+  <nav class="title-nav" role="navigation">
+    <h1 class="title-nav-header"><a href="/">Pavel Popov</a>
+      <span class="title-nav-slash">/</span>
+      <a href="/en/">Blog</a>
+    </h1>
+  </nav>
+</header>
+
+  <section class="single-entry row-1" role="main">
+  
+  
+  
+  
+
+
+
+
+<article class="entry">
+  <header class="entry-header">
+    <h1 class="entry-title">
+      <a href="/en/quick-sort/">Quick sort in Haskell and Python</a>
+    </h1>
+  </header>
+
+  <div class="entry-body content-area">
+    
+
+    <p>While reading <a href="http://learnyouahaskell.com/chapters">Learn you a Haskell for great good</a> I found <a href="http://learnyouahaskell.com/recursion#quick-sort">realization</a> of quick sort algorithm. It’s easy to understand in terms of recursion – for each element sorted array is <code>"sorted array of elements which are less then current" + "current element" + "sorted array of elements which are greater or equal then current"</code>.</p>
+
+<p>Realization in Haskell:</p>
+
+<pre><code>quicksort :: (Ord a) =&gt; [a] -&gt; [a]  
+quicksort [] = []  
+quicksort (x:xs) =   
+    let smallerSorted = quicksort [a | a &lt;- xs, a &lt;= x]  
+        biggerSorted = quicksort [a | a &lt;- xs, a &gt; x]  
+    in  smallerSorted ++ [x] ++ biggerSorted
+</code></pre>
+
+<p>I tried to realize this in Python. That’s what I get:</p>
+
+<pre><code>def qsort(input):
+  if input == []: return [] 
+  x, xs = input[0], input[1:]
+  bigger = qsort(filter(lambda e: e &gt;= x, [ a for a in xs ]))
+  smaller = qsort(filter(lambda e: e &lt; x, [ a for a in xs ]))
+  return smaller + [x] + bigger
+</code></pre>
+
+<p>It works pretty well:</p>
+
+<pre><code>&gt;&gt;&gt; qsort([4,2,6,3,6,4,23,76,3,5,2])
+[2, 2, 3, 3, 4, 4, 5, 6, 6, 23, 76]    
+&gt;&gt;&gt; qsort('Sample text')
+[' ', 'S', 'a', 'e', 'e', 'l', 'm', 'p', 't', 't', 'x']
+</code></pre>
+
+
+
+    
+  </div>
+
+  
+  <footer class="entry-footer">
+    <time class="entry-timestamp">07 Jun 2013</time>
+  </footer>
+  
+</article>
+
+</section>
+
+
+
+  <!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+(function (d, w, c) {
+    (w[c] = w[c] || []).push(function() {
+        try {
+            w.yaCounter21201856 = new Ya.Metrika({id:21201856,
+                    clickmap:true,
+                    trackLinks:true,
+                    accurateTrackBounce:true});
+        } catch(e) { }
+    });
+
+    var n = d.getElementsByTagName("script")[0],
+        s = d.createElement("script"),
+        f = function () { n.parentNode.insertBefore(s, n); };
+    s.type = "text/javascript";
+    s.async = true;
+    s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
+
+    if (w.opera == "[object Opera]") {
+        d.addEventListener("DOMContentLoaded", f, false);
+    } else { f(); }
+})(document, window, "yandex_metrika_callbacks");
+</script>
+<noscript><div><img src="//mc.yandex.ru/watch/21201856" style="position:absolute; left:-9999px;" alt="" /></div>
+</noscript>
+<!-- /Yandex.Metrika counter -->
+
+</body>
+</html>

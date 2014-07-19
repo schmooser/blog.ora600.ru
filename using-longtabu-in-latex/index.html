@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Блог Павла Попова</title>
+  <meta name="title" content="Использование longtabu в LaTeX">
+  <meta name="description" content="Павел Попов">
+
+  <meta property="og:url" content="/using-longtabu-in-latex/">
+  <meta property="og:title" content="Использование longtabu в LaTeX">
+  
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Павел Попов">
+  <link rel="icon" type="image/png" href="/public/favicon.ico">
+  <link rel="alternate" type="application/rss+xml" title="Блог Павла Попова" href="/blog-feed.xml">
+  <link href="http://fonts.googleapis.com/css?family=PT+Serif:400,700,400italic|PT+Sans:400,700,400italic|Roboto:100,300|Roboto+Slab:300,400&amp;subset=latin,cyrillic" rel="stylesheet">
+  <link href="/public/css/main.css" rel="stylesheet">
+
+  <!-- CSS -->
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+
+  <!-- Custom -->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+  <link href="http://fotorama.s3.amazonaws.com/4.4.9/fotorama.css" rel="stylesheet">
+  <script src="http://fotorama.s3.amazonaws.com/4.4.9/fotorama.js"></script>
+  <script src="/public/js/dug.js"></script>
+  <script src="/public/js/application.js"></script>
+</head>
+
+<body>
+<header class="row-1">
+  <nav class="title-nav" role="navigation">
+    <h1 class="title-nav-header"><a href="/">Павел Попов</a>
+      <span class="title-nav-slash">/</span>
+      <a href="/">Блог</a>
+    </h1>
+  </nav>
+</header>
+
+  <section class="single-entry row-1" role="main">
+  
+  
+  
+  
+
+
+
+
+<article class="entry">
+  <header class="entry-header">
+    <h1 class="entry-title">
+      <a href="/using-longtabu-in-latex/">Использование longtabu в LaTeX</a>
+    </h1>
+  </header>
+
+  <div class="entry-body content-area">
+    
+
+    <p>Стандартный <code>tabular</code> не поддерживает таблицы, которые не умещаются в одну страницу.</p>
+
+<p>Для многостраничных таблиц есть пакет <code>longtable</code>, он разбивает таблицу на страницы, 
+причем на каждой странице может выводить свой заголовок. Доступны следующие команды:
+<code>\endfirsthead</code>, <code>\endhead</code>, <code>\endlastfoot</code>, <code>\endfoot</code>.
+Они определяют заголовок на первой странице таблицы и на остальных страницах таблицы.
+И подвал страницы на последней и остальных страницах, соответственно.</p>
+
+<p>Примеры использования можно поискать в Гугле или, например, <a href="http://texblog.org/2011/05/15/multi-page-tables-using-longtable/">тут</a>.</p>
+
+<p>Проблемы с <code>longtable</code> начинаются, если в таблице оказываются длинные данные. TeX 
+по-умолчанию не умеет переносить содержимое ячеек на новую строчку. Чтобы активировать
+перенос тип колонки должен быть не <code>l</code>,<code>r</code> или <code>c</code> (выравнивание влево, вправо или по
+центру) а <code>p</code> (параграф) с указанием ширины в понятных для TeXа элементах (например, 
+<code>p{1.1cm}</code>). Тогда, определив для каждой колонки размер, соотнеся его с <code>\textwidth</code>
+можно добиться нормального расположения таблицы на странице (без сообщений в логе 
+<code>Overfull \hbox</code>).</p>
+
+<p>К счастью, есть более правильный способ – использование пакета <a href="http://www.ctan.org/pkg/tabu"><code>tabu</code></a>. Он
+добавляет к возможностям окружения <code>tabular</code> новый тип колонок - <code>X</code>. Это колонка,
+ширина которой будет вычисляться автоматически.</p>
+
+<p>Пример таблицы в окружении <code>tabu</code>:</p>
+
+<pre><code>\begin{tabu} to \linewidth{lXr}
+
+$r_1c_1$ &amp; $r_1c_2$ &amp; $r_1c_3$ \\
+$r_2c_1$ &amp; $r_2c_2$ &amp; $r_2c_3$ \\
+$r_3c_1$ &amp; $r_3c_2$ &amp; $r_3c_3$ \\
+
+\end{tabu}
+</code></pre>
+
+<p>У <code>X</code> может быть несколько параметров - вес коэффициента ширины ячейки (число),
+выравнивание по горизонтали и вертикали. Например, если нужна колонка в 2 раза шире
+чем обычная и выровненная по правому краю, для нее указываем <code>X[2,r]</code>.</p>
+
+<p>У пакета <code>tabu</code> есть окружение <code>longtabu</code>, расширяющее функционал пакета <code>longtable</code>
+колонками типа <code>X</code>. Чтобы его использовать, надо подключить оба пакета <code>tabu</code> и <code>longtable</code>.</p>
+
+<p>Команды заголовков и подвала <code>longtabu</code> наследует от <code>longtable</code>.</p>
+
+<p>У меня возникли проблемы с <code>longtabu</code> когда у меня в заголовке были многоколоночные
+ячейки (<code>\multicolumn</code>). Для них нельзя указать тип <code>X</code>, поэтому заголовок у меня не
+попадал в основную таблицу. К сожалению, <code>\multicolumn</code> для <code>tabu</code> еще не реализован,
+так что приходится использовать workaround через <code>\tabuphantomline</code>, примерно так:</p>
+
+<pre><code>\begin{longtabu} to \linewidth{|r|X[L]|r|X[L]|r|X[L]|X[R]|l|} \tabucline-
+
+\hline
+\multicolumn2{|c|}{COLUMN1} &amp; \multicolumn2{c|}{COLUMN2} &amp; \multicolumn4{c|}{COLUMN3} \\ \tabucline-
+\tabuphantomline
+\hline
+\endfirsthead
+...
+\end{longtabu}
+</code></pre>
+
+<p>Здесь используется таблица с 8 колонками разного типа. Заголовки многоколоночные,
+ширина получается точно такая, как у ячеек таблицы.</p>
+
+<p>Использование этого workaround не совсем очевидно из документации, но это работает.</p>
+
+
+
+    
+  </div>
+
+  
+  <footer class="entry-footer">
+    <time class="entry-timestamp">21 Oct 2013</time>
+  </footer>
+  
+</article>
+
+</section>
+
+
+
+  <!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+(function (d, w, c) {
+    (w[c] = w[c] || []).push(function() {
+        try {
+            w.yaCounter21201856 = new Ya.Metrika({id:21201856,
+                    clickmap:true,
+                    trackLinks:true,
+                    accurateTrackBounce:true});
+        } catch(e) { }
+    });
+
+    var n = d.getElementsByTagName("script")[0],
+        s = d.createElement("script"),
+        f = function () { n.parentNode.insertBefore(s, n); };
+    s.type = "text/javascript";
+    s.async = true;
+    s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
+
+    if (w.opera == "[object Opera]") {
+        d.addEventListener("DOMContentLoaded", f, false);
+    } else { f(); }
+})(document, window, "yandex_metrika_callbacks");
+</script>
+<noscript><div><img src="//mc.yandex.ru/watch/21201856" style="position:absolute; left:-9999px;" alt="" /></div>
+</noscript>
+<!-- /Yandex.Metrika counter -->
+
+</body>
+</html>

@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Блог Павла Попова</title>
+  <meta name="title" content="">
+  <meta name="description" content="Павел Попов">
+
+  <meta property="og:url" content="/page13/index.html">
+  <meta property="og:title" content="">
+  
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Павел Попов">
+  <link rel="icon" type="image/png" href="/public/favicon.ico">
+  <link rel="alternate" type="application/rss+xml" title="Блог Павла Попова" href="/blog-feed.xml">
+  <link href="http://fonts.googleapis.com/css?family=PT+Serif:400,700,400italic|PT+Sans:400,700,400italic|Roboto:100,300|Roboto+Slab:300,400&amp;subset=latin,cyrillic" rel="stylesheet">
+  <link href="/public/css/main.css" rel="stylesheet">
+
+  <!-- CSS -->
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+
+  <!-- Custom -->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+  <link href="http://fotorama.s3.amazonaws.com/4.4.9/fotorama.css" rel="stylesheet">
+  <script src="http://fotorama.s3.amazonaws.com/4.4.9/fotorama.js"></script>
+  <script src="/public/js/dug.js"></script>
+  <script src="/public/js/application.js"></script>
+</head>
+
+<body>
+<header class="row-1">
+  <nav class="title-nav" role="navigation">
+    <h1 class="title-nav-header"><a href="/">Павел Попов</a>
+      <span class="title-nav-slash">/</span>
+      <a href="/">Блог</a>
+    </h1>
+  </nav>
+</header>
+
+  <section class="entry-list row-1" role="main">
+  
+    
+  
+  
+  
+
+
+
+  
+
+
+<article class="entry">
+  <header class="entry-header">
+    <h1 class="entry-title">
+      <a href="/running-oracle-instant-client-on-windows/">Установка и запуск Oracle Instant Client под Windows</a>
+    </h1>
+  </header>
+
+  <div class="entry-body content-area">
+    
+
+    <ol>
+  <li>Скачиваем нужную версию Oracle Instant Client. Нужна версия, совместимая с ПО, 
+которое предполагается использовать. Например, для 32-х битного PL/SQL Developer 
+нужна 32-х битная же версия Instant Client. Пакеты я брал Basic и SQL*Plus.</li>
+  <li>Распаковываем в произвольную папку. Я распаковал оба пакета в одну и ту же папку 
+<code>C:\Program Files (x86)\Oracle\instantclient_11_2</code></li>
+  <li>Создаем две переменных среды:
+    <ul>
+      <li><code>ORACLE_HOME = C:\Program Files (x86)\Oracle\instantclient_11_2</code></li>
+      <li><code>TNS_ADMIN = C:\Program Files (x86)\Oracle\instantclient_11_2\network\admin\</code></li>
+    </ul>
+  </li>
+  <li>
+    <p>Создаем файл tnsnames.ora в папке, указанной в параметре TNS_ADMIN, 
+примерно следующего содержания:</p>
+
+    <pre><code> ORCL =
+ (DESCRIPTION =
+  (ADDRESS = 
+     (PROTOCOL = TCP)
+     (HOST = localhost)
+     (PORT = 1521) 
+  )
+  (CONNECT_DATA =
+    (SERVER = DEDICATED)
+    (SERVICE_NAME = orcl)
+  )
+ )
+</code></pre>
+  </li>
+  <li>Запускаем <code>sqlplus</code> или PL/SQL Developer. Работаем.</li>
+</ol>
+
+
+
+    
+      <a href="/running-oracle-instant-client-on-windows/" class="read-link">Читать</a>
+    
+  </div>
+
+  
+</article>
+
+  
+    
+  
+  
+  
+
+
+
+  
+
+
+<article class="entry">
+  <header class="entry-header">
+    <h1 class="entry-title">
+      <a href="/removing-ads-from-gmail/">Убираем из Гмэйла рекламу</a>
+    </h1>
+  </header>
+
+  <div class="entry-body content-area">
+    
+
+    <p>Никто не любит рекламу. Все пользуются AdBlock’ом. Я тоже. Но в Гмэйле после
+порезанной рекламы справа, при чтении почты, остается довольно широкая колонка
+пустого места.</p>
+
+<p>Если у вас есть экстеншн, который правит css-ки сайтов (например Stylebot для
+Хрома), то пишем для Гмэйла такой стиль:</p>
+
+<pre><code>td.Bu:nth-child(3) {display: none;}
+td.Bu:nth-child(2) {display: none;}
+div.if {margin-right: 15px;}
+div.ao8 {padding-right: 0;}
+</code></pre>
+
+<p>и вуаля, мерзкая полоса исчезает.</p>
+
+<p>Работает во всех трех режимах — No Split, Horizontal Split, Vertical Split.</p>
+
+
+
+    
+      <a href="/removing-ads-from-gmail/" class="read-link">Читать</a>
+    
+  </div>
+
+  
+</article>
+
+  
+    
+  
+  
+  
+
+
+
+  
+
+
+<article class="entry">
+  <header class="entry-header">
+    <h1 class="entry-title">
+      <a href="/no_data_found-exception/">NO_DATA_FOUND exception</a>
+    </h1>
+  </header>
+
+  <div class="entry-body content-area">
+    
+
+    <p>Oracle генерирует исключение <code>NO_DATA_FOUND</code> в нескольких ситуациях:</p>
+
+<ul>
+  <li>при <code>SELECT INTO</code> если нет строк</li>
+  <li>при чтении последней строки файла с использованием UTL_FILE.GET_LINE</li>
+  <li>при обращении к несуществующему элементу массива</li>
+</ul>
+
+<p><a href="http://www.plsqlchallenge.com/pls/apex/f?p=10000:PG_PQ_DRILLDOWN:4164756902153718::NO:651:P651_COMP_EVENT_ID,P651_QUIZ_ID:2429,3567&amp;cs=1E556E42F7193ED0DBC29F3DB66AADDB2">ссылка на quiz</a></p>
+
+
+
+    
+      <a href="/no_data_found-exception/" class="read-link">Читать</a>
+    
+  </div>
+
+  
+</article>
+
+  
+    
+  
+  
+  
+
+
+
+  
+
+
+<article class="entry">
+  <header class="entry-header">
+    <h1 class="entry-title">
+      <a href="/clustering-factor/">Clustering factor</a>
+    </h1>
+  </header>
+
+  <div class="entry-body content-area">
+    
+
+    <p>The clustering factor is the number of times Oracle, when scanning the whole index in order, would have to swap to a different Table block to look up the table record for each index entry. If it is close to the number of blocks in the table, then the clustering factor is low and the order of records in the table matches the order of entries in the index.</p>
+
+<p>This would make index range scans that need to visit the table reasonably efficient. If the clustering factor is close to the number of records in the table then it means there is no correlation between index order and table row order and such index ranges scans that have to visit the table would be inefficient.</p>
+
+<p><a href="http://mwidlake.wordpress.com/2011/07/26/iot-2-first-examples-and-proofs/">Источник</a></p>
+
+
+
+    
+      <a href="/clustering-factor/" class="read-link">Читать</a>
+    
+  </div>
+
+  
+</article>
+
+  
+    
+  
+  
+  
+
+
+
+  
+
+
+<article class="entry">
+  <header class="entry-header">
+    <h1 class="entry-title">
+      <a href="/bugs-and-stangeness-of-informatica/">Баги и странности Informatica Power Center</a>
+    </h1>
+  </header>
+
+  <div class="entry-body content-area">
+    
+
+    <p>За время работы с Informatica Power Center (8.1, 8.6, 9.5) обнаружены следующие баги и особенности работы:</p>
+
+<ol>
+  <li>
+    <p>Не работает выборка последнего элемента (use last) в lookup с override SQL с сортировкой по неким полям. Решение — использовать use first и сортировку в обратном порядке (<code>order by ... desc</code>). – Не совсем точное утверждение, напишу про это отдельный пост.</p>
+  </li>
+  <li>
+    <p>Если сравнивать тип данных money, пришедший с MS SQL Server с типом double, то цифры могут не сматчиться. Решение — в IPC явно проставлять формат для таких аттрибутов в numeric(19,4). </p>
+  </li>
+  <li>
+    <p>Есть маппинг, реализующий добавление строки в лог-таблицу (Oracle). Размер экстента таблицы 1 мб. Замечено очень странное: при каждом выполнении маппинга (вставка одной строки), количество экстентов увеличивалось на 1. Естественно, в 1-мегабайтный экстент влезет несколько сотен строк, никак ни одна.  Первая мысль — виновато кеширование сиквенса (10000), оказалась ошибочной. Дело было в типе вставки — при смене с булк-режима на нормальный все стало нормально. </p>
+  </li>
+  <li>
+    <p>В SQL Override лукапа Информатика <s>любит</s> требует, чтобы у атрибутов были явно заданы алиасы в виде <code>TAB.COLUMN_NAME AS PORT_NAME</code>. Вот это <code>AS PORT_NAME</code> для нее играет ключевую роль, иначе выдается ошибка Invalid lookup query override. Похоже, она переписывает SQL перед отправкой его в базу. Столкнулся с этой проблемой, нашел <a href="http://myinformatica.blogspot.com/2008/03/invalid-lookup-override.html">здесь</a> решение этой проблемы.</p>
+  </li>
+  <li>
+    <p>Если в маппинге есть несколько лукапов на основе одной таблицы, но при этом Source Filter у них будет разный, а Enable Lookup Cache включен, то Информатика будет реюзать кеш для всех остальных лукапов, кроме первого. В итоге, данные будут неправильно лукапиться. Надо посмотреть насчет того, бага это или фича.</p>
+  </li>
+  <li>
+    <p>Если лукап находится внутри мапплета, то в Source Filter лукапа нельзя использовать параметры мапплета — они не подхватятся. А если писать в Source Override, то подхватятся.</p>
+  </li>
+  <li>
+    <p>Если в лукапе в Source filter использовать параметры, то они не будут подхватываться. Приходится писать полный SQL override, там параметры подхватываются. Такое поведение только у лукапа, у Source Qualifier таких проблем нет.</p>
+  </li>
+</ol>
+
+
+
+    
+  </div>
+
+  
+</article>
+
+  
+    
+  
+  
+  
+
+
+
+  
+
+
+<article class="entry">
+  <header class="entry-header">
+    <h1 class="entry-title">
+      <a href="/alter-table-set-unused-column/">ALTER TABLE SET UNUSED COLUMN</a>
+    </h1>
+  </header>
+
+  <div class="entry-body content-area">
+    
+
+    <p>Вместо инструкции <code>ALTER TABLE tablename DROP COLUMN columnname</code> для экономии времени возможно использовать инструкцию <code>ALTER TABLE tablename SET UNUSED COLUMN columnname</code>.</p>
+
+<p>При этом, данные из столбца таблицы физически не удаляются, место на диске не освобождается.  Столбец, который выставили в UNUSED, пропадает из списков столбцов таблицы при использовании <code>DESCRIBE</code>, пропадает из представлений <code>[USER|ALL|DBA]_TAB_COLUMNS</code>, и из списка столбцов при выборке <code>SELECT *</code>. Однако, лимит в 1000 столбцов на одну таблицу включает этот столбец.  Нельзя добавить еще один столбец типа <code>LONG</code>, если есть неиспользуемый столбец типа <code>LONG</code>.  Но можно добавить в таблицу новый столбец с тем же именем.</p>
+
+<p>Посмотреть количество неиспользуемых столбцов можно с помощью представлений <code>[USER|ALL|DBA]_UNUSED_COL_TABS</code>.</p>
+
+<p>Операция <code>ALTER TABLE tablename SET UNUSED COLUMN columnname</code> необратима, т.е. нельзя сделать <code>ALTER TABLE tablename SET USED COLUMN columnname</code>.</p>
+
+<p>Удалить неиспользуемые столбцы из таблицы можно с помощью <code>ALTER TABLE tablename DROP UNUSED COLUMNS</code>.</p>
+
+<p><a href="http://download.oracle.com/docs/cd/B13789_01/server.101/b10759/statements_3001.htm">Раздел официальной документации</a></p>
+
+
+
+    
+      <a href="/alter-table-set-unused-column/" class="read-link">Читать</a>
+    
+  </div>
+
+  
+</article>
+
+  
+    
+  
+  
+  
+
+
+
+  
+
+
+<article class="entry">
+  <header class="entry-header">
+    <h1 class="entry-title">
+      <a href="/tlo-vs-whitera/">TLO vs WhiteRa</a>
+    </h1>
+  </header>
+
+  <div class="entry-body content-area">
+    
+
+    <p>У HuskyStarcraft появилась товарищеская серия “best of 7” между TLO (Z) и WhiteRa (T). Всегда полезно посмотреть, как между собой играют профессионалы. Особенно интересна третья игра, когда TLO построил у экспанда противника хэтчери.</p>
+
+<p>Даю <a href="http://www.youtube.com/watch?feature=player_embedded&amp;v=0miCJ46WAqg">ссылку на первую игру</a>, ссылки на остальные будут в рекомендованных видео на YouTube.</p>
+
+<iframe width="560" height="315" src="http://www.youtube.com/embed/0miCJ46WAqg" frameborder="0" allowfullscreen=""></iframe>
+
+
+
+    
+      <a href="/tlo-vs-whitera/" class="read-link">Читать</a>
+    
+  </div>
+
+  
+</article>
+
+  
+  <a href="archive.html" class="archive-link">→</a>
+</section>
+
+
+
+  <!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+(function (d, w, c) {
+    (w[c] = w[c] || []).push(function() {
+        try {
+            w.yaCounter21201856 = new Ya.Metrika({id:21201856,
+                    clickmap:true,
+                    trackLinks:true,
+                    accurateTrackBounce:true});
+        } catch(e) { }
+    });
+
+    var n = d.getElementsByTagName("script")[0],
+        s = d.createElement("script"),
+        f = function () { n.parentNode.insertBefore(s, n); };
+    s.type = "text/javascript";
+    s.async = true;
+    s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
+
+    if (w.opera == "[object Opera]") {
+        d.addEventListener("DOMContentLoaded", f, false);
+    } else { f(); }
+})(document, window, "yandex_metrika_callbacks");
+</script>
+<noscript><div><img src="//mc.yandex.ru/watch/21201856" style="position:absolute; left:-9999px;" alt="" /></div>
+</noscript>
+<!-- /Yandex.Metrika counter -->
+
+</body>
+</html>

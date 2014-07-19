@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Блог Павла Попова</title>
+  <meta name="title" content="">
+  <meta name="description" content="Павел Попов">
+
+  <meta property="og:url" content="/page4/index.html">
+  <meta property="og:title" content="">
+  
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Павел Попов">
+  <link rel="icon" type="image/png" href="/public/favicon.ico">
+  <link rel="alternate" type="application/rss+xml" title="Блог Павла Попова" href="/blog-feed.xml">
+  <link href="http://fonts.googleapis.com/css?family=PT+Serif:400,700,400italic|PT+Sans:400,700,400italic|Roboto:100,300|Roboto+Slab:300,400&amp;subset=latin,cyrillic" rel="stylesheet">
+  <link href="/public/css/main.css" rel="stylesheet">
+
+  <!-- CSS -->
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+
+  <!-- Custom -->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+  <link href="http://fotorama.s3.amazonaws.com/4.4.9/fotorama.css" rel="stylesheet">
+  <script src="http://fotorama.s3.amazonaws.com/4.4.9/fotorama.js"></script>
+  <script src="/public/js/dug.js"></script>
+  <script src="/public/js/application.js"></script>
+</head>
+
+<body>
+<header class="row-1">
+  <nav class="title-nav" role="navigation">
+    <h1 class="title-nav-header"><a href="/">Павел Попов</a>
+      <span class="title-nav-slash">/</span>
+      <a href="/">Блог</a>
+    </h1>
+  </nav>
+</header>
+
+  <section class="entry-list row-1" role="main">
+  
+    
+  
+  
+  
+
+
+
+  
+
+
+<article class="entry">
+  <header class="entry-header">
+    <h1 class="entry-title">
+      <a href="/1z0-047-test-passing-2/">1z0-047, прохождение теста  №2</a>
+    </h1>
+  </header>
+
+  <div class="entry-body content-area">
+    
+
+    <p>В этом году решил все-таки получить сертификаты Oracle. </p>
+
+<p>Вопросы после второго прохождения теста 1Z0-047.</p>
+
+<ul>
+  <li>
+    <p>SEQUENCE: В каком случае используется значение из кеша, а в каком
+генерируется новое значение для последовательности?</p>
+  </li>
+  <li>
+    <p>Как работает TIMESTAMP WITH LOCAL TIME ZONE?</p>
+  </li>
+  <li>
+    <p>Повторить про GROUPING при использовании ROLLUP</p>
+  </li>
+  <li>
+    <p>Понять, что подразумевается под CORRELATED SUBQUERY, UNCORRELATED SUBQUERY 
+и прочими SUBQUERY.</p>
+
+    <p>Ответы:</p>
+
+    <ul>
+      <li>Single rows subquery: A subquery is called a single row subquery when the inner
+query returns a single value to the main query.</li>
+    </ul>
+  </li>
+  <li>
+    <p>Что содержится в SESSION_PRIVS?</p>
+  </li>
+  <li>
+    <p>SYSDATE нельзя использовать в CHECK при создании констрейнта. А какие
+функции можно?</p>
+  </li>
+  <li>
+    <p>Что будет с грантами на объекты, выданными через GRANT OPTION, если гранты
+и выдавшего отнимаются?</p>
+
+    <p>Ответ: все, что выдано через GRANT OPTION тоже отменяется. Касается только
+объектных привилегий. Для системных привилегий есть ADMIN OPTION.</p>
+
+    <p>Цитата из <a href="http://docs.oracle.com/cd/B10500_01/server.920/a96521/privs.htm">документации на 9-ку</a>:</p>
+
+    <blockquote>
+      <p>You can only revoke the privileges that you, the grantor, directly authorized, not the
+grants made by other users to whom you granted the GRANT OPTION. However, there
+is a cascading effect. The object privilege grants propagated using the GRANT OPTION
+are revoked if a grantor’s object privilege is revoked.</p>
+    </blockquote>
+
+    <p>В <a href="http://docs.oracle.com/cd/E11882_01/network.112/e16543/authorization.htm#autoId8">документации на 11g</a>
+подобного не нашел.</p>
+  </li>
+  <li>
+    <p>Можно ли создать индекс на колонку, входящую на первом месте в композитный первичный ключ?</p>
+
+    <p>Ответ: можно</p>
+
+    <pre><code> SQL&gt; drop table tmp_test;
+
+ Table dropped.
+
+ SQL&gt; create table tmp_test(a number, b number, c number, primary key (a,b));
+
+ Table created.
+
+ SQL&gt; create index tmp_test_idx on tmp_test(a);
+
+ Index created.  
+</code></pre>
+  </li>
+  <li>
+    <p>Когда делаем <code>WITH a AS (SELECT /*+ materialize */ ...</code>, где сохраняется результат подзапроса?
+В пользовательском temporary tablespace?</p>
+  </li>
+  <li>
+    <p>Что такое NOVALIDATE у CONSTRAINT?</p>
+
+    <p>Ответ: можно при создании CONSTRAINT указать NOVALIDATE, тогда уже существующие строки в таблице
+не будут проверяться на соответствие условию CONTSTRAINT. Подробнее <a href="http://richardfoote.wordpress.com/2008/07/28/novalidate-constraints-no-really/">в этом посте</a>
+или на <a href="http://www.sql.ru/forum/396299/ogranichenie-v-sostoyanii-enable-novalidate">SQL.ru</a>.</p>
+  </li>
+</ul>
+
+
+
+    
+  </div>
+
+  
+</article>
+
+  
+    
+  
+  
+  
+
+
+
+  
+
+
+<article class="entry">
+  <header class="entry-header">
+    <h1 class="entry-title">
+      <a href="/ipc/">Informatica Power Center</a>
+    </h1>
+  </header>
+
+  <div class="entry-body content-area">
+    
+
+    <p>Буду в этом посте собирать различную информацию по <a href="http://www.informatica.com">Informatica Power Center</a>, которым пользуюсь на работе.</p>
+
+<p>Ссылки на посты по теме IPC:</p>
+
+<ul>
+
+  
+    <li><a href="/informatica-order-of-ports-in-expression/">Порядок портов в Expression Informatica PowerCenter</a></li>
+  
+
+  
+    <li><a href="/running-workflow-in-parallel-in-informatica-powercenter/">Параллельный запуск потока в Informatica PowerCenter</a></li>
+  
+
+  
+
+  
+    <li><a href="/informatica-power-center-part-1/">Informatica Power Center. Часть 1. Описание системы и ее логических составляющих</a></li>
+  
+
+  
+    <li><a href="/bugs-and-stangeness-of-informatica/">Баги и странности Informatica Power Center</a></li>
+  
+
+</ul>
+
+<h3 id="pmrootdir">Узнаем текущий <code>$PMRootDir</code></h3>
+
+<p>Очень часто нужно узнать текущий <code>$PMRootDir</code>. Проще всего это сделать так: создать workflow, в нем command task с коммандой <code>echo $PMRootDir &gt; /dev/null</code>. Запустить workflow и после выполнения посмотреть лог, там будет запись о выполнении задания с расшифрованным значением <code>$PMRootDir</code>.</p>
+
+<p>Таким же нехитрым образом можно узнать значения и остальных системных переменных IPC.</p>
+
+
+
+    
+      <a href="/ipc/" class="read-link">Читать</a>
+    
+  </div>
+
+  
+</article>
+
+  
+    
+  
+  
+  
+
+
+
+  
+
+
+<article class="entry">
+  <header class="entry-header">
+    <h1 class="entry-title">
+      <a href="/image-sharing-test/">Тестирование постинга фотографий</a>
+    </h1>
+  </header>
+
+  <div class="entry-body content-area">
+    
+
+    <p><a href="http://artpolikarpov.ru">Артем Поликарпов</a> любезно предоставил мне
+<a href="http://fotoramajs.com/license/get/?domain=iseetheline.ru">лицензию</a> на
+<a href="http://fotoramajs.com/">Фотораму</a>. Теперь буду постить фотографии сюда.</p>
+
+<p>Хранить фотографии я буду на <a href="http://flickr.com/photos/schmooser">Фликере</a>, не
+зря же я за него оплачиваю pro-подписку. Теперь осталось придумать, как проще
+всего получать URL-ы фотографий, потому что у Фликера с ними мутная политика,
+они хотят чтобы у каждого изображения была обратная ссылка на сайт Фликера.
+Они, конечно, предоставляют различные галереи изображений, но мне
+не нравится результат, и к тому же они используют флеш, которого у меня почти
+что уже нигде нет.</p>
+
+<p>Пример фотографий:</p>
+
+<p><span class="photos">
+  <img src="http://farm9.staticflickr.com/8258/8705257668_191a36a4bc.jpg" alt="Planes #1" />
+  <img src="http://farm9.staticflickr.com/8134/8704132697_3528f690fc.jpg" alt="Planes #2" />
+  <img src="http://farm9.staticflickr.com/8545/8705256172_152eec198f.jpg" alt="Planes #3" />
+</span></p>
+
+
+
+    
+  </div>
+
+  
+</article>
+
+  
+    
+  
+  
+  
+
+
+
+  
+
+
+<article class="entry">
+  <header class="entry-header">
+    <h1 class="entry-title">
+      <a href="/looking-fingerprint-of-rsa-key/">Просмотр fingerprint'а у RSA-ключа</a>
+    </h1>
+  </header>
+
+  <div class="entry-body content-area">
+    
+
+    <p>Чтобы просмотреть fingerprint ключа, надо сделать:</p>
+
+<pre><code>$ ssh-keygen -lf keyname
+</code></pre>
+
+<p>Подробнее можно почитать <a href="http://www.lysium.de/blog/index.php?/archives/186-How-to-get-ssh-server-fingerprint-information.html">тут</a>.</p>
+
+<p>UPD. Еще полезное по поводу RSA. Чтобы сервер нормально пускал через ssh помощью RSA-ключа, надо, помимо добавления публичного ключа в ~/.ssh/authorized_keys, выставить правильные права на папку .ssh и файлы в ней. Какие – зависит от типа сервера. На EC2 образе Amazon Linux у .ssh и .ssh/authorized_keys права 755 и 644, соответственно, а владелец/группа у обоих root/root. CentOS оказался более привередливым, ему пришлось выставить 644 на .ssh и 600 на .ssh/authorized_keys.</p>
+
+
+
+    
+      <a href="/looking-fingerprint-of-rsa-key/" class="read-link">Читать</a>
+    
+  </div>
+
+  
+</article>
+
+  
+    
+  
+  
+  
+
+
+
+  
+
+
+<article class="entry">
+  <header class="entry-header">
+    <h1 class="entry-title">
+      <a href="/git-cheatsheet/">Cheatsheet по git</a>
+    </h1>
+  </header>
+
+  <div class="entry-body content-area">
+    
+
+    <p>Буду собирать здесь часто выполняемые действия по гиту, этакий cheatsheet.</p>
+
+<p>Полезные ссылки по гиту, которые я сохранил, можно посмотреть на
+<a href="https://pinboard.in/u:schmooser/t:git/">pinboard</a>.</p>
+
+<ul>
+  <li><code>git checkout -b test origin/test</code> – получаем удаленный бранч origin/test в  локальный test</li>
+  <li><code>git push origin :test</code> – удаляем удаленный бранч test</li>
+  <li><code>git diff --name-only [SHA1|TAG1] [SHA2|TAG2]</code> – посмотреть измененные файлы между коммитами</li>
+  <li><code>git show [SHA|TAG]:filename</code> – показывает файл каким он был в указанном коммите</li>
+  <li><code>git branch -m oldname newname</code> – переименовываем бранч oldname в newname</li>
+  <li><code>git merge -s recursive -X ours</code> – мерж со стратегией “при совпадении брать  файлы из текущей ветки”. Нужно предварительно чекаутнуть ту ветку, чьи файлы нужно сохранить. Не путать со стратегией <code>git merge -s ours</code>. Эта просто берет текущую ветку за основу, все измененные и новые файлы из соединяемых веток
+отбрасываются. <a href="https://www.kernel.org/pub/software/scm/git/docs/git-merge.html">Документация по merge</a></li>
+  <li><code>git add -u</code> – добавляет всю ветку в стейджинговую область для коммита.  Удобно, когда удаляешь много файлов и не хочется вручную писать для каждого <code>git rm &lt;filename&gt;</code></li>
+  <li>
+    <p><code>^</code> и <code>~</code> нотация – способ обратиться к родительскому коммиту. Например, <code>HEAD~</code> будет родительским коммитом. Между <code>^</code> и <code>~</code> есть разница: <code>~</code> это линейный уровень по родителям (первый родитель, первый родитель первого родителя, первый родитель первого родителя первого родителя и т.д.), <code>^</code> – способ обратиться ко второму родителю (у коммита может быть несколько предков). Более подробно описано у <a href="http://paulboxley.com/blog/2011/06/git-caret-and-tilde">Paul Boxley</a> в блоге.</p>
+
+    <p>Например, если после добавления в стейджинг файлов, хочется посмотреть diff, то просто <code>git diff filename</code> не поможет, нужно пользоваться <code>git diff HEAD~ filename</code>.</p>
+  </li>
+</ul>
+
+
+
+    
+  </div>
+
+  
+</article>
+
+  
+    
+  
+  
+  
+
+
+
+  
+
+
+<article class="entry">
+  <header class="entry-header">
+    <h1 class="entry-title">
+      <a href="/stavim-cx-oracle-na-amazon-linux-mikro-instans-ec2/">Ставим cx_Oracle на Amazon Linux (микро-инстанс EC2)</a>
+    </h1>
+  </header>
+
+  <div class="entry-body content-area">
+    
+
+    <p>Чтобы поставить модуль cx_Oracle на Amazon Linux, надо сделать следующее:</p>
+
+<ol>
+  <li>Поставить pip: <code>#easy_install pip</code></li>
+  <li>Прописать оракловые переменные среды <code>ORACLE_HOME</code>, <code>ORACLE_SID</code>, <code>NLS_LANG</code></li>
+  <li>Поставить пакет <code>#yum install python-devel</code></li>
+  <li>Поставить cx_Oracle: <code>#pip install cx_Oracle</code></li>
+  <li>Прописать переменную среды export <code>LD_LIBRARY_PATH=$ORACLE_HOME/lib</code></li>
+</ol>
+
+
+
+    
+      <a href="/stavim-cx-oracle-na-amazon-linux-mikro-instans-ec2/" class="read-link">Читать</a>
+    
+  </div>
+
+  
+</article>
+
+  
+    
+  
+  
+  
+
+
+
+  
+
+
+<article class="entry">
+  <header class="entry-header">
+    <h1 class="entry-title">
+      <a href="/lookatme-favourites/">LookAtMe – избранное</a>
+    </h1>
+  </header>
+
+  <div class="entry-body content-area">
+    
+
+    <p>LookAtMe прислал извещение о том, что они выпиливают с сайта раздел Избранное. Отличный повод удалиться оттуда. Оказалось, что они в очередной раз сменили дизайн и теперь я там вообще ничего не понимаю.</p>
+
+<p>Сохраню то, что у меня было в избранном там сюда, на всякий случай:</p>
+
+<ul>
+   <li>
+      <a href="http://www.lookatme.ru/flow/posts/film-radar/13100-korotkoe-kino-o-zhizni">Короткое кино о&nbsp;жизни</a>
+   </li>
+   <li>
+      <a href="http://www.lookatme.ru/flow/posts/photo-radar/40367-s-legkoy-ruki-grega-uilyamsa">С&nbsp;легкой руки Грега Уильямса</a>
+   </li>
+   <li>
+      <a href="http://www.lookatme.ru/flow/posts/photo-radar/41404-ledi-di-printsessa-mira-mira-lomografii">Леди Ди, принцесса Мира. Мира Ломографии</a>
+   </li>
+   <li>
+      <a href="http://www.lookatme.ru/my/my/video/42184-vilr-hash-3-0">VILR hash 3. 0</a>
+   </li>
+   <li>
+      <a href="http://www.lookatme.ru/flow/posts/film-radar/61732-charli-chaplin">Чарли Чаплин</a>
+   </li>
+   <li>
+      <a href="http://www.lookatme.ru/flow/posts/science-techno/67216-vzglyad-cherez-lobovoe-steklo-2009-06-18">Взгляд через лобовое стекло</a>
+   </li>
+   <li>
+      <a href="http://www.lookatme.ru/flow/obschestvo/obschestvo/75211-nedelya-s-gusevym">Качественная литература по&nbsp;будням. Коротко</a>
+   </li>
+   <li>
+      <a href="http://www.lookatme.ru/flow/posts/film-radar/81645-klipmeykery-v-bolshom-kino-i-naoborot">Клипмейкеры в большом кино</a>
+   </li>
+   <li>
+      <a href="http://www.lookatme.ru/flow/posts/design-radar/88778-hobbi-moleskine">Хобби-Moleskine</a>
+   </li>
+   <li>
+      <a href="http://www.lookatme.ru/flow/posts/photo-radar/103383-kakoy-kupit-fotoapparat-lyuboy">Какой купить фотоаппарат? Любой</a>
+   </li>
+   <li>
+      <a href="http://www.lookatme.ru/flow/posts/film-radar/107311-avtorskoe-kino-v-rossii-otchet-za-desyatiletie">Авторское кино в России: отчет за десятилетие</a>
+   </li>
+   <li>
+      <a href="http://www.lookatme.ru/mag/film/other_film/111357-30-filmov-zimy">25 фильмов зимы</a>
+   </li>
+   <li>
+      <a href="http://www.lookatme.ru/flow/posts/photo-radar/114647-genialnost-prosta-v-izrecheniyah">Гениальность проста в изречениях</a>
+   </li>
+   <li>
+      <a href="http://www.lookatme.ru/flow/posts/photo-radar/115273-365-dney-aleksa-stoddarda">365 дней Алекса Стоддарда</a>
+   </li>
+   <li>
+      <a href="http://www.lookatme.ru/flow/posts/photo-radar/115637-po-staromu-novye-kadry-ot-stanko-abadic">По старому новые кадры от Stanko Abadic</a>
+   </li>
+   <li>
+      <a href="http://www.lookatme.ru/flow/posts/photo-radar/115713-epic">Epic</a>
+   </li>
+   <li>
+      <a href="http://www.lookatme.ru/flow/posts/photo-radar/115487-fotograf-pentti-sammallahti">Фотограф: Пентти Саммаллахти</a>
+   </li>
+   <li>
+      <a href="http://www.lookatme.ru/mag/art-design/other_art/124589-chasti-tela-obnazhennye-zhenschiny-na-fotografiyah-90h-2000h-godov">Части тела: Обнаженные женщины на фотографиях 1990-2000-х годов</a>
+   </li>
+</ul>
+
+
+
+    
+      <a href="/lookatme-favourites/" class="read-link">Читать</a>
+    
+  </div>
+
+  
+</article>
+
+  
+  <a href="archive.html" class="archive-link">→</a>
+</section>
+
+
+
+  <!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+(function (d, w, c) {
+    (w[c] = w[c] || []).push(function() {
+        try {
+            w.yaCounter21201856 = new Ya.Metrika({id:21201856,
+                    clickmap:true,
+                    trackLinks:true,
+                    accurateTrackBounce:true});
+        } catch(e) { }
+    });
+
+    var n = d.getElementsByTagName("script")[0],
+        s = d.createElement("script"),
+        f = function () { n.parentNode.insertBefore(s, n); };
+    s.type = "text/javascript";
+    s.async = true;
+    s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
+
+    if (w.opera == "[object Opera]") {
+        d.addEventListener("DOMContentLoaded", f, false);
+    } else { f(); }
+})(document, window, "yandex_metrika_callbacks");
+</script>
+<noscript><div><img src="//mc.yandex.ru/watch/21201856" style="position:absolute; left:-9999px;" alt="" /></div>
+</noscript>
+<!-- /Yandex.Metrika counter -->
+
+</body>
+</html>

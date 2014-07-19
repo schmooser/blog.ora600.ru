@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Блог Павла Попова</title>
+  <meta name="title" content="ALTER TABLE SET UNUSED COLUMN">
+  <meta name="description" content="Павел Попов">
+
+  <meta property="og:url" content="/alter-table-set-unused-column/">
+  <meta property="og:title" content="ALTER TABLE SET UNUSED COLUMN">
+  
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Павел Попов">
+  <link rel="icon" type="image/png" href="/public/favicon.ico">
+  <link rel="alternate" type="application/rss+xml" title="Блог Павла Попова" href="/blog-feed.xml">
+  <link href="http://fonts.googleapis.com/css?family=PT+Serif:400,700,400italic|PT+Sans:400,700,400italic|Roboto:100,300|Roboto+Slab:300,400&amp;subset=latin,cyrillic" rel="stylesheet">
+  <link href="/public/css/main.css" rel="stylesheet">
+
+  <!-- CSS -->
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+
+  <!-- Custom -->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+  <link href="http://fotorama.s3.amazonaws.com/4.4.9/fotorama.css" rel="stylesheet">
+  <script src="http://fotorama.s3.amazonaws.com/4.4.9/fotorama.js"></script>
+  <script src="/public/js/dug.js"></script>
+  <script src="/public/js/application.js"></script>
+</head>
+
+<body>
+<header class="row-1">
+  <nav class="title-nav" role="navigation">
+    <h1 class="title-nav-header"><a href="/">Павел Попов</a>
+      <span class="title-nav-slash">/</span>
+      <a href="/">Блог</a>
+    </h1>
+  </nav>
+</header>
+
+  <section class="single-entry row-1" role="main">
+  
+  
+  
+  
+
+
+
+
+<article class="entry">
+  <header class="entry-header">
+    <h1 class="entry-title">
+      <a href="/alter-table-set-unused-column/">ALTER TABLE SET UNUSED COLUMN</a>
+    </h1>
+  </header>
+
+  <div class="entry-body content-area">
+    
+
+    <p>Вместо инструкции <code>ALTER TABLE tablename DROP COLUMN columnname</code> для экономии времени возможно использовать инструкцию <code>ALTER TABLE tablename SET UNUSED COLUMN columnname</code>.</p>
+
+<p>При этом, данные из столбца таблицы физически не удаляются, место на диске не освобождается.  Столбец, который выставили в UNUSED, пропадает из списков столбцов таблицы при использовании <code>DESCRIBE</code>, пропадает из представлений <code>[USER|ALL|DBA]_TAB_COLUMNS</code>, и из списка столбцов при выборке <code>SELECT *</code>. Однако, лимит в 1000 столбцов на одну таблицу включает этот столбец.  Нельзя добавить еще один столбец типа <code>LONG</code>, если есть неиспользуемый столбец типа <code>LONG</code>.  Но можно добавить в таблицу новый столбец с тем же именем.</p>
+
+<p>Посмотреть количество неиспользуемых столбцов можно с помощью представлений <code>[USER|ALL|DBA]_UNUSED_COL_TABS</code>.</p>
+
+<p>Операция <code>ALTER TABLE tablename SET UNUSED COLUMN columnname</code> необратима, т.е. нельзя сделать <code>ALTER TABLE tablename SET USED COLUMN columnname</code>.</p>
+
+<p>Удалить неиспользуемые столбцы из таблицы можно с помощью <code>ALTER TABLE tablename DROP UNUSED COLUMNS</code>.</p>
+
+<p><a href="http://download.oracle.com/docs/cd/B13789_01/server.101/b10759/statements_3001.htm">Раздел официальной документации</a></p>
+
+
+    
+  </div>
+
+  
+  <footer class="entry-footer">
+    <time class="entry-timestamp">09 Mar 2012</time>
+  </footer>
+  
+</article>
+
+</section>
+
+
+
+  <!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+(function (d, w, c) {
+    (w[c] = w[c] || []).push(function() {
+        try {
+            w.yaCounter21201856 = new Ya.Metrika({id:21201856,
+                    clickmap:true,
+                    trackLinks:true,
+                    accurateTrackBounce:true});
+        } catch(e) { }
+    });
+
+    var n = d.getElementsByTagName("script")[0],
+        s = d.createElement("script"),
+        f = function () { n.parentNode.insertBefore(s, n); };
+    s.type = "text/javascript";
+    s.async = true;
+    s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
+
+    if (w.opera == "[object Opera]") {
+        d.addEventListener("DOMContentLoaded", f, false);
+    } else { f(); }
+})(document, window, "yandex_metrika_callbacks");
+</script>
+<noscript><div><img src="//mc.yandex.ru/watch/21201856" style="position:absolute; left:-9999px;" alt="" /></div>
+</noscript>
+<!-- /Yandex.Metrika counter -->
+
+</body>
+</html>

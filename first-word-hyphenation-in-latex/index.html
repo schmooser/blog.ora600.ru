@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Блог Павла Попова</title>
+  <meta name="title" content="Перенос первого слова в параграфе в LaTeX">
+  <meta name="description" content="Павел Попов">
+
+  <meta property="og:url" content="/first-word-hyphenation-in-latex/">
+  <meta property="og:title" content="Перенос первого слова в параграфе в LaTeX">
+  
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Павел Попов">
+  <link rel="icon" type="image/png" href="/public/favicon.ico">
+  <link rel="alternate" type="application/rss+xml" title="Блог Павла Попова" href="/blog-feed.xml">
+  <link href="http://fonts.googleapis.com/css?family=PT+Serif:400,700,400italic|PT+Sans:400,700,400italic|Roboto:100,300|Roboto+Slab:300,400&amp;subset=latin,cyrillic" rel="stylesheet">
+  <link href="/public/css/main.css" rel="stylesheet">
+
+  <!-- CSS -->
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+
+  <!-- Custom -->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+  <link href="http://fotorama.s3.amazonaws.com/4.4.9/fotorama.css" rel="stylesheet">
+  <script src="http://fotorama.s3.amazonaws.com/4.4.9/fotorama.js"></script>
+  <script src="/public/js/dug.js"></script>
+  <script src="/public/js/application.js"></script>
+</head>
+
+<body>
+<header class="row-1">
+  <nav class="title-nav" role="navigation">
+    <h1 class="title-nav-header"><a href="/">Павел Попов</a>
+      <span class="title-nav-slash">/</span>
+      <a href="/">Блог</a>
+    </h1>
+  </nav>
+</header>
+
+  <section class="single-entry row-1" role="main">
+  
+  
+  
+  
+
+
+
+
+<article class="entry">
+  <header class="entry-header">
+    <h1 class="entry-title">
+      <a href="/first-word-hyphenation-in-latex/">Перенос первого слова в параграфе в LaTeX</a>
+    </h1>
+  </header>
+
+  <div class="entry-body content-area">
+    
+
+    <p>При верстке таблиц в LaTeX может возникнуть еще одна проблема – если у вас в ячейке одно слово, то LaTeX не будет его переносить, даже если слово длинное и не умещается по ширине в ячейку типа <code>p</code>. Все из-за того, что сложность алгоритма расстановки переносов в случае допущений, в числе которых и отсутствие необходимости переносить первое слово, падает с О(n<sup>2</sup>) до O(n). Подробности <a href="https://en.wikipedia.org/wiki/TeX#Hyphenation_and_justification">в английской Википедии</a>.</p>
+
+<p>Но TeX можно обмануть! Нужно лишь первым символом параграфа сделать неразрывный пробел нулевой длины – <code>\hspace{0pt}</code>. Примеры использования: <a href="http://sigstp.blogspot.ru/2010/09/latex-hyphenate-single-long-words-in.html">раз</a>, <a href="http://tex.stackexchange.com/questions/67762/hyphenation-rule-not-acted-upon">два</a>.</p>
+
+<p>Вставлять каждый раз в нужное место код очень неудобно, особенно если контент приходит из вне, поэтому можно сделать это автоматически. После достаточно долгих поисков я нашел <a href="http://tex.stackexchange.com/questions/78127/how-does-latex-make-line-breaking-for-word-that-can-not-fit-in-cell">вот этот совет</a> на TeX StackExchange – нужно в опциях табличного окружения воспользоваться синтаксисом <code>&gt;{...}</code> из пакета <code>array</code>, например так:</p>
+
+<pre><code>...
+\usepackage{array}
+...
+\begin{longtable}{|&gt;{\hspace{0pt}}p{0.1\textwidth} | p{0.3\textwidth}|} \hline
+...
+</code></pre>
+
+<p>После этого все сразу станет гораздо красивее.</p>
+
+
+
+    
+  </div>
+
+  
+  <footer class="entry-footer">
+    <time class="entry-timestamp">22 Oct 2013</time>
+  </footer>
+  
+</article>
+
+</section>
+
+
+
+  <!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+(function (d, w, c) {
+    (w[c] = w[c] || []).push(function() {
+        try {
+            w.yaCounter21201856 = new Ya.Metrika({id:21201856,
+                    clickmap:true,
+                    trackLinks:true,
+                    accurateTrackBounce:true});
+        } catch(e) { }
+    });
+
+    var n = d.getElementsByTagName("script")[0],
+        s = d.createElement("script"),
+        f = function () { n.parentNode.insertBefore(s, n); };
+    s.type = "text/javascript";
+    s.async = true;
+    s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
+
+    if (w.opera == "[object Opera]") {
+        d.addEventListener("DOMContentLoaded", f, false);
+    } else { f(); }
+})(document, window, "yandex_metrika_callbacks");
+</script>
+<noscript><div><img src="//mc.yandex.ru/watch/21201856" style="position:absolute; left:-9999px;" alt="" /></div>
+</noscript>
+<!-- /Yandex.Metrika counter -->
+
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Блог Павла Попова</title>
+  <meta name="title" content="Cheatsheet по git">
+  <meta name="description" content="Павел Попов">
+
+  <meta property="og:url" content="/git-cheatsheet/">
+  <meta property="og:title" content="Cheatsheet по git">
+  
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Павел Попов">
+  <link rel="icon" type="image/png" href="/public/favicon.ico">
+  <link rel="alternate" type="application/rss+xml" title="Блог Павла Попова" href="/blog-feed.xml">
+  <link href="http://fonts.googleapis.com/css?family=PT+Serif:400,700,400italic|PT+Sans:400,700,400italic|Roboto:100,300|Roboto+Slab:300,400&amp;subset=latin,cyrillic" rel="stylesheet">
+  <link href="/public/css/main.css" rel="stylesheet">
+
+  <!-- CSS -->
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+
+  <!-- Custom -->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+  <link href="http://fotorama.s3.amazonaws.com/4.4.9/fotorama.css" rel="stylesheet">
+  <script src="http://fotorama.s3.amazonaws.com/4.4.9/fotorama.js"></script>
+  <script src="/public/js/dug.js"></script>
+  <script src="/public/js/application.js"></script>
+</head>
+
+<body>
+<header class="row-1">
+  <nav class="title-nav" role="navigation">
+    <h1 class="title-nav-header"><a href="/">Павел Попов</a>
+      <span class="title-nav-slash">/</span>
+      <a href="/">Блог</a>
+    </h1>
+  </nav>
+</header>
+
+  <section class="single-entry row-1" role="main">
+  
+  
+  
+  
+
+
+
+
+<article class="entry">
+  <header class="entry-header">
+    <h1 class="entry-title">
+      <a href="/git-cheatsheet/">Cheatsheet по git</a>
+    </h1>
+  </header>
+
+  <div class="entry-body content-area">
+    
+
+    <p>Буду собирать здесь часто выполняемые действия по гиту, этакий cheatsheet.</p>
+
+<p>Полезные ссылки по гиту, которые я сохранил, можно посмотреть на
+<a href="https://pinboard.in/u:schmooser/t:git/">pinboard</a>.</p>
+
+<ul>
+  <li><code>git checkout -b test origin/test</code> – получаем удаленный бранч origin/test в  локальный test</li>
+  <li><code>git push origin :test</code> – удаляем удаленный бранч test</li>
+  <li><code>git diff --name-only [SHA1|TAG1] [SHA2|TAG2]</code> – посмотреть измененные файлы между коммитами</li>
+  <li><code>git show [SHA|TAG]:filename</code> – показывает файл каким он был в указанном коммите</li>
+  <li><code>git branch -m oldname newname</code> – переименовываем бранч oldname в newname</li>
+  <li><code>git merge -s recursive -X ours</code> – мерж со стратегией “при совпадении брать  файлы из текущей ветки”. Нужно предварительно чекаутнуть ту ветку, чьи файлы нужно сохранить. Не путать со стратегией <code>git merge -s ours</code>. Эта просто берет текущую ветку за основу, все измененные и новые файлы из соединяемых веток
+отбрасываются. <a href="https://www.kernel.org/pub/software/scm/git/docs/git-merge.html">Документация по merge</a></li>
+  <li><code>git add -u</code> – добавляет всю ветку в стейджинговую область для коммита.  Удобно, когда удаляешь много файлов и не хочется вручную писать для каждого <code>git rm &lt;filename&gt;</code></li>
+  <li>
+    <p><code>^</code> и <code>~</code> нотация – способ обратиться к родительскому коммиту. Например, <code>HEAD~</code> будет родительским коммитом. Между <code>^</code> и <code>~</code> есть разница: <code>~</code> это линейный уровень по родителям (первый родитель, первый родитель первого родителя, первый родитель первого родителя первого родителя и т.д.), <code>^</code> – способ обратиться ко второму родителю (у коммита может быть несколько предков). Более подробно описано у <a href="http://paulboxley.com/blog/2011/06/git-caret-and-tilde">Paul Boxley</a> в блоге.</p>
+
+    <p>Например, если после добавления в стейджинг файлов, хочется посмотреть diff, то просто <code>git diff filename</code> не поможет, нужно пользоваться <code>git diff HEAD~ filename</code>.</p>
+  </li>
+</ul>
+
+
+
+    
+  </div>
+
+  
+  <footer class="entry-footer">
+    <time class="entry-timestamp">28 Feb 2013</time>
+  </footer>
+  
+</article>
+
+</section>
+
+
+
+  <!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+(function (d, w, c) {
+    (w[c] = w[c] || []).push(function() {
+        try {
+            w.yaCounter21201856 = new Ya.Metrika({id:21201856,
+                    clickmap:true,
+                    trackLinks:true,
+                    accurateTrackBounce:true});
+        } catch(e) { }
+    });
+
+    var n = d.getElementsByTagName("script")[0],
+        s = d.createElement("script"),
+        f = function () { n.parentNode.insertBefore(s, n); };
+    s.type = "text/javascript";
+    s.async = true;
+    s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
+
+    if (w.opera == "[object Opera]") {
+        d.addEventListener("DOMContentLoaded", f, false);
+    } else { f(); }
+})(document, window, "yandex_metrika_callbacks");
+</script>
+<noscript><div><img src="//mc.yandex.ru/watch/21201856" style="position:absolute; left:-9999px;" alt="" /></div>
+</noscript>
+<!-- /Yandex.Metrika counter -->
+
+</body>
+</html>

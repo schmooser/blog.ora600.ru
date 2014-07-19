@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Блог Павла Попова</title>
+  <meta name="title" content="Ledger – персональная бухгалтерия">
+  <meta name="description" content="Павел Попов">
+
+  <meta property="og:url" content="/ledger/">
+  <meta property="og:title" content="Ledger – персональная бухгалтерия">
+  
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Павел Попов">
+  <link rel="icon" type="image/png" href="/public/favicon.ico">
+  <link rel="alternate" type="application/rss+xml" title="Блог Павла Попова" href="/blog-feed.xml">
+  <link href="http://fonts.googleapis.com/css?family=PT+Serif:400,700,400italic|PT+Sans:400,700,400italic|Roboto:100,300|Roboto+Slab:300,400&amp;subset=latin,cyrillic" rel="stylesheet">
+  <link href="/public/css/main.css" rel="stylesheet">
+
+  <!-- CSS -->
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+
+  <!-- Custom -->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+  <link href="http://fotorama.s3.amazonaws.com/4.4.9/fotorama.css" rel="stylesheet">
+  <script src="http://fotorama.s3.amazonaws.com/4.4.9/fotorama.js"></script>
+  <script src="/public/js/dug.js"></script>
+  <script src="/public/js/application.js"></script>
+</head>
+
+<body>
+<header class="row-1">
+  <nav class="title-nav" role="navigation">
+    <h1 class="title-nav-header"><a href="/">Павел Попов</a>
+      <span class="title-nav-slash">/</span>
+      <a href="/">Блог</a>
+    </h1>
+  </nav>
+</header>
+
+  <section class="single-entry row-1" role="main">
+  
+  
+  
+  
+
+
+
+
+<article class="entry">
+  <header class="entry-header">
+    <h1 class="entry-title">
+      <a href="/ledger/">Ledger – персональная бухгалтерия</a>
+    </h1>
+  </header>
+
+  <div class="entry-body content-area">
+    
+
+    <p>Я начал вести домашнюю бухгалтерию с лета 2010 года. В то время мои доходы и
+расходы были практически одинаковы, и для больших трат мне приходилось копить.
+Домашняя бухгалтерия помогает понять, на что тратятся деньги и какой текущий
+остаток. Когда у вас десяток счетов в нескольких банках, да это еще и в разных
+валютах, понять сколько денег есть довольно тяжело.</p>
+
+<!--more-->
+
+<p>Начав поиски системы, в которой можно вести домашнюю бухгалтерию, я сначала
+наткнулся на сервис <a href="http://www.4konverta.com">“Четыре конверта”</a>. Там выстроена целая система для
+того, чтобы меньше тратить, а больше экономить. Попользовавшись пару месяцев я
+ее бросил. Мне не нравился ни дизайн ни подход. К тому же у системы не было
+никакого интересного функционала, например планирование бюджета, сравнение
+периодов, графики и так далее.</p>
+
+<p>Следующая система, которой я пользовался долгое время (4 года получается) —
+<a href="http://zenmoney.ru">ZenMoney</a>. В этой системе есть в принципе все, что мне нужно — отличная
+поддержка нескольких счетов, переводы, планируемые транзакции, бюджет. Критичная
+проблема для меня всего одна — частые ошибки сервиса, когда начинает
+расходиться баланс или внезапно возникают давно покрытые долги. В таких случаях
+приходится писать в саппорт сервиса, и если раньше они достаточно оперативно
+исправляли ошибки, то начиная с 2014-го года они перестали это делать, в
+результате у меня на странице “Обзор” долгов нет, а на странице транзакций висят
+записи о долгах. После таких ошибок желание пользоваться сервисом пропало и я
+начал задумываться о написании своей собственной системы видения домашней
+бухгалтерии, благо что многие ведут ее в таблицах в Google Docs.</p>
+
+<p>И тут я совершенно случайно наткнулся на <a href="http://ledger-cli.org">ledger</a>. Тема всплыла на HackerNews
+и оказалось, что это очень продвинутая система, работающая в командной строке с
+журналом транзакций. При этом журнал транзакций это обычный текстовый файл в
+human-readable формате.</p>
+
+<p>Вот пример транзакции:</p>
+
+<pre><code>2014/05/12 комментарий
+    Expenses:Проезд:Метро  1200
+    Assets:Кошелек
+</code></pre>
+
+<p>В транзакции указано, что перевели 1200 чего-то (в моем случае – рублей) на
+счет Expenses:Проезд:Метро со счета Assets:Кошелек. На самом деле, у
+Assets:Кошелек стоит -1200, но ledger понимает это в неявном виде. Двоеточие
+является разделителем иерархии счетов.</p>
+
+<p>Сам ledger в журнал транзакций никаких изменений не вносит, его задача –
+прочитать файл, построить баланс по всем счетам и вывести отчет пользователю.</p>
+
+<p>Ledger это система видения бухгалтерии по принципам бухгалтерского учета, т.е. с
+двойной записью. Основой такого учета являются транзакции (или проводки в
+банковских терминах), переводящие деньги с одного счета на другой. При этом
+деньги ни откуда не появляются и никуда не исчезают. Все счета поделены на 5
+категорий — Expenses (расходы), Assets (активы), Liabilities (обязательства –
+кредиты, например), Income (доходы) и Equity (капитал).</p>
+
+<p>В начале создаем запись с начальным остатком, например такую</p>
+
+<pre><code>; OPENING
+2014/05/01 * Opening balances
+    Liabilities:Alfa Bank:кредитная карта     -12,345.0
+    Liabilities:HomeCredit:кредитная карта    -44,422.0
+    Assets:Alfa Bank:текущий счет              124,344.10
+    Assets:Alfa Bank:Блиц-доход                39,500.05
+    Assets:Alfa Bank:Блиц-доход              € 1,500.12
+    Assets:Alfa Bank:Блиц-доход              $ 8,124.44
+    Assets:Alfa Bank:текущий счет            € 400.44
+    Assets:HomeCredit:вклад                    11180.66
+    Equity:Opening Balances
+</code></pre>
+
+<p>ledger сам понимает, что валюты разные и учитывает их отдельно. Результатом
+работы команды <code>ledger -f data.journal balance</code> будет:</p>
+
+<pre><code>          175,024.81
+        EUR 1,900.56
+        USD 8,124.44  Assets
+          163,844.15
+        EUR 1,900.56
+        USD 8,124.44    Alfa Bank
+          124,344.10
+          EUR 400.44      current
+           39,500.05
+        EUR 1,500.12
+        USD 8,124.44      deposit
+           11,180.66    HomeCredit:deposit
+         -118,257.81
+       EUR -1,900.56
+       USD -8,124.44  Equity:Opening Balances
+          -56,767.00  Liabilities
+          -12,345.00    Alfa Bank:credit card
+          -44,422.00    HomeCredit:credit card
+--------------------
+                   0
+</code></pre>
+
+<p>Видно, что счета, разделенные <code>:</code> ledger понимает как иерархические и строит по
+ним дерево. Баланс сходится в 0. Можно, естесственно, выводить только нужные
+категории. Например, чтобы оценить текущий баланс нужно вывести категории Assets
+и Liabilities:</p>
+
+<pre><code>C:\Users\rbd\ledger&gt;hledger -f data.journal balance Assets Liabilities
+         175,024.81
+       EUR 1,900.56
+       USD 8,124.44  Assets
+         163,844.15
+       EUR 1,900.56
+       USD 8,124.44    Alfa Bank
+         124,344.10
+         EUR 400.44      current
+          39,500.05
+       EUR 1,500.12
+       USD 8,124.44      deposit
+          11,180.66    HomeCredit:deposit
+         -56,767.00  Liabilities
+         -12,345.00    Alfa Bank:credit card
+         -44,422.00    HomeCredit:credit card
+-------------------
+         118,257.81
+       EUR 1,900.56
+       USD 8,124.44
+</code></pre>
+
+<p>Помимо самого ledger есть много проектов, вдохновленных оригинальным
+приложением. Самым значительным можно считать <a href="http://hledger.org">hledger</a>, написанный на
+Haskell.  Hledger совместим по формату журнала с ledger, но не поддерживает
+некоторый синтаксис. Различия можно почитать на странице проекта. Для
+большинства режимов использования они идентичны. В комплекте с hledger
+поставляется компонент hledger-web, позволяющий поднять веб-сервер со страницей
+управления журналом и получения различной аналитики и графики из браузера.</p>
+
+<p>Я пишу этот текст под Windows, под которой и ledger и hledger не могут
+отображать юникод. Hledger даже отказывается понимать русский текст в журнале,
+поэтому в примере выше я писал все на английском. Под OSX и Linux все в порядке,
+можно использовать юникодные символы, включая новомодный знак рубля.</p>
+
+<p>Самая большая проблема при работе с ledger – ввод данных. Мне, конечно, очень
+удобно вводить данные прямо в журнал используя vim (для которого есть
+соответствующие <a href="https://github.com/ledger/vim-ledger">плагины</a>), но иногда хочется внести данные прямо на месте,
+например с iPhone. Для такого случая я написал простейшую <a href="http://ledger.ora600.ru">форму</a> ввода
+транзакции. Теперь я ввожу данные прямо с телефона или из любого места. Надо
+будет дописать выбор расходного и доходного счета, но я пока не до конца вижу
+как это должно выглядеть.</p>
+
+
+
+    
+  </div>
+
+  
+  <footer class="entry-footer">
+    <time class="entry-timestamp">12 Apr 2014</time>
+  </footer>
+  
+</article>
+
+</section>
+
+
+
+  <!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+(function (d, w, c) {
+    (w[c] = w[c] || []).push(function() {
+        try {
+            w.yaCounter21201856 = new Ya.Metrika({id:21201856,
+                    clickmap:true,
+                    trackLinks:true,
+                    accurateTrackBounce:true});
+        } catch(e) { }
+    });
+
+    var n = d.getElementsByTagName("script")[0],
+        s = d.createElement("script"),
+        f = function () { n.parentNode.insertBefore(s, n); };
+    s.type = "text/javascript";
+    s.async = true;
+    s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
+
+    if (w.opera == "[object Opera]") {
+        d.addEventListener("DOMContentLoaded", f, false);
+    } else { f(); }
+})(document, window, "yandex_metrika_callbacks");
+</script>
+<noscript><div><img src="//mc.yandex.ru/watch/21201856" style="position:absolute; left:-9999px;" alt="" /></div>
+</noscript>
+<!-- /Yandex.Metrika counter -->
+
+</body>
+</html>

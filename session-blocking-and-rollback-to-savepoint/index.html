@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Блог Павла Попова</title>
+  <meta name="title" content="Блокировка сессий и откат к savepoint">
+  <meta name="description" content="Павел Попов">
+
+  <meta property="og:url" content="/session-blocking-and-rollback-to-savepoint/">
+  <meta property="og:title" content="Блокировка сессий и откат к savepoint">
+  
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Павел Попов">
+  <link rel="icon" type="image/png" href="/public/favicon.ico">
+  <link rel="alternate" type="application/rss+xml" title="Блог Павла Попова" href="/blog-feed.xml">
+  <link href="http://fonts.googleapis.com/css?family=PT+Serif:400,700,400italic|PT+Sans:400,700,400italic|Roboto:100,300|Roboto+Slab:300,400&amp;subset=latin,cyrillic" rel="stylesheet">
+  <link href="/public/css/main.css" rel="stylesheet">
+
+  <!-- CSS -->
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+
+  <!-- Custom -->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+  <link href="http://fotorama.s3.amazonaws.com/4.4.9/fotorama.css" rel="stylesheet">
+  <script src="http://fotorama.s3.amazonaws.com/4.4.9/fotorama.js"></script>
+  <script src="/public/js/dug.js"></script>
+  <script src="/public/js/application.js"></script>
+</head>
+
+<body>
+<header class="row-1">
+  <nav class="title-nav" role="navigation">
+    <h1 class="title-nav-header"><a href="/">Павел Попов</a>
+      <span class="title-nav-slash">/</span>
+      <a href="/">Блог</a>
+    </h1>
+  </nav>
+</header>
+
+  <section class="single-entry row-1" role="main">
+  
+  
+  
+  
+
+
+
+
+<article class="entry">
+  <header class="entry-header">
+    <h1 class="entry-title">
+      <a href="/session-blocking-and-rollback-to-savepoint/">Блокировка сессий и откат к savepoint</a>
+    </h1>
+  </header>
+
+  <div class="entry-body content-area">
+    
+
+    <p><a href="http://plsqlchallenge.com/pls/apex/f?p=10000:651:585965286409691::NO:651:P651_COMP_EVENT_ID,P651_QUIZ_ID:10840,11619&amp;cs=1581E3AEBF2AA49892C68A59796A406B0">Интересный куиз</a> был вчера в PL/SQL Challenge, в нем обсуждалась взаимная блокировка сессий и откат к savepoint. </p>
+
+<p>Я думал, что если одна сессия заблокировала строку и в это время другая сессия пытается эту строку изменить, то 2-я сессия будет заблокирована до тех пор, пока первая сессия на совершит commit или rollback. Но про rollback to savepoint я как-то не задумывался. Я полага, если идет rollback to savepoint и 1-я сессия отпускает строку, то 2-я сессия разблокируется и сделает свое дело, оказался неправ – блокированная сессия ждет  освобождения ресурса (обновляемой строки), а завершения блокирующей транзакции (commit/rollback). Но, если после rollback to savepoint в 1-й сессии запустить 3-ю сессию, изменяющую ту же строку, то она уже не будет заблокирована ни 1-й сессий ни 2-й сессией (которая блокирована 1-й) и выполнится без ожиданий. </p>
+
+<p>Век живи, век учись. </p>
+
+
+    
+  </div>
+
+  
+  <footer class="entry-footer">
+    <time class="entry-timestamp">09 Mar 2012</time>
+  </footer>
+  
+</article>
+
+</section>
+
+
+
+  <!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+(function (d, w, c) {
+    (w[c] = w[c] || []).push(function() {
+        try {
+            w.yaCounter21201856 = new Ya.Metrika({id:21201856,
+                    clickmap:true,
+                    trackLinks:true,
+                    accurateTrackBounce:true});
+        } catch(e) { }
+    });
+
+    var n = d.getElementsByTagName("script")[0],
+        s = d.createElement("script"),
+        f = function () { n.parentNode.insertBefore(s, n); };
+    s.type = "text/javascript";
+    s.async = true;
+    s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
+
+    if (w.opera == "[object Opera]") {
+        d.addEventListener("DOMContentLoaded", f, false);
+    } else { f(); }
+})(document, window, "yandex_metrika_callbacks");
+</script>
+<noscript><div><img src="//mc.yandex.ru/watch/21201856" style="position:absolute; left:-9999px;" alt="" /></div>
+</noscript>
+<!-- /Yandex.Metrika counter -->
+
+</body>
+</html>

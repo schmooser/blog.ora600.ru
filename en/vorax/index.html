@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pavel Popov's Blog</title>
+  <meta name="title" content="Using Vorax in OS X">
+  <meta name="description" content="Pavel Popov">
+
+  <meta property="og:url" content="/vorax/">
+  <meta property="og:title" content="Using Vorax in OS X">
+  
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Pavel Popov">
+  <link rel="icon" type="image/png" href="/en/public/favicon.ico">
+  <link rel="alternate" type="application/rss+xml" title="Pavel Popov's Blog" href="/blog-feed.xml">
+  <link href="http://fonts.googleapis.com/css?family=PT+Serif:400,700,400italic|PT+Sans:400,700,400italic|Roboto:100,300|Roboto+Slab:300,400&amp;subset=latin,cyrillic" rel="stylesheet">
+  <link href="/en/public/css/main.css" rel="stylesheet">
+
+  <!-- CSS -->
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/en/public/apple-touch-icon-precomposed.png">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+
+  <!-- Custom -->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+  <link href="http://fotorama.s3.amazonaws.com/4.4.9/fotorama.css" rel="stylesheet">
+  <script src="http://fotorama.s3.amazonaws.com/4.4.9/fotorama.js"></script>
+  <script src="/en/public/js/dug.js"></script>
+  <script src="/en/public/js/application.js"></script>
+</head>
+
+<body>
+<header class="row-1">
+  <nav class="title-nav" role="navigation">
+    <h1 class="title-nav-header"><a href="/">Pavel Popov</a>
+      <span class="title-nav-slash">/</span>
+      <a href="/en/">Blog</a>
+    </h1>
+  </nav>
+</header>
+
+  <section class="single-entry row-1" role="main">
+  
+  
+  
+  
+
+
+
+
+<article class="entry">
+  <header class="entry-header">
+    <h1 class="entry-title">
+      <a href="/en/vorax/">Using Vorax in OS X</a>
+    </h1>
+  </header>
+
+  <div class="entry-body content-area">
+    
+
+    <p><a href="http://vorax-ide.blogspot.com">Vorax</a> is a plugin for vim which turns it to full-featured Oracle IDE
+on your fingertips. It merges SQL*Plus functionality inside vim in native way.
+Now version 4 is under active development.</p>
+
+<p>But it’s kind of geeky to use it and install. I used to use it on Windows
+environment and it was kind of pain. But Windows has dozen of good Oracle
+IDE’s, like TOAD or PL/SQL Developer. Now I’m on OS X and the only option is
+Oracle’s SQL Developer which is free but has terrible UI and bad performance.
+That’s why I decided to try Vorax again.</p>
+
+<p>After about a month of wars with environment, different ruby versions, and so
+on, I finally made all work and will cover what I did here.</p>
+
+<p>First of all, I tried to use <a href="https://mxcl.github.io/homebrew/">homebrew</a> as OS X package manager.
+It’s very simple and useful. Go use it.</p>
+
+<p>I also switched from bash to zsh. At the first time I used <a href="https://github.com/robbyrussell/oh-my-zsh">oh-my-zsh</a>
+as the set of extensions. Then I switched to <a href="https://github.com/skwp/dotfiles">yadr</a> which brings a lot of
+other staff, such as dozens of vim plugins, config files for git, hg, svn, tons
+of shortcuts and so on. After using it about for about a three weeks I decided
+that I want control of myself on whole this mess and deleted almost all
+dot-started files and dirs from my HOME. And started a new life. I installed
+oh-my-zsh again and tweaked it. I also put all my dotfiles into a separate
+directory and put it on <a href="https://github.com/schmooser/rbddotfiles">GitHub</a>.</p>
+
+<p>All this on Vorax is also worked on Windows. See
+[here][install-vorax-on-windows] for the installation
+process of Vorax on Windows.</p>
+
+<h2 id="vorax">Vorax</h2>
+
+<p>There is an issue with Vorax and MacVim installed via homebrew. Such MacVim is
+compiled with system Ruby, which is 1.8 and is not supported by Vorax. I have
+RVM with Ruby 1.9.3 which is ok, but homebrew’s MacVim doesn’t see it. That’s a
+known issue and the way to go around it is to compile MacVim manually. I did it
+as described in <a href="https://github.com/b4winckler/macvim/wiki/Building">manual</a> and now it works with Vorax.</p>
+
+<p>I also made shell script <a href="https://github.com/schmooser/rbddotfiles/blob/master/vorax.sh"><code>vorax.sh</code></a> (and aliased it with <code>vorax</code>)
+to start MacVim with Vorax plugin loaded because I don’t always need Oracle and
+Vorax and there are some problems in OS X with <code>DYLD_LIBRARY_PATH</code>. See
+<a href="/sqlplus-on-os-x/">this post</a> for details.</p>
+
+<p>Here I will explain tips and tricks to work with Vorax. I use
+<a href="https://github.com/talek/vorax4-beta">Vorax4-beta</a> and it doesn’t have all features for now, so I use
+only those, which present.</p>
+
+<h3 id="basic-usage">Basic usage</h3>
+
+<p>In sql-buffer (file with sql extension) Vorax determines command and send them
+to SQL*Plus. <code>,e</code> executes something under cursor. It can be SELECT statement,
+DML or DDL statement, PL/SQL block or SQL*Plus command.</p>
+
+<h3 id="using-omnicompletion">Using omnicompletion</h3>
+
+<p>To use omnicompletion use <code>&lt;C-x&gt;&lt;C-o&gt;</code>. If it will find something to find, it’ll
+show you a dialog to complete. Look at screenshot:</p>
+
+<p><img src="/assets/vorax/omnicompletion.png" alt="Vorax screenshot" /></p>
+
+<h3 id="explain-plan">Explain Plan</h3>
+
+<p>To explain execution plan I do the following:</p>
+
+<ol>
+  <li>Append <code>explain plan for</code> before SQL statement and execute it. The result is <code>Explained</code>.</li>
+  <li>Do <code>select * from table(dbms_xplan.display);</code>. The output is the desired plan.</li>
+</ol>
+
+<h3 id="vorax-configuration">Vorax configuration</h3>
+
+<p>I use this Vorax-specified settings in my <code>.vimrc</code>:</p>
+
+<ul>
+  <li><code>let g:vorax_output_window_default_funnel = 2 " This sets up Vorax to use PAGEZIP default output window style</code></li>
+  <li><code>set omnifunc=syntaxcomplete#Complete " Enables autocompletion</code></li>
+</ul>
+
+<hr />
+
+<p>To be continued…</p>
+
+
+
+    
+  </div>
+
+  
+  <footer class="entry-footer">
+    <time class="entry-timestamp">16 Jun 2013</time>
+  </footer>
+  
+</article>
+
+</section>
+
+
+
+  <!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+(function (d, w, c) {
+    (w[c] = w[c] || []).push(function() {
+        try {
+            w.yaCounter21201856 = new Ya.Metrika({id:21201856,
+                    clickmap:true,
+                    trackLinks:true,
+                    accurateTrackBounce:true});
+        } catch(e) { }
+    });
+
+    var n = d.getElementsByTagName("script")[0],
+        s = d.createElement("script"),
+        f = function () { n.parentNode.insertBefore(s, n); };
+    s.type = "text/javascript";
+    s.async = true;
+    s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
+
+    if (w.opera == "[object Opera]") {
+        d.addEventListener("DOMContentLoaded", f, false);
+    } else { f(); }
+})(document, window, "yandex_metrika_callbacks");
+</script>
+<noscript><div><img src="//mc.yandex.ru/watch/21201856" style="position:absolute; left:-9999px;" alt="" /></div>
+</noscript>
+<!-- /Yandex.Metrika counter -->
+
+</body>
+</html>

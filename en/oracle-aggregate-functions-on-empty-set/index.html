@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pavel Popov's Blog</title>
+  <meta name="title" content="Aggregate functions in Oracle on empty data set">
+  <meta name="description" content="Pavel Popov">
+
+  <meta property="og:url" content="/oracle-aggregate-functions-on-empty-set/">
+  <meta property="og:title" content="Aggregate functions in Oracle on empty data set">
+  
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Pavel Popov">
+  <link rel="icon" type="image/png" href="/en/public/favicon.ico">
+  <link rel="alternate" type="application/rss+xml" title="Pavel Popov's Blog" href="/blog-feed.xml">
+  <link href="http://fonts.googleapis.com/css?family=PT+Serif:400,700,400italic|PT+Sans:400,700,400italic|Roboto:100,300|Roboto+Slab:300,400&amp;subset=latin,cyrillic" rel="stylesheet">
+  <link href="/en/public/css/main.css" rel="stylesheet">
+
+  <!-- CSS -->
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/en/public/apple-touch-icon-precomposed.png">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+
+  <!-- Custom -->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+  <link href="http://fotorama.s3.amazonaws.com/4.4.9/fotorama.css" rel="stylesheet">
+  <script src="http://fotorama.s3.amazonaws.com/4.4.9/fotorama.js"></script>
+  <script src="/en/public/js/dug.js"></script>
+  <script src="/en/public/js/application.js"></script>
+</head>
+
+<body>
+<header class="row-1">
+  <nav class="title-nav" role="navigation">
+    <h1 class="title-nav-header"><a href="/">Pavel Popov</a>
+      <span class="title-nav-slash">/</span>
+      <a href="/en/">Blog</a>
+    </h1>
+  </nav>
+</header>
+
+  <section class="single-entry row-1" role="main">
+  
+  
+  
+  
+
+
+
+
+<article class="entry">
+  <header class="entry-header">
+    <h1 class="entry-title">
+      <a href="/en/oracle-aggregate-functions-on-empty-set/">Aggregate functions in Oracle on empty data set</a>
+    </h1>
+  </header>
+
+  <div class="entry-body content-area">
+    
+
+    <p>I found an interesting thing about aggregate functions in Oracle. I knew then
+when you invoke <code>count(*)</code> you’ll always get rows - at least one - even if
+result set is empty (no rows are returned). In this case you’ll get 0 rows in
+count, it’s expected and easy-to-think-of behaviour.</p>
+
+<p>But I thought that when you invoke other than <code>count(*)</code> aggregate function e.g.
+<code>max(1)</code> on empty result set then you’ll get no rows at all. I was wrong and in
+this case you’ll get one row with NULL as it’s result. I think it’s the ISO
+standard that says that when you apply aggregate function there can’t be empty
+set in result.</p>
+
+<p>Examples:</p>
+
+<pre><code>SQL&gt; SELECT count(*) FROM dual WHERE 1=2;
+
+COUNT(*)
+--------
+       0
+
+SQL&gt; SELECT max(1) FROM dual WHERE 1=2;
+
+MAX(1)
+------
+       &lt;- Here is 1 row with NULL value
+</code></pre>
+
+
+
+    
+  </div>
+
+  
+  <footer class="entry-footer">
+    <time class="entry-timestamp">01 Oct 2013</time>
+  </footer>
+  
+</article>
+
+</section>
+
+
+
+  <!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+(function (d, w, c) {
+    (w[c] = w[c] || []).push(function() {
+        try {
+            w.yaCounter21201856 = new Ya.Metrika({id:21201856,
+                    clickmap:true,
+                    trackLinks:true,
+                    accurateTrackBounce:true});
+        } catch(e) { }
+    });
+
+    var n = d.getElementsByTagName("script")[0],
+        s = d.createElement("script"),
+        f = function () { n.parentNode.insertBefore(s, n); };
+    s.type = "text/javascript";
+    s.async = true;
+    s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
+
+    if (w.opera == "[object Opera]") {
+        d.addEventListener("DOMContentLoaded", f, false);
+    } else { f(); }
+})(document, window, "yandex_metrika_callbacks");
+</script>
+<noscript><div><img src="//mc.yandex.ru/watch/21201856" style="position:absolute; left:-9999px;" alt="" /></div>
+</noscript>
+<!-- /Yandex.Metrika counter -->
+
+</body>
+</html>

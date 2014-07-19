@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Блог Павла Попова</title>
+  <meta name="title" content="Запуск HackerNews на своем сайте">
+  <meta name="description" content="Павел Попов">
+
+  <meta property="og:url" content="/running-hackernews-on-your-domain/">
+  <meta property="og:title" content="Запуск HackerNews на своем сайте">
+  
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Павел Попов">
+  <link rel="icon" type="image/png" href="/public/favicon.ico">
+  <link rel="alternate" type="application/rss+xml" title="Блог Павла Попова" href="/blog-feed.xml">
+  <link href="http://fonts.googleapis.com/css?family=PT+Serif:400,700,400italic|PT+Sans:400,700,400italic|Roboto:100,300|Roboto+Slab:300,400&amp;subset=latin,cyrillic" rel="stylesheet">
+  <link href="/public/css/main.css" rel="stylesheet">
+
+  <!-- CSS -->
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+
+  <!-- Custom -->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+  <link href="http://fotorama.s3.amazonaws.com/4.4.9/fotorama.css" rel="stylesheet">
+  <script src="http://fotorama.s3.amazonaws.com/4.4.9/fotorama.js"></script>
+  <script src="/public/js/dug.js"></script>
+  <script src="/public/js/application.js"></script>
+</head>
+
+<body>
+<header class="row-1">
+  <nav class="title-nav" role="navigation">
+    <h1 class="title-nav-header"><a href="/">Павел Попов</a>
+      <span class="title-nav-slash">/</span>
+      <a href="/">Блог</a>
+    </h1>
+  </nav>
+</header>
+
+  <section class="single-entry row-1" role="main">
+  
+  
+  
+  
+
+
+
+
+<article class="entry">
+  <header class="entry-header">
+    <h1 class="entry-title">
+      <a href="/running-hackernews-on-your-domain/">Запуск HackerNews на своем сайте</a>
+    </h1>
+  </header>
+
+  <div class="entry-body content-area">
+    
+
+    <p>Оказывается, движок форума <a href="http://news.ycombinator.com">HackerNews</a> это open-source проект и такой же движок можно развернуть на своем сервере. Я обнаружил это наткнувшись на статью <a href="http://www.righto.com/2009/06/how-does-newsyc-ranking-work.html">Ken Shirriff’s blog: Inside the news.yc ranking formula</a>, в которой детально описывается формула, как рассчитывается вес статьи и ее позиция в выдаче на форуме.</p>
+
+<p>Итак, HackerNews бежит на движке, написанном на языке <a href="http://arclanguage.org/">Arc</a> (<a href="http://en.wikipedia.org/wiki/Arc_(programming_language)‎">wiki</a>). Это диалект Лиспа, написанный Полом Грэмом, основателем <a href="http://ycombinator.com">YCombinator</a>, венчурного фонда для первоначального финансирования стартапов, для решения различных прикладных задач. Такое ощущение, что сейчас на этом языке решена ровно одна задача – форум HackerNews компании YCombinator.</p>
+
+<p>Ссылок на скачивание arc в явном виде нигде нет, на <a href="arclanguage.org/install">arclanguage.org/install</a>, как оказалось, лежит очень старая и неактуальная информация по установке. Более актуальная информация лежит на сервере <a href="http://tryarc.org">TryArc</a> (там же можно попробовать пописать на Arc прямо в браузере).</p>
+
+<p>Итак, чтобы установить движок HackerNews на свой сервер, надо:</p>
+
+<ol>
+  <li>Установить Arc. Подробное описание установки есть <a href="https://sites.google.com/site/arclanguagewiki/getting-started/install-arc">тут</a>. Перед установкой потребуется установить <a href="http://racket-lang.org/">Racket</a> (из бинарников Ракета понадобится только MzScheme), затем сам Arc. Я устанавливал pure Arc, скачав его тут: <a href="http://ycombinator.com/arc/arc3.1.tar">http://ycombinator.com/arc/arc3.1.tar</a></li>
+  <li>Распаковать Arc, инструкция по установке и запуска движка лежит внутри дистрибутива в файле <code>how-to-run-news</code>. Выполнив написанное в нем, получим работающий движок на своем сайте.</li>
+</ol>
+
+<p>Если потребуется дополнительная информация, то лучше всего ее искать на форуме <a href="http://arclanguage.com/forum">arclanguage</a> гуглом поиском по сайту (добавлять к поисковому запросу <code>site:arclanguage.com</code>). Именно таким образом я нашел как поднять форум на произвольном порту (прописать нужный порт на 82-й строке в файле <code>news.arc</code>) и <a href="http://www.arclanguage.com/item?id=11021">как запустить форум в бэкграунде</a>, чтобы он продолжал работать после закрытия терминальной сессии (с помощью screen, про screen я напишу отдельный пост).</p>
+
+<p>На этом движке я запустил форум для новостей СУБД: <a href="http://ora600.ru">ora600.ru</a>, добро пожаловать. В следующем посте я расскажу, как я настроил nginx для проксирования двух форумов на arc, одного сервиса на flask и одного сайта на apache на один 80-й порт одного сервера, это оказалось крайне простым делом.</p>
+
+
+
+    
+  </div>
+
+  
+  <footer class="entry-footer">
+    <time class="entry-timestamp">11 Dec 2013</time>
+  </footer>
+  
+</article>
+
+</section>
+
+
+
+  <!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+(function (d, w, c) {
+    (w[c] = w[c] || []).push(function() {
+        try {
+            w.yaCounter21201856 = new Ya.Metrika({id:21201856,
+                    clickmap:true,
+                    trackLinks:true,
+                    accurateTrackBounce:true});
+        } catch(e) { }
+    });
+
+    var n = d.getElementsByTagName("script")[0],
+        s = d.createElement("script"),
+        f = function () { n.parentNode.insertBefore(s, n); };
+    s.type = "text/javascript";
+    s.async = true;
+    s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
+
+    if (w.opera == "[object Opera]") {
+        d.addEventListener("DOMContentLoaded", f, false);
+    } else { f(); }
+})(document, window, "yandex_metrika_callbacks");
+</script>
+<noscript><div><img src="//mc.yandex.ru/watch/21201856" style="position:absolute; left:-9999px;" alt="" /></div>
+</noscript>
+<!-- /Yandex.Metrika counter -->
+
+</body>
+</html>

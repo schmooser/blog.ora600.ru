@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pavel Popov's Blog</title>
+  <meta name="title" content="">
+  <meta name="description" content="Pavel Popov">
+
+  <meta property="og:url" content="/index.html">
+  <meta property="og:title" content="">
+  
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Pavel Popov">
+  <link rel="icon" type="image/png" href="/en/public/favicon.ico">
+  <link rel="alternate" type="application/rss+xml" title="Pavel Popov's Blog" href="/blog-feed.xml">
+  <link href="http://fonts.googleapis.com/css?family=PT+Serif:400,700,400italic|PT+Sans:400,700,400italic|Roboto:100,300|Roboto+Slab:300,400&amp;subset=latin,cyrillic" rel="stylesheet">
+  <link href="/en/public/css/main.css" rel="stylesheet">
+
+  <!-- CSS -->
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/en/public/apple-touch-icon-precomposed.png">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+
+  <!-- Custom -->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+  <link href="http://fotorama.s3.amazonaws.com/4.4.9/fotorama.css" rel="stylesheet">
+  <script src="http://fotorama.s3.amazonaws.com/4.4.9/fotorama.js"></script>
+  <script src="/en/public/js/dug.js"></script>
+  <script src="/en/public/js/application.js"></script>
+</head>
+
+<body>
+<header class="row-1">
+  <nav class="title-nav" role="navigation">
+    <h1 class="title-nav-header"><a href="/">Pavel Popov</a>
+      <span class="title-nav-slash">/</span>
+      <a href="/en/">Blog</a>
+    </h1>
+  </nav>
+</header>
+
+  <section class="entry-list row-1" role="main">
+  
+    
+  
+  
+  
+
+
+
+  
+
+
+<article class="entry">
+  <header class="entry-header">
+    <h1 class="entry-title">
+      <a href="/en/testing-dug-js/">Testing Dug.js</a>
+    </h1>
+  </header>
+
+  <div class="entry-body content-area">
+    
+
+    
+<p>I found on <a href="https://news.ycombinator.com/item?id=7230411">Hacker News</a> the <a href="http://rog.ie/blog/dugjs-a-jsonp-to-html-script">Dug.js</a> – script for transforming JSONP api endpoints to HTML-code.</p>
+
+<p>Let’s try to use it to embed Flickr set on this page.</p>
+
+<p>Dug.js uses <code>{{</code> and <code>}}</code> as template delimiters, same as Jekyll’s Liquid template engine. So, in order to use them simultaniosly, Dug.js should be set to use some other delimiters. I tried a few different and submit an <a href="https://github.com/rogie/Dug.js/issues/6">issue on Github</a>. Finally I found a <code>&lt;&lt;</code> and <code>&gt;&gt;</code> working as it supposed to. I set them inside dug.js itself and create template in Jekyll:</p>
+
+<pre><code>&lt;script&gt;
+  dug({
+    endpoint: 'https://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&amp;api_key={{site.flickr_key}}&amp;format=json&amp;photoset_id={{include.set}}',
+    callbackParam: 'jsoncallback',
+    template: '&lt;span class="photos"&gt;\
+                 &lt;&lt;#photoset.photo&gt;&gt;\
+                   &lt;img src="http://farm&lt;&lt;farm&gt;&gt;.static.flickr.com/&lt;&lt;server&gt;&gt;/&lt;&lt;id&gt;&gt;_&lt;&lt;secret&gt;&gt;.jpg" alt="&lt;&lt;title&gt;&gt;" /&gt;\
+                 &lt;&lt;/photoset.photo&gt;&gt;\
+               &lt;/span&gt;'
+  });
+&lt;/script&gt;
+</code></pre>
+
+<p>Now, when I want to include Flickr photoset to my post all I have to do is to include this code:</p>
+
+<pre><code>{% include photoset.html set=&lt;FLICKR_SET_ID&gt; %}
+</code></pre>
+
+<p>Example of the result is here:</p>
+
+<div id="set-72157639673699056"></div>
+
+<script>
+    dug({
+      endpoint: 'https://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&api_key=f162f2bd093e4b60d2167158a4d67513&format=json&photoset_id=72157639673699056',
+      callbackParam: 'jsoncallback',
+      target: 'set-72157639673699056',
+      success: function() {
+                 $('#set-72157639673699056').fotorama(fotorama_option('dots'));
+               },
+      template: dug_template('dots', 'b', 'photoset')
+    });
+</script>
+
+<div id="tags-"></div>
+
+<script>
+    dug({
+      endpoint: 'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=f162f2bd093e4b60d2167158a4d67513&format=json&user_id=21960065@N03&tags=bmwmuseum',
+      callbackParam: 'jsoncallback',
+      target: 'tags-',
+      success: function() {
+                 $('#tags-').fotorama(fotorama_option('thumbs'));
+               },
+      template: dug_template('thumbs', 'b', 'photos')
+    });
+</script>
+
+
+
+    
+  </div>
+
+  
+</article>
+
+  
+    
+  
+  
+  
+
+
+
+  
+
+
+<article class="entry">
+  <header class="entry-header">
+    <h1 class="entry-title">
+      <a href="/en/ssl-sertificate-proble-in-ruby/">SSL Sertificate problem in ruby 2.0 on OS X</a>
+    </h1>
+  </header>
+
+  <div class="entry-body content-area">
+    
+
+    <p>I’ve experienced problem in ruby 2.0 with SSL Sertificate on OS X while using
+gems which get data from HTTPS.</p>
+
+<p>The error</p>
+
+<pre><code>error: SSL_connect returned=1 errno=0 state=SSLv3 read server certificate B: certificate verify failed
+</code></pre>
+
+<p>occured.</p>
+
+<p>To solve the problem with brew use:</p>
+
+<pre><code>brew tap raggi/ale
+brew install openssl-osx-ca
+</code></pre>
+
+<p>After applying this everything is fine again. Solution found in
+<a href="https://coderwall.com/p/mpbmxg">blog by Tadas Tamosauskas</a>.</p>
+
+
+
+    
+  </div>
+
+  
+</article>
+
+  
+    
+  
+  
+  
+
+
+
+  
+
+
+<article class="entry">
+  <header class="entry-header">
+    <h1 class="entry-title">
+      <a href="/en/pil-with-jpeg-on-centos/">Install PIL with JPEG support on CentOS</a>
+    </h1>
+  </header>
+
+  <div class="entry-body content-area">
+    
+
+    <p>In order to install PIL with JPEG support on CentOS 6, you need to install these two packages:</p>
+
+<pre><code># yum install libjpeg-turbo libjpeg-turbo-devel
+</code></pre>
+
+<p>Also, <a href="http://jj.isgeek.net/2011/09/install-pil-with-jpeg-support-on-ubuntu-oneiric-64bits/">this post</a> on installing PIL with JPEG on Ubuntu may be helpful.</p>
+
+
+
+    
+  </div>
+
+  
+</article>
+
+  
+    
+  
+  
+  
+
+
+
+  
+
+
+<article class="entry">
+  <header class="entry-header">
+    <h1 class="entry-title">
+      <a href="/en/direct-path-insert-in-oracle/">Direct-Path Insert in Oracle Database</a>
+    </h1>
+  </header>
+
+  <div class="entry-body content-area">
+    
+
+    <p>I found interesting description in Oracle’s <a href="http://docs.oracle.com/cd/B19306_01/server.102/b14200/statements_9014.htm">documentation</a> regarding Direct-Path insert limitations. Direct-Path insert can be done via <code>insert /*+ append */ into table ...</code> or via <a href="http://iseetheline.ru/speed-of-direct-path-load/">SQL*Loader</a> or by Informatica PowerCenter by specifying bulk insert type.</p>
+
+<p>Here they are:</p>
+
+<blockquote>
+  <h3 id="conventional-and-direct-path-insert">Conventional and Direct-Path INSERT</h3>
+
+  <p>You can use the INSERT statement to insert data into a table, partition, or view in two ways: conventional INSERT and direct-path INSERT. When you issue a conventional INSERT statement, Oracle Database reuses free space in the table into which you are inserting and maintains referential integrity constraints. With direct-path INSERT, the database appends the inserted data after existing data in the table. Data is written directly into datafiles, bypassing the buffer cache. Free space in the existing data is not reused. This alternative enhances performance during insert operations and is similar to the functionality of the Oracle direct-path loader utility, SQL*Loader.</p>
+
+  <p>Direct-path INSERT is subject to a number of restrictions. If any of these restrictions is violated, then Oracle Database executes conventional INSERT serially without returning any message, unless otherwise noted:</p>
+
+  <ul>
+    <li>
+      <p>You can have multiple direct-path INSERT statements in a single transaction, with or without other DML statements. However, after one DML statement alters a particular table, partition, or index, no other DML statement in the transaction can access that table, partition, or index.</p>
+    </li>
+    <li>
+      <p>Queries that access the same table, partition, or index are allowed before the direct-path INSERT statement, but not after it.</p>
+    </li>
+    <li>
+      <p>If any serial or parallel statement attempts to access a table that has already been modified by a direct-path INSERT in the same transaction, then the database returns an error and rejects the statement.</p>
+    </li>
+    <li>
+      <p>The target table cannot be index organized or part of a cluster.</p>
+    </li>
+    <li>
+      <p>The target table cannot contain object type columns.</p>
+    </li>
+    <li>
+      <p>The target table cannot have any triggers or referential integrity constraints defined on it.</p>
+    </li>
+    <li>
+      <p>The target table cannot be replicated.</p>
+    </li>
+    <li>
+      <p>A transaction containing a direct-path INSERT statement cannot be or become distributed.</p>
+    </li>
+  </ul>
+</blockquote>
+
+
+
+    
+  </div>
+
+  
+</article>
+
+  
+    
+  
+  
+  
+
+
+
+  
+
+
+<article class="entry">
+  <header class="entry-header">
+    <h1 class="entry-title">
+      <a href="/en/creating-non-reusable-object-from-reusable-object-in-informatica/">Creating non-reusable object from reusable object in Informatica</a>
+    </h1>
+  </header>
+
+  <div class="entry-body content-area">
+    
+
+    <p>After two years of working with Informatica PowerCenter I finally found the way to create non-reusable object from reusable one. It works for transformations as well as for sessions.</p>
+
+<p>The solution was found in <a href="http://www.folkstalk.com/2010/04/creating-non-reusable-object-from.html">FolksTalk blog</a>.</p>
+
+<p>All you’ve got to do is to locate an object you want to create as non-reusable in Navigator Window (panel with object tree) and drag your reusable object to your working area with mapping/mapplet/workflow/worklet opened. After drag to working area but before drop press Control (plus sign will appear at the mouse pointer) and release the mouse. The confirmation dialog “Are you want to copy?” will appear. Press Yes and you’ll get non-reusable version of reusable object.</p>
+
+<p>This tip saves me a lot of time while developing in Informatica PowerCenter.</p>
+
+
+
+    
+  </div>
+
+  
+</article>
+
+  
+    
+  
+  
+  
+
+
+
+  
+
+
+<article class="entry">
+  <header class="entry-header">
+    <h1 class="entry-title">
+      <a href="/en/pin-and-unpin-objects-in-vss/">Pin and unpin objects in Microsoft VSS</a>
+    </h1>
+  </header>
+
+  <div class="entry-body content-area">
+    
+
+    <p>At work we have to use Microsoft’s VCS – VSS (Visual Source Safe).
+To make patch we have to <em>pin</em> all objects patch consists of. Manually,
+it can be done this way: go to history of file (one click), choose OK (second click)
+in History Options and then click Pin (third click). Then close window with Close
+(fourth click).</p>
+
+<p>Fortunately, the same thing can be done via command-line interface.</p>
+
+<p>Here are two batch-files, one for pin all files in project, another to
+unpin all files. You should pass full path to project to work with.</p>
+
+<p><code>pin_all.bat</code></p>
+
+<pre><code>set ssdir=\\PATH\TO\REPOSITORY
+if %1=="" GOTO ERR
+chcp 1251
+"c:\Program Files\Microsoft Visual SourceSafe\ss" label %1 -LTMP_LABEL -C- 
+"c:\Program Files\Microsoft Visual SourceSafe\ss" pin %1/*.* -VLTMP_LABEL -G-
+"c:\Program Files\Microsoft Visual SourceSafe\ss" label %1 -L -VLTMP_LABEL -I-Y
+:ERR
+pause
+</code></pre>
+
+<p><code>unpin_all.bat</code></p>
+
+<pre><code>set ssdir=\\PATH\TO\REPOSITORY
+if %1=="" GOTO ERR
+chcp 1251
+"c:\Program Files\Microsoft Visual SourceSafe\ss" unpin %1/*.* -G-
+:ERR
+pause
+</code></pre>
+
+<p>Of course, you should place correct path to <code>ss</code> executable.</p>
+
+<p>Usage:</p>
+
+<pre><code>C:&gt; pin_all.bat "$/Patches/v1.123"
+C:&gt; unpin_all.bat "$/Patches/v1.123"
+</code></pre>
+
+<p>By default VSS doesn’t operate on projects recursively. If your patch consists of multiple
+folders consider turning on operation on projects recursively in VSS’s options. Then <code>pin_all</code>
+and <code>unpin_all</code> will operate on folder you provide and all of it’s ancestors.</p>
+
+
+
+    
+      <a href="/en/pin-and-unpin-objects-in-vss/" class="read-link">Читать</a>
+    
+  </div>
+
+  
+</article>
+
+  
+    
+  
+  
+  
+
+
+
+  
+
+
+<article class="entry">
+  <header class="entry-header">
+    <h1 class="entry-title">
+      <a href="/en/tex-on-centos/">LaTeX on CentOS</a>
+    </h1>
+  </header>
+
+  <div class="entry-body content-area">
+    
+
+    <p>I’ve installed TeX on CentOS 6.3.</p>
+
+<p>Just do the following:</p>
+
+<pre><code># yum install texlive, texlive-latex
+</code></pre>
+
+<p>and you got working TeX.</p>
+
+<p>To compile your tex file into pdf use:</p>
+
+<pre><code>$ pdflatex yourfile.tex
+</code></pre>
+
+<p>and you’ll get <code>youfile.pdf</code> as a result.</p>
+
+<p>–</p>
+
+<p>Unfortunately, CentOS 6 comes with TeX Live 2007 system. It’s very outdated
+version and it misses some packages, so I installed full version of <a href="http://www.tug.org/texlive/">TeX Live
+2013</a>.</p>
+
+<p>One thing to mention is the importance of choosing correct <a href="http://ctan.org/mirrors">CTAN
+Mirror</a>. If you set correct mirror you’ll install a
+way more faster (up to 10x) then using default mirror.</p>
+
+<p>Full installation on virtual machine hosted at Digital Ocean in Amsterdam takes
+about 14 minutes when using CTAN Mirror located in Netherlands. Using default
+mirror estimates at about 2 hours.</p>
+
+
+
+    
+  </div>
+
+  
+</article>
+
+  
+  <a href="/enarchive.html" class="archive-link">→</a>
+</section>
+
+
+
+  <!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+(function (d, w, c) {
+    (w[c] = w[c] || []).push(function() {
+        try {
+            w.yaCounter21201856 = new Ya.Metrika({id:21201856,
+                    clickmap:true,
+                    trackLinks:true,
+                    accurateTrackBounce:true});
+        } catch(e) { }
+    });
+
+    var n = d.getElementsByTagName("script")[0],
+        s = d.createElement("script"),
+        f = function () { n.parentNode.insertBefore(s, n); };
+    s.type = "text/javascript";
+    s.async = true;
+    s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
+
+    if (w.opera == "[object Opera]") {
+        d.addEventListener("DOMContentLoaded", f, false);
+    } else { f(); }
+})(document, window, "yandex_metrika_callbacks");
+</script>
+<noscript><div><img src="//mc.yandex.ru/watch/21201856" style="position:absolute; left:-9999px;" alt="" /></div>
+</noscript>
+<!-- /Yandex.Metrika counter -->
+
+</body>
+</html>

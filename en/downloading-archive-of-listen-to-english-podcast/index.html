@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pavel Popov's Blog</title>
+  <meta name="title" content="Downloading archive of Listen to English podcast">
+  <meta name="description" content="Pavel Popov">
+
+  <meta property="og:url" content="/downloading-archive-of-listen-to-english-podcast/">
+  <meta property="og:title" content="Downloading archive of Listen to English podcast">
+  
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Pavel Popov">
+  <link rel="icon" type="image/png" href="/en/public/favicon.ico">
+  <link rel="alternate" type="application/rss+xml" title="Pavel Popov's Blog" href="/blog-feed.xml">
+  <link href="http://fonts.googleapis.com/css?family=PT+Serif:400,700,400italic|PT+Sans:400,700,400italic|Roboto:100,300|Roboto+Slab:300,400&amp;subset=latin,cyrillic" rel="stylesheet">
+  <link href="/en/public/css/main.css" rel="stylesheet">
+
+  <!-- CSS -->
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/en/public/apple-touch-icon-precomposed.png">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+
+  <!-- Custom -->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+  <link href="http://fotorama.s3.amazonaws.com/4.4.9/fotorama.css" rel="stylesheet">
+  <script src="http://fotorama.s3.amazonaws.com/4.4.9/fotorama.js"></script>
+  <script src="/en/public/js/dug.js"></script>
+  <script src="/en/public/js/application.js"></script>
+</head>
+
+<body>
+<header class="row-1">
+  <nav class="title-nav" role="navigation">
+    <h1 class="title-nav-header"><a href="/">Pavel Popov</a>
+      <span class="title-nav-slash">/</span>
+      <a href="/en/">Blog</a>
+    </h1>
+  </nav>
+</header>
+
+  <section class="single-entry row-1" role="main">
+  
+  
+  
+  
+
+
+
+
+<article class="entry">
+  <header class="entry-header">
+    <h1 class="entry-title">
+      <a href="/en/downloading-archive-of-listen-to-english-podcast/">Downloading archive of Listen to English podcast</a>
+    </h1>
+  </header>
+
+  <div class="entry-body content-area">
+    
+
+    <p>I like to listen Listen to English podcast. It’s host Peter Carter choose interesting topics and have a nice english pronunciation. I started to listen the podcast about one and a half year ago. Since then there were a dozen of a new episodes. I also listened all old episodes available on iTunes. Unfortunately, the RSS feed of the podcast consists only about 30 episodes and now the oldest one is about 2 year old. The total number of episodes is about 300, so I decided to download them from archive section on <a href="http://www.listen-to-english.com">podcast’s site</a>.</p>
+
+<p>There is no ‘Download all’ button, in order to download an episode you have to go on episode’s page and check on download link. The link looks like this – <code>http://www.listen-to-english.com/get.php?web=j55.mp3</code> where <code>55</code> before <code>mp3</code> is the id of an episode.</p>
+
+<p>I decided to I wrote simple python script which loops from 1 till 500 and downloads all of mp3’s.</p>
+
+<div class="highlight"><pre><code class="python"># -*- coding: utf-8 -*-
+import urllib2
+
+url = &#39;http://www.listen-to-english.com/get.php?web=j%d.mp3&#39;
+target_dir = &#39;/path/to/target/dir&#39;
+
+for i in range(1,600):
+  print i
+  mp3 = urllib2.urlopen(url % i)
+  try:
+    header = mp3.read(6)
+    if &#39;Fatal&#39; in header:
+      continue
+    localmp3 = open(&#39;%s/%d.mp3&#39; % (target_dir, i), &#39;wb&#39;)
+    localmp3.write(header)
+    localmp3.write(mp3.read())
+    localmp3.close()
+    print &#39;%d - done!&#39; % i
+  except IOError, e:
+    print &#39;Download error&#39;
+          
+print &#39;Done&#39;</code></pre></div>
+
+<p>This script also checks whether the response of server is not like <code>Fatal error ...</code>, because the episode’s ids are sparsed.</p>
+
+<p>After the script done its work I checked whether downloaded files are a valid mp3’s. To do this I used on OS X 10.8 console tool <code>afinfo</code>, which shows information about audio file:</p>
+
+<div class="highlight"><pre><code class="bash">for item in `ls -rS *.mp3`
+do
+  a=`afinfo $item 2&gt; /dev/null | grep &quot;bit rate&quot; | wc -l`
+  if [ $a -ne 1 ]
+  then
+    echo $item; 
+    rm $item;
+  fi
+done</code></pre></div>
+
+<p>Now we have normal mp3s. How to import them into iTunes into Podcast section in correct podcast? After googling I found <a href="http://markbowers.org/home/itunes-podcast-fix#comment-5056">a post</a> a solution: </p>
+
+<blockquote>
+  <p>This method seems to work very well! After doing this, the file gets added to the “Podcasts” section AND shows up under the correct podcast heading. (And all without messing around with XML and hosts files.) In addition to: ITUNESPODCAST ITUNESPODCASTDESC ITUNESPODCASTID ITUNESPODCASTURL One must also add: RELEASETIME With an example value: 2008-03-07T17:30:00Z To get the podcast to show in the chronologically correct spot.</p>
+</blockquote>
+
+<p>All I have to do is to add ID3v2 tags into mp3s. How to do this? I found a couple of tools for OS X to dealing with ID3 tags, but only one – <a href="www.pa-software.com/id3editor/">ID3 Editor</a> – has a command line tool (i.e. to batch processing which i need) and ability to edit podcast tags. The script of batch operation on files looks like this:</p>
+
+<div class="highlight"><pre><code class="bash">pcfd=&quot;http://feeds.feedburner.com/ListenToEnglish-LearnEnglish&quot;
+for item in `ls *.mp3`
+do
+  pcid=&quot;http://www.listen-to-english.com/index.php?id=${item%.mp3}&quot;;
+  echo $pcid:
+  id3edcmd -pcon -pcid $pcid -pcfd $pcfd $item;
+done</code></pre></div>
+
+<p>But the tool costs $15, which is not acceptable to use such kind of single work. Trial version have a limit to 20 program runs. One run is the one change of mp3 file.</p>
+
+<p>After a long 2-day search the only worked solution I found is to add media to iTunes library as an ordinary music, then edit all of the files to have the same Artist and Album and set Media type to Podcast. After that all of them are appear in the Podcast section in iTunes.</p>
+
+<p>Happy listening!</p>
+
+
+
+    
+  </div>
+
+  
+  <footer class="entry-footer">
+    <time class="entry-timestamp">04 Oct 2012</time>
+  </footer>
+  
+</article>
+
+</section>
+
+
+
+  <!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+(function (d, w, c) {
+    (w[c] = w[c] || []).push(function() {
+        try {
+            w.yaCounter21201856 = new Ya.Metrika({id:21201856,
+                    clickmap:true,
+                    trackLinks:true,
+                    accurateTrackBounce:true});
+        } catch(e) { }
+    });
+
+    var n = d.getElementsByTagName("script")[0],
+        s = d.createElement("script"),
+        f = function () { n.parentNode.insertBefore(s, n); };
+    s.type = "text/javascript";
+    s.async = true;
+    s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
+
+    if (w.opera == "[object Opera]") {
+        d.addEventListener("DOMContentLoaded", f, false);
+    } else { f(); }
+})(document, window, "yandex_metrika_callbacks");
+</script>
+<noscript><div><img src="//mc.yandex.ru/watch/21201856" style="position:absolute; left:-9999px;" alt="" /></div>
+</noscript>
+<!-- /Yandex.Metrika counter -->
+
+</body>
+</html>

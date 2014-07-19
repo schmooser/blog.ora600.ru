@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Блог Павла Попова</title>
+  <meta name="title" content="Установка Oracle копированием">
+  <meta name="description" content="Павел Попов">
+
+  <meta property="og:url" content="/install-oracle-via-copy/">
+  <meta property="og:title" content="Установка Oracle копированием">
+  
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Павел Попов">
+  <link rel="icon" type="image/png" href="/public/favicon.ico">
+  <link rel="alternate" type="application/rss+xml" title="Блог Павла Попова" href="/blog-feed.xml">
+  <link href="http://fonts.googleapis.com/css?family=PT+Serif:400,700,400italic|PT+Sans:400,700,400italic|Roboto:100,300|Roboto+Slab:300,400&amp;subset=latin,cyrillic" rel="stylesheet">
+  <link href="/public/css/main.css" rel="stylesheet">
+
+  <!-- CSS -->
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+
+  <!-- Custom -->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+  <link href="http://fotorama.s3.amazonaws.com/4.4.9/fotorama.css" rel="stylesheet">
+  <script src="http://fotorama.s3.amazonaws.com/4.4.9/fotorama.js"></script>
+  <script src="/public/js/dug.js"></script>
+  <script src="/public/js/application.js"></script>
+</head>
+
+<body>
+<header class="row-1">
+  <nav class="title-nav" role="navigation">
+    <h1 class="title-nav-header"><a href="/">Павел Попов</a>
+      <span class="title-nav-slash">/</span>
+      <a href="/">Блог</a>
+    </h1>
+  </nav>
+</header>
+
+  <section class="single-entry row-1" role="main">
+  
+  
+  
+  
+
+
+
+
+<article class="entry">
+  <header class="entry-header">
+    <h1 class="entry-title">
+      <a href="/install-oracle-via-copy/">Установка Oracle копированием</a>
+    </h1>
+  </header>
+
+  <div class="entry-body content-area">
+    
+
+    <p>Оракл можно установить простым копированием нужных файлов в нужные места и
+прописыванием соответствующих переменных среды. Я описываю процесс установки
+Oracle XE 11g простым копированием файлов, настройку среды окружения,
+восстановления дубликата БД из бэкапа и запуск листенера.</p>
+
+<!--more-->
+
+<p>Допустим, у нас есть работающий сервер X с установленной Oracle XE 11g и мы
+хотим скопировать Oracle на другой сервер Y, который бежит под той же ОС что и
+X.</p>
+
+<h2 id="section">Создаем пользователей</h2>
+
+<p>На сервере Y выполняем:</p>
+
+<pre><code>$ sudo su
+# useradd oracle  # добавляем пользователя oracle
+# groupadd dba  # добавляем группу dba
+# cat /etc/passwd  # пользователи
+# cat /etc/group  # группы
+# usermod -G dba oracle  # добавляем oracle в группу dba
+# yum install libaio bc flex  # устанавливаем необходимые пакеты
+# su oracle
+$ cd ~
+</code></pre>
+
+<h2 id="section-1">Копируем исполняемые файлы</h2>
+
+<p>Копируем каталог <code>$HOME/product</code> пользователя <code>oracle</code> с сервера X на сервер Y
+(я сжал директорию <code>product</code> tarом и перелил по sftp).</p>
+
+<h2 id="section-2">Настраиваем среду</h2>
+
+<p>В <code>.bashrc</code> добавляем следующие строки:</p>
+
+<pre><code>export ORACLE_HOME=/home/oracle/product/11.2.0/xe
+export ORACLE_SID=XE
+export NLS_LANG=`$ORACLE_HOME/bin/nls_lang.sh`
+export PATH=$ORACLE_HOME/bin:$PATH
+export LD_LIBRARY_PATH=$ORACLE_HOME/lib:/usr/lib:/usr/lib64
+</code></pre>
+
+<p>После этого, мы должны спокойно войти в <code>sqlplus</code>:</p>
+
+<pre><code>[oracle@ora600 ~]$ sqlplus /nolog
+
+SQL*Plus: Release 11.2.0.2.0 Production on Сб Дек 14 08:03:40 2013
+
+Copyright (c) 1982, 2011, Oracle.  All rights reserved.
+
+SQL&gt;
+</code></pre>
+
+<h2 id="swap-file">Создаем swap-file</h2>
+
+<p>Я <a href="#">подробно описывал</a> как создать swap-file. Создаем 2ГБ файл
+подкачки.</p>
+
+<h2 id="pfile">PFILE</h2>
+
+<p>Создаем параметрический файл pfile с параметрами сервера. Мой минимальный файл
+<code>xe_init.ora</code> для пятидолларового дроплета на <a href="http://digitalocean.com">DigitalOcean</a> выглядит так:</p>
+
+<pre><code>DB_NAME=XE
+CONTROL_FILES='/home/oracle/oradata/XE/control.dbf'
+DB_FILE_NAME_CONVERT=(/u01/app/oracle/,/home/oracle/)
+LOG_FILE_NAME_CONVERT=(/u01/app/oracle/,/home/oracle/)
+AUDIT_FILE_DEST='/home/oracle/admin/XE/adump'
+COMPATIBLE='11.2.0.0.0'
+DB_RECOVERY_FILE_DEST='/home/oracle/fast_recovery_area'
+DB_RECOVERY_FILE_DEST_SIZE=11811160064
+DIAGNOSTIC_DEST='/home/oracle'
+DISPATCHERS='(PROTOCOL=TCP) (SERVICE=XEXDB)'
+EVENT='31156 trace name context forever, level 0x400'
+JOB_QUEUE_PROCESSES=4
+MEMORY_MAX_TARGET=268435456
+MEMORY_TARGET=268435456
+OPEN_CURSORS=300
+REMOTE_LOGIN_PASSWORDFILE='EXCLUSIVE'
+SESSIONS=20
+SHARED_POOL_SIZE=12582912
+SHARED_SERVERS=0
+UNDO_MANAGEMENT='AUTO'
+UNDO_TABLESPACE='UNDOTBS1'
+</code></pre>
+
+<p>Указанное в <code>MEMORY_TARGET</code> и <code>MEMORY_MAX_TARGET</code> количество памяти должно быть
+меньше чем доступно shared memory. Если нужно – увеличьте размер shared-memory,
+я <a href="#">писал</a> о том, как это можно сделать. Если памяти будет недостаточно, то
+Oracle будет падать в процессе запуска с ошибкой <code>ORA-00845: MEMORY_TARGET not
+supported on this system</code>.</p>
+
+<h2 id="section-3">Директории</h2>
+
+<p>Создайте директории, указанные в PFILE в параметрах <code>DB_RECOVERY_FILE_DEST</code> и
+<code>AUDIT_FILE_DEST</code>, а также директории, в которых будут лежать контрол-файлы.</p>
+
+<h2 id="section-4">Запуск экземпляра</h2>
+
+<p>Теперь уже можно запустить экземпляр Oracle без БД:</p>
+
+<pre><code>[oracle@ora600 ~]$ sqlplus / as sysdba
+
+SQL*Plus: Release 11.2.0.2.0 Production on Сб Дек 14 08:41:10 2013
+
+Copyright (c) 1982, 2011, Oracle.  All rights reserved.
+
+Connected to an idle instance.
+
+SQL&gt; startup nomount pfile=xe_init.ora
+ORACLE instance started.
+
+Total System Global Area  267227136 bytes
+Fixed Size                2225640 bytes
+Variable Size             197134872 bytes
+Database Buffers          62914560 bytes
+Redo Buffers              4952064 bytes
+SQL&gt;
+</code></pre>
+
+<p>После того, как убедились, что экземпляр поднимается, его можно остановить
+(<code>SHUTDOWN IMMEDIATE</code>).</p>
+
+<h2 id="section-5">Восстановление БД из бэкапа</h2>
+
+<p>Допустим, у вас есть бэкап какой-то базы, созданный RMAN, лежащий на другом
+сервере (откуда копировали директорию <code>product</code>). В этом случае, добавляем в
+pfile строки:</p>
+
+<pre><code>DB_FILE_NAME_CONVERT='/u01/app/oracle/','/home/oracle/'
+LOG_FILE_NAME_CONVERT='/u01/app/oracle/','/home/oracle/'
+</code></pre>
+
+<p>где прописываем старые и новые пути датафайлов и лог-файлов. Копируем бэкапы и
+архивные логи из <code>fast_recovery_area</code> сервера X на сервер Y, например в папку
+<code>fre</code>. У меня дерево папок в <code>fre</code> выглядело так:</p>
+
+<pre><code>[oracle@ora600 ~]$ tree fre
+fre
+├── archivelog
+│   ├── 2013_12_08
+│   │   └── o1_mf_1_328_9b82qh0f_.arc
+│   ├── 2013_12_09
+│   │   └── o1_mf_1_329_9b9vthqf_.arc
+│   ├── 2013_12_10
+│   │   ├── o1_mf_1_330_9bdhcjpz_.arc
+│   │   └── o1_mf_1_331_9bfhdr0h_.arc
+│   ├── 2013_12_11
+│   │   ├── o1_mf_1_332_9bh4nrz7_.arc
+│   │   └── o1_mf_1_333_9bkcc3w9_.arc
+│   ├── 2013_12_12
+│   │   ├── o1_mf_1_334_9bks20lr_.arc
+│   │   └── o1_mf_1_335_9bmnhljr_.arc
+│   ├── 2013_12_13
+│   │   └── o1_mf_1_336_9bnfh5h2_.arc
+│   └── 2013_12_14
+│       ├── o1_mf_1_337_9bq0vl1o_.arc
+│       └── o1_mf_1_338_9bqwz6rm_.arc
+├── autobackup
+│   └── 2013_12_14
+│       └── o1_mf_s_834158063_9brf1hjw_.bkp
+└── backupset
+    ├── 2013_12_08
+    │   └── o1_mf_nnnd0_XE_INCR_9b7b3m9p_.bkp
+    ├── 2013_12_09
+    │   └── o1_mf_nnnd1_XE_INCR_9b9yhmh3_.bkp
+    ├── 2013_12_10
+    │   └── o1_mf_nnnd1_XE_INCR_9bdlvm5q_.bkp
+    ├── 2013_12_11
+    │   └── o1_mf_nnnd1_XE_INCR_9bh77mx4_.bkp
+    ├── 2013_12_12
+    │   └── o1_mf_nnnd1_XE_INCR_9bkvmmw8_.bkp
+    ├── 2013_12_13
+    │   └── o1_mf_nnnd1_XE_INCR_9bnhznqs_.bkp
+    └── 2013_12_14
+        ├── o1_mf_ncsn1_XE_INCR_9bq4d4m1_.bkp
+        └── o1_mf_nnnd1_XE_INCR_9bq4cmsm_.bkp
+
+18 directories, 20 files
+</code></pre>
+
+<p>Особо надо обратить внимание, чтобы на исходной БД (в терминологии RMAN –
+TARGET) был включен автобэкап контрол-файла. Если нет – то RMAN не сможет его
+найти и восстановить БД.</p>
+
+<p>Теперь создаем SPFILE из PFILE и снова запускаем инстанс:</p>
+
+<pre><code>[oracle@ora600 ~]$ sqlplus / as sysdba
+
+SQL*Plus: Release 11.2.0.2.0 Production on Сб Дек 14 10:51:44 2013
+
+Copyright (c) 1982, 2011, Oracle.  All rights reserved.
+
+Connected to an idle instance.
+
+SQL&gt; create spfile from pfile='/home/oracle/xe_init.ora';
+
+File created.
+
+SQL&gt; startup nomount;
+ORACLE instance started.
+
+Total System Global Area  267227136 bytes
+Fixed Size                2225640 bytes
+Variable Size             197134872 bytes
+Database Buffers          62914560 bytes
+Redo Buffers              4952064 bytes
+SQL&gt;
+</code></pre>
+
+<p>На этом этапе мы можем подсоединиться к БД с помощью RMAN и провести
+восстановление БД. Документация по такому процессу <a href="http://docs.oracle.com/cd/E11882_01/backup.112/e10642/rcmdupdb.htm#BRADV420">здесь</a>.
+Есть еще полезная информация на <a href="http://www.oracle-base.com/articles/11g/duplicate-database-using-rman-11gr2.php">oracle-base</a>.</p>
+
+<p>В моем случае меня интересует стратегия “Duplication without a target database
+connection and without a recovery catalog. RMAN obtains metadata about where
+backups and copies reside from BACKUP LOCATION.”, когда я никак не подсоединен
+к исходной базе.</p>
+
+<p><img src="http://docs.oracle.com/cd/E11882_01/backup.112/e10642/img/bradv048.gif" alt="rman" /></p>
+
+<p>Дублируем БД:</p>
+
+<pre><code>[oracle@ora600 ~]$ rman auxiliary /
+
+Recovery Manager: Release 11.2.0.2.0 - Production on Сб Дек 14 10:57:05 2013
+
+Copyright (c) 1982, 2009, Oracle and/or its affiliates.  All rights reserved.
+
+connected to auxiliary database: XE (not mounted)
+
+RMAN&gt; DUPLICATE DATABASE TO xe BACKUP LOCATION '/home/oracle/fre';
+
+... ... ...
+
+contents of Memory Script:
+{
+     Alter clone database open resetlogs;
+}
+executing Memory Script
+
+database opened
+Finished Duplicate Db at 14.12.13
+
+RMAN&gt;
+</code></pre>
+
+<p>RMAN проверит бэкапы, перестартует инстанс и начнет восстановление БД из бэкапа.</p>
+
+<p>После этого получается готовая БД.</p>
+
+<h2 id="section-6">Настройка листенера</h2>
+
+<p>Настроить листенер вообще очень просто: правим <code>listener.ora</code> в
+<code>$ORACLE_HOME/network/admin</code> - прописываем актуальное имя хоста (его надо не
+забыть указать в <code>/etc/hosts</code>) и стартуем листенер:</p>
+
+<pre><code>$ lsnrctl start
+</code></pre>
+
+<p>Посмотреть статус можно командой</p>
+
+<pre><code>$ lsnrctl status
+</code></pre>
+
+<p>Хорошая статья по листенеру на <a href="http://www.orafaq.com/wiki/Lsnrctl">orafaq-listener</a>.</p>
+
+<p>Важно следить за тем, чтобы соответствующие порты были открыты в файрволле. Про
+мою настройку iptables я уже <a href="#">писал</a>, но напишу еще один отдельный
+пост.</p>
+
+
+
+    
+  </div>
+
+  
+  <footer class="entry-footer">
+    <time class="entry-timestamp">14 Dec 2013</time>
+  </footer>
+  
+</article>
+
+</section>
+
+
+
+  <!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+(function (d, w, c) {
+    (w[c] = w[c] || []).push(function() {
+        try {
+            w.yaCounter21201856 = new Ya.Metrika({id:21201856,
+                    clickmap:true,
+                    trackLinks:true,
+                    accurateTrackBounce:true});
+        } catch(e) { }
+    });
+
+    var n = d.getElementsByTagName("script")[0],
+        s = d.createElement("script"),
+        f = function () { n.parentNode.insertBefore(s, n); };
+    s.type = "text/javascript";
+    s.async = true;
+    s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
+
+    if (w.opera == "[object Opera]") {
+        d.addEventListener("DOMContentLoaded", f, false);
+    } else { f(); }
+})(document, window, "yandex_metrika_callbacks");
+</script>
+<noscript><div><img src="//mc.yandex.ru/watch/21201856" style="position:absolute; left:-9999px;" alt="" /></div>
+</noscript>
+<!-- /Yandex.Metrika counter -->
+
+</body>
+</html>
