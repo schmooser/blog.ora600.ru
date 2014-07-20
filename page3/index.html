@@ -57,6 +57,50 @@
 <article class="entry">
   <header class="entry-header">
     <h1 class="entry-title">
+      <a href="/first-word-hyphenation-in-latex/">Перенос первого слова в параграфе в LaTeX</a>
+    </h1>
+  </header>
+
+  <div class="entry-body content-area">
+    
+
+    <p>При верстке таблиц в LaTeX может возникнуть еще одна проблема – если у вас в ячейке одно слово, то LaTeX не будет его переносить, даже если слово длинное и не умещается по ширине в ячейку типа <code>p</code>. Все из-за того, что сложность алгоритма расстановки переносов в случае допущений, в числе которых и отсутствие необходимости переносить первое слово, падает с О(n<sup>2</sup>) до O(n). Подробности <a href="https://en.wikipedia.org/wiki/TeX#Hyphenation_and_justification">в английской Википедии</a>.</p>
+
+<p>Но TeX можно обмануть! Нужно лишь первым символом параграфа сделать неразрывный пробел нулевой длины – <code>\hspace{0pt}</code>. Примеры использования: <a href="http://sigstp.blogspot.ru/2010/09/latex-hyphenate-single-long-words-in.html">раз</a>, <a href="http://tex.stackexchange.com/questions/67762/hyphenation-rule-not-acted-upon">два</a>.</p>
+
+<p>Вставлять каждый раз в нужное место код очень неудобно, особенно если контент приходит из вне, поэтому можно сделать это автоматически. После достаточно долгих поисков я нашел <a href="http://tex.stackexchange.com/questions/78127/how-does-latex-make-line-breaking-for-word-that-can-not-fit-in-cell">вот этот совет</a> на TeX StackExchange – нужно в опциях табличного окружения воспользоваться синтаксисом <code>&gt;{...}</code> из пакета <code>array</code>, например так:</p>
+
+<pre><code>...
+\usepackage{array}
+...
+\begin{longtable}{|&gt;{\hspace{0pt}}p{0.1\textwidth} | p{0.3\textwidth}|} \hline
+...
+</code></pre>
+
+<p>После этого все сразу станет гораздо красивее.</p>
+
+
+
+    
+  </div>
+
+  
+</article>
+
+  
+    
+  
+  
+  
+
+
+
+  
+
+
+<article class="entry">
+  <header class="entry-header">
+    <h1 class="entry-title">
       <a href="/clip-option-in-gnuplot/">Опция clip в gnuplot</a>
     </h1>
   </header>
@@ -537,80 +581,6 @@ TOTAL     	16356.55  	116356.55
 <p>Формулу для аннуитета взял в <a href="http://ru.wikipedia.org/wiki/%D0%90%D0%BD%D0%BD%D1%83%D0%B8%D1%82%D0%B5%D1%82">Википедии</a>.</p>
 
 <p><a href="https://github.com/schmooser/cloaked-adventure/blob/master/annuity_calc.py">Исходный код</a> на ГитХабе.</p>
-
-
-
-    
-  </div>
-
-  
-</article>
-
-  
-    
-  
-  
-  
-
-
-
-  
-
-
-<article class="entry">
-  <header class="entry-header">
-    <h1 class="entry-title">
-      <a href="/export-dbf-to-csv/">Экспорт из dbf в csv</a>
-    </h1>
-  </header>
-
-  <div class="entry-body content-area">
-    
-
-    <p>Чтобы экспортировать dbf в csv, можно использовать питоновский модуль <a href="https://pypi.python.org/pypi/dbf">dbf</a>.</p>
-
-<p>Иногда требуется указать явным образом кодировку, в которой хранятся данные в dbf-файле.</p>
-
-<pre><code>import dbf
-
-dbf_file = 'd:\\in.dbf'
-csv_file = 'd:\\out.csv'
-
-a = dbf.Table(dbf_file)
-a.open()
-a.codepage = dbf.CodePage('cp866')
-
-dbf.export(a, filename=csv_file, encoding='cp1251', format='csv')
-</code></pre>
-
-<hr />
-
-<p>Обнаружилась проблема, что модуль dbf для определенных типов атрибутов заменяет NULL-значения на текст None. Поискал в интернете другой модуль, нашел <a href="http://dbfpy.sourceforge.net/">dbfpy</a>. Работает даже быстрее чем dbf. Скрипт выгрузки становится таким:</p>
-
-<pre><code>from dbfpy import dbf
-import csv
-
-dbf_file = 'd:\\in.dbf'
-csv_file = 'd:\\out.csv'
-
-db = dbf.Dbf(dbf_file)
-writer = csv.writer(open(csv_file, 'w'), delimiter = '\t', lineterminator='\n',
-                    quotechar="'", quoting=csv.QUOTE_NONE)
-                
-# print db.fieldNames
-
-i = 0
-for rec in db:
-  row = [item for item in rec]
-  writer.writerow(row)
-  i += 1
-  if i%100000 == 0:
-    print '%d rows downloaded' % i
-
-print 'Done: %d rows downloaded' % i
-</code></pre>
-
-<p>Конверсии кодировки нет, в какой был текст в исходном dbf, в таком он будет и в csv.</p>
 
 
 

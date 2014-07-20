@@ -57,6 +57,80 @@
 <article class="entry">
   <header class="entry-header">
     <h1 class="entry-title">
+      <a href="/export-dbf-to-csv/">Экспорт из dbf в csv</a>
+    </h1>
+  </header>
+
+  <div class="entry-body content-area">
+    
+
+    <p>Чтобы экспортировать dbf в csv, можно использовать питоновский модуль <a href="https://pypi.python.org/pypi/dbf">dbf</a>.</p>
+
+<p>Иногда требуется указать явным образом кодировку, в которой хранятся данные в dbf-файле.</p>
+
+<pre><code>import dbf
+
+dbf_file = 'd:\\in.dbf'
+csv_file = 'd:\\out.csv'
+
+a = dbf.Table(dbf_file)
+a.open()
+a.codepage = dbf.CodePage('cp866')
+
+dbf.export(a, filename=csv_file, encoding='cp1251', format='csv')
+</code></pre>
+
+<hr />
+
+<p>Обнаружилась проблема, что модуль dbf для определенных типов атрибутов заменяет NULL-значения на текст None. Поискал в интернете другой модуль, нашел <a href="http://dbfpy.sourceforge.net/">dbfpy</a>. Работает даже быстрее чем dbf. Скрипт выгрузки становится таким:</p>
+
+<pre><code>from dbfpy import dbf
+import csv
+
+dbf_file = 'd:\\in.dbf'
+csv_file = 'd:\\out.csv'
+
+db = dbf.Dbf(dbf_file)
+writer = csv.writer(open(csv_file, 'w'), delimiter = '\t', lineterminator='\n',
+                    quotechar="'", quoting=csv.QUOTE_NONE)
+                
+# print db.fieldNames
+
+i = 0
+for rec in db:
+  row = [item for item in rec]
+  writer.writerow(row)
+  i += 1
+  if i%100000 == 0:
+    print '%d rows downloaded' % i
+
+print 'Done: %d rows downloaded' % i
+</code></pre>
+
+<p>Конверсии кодировки нет, в какой был текст в исходном dbf, в таком он будет и в csv.</p>
+
+
+
+    
+  </div>
+
+  
+</article>
+
+  
+    
+  
+  
+  
+
+
+
+  
+
+
+<article class="entry">
+  <header class="entry-header">
+    <h1 class="entry-title">
       <a href="/1z0-047-test-passing-2/">1z0-047, прохождение теста  №2</a>
     </h1>
   </header>
@@ -392,98 +466,6 @@ are revoked if a grantor’s object privilege is revoked.</p>
 
     
       <a href="/stavim-cx-oracle-na-amazon-linux-mikro-instans-ec2/" class="read-link">Читать</a>
-    
-  </div>
-
-  
-</article>
-
-  
-    
-  
-  
-  
-
-
-
-  
-
-
-<article class="entry">
-  <header class="entry-header">
-    <h1 class="entry-title">
-      <a href="/lookatme-favourites/">LookAtMe – избранное</a>
-    </h1>
-  </header>
-
-  <div class="entry-body content-area">
-    
-
-    <p>LookAtMe прислал извещение о том, что они выпиливают с сайта раздел Избранное. Отличный повод удалиться оттуда. Оказалось, что они в очередной раз сменили дизайн и теперь я там вообще ничего не понимаю.</p>
-
-<p>Сохраню то, что у меня было в избранном там сюда, на всякий случай:</p>
-
-<ul>
-   <li>
-      <a href="http://www.lookatme.ru/flow/posts/film-radar/13100-korotkoe-kino-o-zhizni">Короткое кино о&nbsp;жизни</a>
-   </li>
-   <li>
-      <a href="http://www.lookatme.ru/flow/posts/photo-radar/40367-s-legkoy-ruki-grega-uilyamsa">С&nbsp;легкой руки Грега Уильямса</a>
-   </li>
-   <li>
-      <a href="http://www.lookatme.ru/flow/posts/photo-radar/41404-ledi-di-printsessa-mira-mira-lomografii">Леди Ди, принцесса Мира. Мира Ломографии</a>
-   </li>
-   <li>
-      <a href="http://www.lookatme.ru/my/my/video/42184-vilr-hash-3-0">VILR hash 3. 0</a>
-   </li>
-   <li>
-      <a href="http://www.lookatme.ru/flow/posts/film-radar/61732-charli-chaplin">Чарли Чаплин</a>
-   </li>
-   <li>
-      <a href="http://www.lookatme.ru/flow/posts/science-techno/67216-vzglyad-cherez-lobovoe-steklo-2009-06-18">Взгляд через лобовое стекло</a>
-   </li>
-   <li>
-      <a href="http://www.lookatme.ru/flow/obschestvo/obschestvo/75211-nedelya-s-gusevym">Качественная литература по&nbsp;будням. Коротко</a>
-   </li>
-   <li>
-      <a href="http://www.lookatme.ru/flow/posts/film-radar/81645-klipmeykery-v-bolshom-kino-i-naoborot">Клипмейкеры в большом кино</a>
-   </li>
-   <li>
-      <a href="http://www.lookatme.ru/flow/posts/design-radar/88778-hobbi-moleskine">Хобби-Moleskine</a>
-   </li>
-   <li>
-      <a href="http://www.lookatme.ru/flow/posts/photo-radar/103383-kakoy-kupit-fotoapparat-lyuboy">Какой купить фотоаппарат? Любой</a>
-   </li>
-   <li>
-      <a href="http://www.lookatme.ru/flow/posts/film-radar/107311-avtorskoe-kino-v-rossii-otchet-za-desyatiletie">Авторское кино в России: отчет за десятилетие</a>
-   </li>
-   <li>
-      <a href="http://www.lookatme.ru/mag/film/other_film/111357-30-filmov-zimy">25 фильмов зимы</a>
-   </li>
-   <li>
-      <a href="http://www.lookatme.ru/flow/posts/photo-radar/114647-genialnost-prosta-v-izrecheniyah">Гениальность проста в изречениях</a>
-   </li>
-   <li>
-      <a href="http://www.lookatme.ru/flow/posts/photo-radar/115273-365-dney-aleksa-stoddarda">365 дней Алекса Стоддарда</a>
-   </li>
-   <li>
-      <a href="http://www.lookatme.ru/flow/posts/photo-radar/115637-po-staromu-novye-kadry-ot-stanko-abadic">По старому новые кадры от Stanko Abadic</a>
-   </li>
-   <li>
-      <a href="http://www.lookatme.ru/flow/posts/photo-radar/115713-epic">Epic</a>
-   </li>
-   <li>
-      <a href="http://www.lookatme.ru/flow/posts/photo-radar/115487-fotograf-pentti-sammallahti">Фотограф: Пентти Саммаллахти</a>
-   </li>
-   <li>
-      <a href="http://www.lookatme.ru/mag/art-design/other_art/124589-chasti-tela-obnazhennye-zhenschiny-na-fotografiyah-90h-2000h-godov">Части тела: Обнаженные женщины на фотографиях 1990-2000-х годов</a>
-   </li>
-</ul>
-
-
-
-    
-      <a href="/lookatme-favourites/" class="read-link">Читать</a>
     
   </div>
 

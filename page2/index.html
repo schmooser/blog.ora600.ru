@@ -57,6 +57,91 @@
 <article class="entry">
   <header class="entry-header">
     <h1 class="entry-title">
+      <a href="/fast-btsync-setup-on-linux/">Быстрая настройка BTSync на Linux</a>
+    </h1>
+  </header>
+
+  <div class="entry-body content-area">
+    
+
+    <ol>
+  <li>
+    <p>Качаем <a href="http://www.bittorrent.com/sync/downloads">BTSync</a>, распаковываем и копируем исполняемый файл <code>btsync</code>
+куда-нибудь в <code>$PATH</code>.</p>
+  </li>
+  <li>
+    <p>Если хотим расшарить папку, то генерируем секретный ключ:</p>
+
+    <pre><code> btsync --generate-secret
+</code></pre>
+
+    <p>Результатом будет ключ вида <code>ABVERK6XBMBG7PJPLXTJJGFLZVBS2TM67</code> (начинается
+на A). Запоминаем!</p>
+  </li>
+  <li>
+    <p>Если хотим создать readonly-ключ и выдать его кому-нибудь, то из read-write
+ключа получаем его так:</p>
+
+    <pre><code> btsync --get-ro-secret ABVERK6XBMBG7PJPLXTJJGFLZVBS2TM67
+</code></pre>
+
+    <p>Результатом будет ключ вида <code>BEJ5VRAFKFEARZ6LCAR2OTNHGRRM4X3ER</code> (начинается
+на B). Сообщаем этот ключ readonly-стороне.</p>
+  </li>
+  <li>
+    <p>Делаем дамп пример конфигурационного файла:</p>
+
+    <pre><code> btsync --dump-sample-config &gt; btsync.conf
+</code></pre>
+  </li>
+  <li>
+    <p>Мне веб-интерфейс не нужен, поэтому я комментирую строку <code>listen ...</code> в
+блоке <code>webui</code> и прописываю нужные расшаренные папки в блоке <code>shared_folders</code>.
+ВНИМАНИЕ!!! По-умолчанию этот блок в примере конфига закомментирован, но начало
+и конец комментария выставлены неудачно и если у вас редактор без подсветки
+синтаксиса JSON, то этого легко не заметить. В таком случае btsync откажется
+запускаться. На это напарывался я и еще несколько человек независимо от меня.
+Нужно убедиться, что блок <code>shared_folders</code> действительно раскомментирован.</p>
+
+    <p>В shared_folders прописываем путь к папке и ключ. Ключ берем или из п.2 или
+полученный от кого-нибудь для синхронизации.</p>
+  </li>
+  <li>
+    <p>Запускаем btsync</p>
+
+    <pre><code> btsync --config btsync.conf
+</code></pre>
+
+    <p>и идем пить чай.</p>
+  </li>
+</ol>
+
+<p>Собственно, все настолько просто (все вышеизложенное понимается за секунду
+смотря на <code>btsync --help</code>) что и описывать, наверное, не стоило. Дойдут руки –
+напишу как общаться с BTSync через API.</p>
+
+
+
+    
+  </div>
+
+  
+</article>
+
+  
+    
+  
+  
+  
+
+
+
+  
+
+
+<article class="entry">
+  <header class="entry-header">
+    <h1 class="entry-title">
       <a href="/life-timeline/">Таймлайн моей жизни на javascript</a>
     </h1>
   </header>
@@ -380,50 +465,6 @@ npm install tty.js
   <img src="/assets/raspberrypi/screenshot-1.png" data-caption="Nyancat в терминале, pagekite жрет 25% процессора" />
   <img src="/assets/raspberrypi/screenshot-2.png" data-caption="Без нагрузки pagekite жрет 6-7% процессора" />
 </div>
-
-
-
-    
-  </div>
-
-  
-</article>
-
-  
-    
-  
-  
-  
-
-
-
-  
-
-
-<article class="entry">
-  <header class="entry-header">
-    <h1 class="entry-title">
-      <a href="/first-word-hyphenation-in-latex/">Перенос первого слова в параграфе в LaTeX</a>
-    </h1>
-  </header>
-
-  <div class="entry-body content-area">
-    
-
-    <p>При верстке таблиц в LaTeX может возникнуть еще одна проблема – если у вас в ячейке одно слово, то LaTeX не будет его переносить, даже если слово длинное и не умещается по ширине в ячейку типа <code>p</code>. Все из-за того, что сложность алгоритма расстановки переносов в случае допущений, в числе которых и отсутствие необходимости переносить первое слово, падает с О(n<sup>2</sup>) до O(n). Подробности <a href="https://en.wikipedia.org/wiki/TeX#Hyphenation_and_justification">в английской Википедии</a>.</p>
-
-<p>Но TeX можно обмануть! Нужно лишь первым символом параграфа сделать неразрывный пробел нулевой длины – <code>\hspace{0pt}</code>. Примеры использования: <a href="http://sigstp.blogspot.ru/2010/09/latex-hyphenate-single-long-words-in.html">раз</a>, <a href="http://tex.stackexchange.com/questions/67762/hyphenation-rule-not-acted-upon">два</a>.</p>
-
-<p>Вставлять каждый раз в нужное место код очень неудобно, особенно если контент приходит из вне, поэтому можно сделать это автоматически. После достаточно долгих поисков я нашел <a href="http://tex.stackexchange.com/questions/78127/how-does-latex-make-line-breaking-for-word-that-can-not-fit-in-cell">вот этот совет</a> на TeX StackExchange – нужно в опциях табличного окружения воспользоваться синтаксисом <code>&gt;{...}</code> из пакета <code>array</code>, например так:</p>
-
-<pre><code>...
-\usepackage{array}
-...
-\begin{longtable}{|&gt;{\hspace{0pt}}p{0.1\textwidth} | p{0.3\textwidth}|} \hline
-...
-</code></pre>
-
-<p>После этого все сразу станет гораздо красивее.</p>
 
 
 

@@ -57,6 +57,61 @@
 <article class="entry">
   <header class="entry-header">
     <h1 class="entry-title">
+      <a href="/oracle-cold-backup-using-rman/">Холодный бэкап Oracle с помощью RMAN</a>
+    </h1>
+  </header>
+
+  <div class="entry-body content-area">
+    
+
+    <p>Чтобы осуществить холодный бэкап Oracle с помощью RMAN надо сделать:</p>
+
+<pre><code>$sqlplus / as sysdba
+SQL&gt; SHUTDOWN IMMEDIATE
+SQL&gt; STARTUP MOUNT
+SQL&gt; exit
+$rman target /
+RMAN&gt; BACKUP AS COMPRESSED BACKUPSET DATABASE PLUS ARCHIVELOG;
+RMAN&gt; BACKUP CURRENT CONTROLFILE;
+RMAN&gt; LIST BACKUP;
+RMAN&gt; exit
+</code></pre>
+
+<p>Некоторые полезные ссылки:</p>
+
+<ul>
+  <li><a href="http://docs.oracle.com/cd/B19306_01/backup.102/b14192/bkup003.htm">Раздел документации</a></li>
+  <li><a href="http://oracleendeavor.blogspot.ru/2010/03/rman-compressed-backups.html">Oracle Endeavor</a></li>
+  <li><a href="http://www.adp-gmbh.ch/ora/admin/backup_recovery/coldbackup_sh.html">Rene Nyffenegger</a></li>
+  <li><a href="http://rupamverma.blogspot.ru/2011/04/rman-commands-quick-reference-guide.html">Rupam Verma</a></li>
+</ul>
+
+<p>Больше полезного у меня <a href="https://pinboard.in/u:schmooser/t:rman/">в пинборде</a>.</p>
+
+
+
+    
+      <a href="/oracle-cold-backup-using-rman/" class="read-link">Читать</a>
+    
+  </div>
+
+  
+</article>
+
+  
+    
+  
+  
+  
+
+
+
+  
+
+
+<article class="entry">
+  <header class="entry-header">
+    <h1 class="entry-title">
       <a href="/oraddl/">oraddl</a>
     </h1>
   </header>
@@ -328,48 +383,6 @@ Check for Python version:</p>
 
     
       <a href="/about-universe/" class="read-link">Читать</a>
-    
-  </div>
-
-  
-</article>
-
-  
-    
-  
-  
-  
-
-
-
-  
-
-
-<article class="entry">
-  <header class="entry-header">
-    <h1 class="entry-title">
-      <a href="/github-and-bitbucket/">Про GitHub и BitBucket</a>
-    </h1>
-  </header>
-
-  <div class="entry-body content-area">
-    
-
-    <p>Все любят <a href="http://github.com">ГитХаб</a>. А мне больше нравится
-<a href="http://bitbucket.org">БитБакет</a>. У них разные модели монетизации — в ГитХабе
-надо платить за количество приватных репозиториев, а количество пользователей
-при этом не ограничевается; у БитБакета же платить надо за количество
-пользователей, а количество репозиториев не ограничено. Таким образом, если вам
-нужна социальность и/или вы делаете проект с открытым исходным кодом — идите на
-ГитХаб. Если вы хотите положить свои проекты в облако, при этом хотите
-приватные репозитории – на БитБакет.</p>
-
-<p>Нашел еще одну удобную фичу у БитБакета – графическое сравнение разных версий
-svg файлов. Можно даже посмотреть в режиме изменения прозрачности, как менялся
-svg-файл от ревизии к ревизии.</p>
-
-
-
     
   </div>
 

@@ -57,6 +57,42 @@
 <article class="entry">
   <header class="entry-header">
     <h1 class="entry-title">
+      <a href="/why-hour-divided-into-60-minutes/">Почему минута делится на 60 секунд, час на 60 минут, а в сутках только 24 часа?</a>
+    </h1>
+  </header>
+
+  <div class="entry-body content-area">
+    
+
+    <p>Мы повсеместно используем десятичную систему счисления. Однако, для подсчета
+времени почему-то используется очень странная система, когда сутки делятся
+на 24 часа, час делится на 60 минут, а минуты делятся на 60 секунд. В данной
+статье рассматривается история появления подобной системы счисления.</p>
+
+
+
+    
+      <a href="/why-hour-divided-into-60-minutes/" class="read-link">Читать</a>
+    
+  </div>
+
+  
+</article>
+
+  
+    
+  
+  
+  
+
+
+
+  
+
+
+<article class="entry">
+  <header class="entry-header">
+    <h1 class="entry-title">
       <a href="/rent-or-buy/">Что выгоднее – снимать квартиру или брать ипотеку?</a>
     </h1>
   </header>
@@ -251,91 +287,6 @@ Oracle XE 11g простым копированием файлов, настро
 
     
       <a href="/install-oracle-via-copy/" class="read-link">Читать</a>
-    
-  </div>
-
-  
-</article>
-
-  
-    
-  
-  
-  
-
-
-
-  
-
-
-<article class="entry">
-  <header class="entry-header">
-    <h1 class="entry-title">
-      <a href="/fast-btsync-setup-on-linux/">Быстрая настройка BTSync на Linux</a>
-    </h1>
-  </header>
-
-  <div class="entry-body content-area">
-    
-
-    <ol>
-  <li>
-    <p>Качаем <a href="http://www.bittorrent.com/sync/downloads">BTSync</a>, распаковываем и копируем исполняемый файл <code>btsync</code>
-куда-нибудь в <code>$PATH</code>.</p>
-  </li>
-  <li>
-    <p>Если хотим расшарить папку, то генерируем секретный ключ:</p>
-
-    <pre><code> btsync --generate-secret
-</code></pre>
-
-    <p>Результатом будет ключ вида <code>ABVERK6XBMBG7PJPLXTJJGFLZVBS2TM67</code> (начинается
-на A). Запоминаем!</p>
-  </li>
-  <li>
-    <p>Если хотим создать readonly-ключ и выдать его кому-нибудь, то из read-write
-ключа получаем его так:</p>
-
-    <pre><code> btsync --get-ro-secret ABVERK6XBMBG7PJPLXTJJGFLZVBS2TM67
-</code></pre>
-
-    <p>Результатом будет ключ вида <code>BEJ5VRAFKFEARZ6LCAR2OTNHGRRM4X3ER</code> (начинается
-на B). Сообщаем этот ключ readonly-стороне.</p>
-  </li>
-  <li>
-    <p>Делаем дамп пример конфигурационного файла:</p>
-
-    <pre><code> btsync --dump-sample-config &gt; btsync.conf
-</code></pre>
-  </li>
-  <li>
-    <p>Мне веб-интерфейс не нужен, поэтому я комментирую строку <code>listen ...</code> в
-блоке <code>webui</code> и прописываю нужные расшаренные папки в блоке <code>shared_folders</code>.
-ВНИМАНИЕ!!! По-умолчанию этот блок в примере конфига закомментирован, но начало
-и конец комментария выставлены неудачно и если у вас редактор без подсветки
-синтаксиса JSON, то этого легко не заметить. В таком случае btsync откажется
-запускаться. На это напарывался я и еще несколько человек независимо от меня.
-Нужно убедиться, что блок <code>shared_folders</code> действительно раскомментирован.</p>
-
-    <p>В shared_folders прописываем путь к папке и ключ. Ключ берем или из п.2 или
-полученный от кого-нибудь для синхронизации.</p>
-  </li>
-  <li>
-    <p>Запускаем btsync</p>
-
-    <pre><code> btsync --config btsync.conf
-</code></pre>
-
-    <p>и идем пить чай.</p>
-  </li>
-</ol>
-
-<p>Собственно, все настолько просто (все вышеизложенное понимается за секунду
-смотря на <code>btsync --help</code>) что и описывать, наверное, не стоило. Дойдут руки –
-напишу как общаться с BTSync через API.</p>
-
-
-
     
   </div>
 
