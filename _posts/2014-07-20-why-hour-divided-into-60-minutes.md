@@ -132,8 +132,8 @@ secundae_, или "вторая минута," стала известна пр�
 
 Ссылки:
 
-- _Time's Pendulum._ Jo Ellen Barnett. Plenum Press, 1998.  - _A History of
-Mathematics._ Florian Cajori. MacMillan and Co., 1894.  - _History of the
-Hour._ Gerhard Dohrn-van Rossum. University of Chicago Press, 1996.
+- _Time's Pendulum._ Jo Ellen Barnett. Plenum Press, 1998.
+- _A History of Mathematics._ Florian Cajori. MacMillan and Co., 1894.
+- _History of the Hour._ Gerhard Dohrn-van Rossum. University of Chicago Press, 1996.
 
 
