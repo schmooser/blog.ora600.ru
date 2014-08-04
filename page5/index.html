@@ -57,6 +57,47 @@
 <article class="entry">
   <header class="entry-header">
     <h1 class="entry-title">
+      <a href="/stavim-cx-oracle-na-amazon-linux-mikro-instans-ec2/">Ставим cx_Oracle на Amazon Linux (микро-инстанс EC2)</a>
+    </h1>
+  </header>
+
+  <div class="entry-body content-area">
+    
+
+    <p>Чтобы поставить модуль cx_Oracle на Amazon Linux, надо сделать следующее:</p>
+
+<ol>
+  <li>Поставить pip: <code>#easy_install pip</code></li>
+  <li>Прописать оракловые переменные среды <code>ORACLE_HOME</code>, <code>ORACLE_SID</code>, <code>NLS_LANG</code></li>
+  <li>Поставить пакет <code>#yum install python-devel</code></li>
+  <li>Поставить cx_Oracle: <code>#pip install cx_Oracle</code></li>
+  <li>Прописать переменную среды export <code>LD_LIBRARY_PATH=$ORACLE_HOME/lib</code></li>
+</ol>
+
+
+
+    
+      <a href="/stavim-cx-oracle-na-amazon-linux-mikro-instans-ec2/" class="read-link">Читать</a>
+    
+  </div>
+
+  
+</article>
+
+  
+    
+  
+  
+  
+
+
+
+  
+
+
+<article class="entry">
+  <header class="entry-header">
+    <h1 class="entry-title">
       <a href="/lookatme-favourites/">LookAtMe – избранное</a>
     </h1>
   </header>
@@ -364,48 +405,6 @@ END;
 
     
       <a href="/counting-number-of-rows-in-all-schema-tables/" class="read-link">Читать</a>
-    
-  </div>
-
-  
-</article>
-
-  
-    
-  
-  
-  
-
-
-
-  
-
-
-<article class="entry">
-  <header class="entry-header">
-    <h1 class="entry-title">
-      <a href="/twitter/">Про твиттер</a>
-    </h1>
-  </header>
-
-  <div class="entry-body content-area">
-    
-
-    <p>Сюда я пишу достаточно редко, в <a href="http://twitter.com/">твиттер</a> гораздо чаще. При этом страница твиттеровского профиля не есть место, в которое хочется смотреть – куча ответов другим людям и ретвитов. Опять же не все твиты важны. Хотелось бы иметь отдельную страницу с важными твитами.</p>
-
-<p>Твиттер обеспечивает возможность вставить твит на веб-страницу, получив embed code из веб-клиента. Выглядит это вот так:</p>
-
-<blockquote class="twitter-tweet tw-align-center" style="clear: none!important"><p>Мы сходили на Хоббитса, об этом все должны знать.</p>&mdash; Pavel Popov (@schmooser) <a href="https://twitter.com/schmooser/status/282439952330006528" data-datetime="2012-12-22T10:58:26+00:00">December 22, 2012</a></blockquote>
-<script async="" src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-
-<p>В принципе подойдет. Осталось сделать так, чтобы такая страница формировалась автоматически. Идея – фаворитить свои твиты, которые хочется отправить на эту страницу, джоб его ловит (условие: автор – я), получает код, добавляет на страницу, расфоворичивает твит.</p>
-
-<p>Попробую сделать через <a href="http://ifttt.com">IFFT</a>, если не получится, придется пописать код.</p>
-
-
-
-    
-      <a href="/twitter/" class="read-link">Читать</a>
     
   </div>
 

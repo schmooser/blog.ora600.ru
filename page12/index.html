@@ -57,6 +57,76 @@
 <article class="entry">
   <header class="entry-header">
     <h1 class="entry-title">
+      <a href="/wishlist/">Вишлист</a>
+    </h1>
+  </header>
+
+  <div class="entry-body content-area">
+    
+
+    <p>Сервис создания вишлиста предлагают многие, но ими не совсем удобно пользоваться. 
+Я пользуюсь вишлистами на Amazon для <a href="http://www.amazon.com/registry/wishlist/1MWP7VNDIUT25">вещей</a> и для <a href="http://www.amazon.com/registry/wishlist/1ZNPTGZ22TU0J">книжек</a>
+(электронные версии всячески приветствуются), сохраняю интересные ссылки в <a href="https://pinboard.in/u:schmooser/t:wishlist/">Pinboard</a>
+и веду список желаний тут:</p>
+
+<ul>
+  <li>
+    <s>кеды Конверс</s>
+    <p>– купил :-)</p>
+  </li>
+  <li>фотик Фуджи X100</li>
+  <li>4 футболки серии UT из ЮниКло по мотивам фильмов Дэвида Линча</li>
+  <li>какая-нибудь книга Льюиса по Ораклу в бумажном варианте</li>
+  <li>
+    <s>про-аккаунт на Фликере</s>
+    <p>– покупаю 3-х месячную про-подписку. А с
+недавнего времени у них обычные аккаунты стали про, кроме рекламы. Рекламу
+можно отключить за $50/год.</p>
+  </li>
+  <li>инвайт на <a href="http://ffffound.com">ffffound</a></li>
+  <li>
+    <s>2-х литровый фольксваген гольф турбо</s>
+    <p>– разочаровался в машинах в Москве</p>
+  </li>
+  <li>
+    <s>настольный аймак или мак мини</s>
+    <p>– купил мак мини</p>
+  </li>
+  <li>монитор Dell UltraSharp U2711</li>
+  <li>
+    <s>колонки, например такие – [Konoos D300][konoos]</s>
+    <p>– купил аудиоцентр YAMAHA CRX-040</p>
+  </li>
+  <li>
+    <s>лампочку Филипс Ливин Колорс</s>
+    <p>– разонравилась она мне</p>
+  </li>
+  <li>часы для спорта Garmin, с GPS-трекером</li>
+  <li>Фейнмановские лекции по физике в бумажном виде на английском</li>
+</ul>
+
+
+
+    
+  </div>
+
+  
+</article>
+
+  
+    
+  
+  
+  
+
+
+
+  
+
+
+<article class="entry">
+  <header class="entry-header">
+    <h1 class="entry-title">
       <a href="/removing-of-duplicates-from-table/">Удаление дубликатов из таблицы</a>
     </h1>
   </header>
@@ -276,51 +346,6 @@ export EDITOR=vim
 
     
       <a href="/speed-of-direct-path-load/" class="read-link">Читать</a>
-    
-  </div>
-
-  
-</article>
-
-  
-    
-  
-  
-  
-
-
-
-  
-
-
-<article class="entry">
-  <header class="entry-header">
-    <h1 class="entry-title">
-      <a href="/setting-up-ssh-on-guest-ubuntu-10.04-server-in-virtual-box/">Поднятие ssh на гостевом Ubuntu 10.04 Server под Virtual Box</a>
-    </h1>
-  </header>
-
-  <div class="entry-body content-area">
-    
-
-    <p>По-умолчанию у вновь созданной VM в качестве режима сети выставляется NAT. Этот режим в Virtual Box’e имеет несколько ограничений (раздел 6.3.3 справки), например — гостевая машина недоступна с хостовой по сети, между ними нет никакой связи. Чтобы как-то это обойти используется проброс портов (port forwarding). В этом случае порту гостевой машины ставится в соответствие порт машины-хоста.</p>
-
-<p>Чтобы пробросить 22-й порт (ssh) с гостевой машины на 2222-й порт машины хоста надо на хосте выполнить команду:
-  * <code>VBoxManage modifyvm "Ubuntu 10.04 server" --natpf1 "guestssh,tcp,,2222,,22"</code></p>
-
-<p>Здесь указывается Ubuntu 10.04 server — имя виртуальной машины на хосте, guestssh — имя создаваемого port forwarding’a, протокол и порты. Приложение VBoxManage лежит в папке Virtual Box’a.</p>
-
-<p>Далее в виртуальной машине устанавливаем ssh-сервер:
-  * <code>$sudo apt-get install ssh</code></p>
-
-<p>и заходим с гостевой машины (у меня - Windows 7, через PuTTY) на <code>localhost:2222</code>.</p>
-
-<p>Все.</p>
-
-
-
-    
-      <a href="/setting-up-ssh-on-guest-ubuntu-10.04-server-in-virtual-box/" class="read-link">Читать</a>
     
   </div>
 

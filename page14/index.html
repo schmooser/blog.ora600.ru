@@ -57,6 +57,49 @@
 <article class="entry">
   <header class="entry-header">
     <h1 class="entry-title">
+      <a href="/alter-table-set-unused-column/">ALTER TABLE SET UNUSED COLUMN</a>
+    </h1>
+  </header>
+
+  <div class="entry-body content-area">
+    
+
+    <p>Вместо инструкции <code>ALTER TABLE tablename DROP COLUMN columnname</code> для экономии времени возможно использовать инструкцию <code>ALTER TABLE tablename SET UNUSED COLUMN columnname</code>.</p>
+
+<p>При этом, данные из столбца таблицы физически не удаляются, место на диске не освобождается.  Столбец, который выставили в UNUSED, пропадает из списков столбцов таблицы при использовании <code>DESCRIBE</code>, пропадает из представлений <code>[USER|ALL|DBA]_TAB_COLUMNS</code>, и из списка столбцов при выборке <code>SELECT *</code>. Однако, лимит в 1000 столбцов на одну таблицу включает этот столбец.  Нельзя добавить еще один столбец типа <code>LONG</code>, если есть неиспользуемый столбец типа <code>LONG</code>.  Но можно добавить в таблицу новый столбец с тем же именем.</p>
+
+<p>Посмотреть количество неиспользуемых столбцов можно с помощью представлений <code>[USER|ALL|DBA]_UNUSED_COL_TABS</code>.</p>
+
+<p>Операция <code>ALTER TABLE tablename SET UNUSED COLUMN columnname</code> необратима, т.е. нельзя сделать <code>ALTER TABLE tablename SET USED COLUMN columnname</code>.</p>
+
+<p>Удалить неиспользуемые столбцы из таблицы можно с помощью <code>ALTER TABLE tablename DROP UNUSED COLUMNS</code>.</p>
+
+<p><a href="http://download.oracle.com/docs/cd/B13789_01/server.101/b10759/statements_3001.htm">Раздел официальной документации</a></p>
+
+
+
+    
+      <a href="/alter-table-set-unused-column/" class="read-link">Читать</a>
+    
+  </div>
+
+  
+</article>
+
+  
+    
+  
+  
+  
+
+
+
+  
+
+
+<article class="entry">
+  <header class="entry-header">
+    <h1 class="entry-title">
       <a href="/tlo-vs-whitera/">TLO vs WhiteRa</a>
     </h1>
   </header>

@@ -57,6 +57,61 @@
 <article class="entry">
   <header class="entry-header">
     <h1 class="entry-title">
+      <a href="/1z0-047-answering-questions-1/">1z0-047, разбор вопросов №1</a>
+    </h1>
+  </header>
+
+  <div class="entry-body content-area">
+    
+
+    <p>Буду кратко описывать топики, выделенные после 
+<a href="/1z0-047-test-passing-1/">первого прохождения теста</a>.</p>
+
+<h2 id="nextday">NEXT_DAY</h2>
+
+<p><img src="http://docs.oracle.com/cd/B19306_01/server.102/b14200/img/next_day.gif" alt="NEXT_DAY" /></p>
+
+<p>Возвращает дату — следующий день недели, указанный в <code>char</code> (название дня недели) после 
+даты, указанной в <code>date</code>. Часы, минуты, секунды возвращаемого значения равны соответствующим 
+значениям из <code>date</code>.</p>
+
+<p><a href="http://docs.oracle.com/cd/B19306_01/server.102/b14200/functions093.htm">Документация</a></p>
+
+<p>Хотя в документации не указано, можно в качестве второго аргумента подавать число от 1 до 7, тогда
+вернется следующий день недели с переданным порядковым номером. Неделя отсчитывается начиная
+или с понедельника или с воскресенья, зависит от настроек NLS.</p>
+
+<h2 id="with-check-option--view">Инструкция WITH CHECK OPTION у VIEW</h2>
+
+<p>Инструкция <code>WITCH CHECK OPTION</code> ограничивает DML операции над представлением 
+строками, явно подпадающими в представление. Например, если в определении 
+представления есть <code>WHERE job='CLERK'</code>, то вставить строку с <code>job='MANAGER'</code> в 
+представление не получится.</p>
+
+<p><a href="http://docs.oracle.com/cd/B19306_01/server.102/b14200/statements_8004.htm#i2117836">Документация</a></p>
+
+
+
+    
+  </div>
+
+  
+</article>
+
+  
+    
+  
+  
+  
+
+
+
+  
+
+
+<article class="entry">
+  <header class="entry-header">
+    <h1 class="entry-title">
       <a href="/keyboard/">Клавиатура</a>
     </h1>
   </header>
@@ -425,58 +480,6 @@ file.close()
 
     
       <a href="/about-unicode-in-python/" class="read-link">Читать</a>
-    
-  </div>
-
-  
-</article>
-
-  
-    
-  
-  
-  
-
-
-
-  
-
-
-<article class="entry">
-  <header class="entry-header">
-    <h1 class="entry-title">
-      <a href="/fubar/">Фубар</a>
-    </h1>
-  </header>
-
-  <div class="entry-body content-area">
-    
-
-    <p>Нашел, наконец, <a href="http://tempxla.deviantart.com/art/Navi2ch-like-v1-0-292193625">скин для Фубара</a>, который понравился.</p>
-
-<p>((foobar.png))
-((foobar2.png))</p>
-
-<p>Для него необходима большая куча доп.компонент, я аж замучился их качать. Также он не умеет показывать обложки альбомов, если они встроены в файлы. Ему надо, чтобы в папке лежал файл <code>folder.jpg</code> с обложкой.  И, надо немного поправить код, как написано в мануале на ДевиантАрте. Я взял, и просто заменил блок, в котором он ищет обложку на </p>
-
-<p><code>$draw_image(9,16,70,70,$replace(%path%,%filename_ext%,)folder.*,255,)</code></p>
-
-<p>И еще отключил эти дурацкие <code>? Db</code>. Тоже в исходных кодах, надо заменить </p>
-
-<p><code>$puts(right.text,'['$if(%skip%,SKIP,$if2(%length%,0:00))']' $pad_right($if2(%replaygain_track_gain%,? dB),9))</code></p>
-
-<p>на </p>
-
-<p><code>$puts(right.text,'['$if(%skip%,SKIP,$if2(%length%,0:00))']')</code></p>
-
-<p>Потом выложу в дропбокс фубар целиком, с этим установленным скином.</p>
-
-<p>Да, в нем перемотки по песне, и регулятора громкости (это у меня почему-то нет, на скриншотах он есть). Ну и ладно, они мне все равно не нужны.</p>
-
-
-
-    
-      <a href="/fubar/" class="read-link">Читать</a>
     
   </div>
 

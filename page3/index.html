@@ -57,6 +57,102 @@
 <article class="entry">
   <header class="entry-header">
     <h1 class="entry-title">
+      <a href="/raspberry-pi-setup-and-ssh-through-browser/">Установка Raspberry Pi и настройка SSH через браузер</a>
+    </h1>
+  </header>
+
+  <div class="entry-body content-area">
+    
+
+    <p>Настало время поставить что-нибудь дельное на мой Raspberry Pi Model A.</p>
+
+<p><img src="/assets/raspberrypi/raspberry_pi_logo1.png" alt="raspberry pi logo" /></p>
+
+<h2 id="wifi--">ОС, WiFi и драйвера</h2>
+
+<p>В качестве операционной системы поставил <a href="http://www.raspbian.org">Raspbian</a>, сеть – купил WiFi-адаптер <a href="http://www.tp-linkru.com/products/details/?categoryid=243&amp;model=TL-WN725N">TL-WN725N</a> за 310 рублей в Юлмарте.</p>
+
+<p>Драйвера для WiFi-адаптера ставятся простым копированием файлов в нужные директории, полное описание процесса установки есть в блоге <a href="http://www.mendrugox.net/2013/08/tp-link-tl-wn725n-v2-working-on-raspberry-raspbian/">mendrugox</a>. Только надо внимательно следить, чтобы драйвера были скомпилированы именно под нужную версию Raspbian.</p>
+
+<p>Драйвер для версии <code>2013-09-25-wheezy-raspbian</code>: <a href="/assets/raspberrypi/8188eu.ko">8188eu.ko</a> (Compiled in 2013-10) (Working in kernel Linux raspberrypi 3.6.11+ #538 PREEMPT).</p>
+
+<p>Файл кидаем на SD-карточку, после чего из Raspberry находим его в каталоге <code>/boot</code>. Копируем в</p>
+
+<pre><code>/lib/modules/(your-kernel-version)/kernel/drivers/net/wireless
+</code></pre>
+
+<p>и запускаем:</p>
+
+<pre><code>depmod -a
+modprobe 8188eu
+</code></pre>
+
+<p>После этого должно появиться устройство <code>wlan0</code>, с которым можно уже работать.</p>
+
+<p>Исходный код: <a href="/assets/raspberrypi/rtl8188eu.tgz">rtl8188eu.tgz</a></p>
+
+<p>Я не стал мучаться с настройкой WiFi через командную строку, а настроил все через графический интерфейс. Все работает и загружается при старте системы.</p>
+
+<h2 id="ssh-----dns">SSH через браузер и динамический DNS</h2>
+
+<p>Решил поставить браузерную версию ssh, чтобы можно было зайти на него с работы (любой не http(s)-трафик у нас режут).</p>
+
+<p>Для этого сначала поставил <a href="http://nodejs.org">nodejs</a>, затем <a href="https://github.com/chjj/tty.js/">tty.js</a>:</p>
+
+<pre><code>apt-get install nodejs, npm
+npm install tty.js
+</code></pre>
+
+<p>После этого его сразу можно поднимать и работать:</p>
+
+<pre><code>nodejs tty.js --daemonize
+</code></pre>
+
+<p>Конфигурационный файл по-умолчанию лежит в <code>~/.tty.js/config.json</code>.</p>
+
+<p>Единственное, чего я пока не понял – как сделать шелл с приглашением к логину, а то сейчас сразу открывается терминал из под пользователя, запустившего <code>tty.js</code>.</p>
+
+<p>Аутентификация – стандартная HTTP-authentication. Надо будет еще с HTTPS заморочиться, чтобы вообще все было хорошо.</p>
+
+<p>Дальше, выводим наш Raspberry в интернет.</p>
+
+<p>Есть сервис <a href="https://pagekite.net">pagekite</a>, который привязывает к вашему динамическому IP доменное имя вида <code>username.pagekite.me</code>. Бесплатный и с открытым исходным кодом, все настраивается и быстро устанавливается, можно даже привязать свой CNAME.</p>
+
+<p>Все настроил, теперь у меня Raspberry доступен из интернета.</p>
+
+<p>Правда это штука, pagekite, достаточно сильно грузит процессор – примерно 7-8% на сессию. Видимо, программно осуществляет роутинг пакетов.</p>
+
+<p>Надо будет приделать к нему настоящий DDNS. К сожалению, почти все хотят за это сейчас денег, причем немаленьких. Есть наброски по использованию Yandex Public DNS и прописыванием адреса через API. Сделаю – напишу.</p>
+
+<h2 id="section">Скриншоты</h2>
+
+<div class="photos">
+  <img src="/assets/raspberrypi/screenshot-1.png" data-caption="Nyancat в терминале, pagekite жрет 25% процессора" />
+  <img src="/assets/raspberrypi/screenshot-2.png" data-caption="Без нагрузки pagekite жрет 6-7% процессора" />
+</div>
+
+
+
+    
+  </div>
+
+  
+</article>
+
+  
+    
+  
+  
+  
+
+
+
+  
+
+
+<article class="entry">
+  <header class="entry-header">
+    <h1 class="entry-title">
       <a href="/first-word-hyphenation-in-latex/">Перенос первого слова в параграфе в LaTeX</a>
     </h1>
   </header>
@@ -474,113 +570,6 @@ database, на лету создается, подключается, клони
 Oracle 12с буковку <em>c</em> в названии.</p>
   </li>
 </ol>
-
-
-
-    
-  </div>
-
-  
-</article>
-
-  
-    
-  
-  
-  
-
-
-
-  
-
-
-<article class="entry">
-  <header class="entry-header">
-    <h1 class="entry-title">
-      <a href="/annuity-calculator/">Аннуитетный калькулятор</a>
-    </h1>
-  </header>
-
-  <div class="entry-body content-area">
-    
-
-    <p>Написал на Питоне коротенький аннуитетный калькулятор, рассчитывающий размер
-платежа, начисленные проценты и общую сумму переплаты. </p>
-
-<p>Оказалось, что если взять кредит на 3 года и погашать досрочно суммами, равными
-аннуитетному платежу для срока кредита 1 год, то переплата процентов будет в
-точности равна переплате, если просто взять кредит на 1 год.</p>
-
-<p>Калькулятор:</p>
-
-<pre><code># -*- encoding: utf-8 -*-
-
-PCT = 14.99/100
-YEARS = 2
-m = 12  # number of payments in year
-
-SUM = 100000
-
-K = (PCT/m)/(1-(1+(PCT/m))**(-1*YEARS*m))  # annuity quotient
-
-def iterate():
-  global SUM, K, YEARS, m
-  remainder = SUM
-  extra = 0  # extra monthly payment 
-  totals = {'percents': 0, 'payments': 0}
-  print('{:&lt;10}\t{:&lt;10}\t{:&lt;10}\t{:&lt;10}\t{:&lt;10}'.format('MONTH', 'PERCENT', 'PAYMENT',
-                                                        'REMAINDER', 'EXTRA'))
-  for i in range(YEARS*m):
-    percent = remainder*PCT/m
-    remainder += percent        
-    payment = min(K*SUM + extra, remainder)
-    remainder = max(0, remainder - payment)
-    totals['percents'] += percent
-    totals['payments'] += payment
-    print('{:&lt;10}\t{:&lt;10.2f}\t{:&lt;10.2f}\t{:&lt;10.2f}\t{:&lt;10.2f}'.format(i+1, percent, payment,
-                                                                      remainder, extra))
-    if remainder == 0: break
-  print('-'*80)
-  print('{:&lt;10}\t{:&lt;10.2f}\t{:&lt;10.2f}'.format('TOTAL', totals['percents'],
-                                              totals['payments']))
-
-iterate()
-</code></pre>
-
-<p>Пример расчета кредита в 100,000 на 2 года с процентной ставкой 14.99% годовых:</p>
-
-<pre><code>MONTH       PERCENT   	PAYMENT   	REMAINDER 	EXTRA     
-1         	1249.17   	4848.19   	96400.98  	0.00      
-2         	1204.21   	4848.19   	92757.00  	0.00      
-3         	1158.69   	4848.19   	89067.50  	0.00      
-4         	1112.60   	4848.19   	85331.91  	0.00      
-5         	1065.94   	4848.19   	81549.66  	0.00      
-6         	1018.69   	4848.19   	77720.16  	0.00      
-7         	970.85    	4848.19   	73842.82  	0.00      
-8         	922.42    	4848.19   	69917.05  	0.00      
-9         	873.38    	4848.19   	65942.24  	0.00      
-10        	823.73    	4848.19   	61917.78  	0.00      
-11        	773.46    	4848.19   	57843.05  	0.00      
-12        	722.56    	4848.19   	53717.41  	0.00      
-13        	671.02    	4848.19   	49540.24  	0.00      
-14        	618.84    	4848.19   	45310.90  	0.00      
-15        	566.01    	4848.19   	41028.71  	0.00      
-16        	512.52    	4848.19   	36693.04  	0.00      
-17        	458.36    	4848.19   	32303.21  	0.00      
-18        	403.52    	4848.19   	27858.54  	0.00      
-19        	348.00    	4848.19   	23358.35  	0.00      
-20        	291.78    	4848.19   	18801.95  	0.00      
-21        	234.87    	4848.19   	14188.62  	0.00      
-22        	177.24    	4848.19   	9517.67   	0.00      
-23        	118.89    	4848.19   	4788.37   	0.00      
-24        	59.81     	4848.19   	0.00      	0.00      
---------------------------------------------------------------------------------
-TOTAL     	16356.55  	116356.55 
-</code></pre>
-
-<p>Формулу для аннуитета взял в <a href="http://ru.wikipedia.org/wiki/%D0%90%D0%BD%D0%BD%D1%83%D0%B8%D1%82%D0%B5%D1%82">Википедии</a>.</p>
-
-<p><a href="https://github.com/schmooser/cloaked-adventure/blob/master/annuity_calc.py">Исходный код</a> на ГитХабе.</p>
 
 
 

@@ -57,6 +57,42 @@
 <article class="entry">
   <header class="entry-header">
     <h1 class="entry-title">
+      <a href="/install-oracle-via-copy/">Установка Oracle копированием</a>
+    </h1>
+  </header>
+
+  <div class="entry-body content-area">
+    
+
+    <p>Оракл можно установить простым копированием нужных файлов в нужные места и
+прописыванием соответствующих переменных среды. Я описываю процесс установки
+Oracle XE 11g простым копированием файлов, настройку среды окружения,
+восстановления дубликата БД из бэкапа и запуск листенера.</p>
+
+
+
+    
+      <a href="/install-oracle-via-copy/" class="read-link">Читать</a>
+    
+  </div>
+
+  
+</article>
+
+  
+    
+  
+  
+  
+
+
+
+  
+
+
+<article class="entry">
+  <header class="entry-header">
+    <h1 class="entry-title">
       <a href="/fast-btsync-setup-on-linux/">Быстрая настройка BTSync на Linux</a>
     </h1>
   </header>
@@ -372,102 +408,6 @@ $bin_dir/pmcmd startworkflow -service SERVICE_NAME
 
     
       <a href="/running-workflow-in-parallel-in-informatica-powercenter/" class="read-link">Читать</a>
-    
-  </div>
-
-  
-</article>
-
-  
-    
-  
-  
-  
-
-
-
-  
-
-
-<article class="entry">
-  <header class="entry-header">
-    <h1 class="entry-title">
-      <a href="/raspberry-pi-setup-and-ssh-through-browser/">Установка Raspberry Pi и настройка SSH через браузер</a>
-    </h1>
-  </header>
-
-  <div class="entry-body content-area">
-    
-
-    <p>Настало время поставить что-нибудь дельное на мой Raspberry Pi Model A.</p>
-
-<p><img src="/assets/raspberrypi/raspberry_pi_logo1.png" alt="raspberry pi logo" /></p>
-
-<h2 id="wifi--">ОС, WiFi и драйвера</h2>
-
-<p>В качестве операционной системы поставил <a href="http://www.raspbian.org">Raspbian</a>, сеть – купил WiFi-адаптер <a href="http://www.tp-linkru.com/products/details/?categoryid=243&amp;model=TL-WN725N">TL-WN725N</a> за 310 рублей в Юлмарте.</p>
-
-<p>Драйвера для WiFi-адаптера ставятся простым копированием файлов в нужные директории, полное описание процесса установки есть в блоге <a href="http://www.mendrugox.net/2013/08/tp-link-tl-wn725n-v2-working-on-raspberry-raspbian/">mendrugox</a>. Только надо внимательно следить, чтобы драйвера были скомпилированы именно под нужную версию Raspbian.</p>
-
-<p>Драйвер для версии <code>2013-09-25-wheezy-raspbian</code>: <a href="/assets/raspberrypi/8188eu.ko">8188eu.ko</a> (Compiled in 2013-10) (Working in kernel Linux raspberrypi 3.6.11+ #538 PREEMPT).</p>
-
-<p>Файл кидаем на SD-карточку, после чего из Raspberry находим его в каталоге <code>/boot</code>. Копируем в</p>
-
-<pre><code>/lib/modules/(your-kernel-version)/kernel/drivers/net/wireless
-</code></pre>
-
-<p>и запускаем:</p>
-
-<pre><code>depmod -a
-modprobe 8188eu
-</code></pre>
-
-<p>После этого должно появиться устройство <code>wlan0</code>, с которым можно уже работать.</p>
-
-<p>Исходный код: <a href="/assets/raspberrypi/rtl8188eu.tgz">rtl8188eu.tgz</a></p>
-
-<p>Я не стал мучаться с настройкой WiFi через командную строку, а настроил все через графический интерфейс. Все работает и загружается при старте системы.</p>
-
-<h2 id="ssh-----dns">SSH через браузер и динамический DNS</h2>
-
-<p>Решил поставить браузерную версию ssh, чтобы можно было зайти на него с работы (любой не http(s)-трафик у нас режут).</p>
-
-<p>Для этого сначала поставил <a href="http://nodejs.org">nodejs</a>, затем <a href="https://github.com/chjj/tty.js/">tty.js</a>:</p>
-
-<pre><code>apt-get install nodejs, npm
-npm install tty.js
-</code></pre>
-
-<p>После этого его сразу можно поднимать и работать:</p>
-
-<pre><code>nodejs tty.js --daemonize
-</code></pre>
-
-<p>Конфигурационный файл по-умолчанию лежит в <code>~/.tty.js/config.json</code>.</p>
-
-<p>Единственное, чего я пока не понял – как сделать шелл с приглашением к логину, а то сейчас сразу открывается терминал из под пользователя, запустившего <code>tty.js</code>.</p>
-
-<p>Аутентификация – стандартная HTTP-authentication. Надо будет еще с HTTPS заморочиться, чтобы вообще все было хорошо.</p>
-
-<p>Дальше, выводим наш Raspberry в интернет.</p>
-
-<p>Есть сервис <a href="https://pagekite.net">pagekite</a>, который привязывает к вашему динамическому IP доменное имя вида <code>username.pagekite.me</code>. Бесплатный и с открытым исходным кодом, все настраивается и быстро устанавливается, можно даже привязать свой CNAME.</p>
-
-<p>Все настроил, теперь у меня Raspberry доступен из интернета.</p>
-
-<p>Правда это штука, pagekite, достаточно сильно грузит процессор – примерно 7-8% на сессию. Видимо, программно осуществляет роутинг пакетов.</p>
-
-<p>Надо будет приделать к нему настоящий DDNS. К сожалению, почти все хотят за это сейчас денег, причем немаленьких. Есть наброски по использованию Yandex Public DNS и прописыванием адреса через API. Сделаю – напишу.</p>
-
-<h2 id="section">Скриншоты</h2>
-
-<div class="photos">
-  <img src="/assets/raspberrypi/screenshot-1.png" data-caption="Nyancat в терминале, pagekite жрет 25% процессора" />
-  <img src="/assets/raspberrypi/screenshot-2.png" data-caption="Без нагрузки pagekite жрет 6-7% процессора" />
-</div>
-
-
-
     
   </div>
 

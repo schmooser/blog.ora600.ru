@@ -57,6 +57,51 @@
 <article class="entry">
   <header class="entry-header">
     <h1 class="entry-title">
+      <a href="/setting-up-ssh-on-guest-ubuntu-10.04-server-in-virtual-box/">Поднятие ssh на гостевом Ubuntu 10.04 Server под Virtual Box</a>
+    </h1>
+  </header>
+
+  <div class="entry-body content-area">
+    
+
+    <p>По-умолчанию у вновь созданной VM в качестве режима сети выставляется NAT. Этот режим в Virtual Box’e имеет несколько ограничений (раздел 6.3.3 справки), например — гостевая машина недоступна с хостовой по сети, между ними нет никакой связи. Чтобы как-то это обойти используется проброс портов (port forwarding). В этом случае порту гостевой машины ставится в соответствие порт машины-хоста.</p>
+
+<p>Чтобы пробросить 22-й порт (ssh) с гостевой машины на 2222-й порт машины хоста надо на хосте выполнить команду:
+  * <code>VBoxManage modifyvm "Ubuntu 10.04 server" --natpf1 "guestssh,tcp,,2222,,22"</code></p>
+
+<p>Здесь указывается Ubuntu 10.04 server — имя виртуальной машины на хосте, guestssh — имя создаваемого port forwarding’a, протокол и порты. Приложение VBoxManage лежит в папке Virtual Box’a.</p>
+
+<p>Далее в виртуальной машине устанавливаем ssh-сервер:
+  * <code>$sudo apt-get install ssh</code></p>
+
+<p>и заходим с гостевой машины (у меня - Windows 7, через PuTTY) на <code>localhost:2222</code>.</p>
+
+<p>Все.</p>
+
+
+
+    
+      <a href="/setting-up-ssh-on-guest-ubuntu-10.04-server-in-virtual-box/" class="read-link">Читать</a>
+    
+  </div>
+
+  
+</article>
+
+  
+    
+  
+  
+  
+
+
+
+  
+
+
+<article class="entry">
+  <header class="entry-header">
+    <h1 class="entry-title">
       <a href="/session-blocking-and-rollback-to-savepoint/">Блокировка сессий и откат к savepoint</a>
     </h1>
   </header>
@@ -319,49 +364,6 @@ div.ao8 {padding-right: 0;}
 
 
 
-    
-  </div>
-
-  
-</article>
-
-  
-    
-  
-  
-  
-
-
-
-  
-
-
-<article class="entry">
-  <header class="entry-header">
-    <h1 class="entry-title">
-      <a href="/alter-table-set-unused-column/">ALTER TABLE SET UNUSED COLUMN</a>
-    </h1>
-  </header>
-
-  <div class="entry-body content-area">
-    
-
-    <p>Вместо инструкции <code>ALTER TABLE tablename DROP COLUMN columnname</code> для экономии времени возможно использовать инструкцию <code>ALTER TABLE tablename SET UNUSED COLUMN columnname</code>.</p>
-
-<p>При этом, данные из столбца таблицы физически не удаляются, место на диске не освобождается.  Столбец, который выставили в UNUSED, пропадает из списков столбцов таблицы при использовании <code>DESCRIBE</code>, пропадает из представлений <code>[USER|ALL|DBA]_TAB_COLUMNS</code>, и из списка столбцов при выборке <code>SELECT *</code>. Однако, лимит в 1000 столбцов на одну таблицу включает этот столбец.  Нельзя добавить еще один столбец типа <code>LONG</code>, если есть неиспользуемый столбец типа <code>LONG</code>.  Но можно добавить в таблицу новый столбец с тем же именем.</p>
-
-<p>Посмотреть количество неиспользуемых столбцов можно с помощью представлений <code>[USER|ALL|DBA]_UNUSED_COL_TABS</code>.</p>
-
-<p>Операция <code>ALTER TABLE tablename SET UNUSED COLUMN columnname</code> необратима, т.е. нельзя сделать <code>ALTER TABLE tablename SET USED COLUMN columnname</code>.</p>
-
-<p>Удалить неиспользуемые столбцы из таблицы можно с помощью <code>ALTER TABLE tablename DROP UNUSED COLUMNS</code>.</p>
-
-<p><a href="http://download.oracle.com/docs/cd/B13789_01/server.101/b10759/statements_3001.htm">Раздел официальной документации</a></p>
-
-
-
-    
-      <a href="/alter-table-set-unused-column/" class="read-link">Читать</a>
     
   </div>
 
