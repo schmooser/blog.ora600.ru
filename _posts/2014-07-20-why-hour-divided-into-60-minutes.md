@@ -3,6 +3,7 @@ layout: post
 title: Почему минута делится на 60 секунд, час на 60 минут, а в сутках только 24 часа?
 lang: ru
 category: translation
+image: http://farm2.staticflickr.com/1304/887348509_46ae1fabda_z.jpg
 ---
 
 

@@ -4,6 +4,7 @@ title: Machine Learning
 lang: ru
 description: Очень краткие конспекты лекций по ML с Coursera
 category: ml
+image: https://d1z850dzhxs7de.cloudfront.net/topics/ml/large-icon.png
 ---
 
 Записался на курс [Machine Learning][1] на Coursera. Попробую целиком

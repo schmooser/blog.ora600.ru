@@ -2,6 +2,7 @@
 layout: post
 category: life
 title: Что выгоднее – снимать квартиру или брать ипотеку?
+image: http://www.4cmortgages.com/blog/wp-content/uploads/2014/04/rent-or-buy-v2.jpg
 ---
 
 Думаю, этим вопросом задаются все люди у которых еще не решен квартирный вопрос.
