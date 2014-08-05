@@ -4,7 +4,7 @@
  <title>Блог Павла Попова</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2014-08-05T10:11:11+04:00</updated>
+ <updated>2014-08-05T10:18:39+04:00</updated>
  <id></id>
  <author>
    <name>Павел Попов</name>
@@ -93,10 +93,8 @@ magic-функцию строку, содержащую пробел.&lt;/p&gt;
 &lt;p&gt;В итоге, помимо сравнения месяцев, я туда добавил и столбец с бюджетом на месяц
 а также суммарную информацию с начала года.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;http://iseetheline.ru/assets/ledger-ipython.html&quot;&gt;Пример&lt;/a&gt; ноутбука IPython, в котором реализован данный функционал.&lt;/p&gt;
+&lt;p&gt;Получившийся ноутбук IPython можно посмотреть и скачать &lt;a href=&quot;http://nbviewer.ipython.org/gist/schmooser/af0ec7287e4bf425dee5&quot;&gt;здесь&lt;/a&gt;.&lt;/p&gt;
 
-&lt;iframe src=&quot;/assets/ledger-ipython.html&quot; width=&quot;100%&quot; height=&quot;1000px&quot;&gt;
-&lt;/iframe&gt;
 </content>
  </entry>
  
