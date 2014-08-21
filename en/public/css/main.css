@@ -291,15 +291,24 @@ pre {
   margin-top: 15px;
 }
 
-.entry-body {
-  font-size: 24px;
+.entry-body, .entry-footer, .entry-links {
   font-family: 'PT Sans', sans-serif;
-  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
 }
 
+.entry-body {
+  font-size: 24px;
+  line-height: 1.6;
+}
+
+.entry-links {
+  font-size: 18px;
+  margin-top: 30px;
+  line-height: 1.2;
+}
+
 .entry-footer {
-  margin-top: 100px;
+  margin-top: 70px;
 }
 
 .entry-timestamp {
@@ -403,7 +412,31 @@ a.read-link {
   text-decoration: none;
 }
 
+/* Fotorama */
+.fotorama__wrap { margin: auto; }
+
+/* Travel */
+.travel .entry-body ul, .travel .entry-body ol {
+  list-style-position: outside;
+  padding-left: 0;
+}
+
+.travel .entry-body li {
+  margin-top: 3em;
+}
+
+.travel .entry-body img {
+  display: block;
+  margin: 0 auto;
+}
+
 /* Responsive */
+
+@media (max-width: 890px) {
+  .travel .entry-body ul, .travel .entry-body ol{
+    list-style-position: inside;
+  }
+}
 
 /* @media (max-width: 48.0625em) */
 @media (max-width: 769px) {
@@ -439,3 +472,8 @@ a.read-link {
   }
 
 }
+
+
+
+
+

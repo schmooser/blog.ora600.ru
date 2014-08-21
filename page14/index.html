@@ -26,8 +26,8 @@
 
   <!-- Custom -->
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
-  <link href="http://fotorama.s3.amazonaws.com/4.4.9/fotorama.css" rel="stylesheet">
-  <script src="http://fotorama.s3.amazonaws.com/4.4.9/fotorama.js"></script>
+  <link  href="http://fotorama.s3.amazonaws.com/4.6.0/fotorama.css" rel="stylesheet"> <!-- 3 KB -->
+<script src="http://fotorama.s3.amazonaws.com/4.6.0/fotorama.js"></script> <!-- 16 KB -->
   <script src="/public/js/dug.js"></script>
   <script src="/public/js/application.js"></script>
 </head>
@@ -44,7 +44,63 @@
 
   <section class="entry-list row-1" role="main">
   
+    <article class="entry">
+      
+  
+  
+  
+
+
+
+  
+
+
+  <header class="entry-header">
+    <h1 class="entry-title">
+      <a href="/bugs-and-stangeness-of-informatica/">Баги и странности Informatica Power Center</a>
+    </h1>
+  </header>
+
+  <div class="entry-body content-area">
     
+
+    <p>За время работы с Informatica Power Center (8.1, 8.6, 9.5) обнаружены следующие баги и особенности работы:</p>
+
+<ol>
+  <li>
+    <p>Не работает выборка последнего элемента (use last) в lookup с override SQL с сортировкой по неким полям. Решение — использовать use first и сортировку в обратном порядке (<code>order by ... desc</code>). – Не совсем точное утверждение, напишу про это отдельный пост.</p>
+  </li>
+  <li>
+    <p>Если сравнивать тип данных money, пришедший с MS SQL Server с типом double, то цифры могут не сматчиться. Решение — в IPC явно проставлять формат для таких аттрибутов в numeric(19,4). </p>
+  </li>
+  <li>
+    <p>Есть маппинг, реализующий добавление строки в лог-таблицу (Oracle). Размер экстента таблицы 1 мб. Замечено очень странное: при каждом выполнении маппинга (вставка одной строки), количество экстентов увеличивалось на 1. Естественно, в 1-мегабайтный экстент влезет несколько сотен строк, никак ни одна.  Первая мысль — виновато кеширование сиквенса (10000), оказалась ошибочной. Дело было в типе вставки — при смене с булк-режима на нормальный все стало нормально. </p>
+  </li>
+  <li>
+    <p>В SQL Override лукапа Информатика <s>любит</s> требует, чтобы у атрибутов были явно заданы алиасы в виде <code>TAB.COLUMN_NAME AS PORT_NAME</code>. Вот это <code>AS PORT_NAME</code> для нее играет ключевую роль, иначе выдается ошибка Invalid lookup query override. Похоже, она переписывает SQL перед отправкой его в базу. Столкнулся с этой проблемой, нашел <a href="http://myinformatica.blogspot.com/2008/03/invalid-lookup-override.html">здесь</a> решение этой проблемы.</p>
+  </li>
+  <li>
+    <p>Если в маппинге есть несколько лукапов на основе одной таблицы, но при этом Source Filter у них будет разный, а Enable Lookup Cache включен, то Информатика будет реюзать кеш для всех остальных лукапов, кроме первого. В итоге, данные будут неправильно лукапиться. Надо посмотреть насчет того, бага это или фича.</p>
+  </li>
+  <li>
+    <p>Если лукап находится внутри мапплета, то в Source Filter лукапа нельзя использовать параметры мапплета — они не подхватятся. А если писать в Source Override, то подхватятся.</p>
+  </li>
+  <li>
+    <p>Если в лукапе в Source filter использовать параметры, то они не будут подхватываться. Приходится писать полный SQL override, там параметры подхватываются. Такое поведение только у лукапа, у Source Qualifier таких проблем нет.</p>
+  </li>
+</ol>
+
+
+
+    
+  </div>
+
+  
+
+    </article>
+  
+    <article class="entry">
+      
   
   
   
@@ -54,7 +110,6 @@
   
 
 
-<article class="entry">
   <header class="entry-header">
     <h1 class="entry-title">
       <a href="/alter-table-set-unused-column/">ALTER TABLE SET UNUSED COLUMN</a>
@@ -84,20 +139,20 @@
   </div>
 
   
-</article>
 
+    </article>
   
-    
+    <article class="entry">
+      
   
   
-  
-
-
-
   
 
 
-<article class="entry">
+
+  
+
+
   <header class="entry-header">
     <h1 class="entry-title">
       <a href="/tlo-vs-whitera/">TLO vs WhiteRa</a>
@@ -121,20 +176,20 @@
   </div>
 
   
-</article>
 
+    </article>
   
-    
+    <article class="entry">
+      
   
   
-  
-
-
-
   
 
 
-<article class="entry">
+
+  
+
+
   <header class="entry-header">
     <h1 class="entry-title">
       <a href="/reading-2012/">Чтение 2012</a>
@@ -194,20 +249,20 @@ goodreads.com</p>
   </div>
 
   
-</article>
 
+    </article>
   
-    
+    <article class="entry">
+      
   
   
-  
-
-
-
   
 
 
-<article class="entry">
+
+  
+
+
   <header class="entry-header">
     <h1 class="entry-title">
       <a href="/2011-results/">Итоги 2011-го</a>
@@ -319,8 +374,8 @@ HIMYM. </p>
   </div>
 
   
-</article>
 
+    </article>
   
   <a href="/archive/" class="archive-link">→</a>
 </section>

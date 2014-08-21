@@ -26,8 +26,8 @@
 
   <!-- Custom -->
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
-  <link href="http://fotorama.s3.amazonaws.com/4.4.9/fotorama.css" rel="stylesheet">
-  <script src="http://fotorama.s3.amazonaws.com/4.4.9/fotorama.js"></script>
+  <link  href="http://fotorama.s3.amazonaws.com/4.6.0/fotorama.css" rel="stylesheet"> <!-- 3 KB -->
+<script src="http://fotorama.s3.amazonaws.com/4.6.0/fotorama.js"></script> <!-- 16 KB -->
   <script src="/public/js/dug.js"></script>
   <script src="/public/js/application.js"></script>
 </head>
@@ -44,7 +44,59 @@
 
   <section class="entry-list row-1" role="main">
   
+    <article class="entry">
+      
+  
+  
+  
+
+
+
+  
+
+
+  <header class="entry-header">
+    <h1 class="entry-title">
+      <a href="/informatica-power-center-part-1/">Informatica Power Center. Часть 1. Описание системы и ее логических составляющих</a>
+    </h1>
+  </header>
+
+  <div class="entry-body content-area">
     
+
+    <p>Informatica Power Center — отличное ETL-средство, предназначенное для быстрого ETL гетерогенных сред. Очень простое (малый порог вхождения) и быстрое, с большим функционалом, поддерживающее все промышленные СУБД. Основное применение находит в банковских системах. В банке, где я работаю, на IPC строится уже 3-я версия корпоративного DWH. Причем, что меня особенно удивило, на IPC-же реализуется бизнес-логика. Оно, наверное и понятно, т.к. всем кажется, что таскать стрелочки из одной таблицы в другую, заменяя часть атрибутов по простым правилам — намного легче, чем написать код и потом его поддерживать. На практике же получаются очень сложные конструкции, в которых (как мне кажется) сложнее отыскать ошибку. Да и вопросы производительности отправлены на второй план — помощнее сервер, и все нормально.</p>
+
+<p>IPC представляет из себя сервер, в котором разворачивается домен — совокупность для репозиториев. Репозиторий — сущность IPC, находящаяся на одном уровне с бизнес-проектом. На каждый проект заводится свой репозиторий, в результате проекты не мешают друг другу, и могут разрабатываться параллельно. </p>
+
+<p>В репозитории создаются папки. Папка — хранилище объектов IPC всех типов. Используется для разделения групп объектов внутри бизнес-проекта. Мы, для своей системы, не смогли придумать более простого и понятного разделения, чем разделить проект на 4 части (папки) — EXTRACT, TRANSFORM, LOAD, SHARED (папка с объектами, которые будут использоваться в других папках). Папка может быть shared, т.е. в других папках можно создавать ярлыки на объекты в шаред-папке — так реализован code reuse.</p>
+
+<p>В папке все объекты разделены на несколько типов: </p>
+
+<ul>
+  <li>sources – источники данных. Описание таблиц/файлов в соответствующих системах-источниках</li>
+  <li>targets – приемники данных. Описание таблиц/файлов в соответствующих системах-приемниках</li>
+  <li>transformations — reusable-преобразования, например: последовательности, выражения (суть функции), лукапы (суть просмотр значения по ключу), java-преобразования и т.д.</li>
+  <li>mapings — основные сущности, несущие логику процесса. Описания процесса трансформации данных. В маппинге обязательно есть источник (один из sources) и приемник (один из targets). У источника есть Source Qualifier (SQ), определяющий, как и какие именно данные забирать. Между источником и приемником могут быть различные трансформации данных. Собственно, в маппинге и описывается весь ETL-процесс</li>
+  <li>mapplets — для повторного использования часть маппинга (набор транформаций) можно выделить в отдельную сущность — мапплет, а в маппинге уже использовать его. Опять для code reuse.</li>
+  <li>session — отражение логического маппинга на физическую структуру. На уровне сессии определяются физические параметры — соединения к БД, типы операции (insert/update/delete), интервалы коммита, и т.д.</li>
+  <li>tasks — задания. Аналогично сессиям, только если сессии определяют маппинги, то задания определяют различные действия, которые может выполнить IPC: послать e-mail, записать файл, выполнить команду ОС и др.</li>
+  <li>workflows — потоки. Это набор сессий и заданий, соединенных для запуска последовательно и/или параллельно. Запускаются именно потоки и больше ничего кроме потоков. Нельзя запустить отдельно маппинг или сессию — только в рамках потока. </li>
+  <li>worklets — ворклеты. Часть сессий/заданий можно выделить в ворклет, и затем в потоке уже использовать ворклет. Опять для code reuse.</li>
+</ul>
+
+
+
+    
+      <a href="/informatica-power-center-part-1/" class="read-link">Читать</a>
+    
+  </div>
+
+  
+
+    </article>
+  
+    <article class="entry">
+      
   
   
   
@@ -54,7 +106,6 @@
   
 
 
-<article class="entry">
   <header class="entry-header">
     <h1 class="entry-title">
       <a href="/1z0-047-answering-questions-1/">1z0-047, разбор вопросов №1</a>
@@ -96,20 +147,20 @@
   </div>
 
   
-</article>
 
+    </article>
   
-    
+    <article class="entry">
+      
   
   
-  
-
-
-
   
 
 
-<article class="entry">
+
+  
+
+
   <header class="entry-header">
     <h1 class="entry-title">
       <a href="/keyboard/">Клавиатура</a>
@@ -157,20 +208,20 @@
   </div>
 
   
-</article>
 
+    </article>
   
-    
+    <article class="entry">
+      
   
   
-  
-
-
-
   
 
 
-<article class="entry">
+
+  
+
+
   <header class="entry-header">
     <h1 class="entry-title">
       <a href="/dark-matter-dark-energy-and-the-shadow-universe/">Темная материя, темная энергия и скрытая вселенная</a>
@@ -225,20 +276,20 @@
   </div>
 
   
-</article>
 
+    </article>
   
-    
+    <article class="entry">
+      
   
   
-  
-
-
-
   
 
 
-<article class="entry">
+
+  
+
+
   <header class="entry-header">
     <h1 class="entry-title">
       <a href="/differences-between-historic-and-historical/">Различия между historic и historical</a>
@@ -269,20 +320,20 @@ person.</p>
   </div>
 
   
-</article>
 
+    </article>
   
-    
+    <article class="entry">
+      
   
   
-  
-
-
-
   
 
 
-<article class="entry">
+
+  
+
+
   <header class="entry-header">
     <h1 class="entry-title">
       <a href="/diablo-3/">Дьябло</a>
@@ -306,20 +357,20 @@ person.</p>
   </div>
 
   
-</article>
 
+    </article>
   
-    
+    <article class="entry">
+      
   
   
-  
-
-
-
   
 
 
-<article class="entry">
+
+  
+
+
   <header class="entry-header">
     <h1 class="entry-title">
       <a href="/1z0-047-test-passing-1/">1z0-047, прохождение теста №1</a>
@@ -423,69 +474,8 @@ person.</p>
   </div>
 
   
-</article>
 
-  
-    
-  
-  
-  
-
-
-
-  
-
-
-<article class="entry">
-  <header class="entry-header">
-    <h1 class="entry-title">
-      <a href="/about-unicode-in-python/">Про юникод в питоне</a>
-    </h1>
-  </header>
-
-  <div class="entry-body content-area">
-    
-
-    <p><a href="http://www.linux.org.ru/forum/development/4004465?cid=4004513">Источник</a>.</p>
-
-<p>Применительно к питону (второй версии).</p>
-
-<p>Любая строка попавшая в вашу программу извне — не юникодная, а простой набор байтов. Этот набор байтов необходимо раскодировать в Юникод. Обычно это делают как можно раньше и дальше работают уже с Юникодом. В питоне для этого используется метод <code>decode()</code>.</p>
-
-<p>Юникодную строку нельзя записать на диск, ее необходимо закодировать как набор байтов и записать. Обычно это делается как можно позже (непосредственно перед выводом). В питоне для этого используется метод <code>encode()</code>.</p>
-
-<p>На примере:</p>
-
-<pre><code>file = open('text.txt', 'rw')
- 
-# Прочитаем набор байтов из файла на диске
-data = file.read()
- 
-# Раскодируем набор байтов в юникодную строку
-data = data.decode('utf-8')  # Кодировка может быть и другая
- 
-# Теперь data - Юникод
-# Закодируем юникодную строку обратно в набор байтов
-data = data.encode('utf-8')
- 
-# Запишем байты обратно на диск
-file.write(data)
- 
-file.close()
-</code></pre>
-
-<p><a href="http://pastebin.com/JmVpKfT2">Сниппет на pastebin</a></p>
-
-
-
-    
-      <a href="/about-unicode-in-python/" class="read-link">Читать</a>
-    
-  </div>
-
-  
-</article>
-
+    </article>
   
   <a href="/archive/" class="archive-link">→</a>
 </section>

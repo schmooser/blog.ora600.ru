@@ -4,7 +4,7 @@
  <title>Pavel Popov's Blog</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2014-08-06T14:14:23+04:00</updated>
+ <updated>2014-08-21T23:11:31+04:00</updated>
  <id></id>
  <author>
    <name>Pavel Popov</name>
@@ -44,7 +44,7 @@
 
 &lt;p&gt;Example of the result is here:&lt;/p&gt;
 
-&lt;div id=&quot;set-72157639673699056&quot;&gt;&lt;/div&gt;
+&lt;div id=&quot;set-72157639673699056&quot; data-width=&quot;100%&quot; data-maxwidth=&quot;1200&quot;&gt;&lt;/div&gt;
 
 &lt;script&gt;
     dug({
@@ -58,15 +58,15 @@
     });
 &lt;/script&gt;
 
-&lt;div id=&quot;tags-&quot;&gt;&lt;/div&gt;
+&lt;div id=&quot;tags-bmwmuseum&quot;&gt;&lt;/div&gt;
 
 &lt;script&gt;
     dug({
       endpoint: &#39;https://api.flickr.com/services/rest/?method=flickr.photos.search&amp;api_key=f162f2bd093e4b60d2167158a4d67513&amp;format=json&amp;user_id=21960065@N03&amp;tags=bmwmuseum&#39;,
       callbackParam: &#39;jsoncallback&#39;,
-      target: &#39;tags-&#39;,
+      target: &#39;tags-bmwmuseum&#39;,
       success: function() {
-                 $(&#39;#tags-&#39;).fotorama(fotorama_option(&#39;thumbs&#39;));
+                 $(&#39;#tags-bmwmuseum&#39;).fotorama(fotorama_option(&#39;thumbs&#39;));
                },
       template: dug_template(&#39;thumbs&#39;, &#39;b&#39;, &#39;photos&#39;)
     });

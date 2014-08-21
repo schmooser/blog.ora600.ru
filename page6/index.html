@@ -26,8 +26,8 @@
 
   <!-- Custom -->
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
-  <link href="http://fotorama.s3.amazonaws.com/4.4.9/fotorama.css" rel="stylesheet">
-  <script src="http://fotorama.s3.amazonaws.com/4.4.9/fotorama.js"></script>
+  <link  href="http://fotorama.s3.amazonaws.com/4.6.0/fotorama.css" rel="stylesheet"> <!-- 3 KB -->
+<script src="http://fotorama.s3.amazonaws.com/4.6.0/fotorama.js"></script> <!-- 16 KB -->
   <script src="/public/js/dug.js"></script>
   <script src="/public/js/application.js"></script>
 </head>
@@ -44,7 +44,59 @@
 
   <section class="entry-list row-1" role="main">
   
+    <article class="entry">
+      
+  
+  
+  
+
+
+
+  
+
+
+  <header class="entry-header">
+    <h1 class="entry-title">
+      <a href="/counting-number-of-rows-in-all-schema-tables/">Считаем количество строк во всех таблицах в схеме</a>
+    </h1>
+  </header>
+
+  <div class="entry-body content-area">
     
+
+    <pre><code>DECLARE
+  n NUMBER;
+BEGIN
+  FOR rec IN (SELECT owner,
+                     table_name
+                FROM all_tables WHERE owner = 'OWNER') -- replace OWNER with target schema
+  LOOP
+    EXECUTE IMMEDIATE 'begin
+     select count(*) into :n from '||
+      rec.owner||'.'||rec.table_name||';
+     end;'
+    USING OUT n;
+    dbms_output.put_line(rec.owner||'.'||rec.table_name||' - '||n);
+  END LOOP;
+END;
+/
+</code></pre>
+
+<p><a href="https://gist.github.com/schmooser/4409100">gist</a></p>
+
+
+
+    
+      <a href="/counting-number-of-rows-in-all-schema-tables/" class="read-link">Читать</a>
+    
+  </div>
+
+  
+
+    </article>
+  
+    <article class="entry">
+      
   
   
   
@@ -54,7 +106,6 @@
   
 
 
-<article class="entry">
   <header class="entry-header">
     <h1 class="entry-title">
       <a href="/twitter/">Про твиттер</a>
@@ -83,20 +134,20 @@
   </div>
 
   
-</article>
 
+    </article>
   
-    
+    <article class="entry">
+      
   
   
-  
-
-
-
   
 
 
-<article class="entry">
+
+  
+
+
   <header class="entry-header">
     <h1 class="entry-title">
       <a href="/oracle-cold-backup-using-rman/">Холодный бэкап Oracle с помощью RMAN</a>
@@ -138,20 +189,20 @@ RMAN&gt; exit
   </div>
 
   
-</article>
 
+    </article>
   
-    
+    <article class="entry">
+      
   
   
-  
-
-
-
   
 
 
-<article class="entry">
+
+  
+
+
   <header class="entry-header">
     <h1 class="entry-title">
       <a href="/oraddl/">oraddl</a>
@@ -173,20 +224,20 @@ RMAN&gt; exit
   </div>
 
   
-</article>
 
+    </article>
   
-    
+    <article class="entry">
+      
   
   
-  
-
-
-
   
 
 
-<article class="entry">
+
+  
+
+
   <header class="entry-header">
     <h1 class="entry-title">
       <a href="/itunes-store/">iTunes Store</a>
@@ -210,20 +261,20 @@ RMAN&gt; exit
   </div>
 
   
-</article>
 
+    </article>
   
-    
+    <article class="entry">
+      
   
   
-  
-
-
-
   
 
 
-<article class="entry">
+
+  
+
+
   <header class="entry-header">
     <h1 class="entry-title">
       <a href="/demagogiya/">Демагогия</a>
@@ -261,20 +312,20 @@ RMAN&gt; exit
   </div>
 
   
-</article>
 
+    </article>
   
-    
+    <article class="entry">
+      
   
   
-  
-
-
-
   
 
 
-<article class="entry">
+
+  
+
+
   <header class="entry-header">
     <h1 class="entry-title">
       <a href="/installing-cx-oracle-on-centos-58/">Installing cx_Oracle on CentOS 5.8</a>
@@ -340,51 +391,8 @@ Check for Python version:</p>
   </div>
 
   
-</article>
 
-  
-    
-  
-  
-  
-
-
-
-  
-
-
-<article class="entry">
-  <header class="entry-header">
-    <h1 class="entry-title">
-      <a href="/quote-from-pelevins-snuff/">Цитата из Пелевина (S.N.U.F.F.)</a>
-    </h1>
-  </header>
-
-  <div class="entry-body content-area">
-    
-
-    <blockquote>
-  <p>Но вот что значит быть «русским»?<br />
-Никакой специализации, связанной с этим, нет.<br />
-Похоже, это так же непонятно сегодня, как семьсот лет назад.<br />
-Что это значило тогда, если верить экранным словарям?<br />
-Ездить на немецком автомобиле, смотреть азиатское порно, расплачиваться американскими деньгами, верить в еврейского бога, цитировать французских дискурсмонгеров, гордо дистанцироваться от «воров во власти» – и все время стараться что‑нибудь украсть, хотя бы в цифровом виде. Словом, сердце мира и универсальный синтез всех культур.<br />
-Наша старинная русская традиция как раз и строилась вокруг того, что не имела ничего своего, кроме языка, на котором происходило осмысление этого «ничего». Чем‑то похожим занимались евреи, но они назвали свою пустоту Богом и сумели выгодно продать ее народам поглупее. А мы?<br />
-Мы пытались продать человечеству отсутствие Бога. С метафизической точки зрения такое гораздо круче, и поначалу даже неплохо получилось – поэтому наши народы когда‑то и считались мистическими соперниками. Но если на Боге можно поставить национальный штамп, то как поставить его на том, чего нет? Вот отсюда и древний цивилизационный кризис моих предков, проблемы с самоидентификацией и заниженная самооценка, постоянно приводившая к засилью церковно‑бюрократического мракобесия и анальной тирании.  </p>
-</blockquote>
-
-<p><em>В. Пелевин, S.N.U.F.F.</em></p>
-
-
-
-    
-      <a href="/quote-from-pelevins-snuff/" class="read-link">Читать</a>
-    
-  </div>
-
-  
-</article>
-
+    </article>
   
   <a href="/archive/" class="archive-link">→</a>
 </section>

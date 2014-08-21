@@ -1,10 +1,12 @@
 
 fotorama_options = {
     'dots': {
-        'nav': 'dots'
+        'nav': 'dots',
+        'allowfullscreen': 'native'
     },
     'thumbs': {
-        'nav': 'thumbs'
+        'nav': 'thumbs',
+        'allowfullscreen': 'native'
     }
 }
 
@@ -35,10 +37,15 @@ function dug_template(name, size, endpoint) {
     var template = dug_templates[name]
     var flickr_thumb_url = FLICKR_BASE_URL.replace(/%SIZE%/, '_t')
     var flickr_url;
-    if (size == '')
+    if (size == '') {
+        console.log('default size');
         flickr_url = FLICKR_BASE_URL.replace(/%SIZE%/, '');
-    else
+    }
+    else {
+        console.log('explicit size');
         flickr_url = FLICKR_BASE_URL.replace(/%SIZE%/, '_'+size);
+    }
+    console.log(flickr_url);
     template = template.replace(/%FLICKR_URL%/g, flickr_url);
     template = template.replace(/%FLICKR_THUMB_URL%/g, flickr_thumb_url);
     template = template.replace(/%ENDPOINT%/g, endpoint);

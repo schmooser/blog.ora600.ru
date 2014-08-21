@@ -26,8 +26,8 @@
 
   <!-- Custom -->
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
-  <link href="http://fotorama.s3.amazonaws.com/4.4.9/fotorama.css" rel="stylesheet">
-  <script src="http://fotorama.s3.amazonaws.com/4.4.9/fotorama.js"></script>
+  <link  href="http://fotorama.s3.amazonaws.com/4.6.0/fotorama.css" rel="stylesheet"> <!-- 3 KB -->
+<script src="http://fotorama.s3.amazonaws.com/4.6.0/fotorama.js"></script> <!-- 16 KB -->
   <script src="/en/public/js/dug.js"></script>
   <script src="/en/public/js/application.js"></script>
 </head>
@@ -43,7 +43,8 @@
 </header>
 
   <section class="single-entry row-1" role="main">
-  
+  <article class="entry">
+    
   
   
   
@@ -51,7 +52,6 @@
 
 
 
-<article class="entry">
   <header class="entry-header">
     <h1 class="entry-title">
       <a href="/en/testing-dug-js/">Testing Dug.js</a>
@@ -88,7 +88,7 @@
 
 <p>Example of the result is here:</p>
 
-<div id="set-72157639673699056"></div>
+<div id="set-72157639673699056" data-width="100%" data-maxwidth="1200"></div>
 
 <script>
     dug({
@@ -102,15 +102,15 @@
     });
 </script>
 
-<div id="tags-"></div>
+<div id="tags-bmwmuseum"></div>
 
 <script>
     dug({
       endpoint: 'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=f162f2bd093e4b60d2167158a4d67513&format=json&user_id=21960065@N03&tags=bmwmuseum',
       callbackParam: 'jsoncallback',
-      target: 'tags-',
+      target: 'tags-bmwmuseum',
       success: function() {
-                 $('#tags-').fotorama(fotorama_option('thumbs'));
+                 $('#tags-bmwmuseum').fotorama(fotorama_option('thumbs'));
                },
       template: dug_template('thumbs', 'b', 'photos')
     });
@@ -126,8 +126,8 @@
     <time class="entry-timestamp">14 Feb 2014</time>
   </footer>
   
-</article>
 
+  </article>
 </section>
 
 

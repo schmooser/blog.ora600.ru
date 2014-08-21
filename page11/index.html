@@ -26,8 +26,8 @@
 
   <!-- Custom -->
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
-  <link href="http://fotorama.s3.amazonaws.com/4.4.9/fotorama.css" rel="stylesheet">
-  <script src="http://fotorama.s3.amazonaws.com/4.4.9/fotorama.js"></script>
+  <link  href="http://fotorama.s3.amazonaws.com/4.6.0/fotorama.css" rel="stylesheet"> <!-- 3 KB -->
+<script src="http://fotorama.s3.amazonaws.com/4.6.0/fotorama.js"></script> <!-- 16 KB -->
   <script src="/public/js/dug.js"></script>
   <script src="/public/js/application.js"></script>
 </head>
@@ -44,7 +44,69 @@
 
   <section class="entry-list row-1" role="main">
   
+    <article class="entry">
+      
+  
+  
+  
+
+
+
+  
+
+
+  <header class="entry-header">
+    <h1 class="entry-title">
+      <a href="/about-unicode-in-python/">Про юникод в питоне</a>
+    </h1>
+  </header>
+
+  <div class="entry-body content-area">
     
+
+    <p><a href="http://www.linux.org.ru/forum/development/4004465?cid=4004513">Источник</a>.</p>
+
+<p>Применительно к питону (второй версии).</p>
+
+<p>Любая строка попавшая в вашу программу извне — не юникодная, а простой набор байтов. Этот набор байтов необходимо раскодировать в Юникод. Обычно это делают как можно раньше и дальше работают уже с Юникодом. В питоне для этого используется метод <code>decode()</code>.</p>
+
+<p>Юникодную строку нельзя записать на диск, ее необходимо закодировать как набор байтов и записать. Обычно это делается как можно позже (непосредственно перед выводом). В питоне для этого используется метод <code>encode()</code>.</p>
+
+<p>На примере:</p>
+
+<pre><code>file = open('text.txt', 'rw')
+ 
+# Прочитаем набор байтов из файла на диске
+data = file.read()
+ 
+# Раскодируем набор байтов в юникодную строку
+data = data.decode('utf-8')  # Кодировка может быть и другая
+ 
+# Теперь data - Юникод
+# Закодируем юникодную строку обратно в набор байтов
+data = data.encode('utf-8')
+ 
+# Запишем байты обратно на диск
+file.write(data)
+ 
+file.close()
+</code></pre>
+
+<p><a href="http://pastebin.com/JmVpKfT2">Сниппет на pastebin</a></p>
+
+
+
+    
+      <a href="/about-unicode-in-python/" class="read-link">Читать</a>
+    
+  </div>
+
+  
+
+    </article>
+  
+    <article class="entry">
+      
   
   
   
@@ -54,7 +116,6 @@
   
 
 
-<article class="entry">
   <header class="entry-header">
     <h1 class="entry-title">
       <a href="/fubar/">Фубар</a>
@@ -93,20 +154,20 @@
   </div>
 
   
-</article>
 
+    </article>
   
-    
+    <article class="entry">
+      
   
   
-  
-
-
-
   
 
 
-<article class="entry">
+
+  
+
+
   <header class="entry-header">
     <h1 class="entry-title">
       <a href="/rainmeter/">Rainmeter</a>
@@ -136,20 +197,20 @@
   </div>
 
   
-</article>
 
+    </article>
   
-    
+    <article class="entry">
+      
   
   
-  
-
-
-
   
 
 
-<article class="entry">
+
+  
+
+
   <header class="entry-header">
     <h1 class="entry-title">
       <a href="/name/">Имя</a>
@@ -198,20 +259,20 @@ ServerAlias www.iseetheline.ru, blog.iseetheline.ru
   </div>
 
   
-</article>
 
+    </article>
   
-    
+    <article class="entry">
+      
   
   
-  
-
-
-
   
 
 
-<article class="entry">
+
+  
+
+
   <header class="entry-header">
     <h1 class="entry-title">
       <a href="/otpravka-zip-arhiva-s-ipad-po-pochte/">Отправка ZIP-архива с iPad по почте</a>
@@ -235,20 +296,20 @@ ServerAlias www.iseetheline.ru, blog.iseetheline.ru
   </div>
 
   
-</article>
 
+    </article>
   
-    
+    <article class="entry">
+      
   
   
-  
-
-
-
   
 
 
-<article class="entry">
+
+  
+
+
   <header class="entry-header">
     <h1 class="entry-title">
       <a href="/battlefield/">Морской бой</a>
@@ -272,20 +333,20 @@ ServerAlias www.iseetheline.ru, blog.iseetheline.ru
   </div>
 
   
-</article>
 
+    </article>
   
-    
+    <article class="entry">
+      
   
   
-  
-
-
-
   
 
 
-<article class="entry">
+
+  
+
+
   <header class="entry-header">
     <h1 class="entry-title">
       <a href="/about-ssd/">Про ССД, компьютерное</a>
@@ -346,58 +407,8 @@ ServerAlias www.iseetheline.ru, blog.iseetheline.ru
   </div>
 
   
-</article>
 
-  
-    
-  
-  
-  
-
-
-
-  
-
-
-<article class="entry">
-  <header class="entry-header">
-    <h1 class="entry-title">
-      <a href="/stephen-king-big-driver/">Стивен Кинг – Большой водитель</a>
-    </h1>
-  </header>
-
-  <div class="entry-body content-area">
-    
-
-    <p>Дочитал вторую повесть из сборника Full Dark, No Stars Стивена Кинга — Big
-Driver. 120-ти страничный текст рассказывает о том, как писательница женских
-романов средних лет попала в ловушку на дороге и была изнасилована бугаем на
-грузовике. Прикинувшись мертвой, ей удалось спастись и она, в результате,
-учинила возмездие ему и его семье. Очень понравилось, что из героини не делают
-этакого Рэмбо, который встал на тропу войны и крошит и рубит всех подряд, а
-обычное поведение среднестатистической женщины. Также забавно, как Кинг,
-описывающий мысли в голове героини от третьего лица, для создания диалога
-вводит в ее голове персонажей, с которыми она разговаривает. Получается хорошо,
-главное не начать думать, что у героини не все в порядке с головой.</p>
-
-<p>На английском становится легче читать, правда новые слова так не выучишь.
-В словарь лезть лень (я читаю бумажную версию), чаще всего додумываюсь по
-смыслу о значении слова, но все же в сложных моментах ускользают детали
-описания происходящего. Понимаешь общую канву, а детальной картины, к сожалению,
-нет. Но разбираться не хочется, хочется читать дальше.</p>
-
-<p>Читаю дальше, в сборнике осталось еще 3 повести.</p>
-
-
-
-    
-      <a href="/stephen-king-big-driver/" class="read-link">Читать</a>
-    
-  </div>
-
-  
-</article>
-
+    </article>
   
   <a href="/archive/" class="archive-link">→</a>
 </section>
