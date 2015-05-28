@@ -1,0 +1,4 @@
+baseurl = "http://ora600.ru/"
+languageCode = "en-us"
+title = "Ora600 - Foo blog bar"
+theme = "bmf-hugo-theme"
