@@ -1,4 +1,8 @@
 baseurl = "http://ora600.ru/"
 languageCode = "en-us"
-title = "Ora600 - Foo blog bar"
+title = "Ora600 &mdash; Personal site of Pavel Popov"
 theme = "bmf-hugo-theme"
+
+[author]
+  Name = "Pavel Popov"
+  Twitter = "schmooser"
