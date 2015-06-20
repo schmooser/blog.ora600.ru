@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Ora600 &amp;mdash; Personal site of Pavel Popov</title>
+    <link>http://localhost:1314/posts/</link>
+    <description>Recent content in Posts on Ora600 &amp;mdash; Personal site of Pavel Popov</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 28 May 2015 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1314/posts/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Starting New Site, again</title>
+      <link>http://localhost:1314/posts/starting-hugo-site/</link>
+      <pubDate>Thu, 28 May 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1314/posts/starting-hugo-site/</guid>
+      <description>&lt;p&gt;Hey there, I decided to start new site using &lt;a href=&#34;http://gohugo.io&#34;&gt;Hugo&lt;/a&gt; for site generation. It
+seems like more flexible and way more quicker then &lt;a href=&#34;http://jekyllrb.org&#34;&gt;Jekyll&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;So let&amp;rsquo;s have fun and design some theme first.&lt;/p&gt;
+
+&lt;p&gt;I desided to base my theme on famous &lt;a href=&#34;http://motherfuckingwebsite.com&#34;&gt;motherfuckingwebsite.com&lt;/a&gt;, actually on
+it&amp;rsquo;s &lt;a href=&#34;http://bettermotherfuckingwebsite.com&#34;&gt;better&lt;/a&gt; version.&lt;/p&gt;
+
+&lt;p&gt;There is a comprehensive &lt;a href=&#34;http://gohugo.io/content/organization/&#34;&gt;documentation&lt;/a&gt; about how to use Hugo, I get through it,
+it&amp;rsquo;s just awesome.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

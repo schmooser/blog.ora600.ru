@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>12c on Ora600 &amp;mdash; Some random thoughts</title>
+    <link>http://localhost:1314/tags/12c/</link>
+    <description>Recent content in 12c on Ora600 &amp;mdash; Some random thoughts</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 31 May 2015 10:17:52 +0300</lastBuildDate>
+    <atom:link href="http://localhost:1314/tags/12c/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Installing Oracle 12c on OpenVZ VPS</title>
+      <link>http://localhost:1314/post/installing-oracle-12-on-openvz-vps/</link>
+      <pubDate>Sun, 31 May 2015 10:17:52 +0300</pubDate>
+      
+      <guid>http://localhost:1314/post/installing-oracle-12-on-openvz-vps/</guid>
+      <description>
+
+&lt;p&gt;I have a relatively free server with enough memory and disk space for installing
+oracle Database. One caveat here is that it&amp;rsquo;s running under OpenVZ. That means
+that there is no swap file available.&lt;/p&gt;
+
+&lt;p&gt;I tried to install Oracle XE on this host, cheating a little bit so it think
+that there is enough swap file, but when starting oracle-xe configure it failed
+with &amp;ldquo;Unable to attach to shared memory segment&amp;rdquo; error and Linux error &amp;ldquo;No space
+left on device&amp;rdquo;. I didn&amp;rsquo;t resolve that problem, because &lt;code&gt;/dev/shm&lt;/code&gt; was present
+of enough space and I was able to read/write data there.&lt;/p&gt;
+
+&lt;p&gt;So I decided to try to install full-featured Oracle 12c on the server to play
+around.&lt;/p&gt;
+
+&lt;p&gt;I write this post during installation. Here I&amp;rsquo;ll write all steps and problems
+I&amp;rsquo;ll face during installation.&lt;/p&gt;
+
+&lt;p&gt;Here are some interesting tutorials I found on web:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.tecmint.com/oracle-12c-installation-in-centos-6/&#34;&gt;http://www.tecmint.com/oracle-12c-installation-in-centos-6/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://dbaora.com/install-oracle-12c-release-1-12-1-on-centos-linux-7/&#34;&gt;http://dbaora.com/install-oracle-12c-release-1-12-1-on-centos-linux-7/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;0-initial-config-before-installation:2e0daa52bbc4f230cd1ccd7f02d6358f&#34;&gt;0. Initial config before installation&lt;/h1&gt;
+
+&lt;p&gt;What we have:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;oracle user from Oracle XE installation&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ cat /etc/passwd | grep oracle
+oracle:x:502:502::/u01/app/oracle:/bin/bash
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;dba user group from Oracle XE installation&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ cat /etc/group | grep 502
+dba:x:502:
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;1-intall-prerequisites:2e0daa52bbc4f230cd1ccd7f02d6358f&#34;&gt;1. Intall prerequisites&lt;/h1&gt;
+
+&lt;p&gt;It&amp;rsquo;s very convinient to install all prerequisites from single rpm package &lt;code&gt;oracle-rdbms-server-12cR1-preinstall&lt;/code&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# /etc/yum.repos.d/
+# wget http://public-yum.oracle.com/public-yum-ol6.repo
+# cd /etc/pki/rpm-gpg
+# wget https://oss.oracle.com/el6/RPM-GPG-KEY-oracle
+# yum install oracle-rdbms-server-12cR1-preinstall -y
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Additional information here - &lt;a href=&#34;http://www.oracle.com/technetwork/articles/servers-storage-admin/ginnydbinstallonlinux-488779.html&#34;&gt;How I Simplified Oracle Database 12c and 11g Installations on Oracle Linux 6&lt;/a&gt;.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,965 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ora600 &amp;mdash; Some random thoughts</title>
+    <link>http://localhost:1314/</link>
+    <description>Recent content on Ora600 &amp;mdash; Some random thoughts</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 20 Jun 2015 01:12:30 +0300</lastBuildDate>
+    <atom:link href="http://localhost:1314/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Gister</title>
+      <link>http://localhost:1314/post/gister/</link>
+      <pubDate>Sat, 20 Jun 2015 01:12:30 +0300</pubDate>
+      
+      <guid>http://localhost:1314/post/gister/</guid>
+      <description>
+
+&lt;p&gt;Today I went through &lt;a href=&#34;https://github.com/golang/go/wiki/Projects&#34;&gt;list of projects&lt;/a&gt; written in Go and found a command
+line utility working with &lt;a href=&#34;http://gist.github.com&#34;&gt;Github Gists&lt;/a&gt; -
+&lt;a href=&#34;https://github.com/dutchcoders/gister&#34;&gt;dutchcoders/gister&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;It allows you to create/view/edit your gists in very efficient manner.&lt;/p&gt;
+
+&lt;p&gt;Here are a couple of notes:&lt;/p&gt;
+
+&lt;h3 id=&#34;token:e3a0499fd074c5b0d7b64f6fe49c09dd&#34;&gt;Token&lt;/h3&gt;
+
+&lt;p&gt;It&amp;rsquo;s useful to define environment variable GITHUB_TOKEN with token to access Github
+API. I defined it in my .zhsrc file:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;GITHUB_TOKEN=actual_token_here
+export GITHUB_TOKEN
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Do not forget to export variable, otherwise it won&amp;rsquo;t be visible for gister.&lt;/p&gt;
+
+&lt;h3 id=&#34;combining-with-fzf:e3a0499fd074c5b0d7b64f6fe49c09dd&#34;&gt;Combining with fzf&lt;/h3&gt;
+
+&lt;p&gt;To view/edit existing gist it&amp;rsquo;s required to provide gist&amp;rsquo;s id. It&amp;rsquo;s not useful
+to do &lt;code&gt;gister list&lt;/code&gt; then manually copy-paste gist&amp;rsquo;s id. Especially when we have
+[fzf] in our toolchain.&lt;/p&gt;
+
+&lt;p&gt;So I added the following function to &lt;code&gt;.zshrc&lt;/code&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;fzf-gister() {
+    gister list | fzf | sed -E &amp;quot;s/^[^ ]+\/([^ ]*).*$/\1/&amp;quot;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;and now use gister in this way:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ gister cat --gist=$(fzf-gister)
+$ gister edit --gist=$(fzf-gister)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Then I pick gist I&amp;rsquo;m interested with in fzf interface and voila.&lt;/p&gt;
+
+&lt;h3 id=&#34;multiple-files-support:e3a0499fd074c5b0d7b64f6fe49c09dd&#34;&gt;Multiple files support&lt;/h3&gt;
+
+&lt;p&gt;gister supports multiple-filed gists. When editing such gist it downloads all
+the files and loads them into editor (for vim into separate buffers). You can
+edit them and when you&amp;rsquo;ll exit from editor, gister will update files in gist
+accordingly.&lt;/p&gt;
+
+&lt;p&gt;You can even create new files in the same temporary directory gister created for
+you. If you have &lt;code&gt;autochdir on&lt;/code&gt; in vim then you&amp;rsquo;ll be at the file&amp;rsquo;s directory
+from the beginning and by &lt;code&gt;:new filename&lt;/code&gt; you&amp;rsquo;d create new file in the gist.
+Easy!&lt;/p&gt;
+
+&lt;h3 id=&#34;my-gists:e3a0499fd074c5b0d7b64f6fe49c09dd&#34;&gt;My gists&lt;/h3&gt;
+
+&lt;p&gt;You can find my gists here - &lt;a href=&#34;https://gist.github.com/schmooser&#34;&gt;https://gist.github.com/schmooser&lt;/a&gt;.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Enable authentication in mongodb</title>
+      <link>http://localhost:1314/post/enable-authentication-in-mongodb/</link>
+      <pubDate>Thu, 04 Jun 2015 10:21:07 +0300</pubDate>
+      
+      <guid>http://localhost:1314/post/enable-authentication-in-mongodb/</guid>
+      <description>&lt;p&gt;If you intended to use your mongodb server from outer world you need to enable
+authentication. I think that authentication scheme in mongo is far from good and
+always struggling with set up. That&amp;rsquo;s why I keep notes on this topic here.&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Start &lt;code&gt;mongod&lt;/code&gt; on the db without users using &lt;code&gt;--noauth&lt;/code&gt; option and login
+there without password&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Create &lt;code&gt;admin&lt;/code&gt; user with &lt;code&gt;userAdminAnyDatabase&lt;/code&gt; role:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;use admin
+db.createUser({user: &amp;ldquo;admin&amp;rdquo;, pwd: &amp;ldquo;somestrongpassword&amp;rdquo;, roles: [{role: &amp;ldquo;userAdminAnyDatabase&amp;rdquo;, db: &amp;ldquo;admin&amp;rdquo;}]})
+exit&lt;/p&gt;
+&lt;/blockquote&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Login with created admin user and add other users:&lt;/p&gt;
+
+&lt;p&gt;$ mongo localhost:27017 &amp;ndash;username admin &amp;ndash;password &amp;ldquo;somestrongpassword&amp;rdquo; &amp;ndash;authenticationDatabase admin
+&amp;gt; use reports
+&amp;gt; db.createUser({user: reports, pwd: &amp;ldquo;12345&amp;rdquo;, roles: [{role: &amp;ldquo;readWrite&amp;rdquo;, db: &amp;ldquo;reports&amp;rdquo;}]})
+&amp;gt; exit&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Check that created user is able to login&lt;/p&gt;
+
+&lt;p&gt;$ mongo localhost:27017/reports &amp;ndash;username reports &amp;ndash;password &amp;ldquo;12345&amp;rdquo; &amp;ndash;authenticationDatabase reports
+&amp;gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;That&amp;rsquo;s it. &lt;a href=&#34;http://docs.mongodb.org/v2.6/core/security-introduction/&#34;&gt;Documentation&lt;/a&gt;.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Installing Oracle 12c on OpenVZ VPS</title>
+      <link>http://localhost:1314/post/installing-oracle-12-on-openvz-vps/</link>
+      <pubDate>Sun, 31 May 2015 10:17:52 +0300</pubDate>
+      
+      <guid>http://localhost:1314/post/installing-oracle-12-on-openvz-vps/</guid>
+      <description>
+
+&lt;p&gt;I have a relatively free server with enough memory and disk space for installing
+oracle Database. One caveat here is that it&amp;rsquo;s running under OpenVZ. That means
+that there is no swap file available.&lt;/p&gt;
+
+&lt;p&gt;I tried to install Oracle XE on this host, cheating a little bit so it think
+that there is enough swap file, but when starting oracle-xe configure it failed
+with &amp;ldquo;Unable to attach to shared memory segment&amp;rdquo; error and Linux error &amp;ldquo;No space
+left on device&amp;rdquo;. I didn&amp;rsquo;t resolve that problem, because &lt;code&gt;/dev/shm&lt;/code&gt; was present
+of enough space and I was able to read/write data there.&lt;/p&gt;
+
+&lt;p&gt;So I decided to try to install full-featured Oracle 12c on the server to play
+around.&lt;/p&gt;
+
+&lt;p&gt;I write this post during installation. Here I&amp;rsquo;ll write all steps and problems
+I&amp;rsquo;ll face during installation.&lt;/p&gt;
+
+&lt;p&gt;Here are some interesting tutorials I found on web:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.tecmint.com/oracle-12c-installation-in-centos-6/&#34;&gt;http://www.tecmint.com/oracle-12c-installation-in-centos-6/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://dbaora.com/install-oracle-12c-release-1-12-1-on-centos-linux-7/&#34;&gt;http://dbaora.com/install-oracle-12c-release-1-12-1-on-centos-linux-7/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;0-initial-config-before-installation:2e0daa52bbc4f230cd1ccd7f02d6358f&#34;&gt;0. Initial config before installation&lt;/h1&gt;
+
+&lt;p&gt;What we have:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;oracle user from Oracle XE installation&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ cat /etc/passwd | grep oracle
+oracle:x:502:502::/u01/app/oracle:/bin/bash
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;dba user group from Oracle XE installation&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ cat /etc/group | grep 502
+dba:x:502:
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;1-intall-prerequisites:2e0daa52bbc4f230cd1ccd7f02d6358f&#34;&gt;1. Intall prerequisites&lt;/h1&gt;
+
+&lt;p&gt;It&amp;rsquo;s very convinient to install all prerequisites from single rpm package &lt;code&gt;oracle-rdbms-server-12cR1-preinstall&lt;/code&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# /etc/yum.repos.d/
+# wget http://public-yum.oracle.com/public-yum-ol6.repo
+# cd /etc/pki/rpm-gpg
+# wget https://oss.oracle.com/el6/RPM-GPG-KEY-oracle
+# yum install oracle-rdbms-server-12cR1-preinstall -y
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Additional information here - &lt;a href=&#34;http://www.oracle.com/technetwork/articles/servers-storage-admin/ginnydbinstallonlinux-488779.html&#34;&gt;How I Simplified Oracle Database 12c and 11g Installations on Oracle Linux 6&lt;/a&gt;.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Cheat</title>
+      <link>http://localhost:1314/post/cheat/</link>
+      <pubDate>Sat, 30 May 2015 10:21:07 +0300</pubDate>
+      
+      <guid>http://localhost:1314/post/cheat/</guid>
+      <description>&lt;p&gt;[cheat] is a very very useful tool not to just quickly getting cheatsheets of
+existing utilities and protocols but also for creating new ones. And not only
+cheatsheets but to any meaningful notes and list of commands, for example.&lt;/p&gt;
+
+&lt;p&gt;I created a file named &lt;code&gt;fav&lt;/code&gt; using &lt;code&gt;cheat -e fav&lt;/code&gt; and put there my favourite
+commands. Of course I can search for them in history but this file is for
+lengthy specially-written commands which I don&amp;rsquo;t use very often to put them into
+zsh functions.&lt;/p&gt;
+
+&lt;p&gt;For example, I saved commands for attaching to tmux sessions on remote servers:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ssh server-name.com -t tmux a -t tmux-session
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;I hardly remember names of tmux sessions I use on those servers sot it&amp;rsquo;s very
+convenient to have them saved into fav file.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>About</title>
+      <link>http://localhost:1314/page/about/</link>
+      <pubDate>Sat, 30 May 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1314/page/about/</guid>
+      <description>&lt;p&gt;Hi, my name is Pavel Popov. I&amp;rsquo;m living in Moscow and working in software
+development company.&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;m an Oracle Database developer (PL/SQL, SQL) and ETL Developer (DWH, ODS).&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>vim-rooter plugin and how I get rid of NERDTree</title>
+      <link>http://localhost:1314/post/vim-rooter-plugin/</link>
+      <pubDate>Fri, 29 May 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1314/post/vim-rooter-plugin/</guid>
+      <description>&lt;p&gt;Recently I decided to reduce number of plugins I use in VIM. First of all, [I
+switched off all motion plugins], then I started replacing &lt;a href=&#34;http://github.com/kien/ctrlp.vim&#34;&gt;CtrlP&lt;/a&gt; and
+&lt;a href=&#34;http://github.com/scrooloose/nerdtree&#34;&gt;NERDTree&lt;/a&gt; with a single &lt;a href=&#34;http://github.com/junegunn/fzf&#34;&gt;FZF&lt;/a&gt; plugin.&lt;/p&gt;
+
+&lt;p&gt;Initially I set up rooter with the following configuration:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;quot; Rooter {{{
+Plug &#39;airblade/vim-rooter&#39;
+let g:rooter_disable_map = 1
+let g:rooter_use_lcd = 1
+let g:rooter_silent_chdir = 1
+let g:rooter_change_directory_for_non_project_files = 1
+&amp;quot; }}}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Using it rooter will silently change local directory for each opened file. If
+file is within version control project (I use git) then it changes directory to
+project&amp;rsquo;s root. It&amp;rsquo;s useful then invoke &lt;code&gt;:FZF&lt;/code&gt; in current directory to quickly
+jump to any file within the project.&lt;/p&gt;
+
+&lt;p&gt;But when I started use this it turned to be not very efficient. Suppose you open
+for editing a blog post within site project. After this you decided to write new
+post. You can&amp;rsquo;t just write &lt;code&gt;:e new_post.md&lt;/code&gt;, instead you should write full path.
+So I decided to tweak my configuration a little bit.&lt;/p&gt;
+
+&lt;p&gt;So I added the following keymaps to fast directory switching:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;nnoremap &amp;lt;Leader&amp;gt;d :Rooter&amp;lt;CR&amp;gt;
+nnoremap &amp;lt;Leader&amp;gt;f :lcd %:p:h&amp;lt;CR&amp;gt;:pwd&amp;lt;CR&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You can take a look on my &lt;code&gt;.vimrc&lt;/code&gt; file &lt;a href=&#34;http://github.com/schmooser/dotfiles&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Better Motherfucking website</title>
+      <link>http://localhost:1314/page/bmf/</link>
+      <pubDate>Thu, 28 May 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1314/page/bmf/</guid>
+      <description>&lt;p&gt;Theme of this site was inspired by &lt;a href=&#34;http://bettermotherfuckingwebsite.com&#34;&gt;bettermotherfuckingwebsite.com&lt;/a&gt;.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Starting New Site, again</title>
+      <link>http://localhost:1314/post/starting-hugo-site/</link>
+      <pubDate>Thu, 28 May 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1314/post/starting-hugo-site/</guid>
+      <description>&lt;p&gt;Hey there, I decided to start new site using &lt;a href=&#34;http://gohugo.io&#34;&gt;Hugo&lt;/a&gt; for site generation. It
+seems like more flexible and way more quicker then &lt;a href=&#34;http://jekyllrb.org&#34;&gt;Jekyll&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;So let&amp;rsquo;s have fun and design some theme first.&lt;/p&gt;
+
+&lt;p&gt;I desided to base my theme on famous &lt;a href=&#34;http://motherfuckingwebsite.com&#34;&gt;motherfuckingwebsite.com&lt;/a&gt;, actually on
+it&amp;rsquo;s &lt;a href=&#34;http://bettermotherfuckingwebsite.com&#34;&gt;better&lt;/a&gt; version.&lt;/p&gt;
+
+&lt;p&gt;There is a comprehensive &lt;a href=&#34;http://gohugo.io/content/organization/&#34;&gt;documentation&lt;/a&gt; about how to use Hugo, I get through it,
+it&amp;rsquo;s just awesome.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Install Oracle 11g Express (XE) on CentOS</title>
+      <link>http://localhost:1314/post/install-oracle-xe-on-centos-6/</link>
+      <pubDate>Fri, 24 May 2013 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1314/post/install-oracle-xe-on-centos-6/</guid>
+      <description>
+
+&lt;p&gt;This is full copy of the &lt;a href=&#34;http://www.davidghedini.com/pg/entry/install_oracle_11g_xe_on&#34;&gt;post&lt;/a&gt; by David Ghedini for backup
+purposes. Refer to &lt;a href=&#34;http://localhost:1314/post/installing-oracle-xe-11gr2-on-centos-6&#34;&gt;my post&lt;/a&gt; about swap file on server and localhost&amp;rsquo;s
+name.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;This post will cover basic installation and configuration of Oracle 11g Express Edition (XE) on CentOS.&lt;/p&gt;
+
+&lt;p&gt;We will also take a quick look at configuring Application Express (APEX) for 11g XE.&lt;/p&gt;
+
+&lt;p&gt;Basic installation is straight forward.&lt;/p&gt;
+
+&lt;p&gt;If you just want to get up and running, you can just do steps 1 to 4 below (and 10 and 11 for Apex). The remaining steps (5 to 9) cover basic backup, recovery, and performance configuration.&lt;/p&gt;
+
+&lt;p&gt;The full system requirements are &lt;a href=&#34;http://download.oracle.com/docs/cd/E17781_01/install.112/e18802/toc.htm&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Your CentOS box should have swap equal to 2xRAM. &lt;em&gt;(look at [my post][my-post])&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;On every CentOS installation I have done for XE, I just needed to update/install the packages for libaio, bc, and flex.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;[root@ms3 ~]#  yum install libaio bc flex
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;step-1-download-and-install-oracle-11g-xe-rpm:34c03553785d5ab65849cb13a5623d5b&#34;&gt;Step 1: Download and Install Oracle 11g XE rpm&lt;/h2&gt;
+
+&lt;p&gt;You can download the Oracle XE rpm, &lt;code&gt;oracle-xe-11.2.0-1.0.x86_64.rpm.zip&lt;/code&gt;, from the OTN [here][download-xe].&lt;/p&gt;
+
+&lt;p&gt;Unzip &lt;code&gt;oracle-xe-11.2.0-1.0.x86_64.rpm.zip&lt;/code&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;[root@ms3 ~]# unzip -q oracle-xe-11.2.0-1.0.x86_64.rpm.zip
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This will create the directory &lt;code&gt;Disk1&lt;/code&gt;. Change to the &lt;code&gt;Disk1&lt;/code&gt; directory:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;[root@ms3 ~]# cd Disk1  
+[root@ms3 Disk1]# ls  
+oracle-xe-11.2.0-1.0.x86_64.rpm  response  upgrade  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&#34;step-1-1-swapfile:34c03553785d5ab65849cb13a5623d5b&#34;&gt;Step 1.1: Swapfile&lt;/h3&gt;
+
+&lt;p&gt;Check swapfile size using &lt;code&gt;# cat /proc/swaps&lt;/code&gt;! If it&amp;rsquo;s less than 2 Gb then
+create it, instructions are &lt;a href=&#34;http://localhost:1314/post/installing-oracle-xe-11gr2-on-centos-6&#34;&gt;here&lt;/a&gt;. Oracle won&amp;rsquo;t install if there will
+be no swap file of enough size.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Install the rpm using &lt;code&gt;rpm -ivh oracle-xe-11.2.0-1.0.x86_64.rpm&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;[root@ms3 Disk1]# rpm -ivh oracle-xe-11.2.0-1.0.x86_64.rpm  
+Preparing...                ###################### [100%]  
+   1:oracle-xe              ###################### [100%]  
+Executing post-install steps...  
+You must run &#39;/etc/init.d/oracle-xe configure&#39; as the root user to configure the database.
+
+[root@ms3 Disk1]#  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;step-2-configure-11g-xe-database-and-options:34c03553785d5ab65849cb13a5623d5b&#34;&gt;Step 2: Configure 11g XE Database and Options&lt;/h2&gt;
+
+&lt;p&gt;When installation completes, run &lt;code&gt;/etc/init.d/oracle-xe configure&lt;/code&gt; to configure and start the database.&lt;/p&gt;
+
+&lt;p&gt;Unless you wish to change the ports, except the defaults and set SYS/SYSTEM password.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;[root@ms3 Disk1]# /etc/init.d/oracle-xe configure
+
+Oracle Database 11g Express Edition Configuration
+-------------------------------------------------
+This will configure on-boot properties of Oracle Database 11g Express
+Edition.  The following questions will determine whether the database should
+be starting upon system boot, the ports it will use, and the passwords that
+will be used for database accounts.  Press &amp;lt;enter&amp;gt; to accept the defaults.
+Ctrl-C will abort.
+
+Specify the HTTP port that will be used for Oracle Application Express [8080]:
+
+Specify a port that will be used for the database listener [1521]:
+
+Specify a password to be used for database accounts.  Note that the same
+password will be used for SYS and SYSTEM.  Oracle recommends the use of
+different passwords for each database account.  This can be done after
+initial configuration:
+Confirm the password:
+
+Do you want Oracle Database 11g Express Edition to be started on boot (y/n) [y]:y
+
+Starting Oracle Net Listener...Done
+Configuring database...Done
+Starting Oracle Database 11g Express Edition instance...Done
+Installation completed successfully.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The installation created the directory &lt;code&gt;/u01&lt;/code&gt; under which Oracle XE is installed.&lt;/p&gt;
+
+&lt;h2 id=&#34;step-3-set-the-environment:34c03553785d5ab65849cb13a5623d5b&#34;&gt;Step 3: Set the Environment&lt;/h2&gt;
+
+&lt;p&gt;To set the required Oracle environment variables, use the &lt;code&gt;oracle_env.sh&lt;/code&gt; script included under &lt;code&gt;/u01/app/oracle/product/11.2.0/xe/bin&lt;/code&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;[root@ms3 Disk1]# cd /u01/app/oracle/product/11.2.0/xe/bin  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;To set the environment for your current session run:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;[root@ms3 bin]# . ./oracle_env.sh  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;To set the environment permanently for users, add the following to the &lt;code&gt;.bashrc&lt;/code&gt; or &lt;code&gt;.bash_profile&lt;/code&gt; of the users you want to access the environment:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;. /u01/app/oracle/product/11.2.0/xe/bin/oracle_env.sh  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You should now be able to access SQL*Plus:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;[root@ms3 bin]# sqlplus /nolog  
+
+SQL*Plus: Release 11.2.0.2.0 Production on Wed Sep 21 08:17:26 2011  
+
+Copyright (c) 1982, 2011, Oracle.  All rights reserved.  
+
+SQL&amp;gt; connect sys/&amp;lt;password&amp;gt; as sysdba  
+Connected.  
+SQL&amp;gt;  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;step-4-allow-remote-access-to-oracle-11g-xe-gui:34c03553785d5ab65849cb13a5623d5b&#34;&gt;Step 4: Allow Remote Access to Oracle 11g XE GUI&lt;/h2&gt;
+
+&lt;p&gt;To allow remote access to Oracle 11g XE GUI (as well as Application Express GUI) issue the following from SQL*Plus:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;SQL&amp;gt; EXEC DBMS_XDB.SETLISTENERLOCALACCESS(FALSE);  
+
+PL/SQL procedure successfully completed.  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You should now be able to access the Oracle 11g XE Home Page GUI at:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;http://localhost:8080/apex/f?p=4950:1 -- note the port you&#39;ve set during installation
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Replace &lt;code&gt;localhost&lt;/code&gt; above with your IP or domain as required.&lt;/p&gt;
+
+&lt;p&gt;Log in as &lt;code&gt;SYSTEM&lt;/code&gt; using the password you selected in Step 2 above.&lt;/p&gt;
+
+&lt;h2 id=&#34;step-5-move-the-flash-recovery-area-fast-recovery-area:34c03553785d5ab65849cb13a5623d5b&#34;&gt;Step 5: Move the Flash Recovery Area (Fast Recovery Area)&lt;/h2&gt;
+
+&lt;p&gt;To protect against disk failure, you should move the Flash Recovery Area to a separate disk.&lt;/p&gt;
+
+&lt;p&gt;This is actually now called the Fast Recovery Area, but the existing documentation still refers to it as the Flash Recovery Area&lt;/p&gt;
+
+&lt;p&gt;If a separate disk is not in your budget you should, at the very least, move the Flash Recovery Area to a partition other than the Oracle installation directory.&lt;/p&gt;
+
+&lt;p&gt;By default, the Fast Recovery Area will be located under &lt;code&gt;/u01/app/oracle/fast_recovery_area&lt;/code&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;SQL&amp;gt; show parameter DB_RECOVERY_FILE_DEST;  
+
+NAME                                 TYPE        VALUE  
+------------------------------------ ----------- ------------------------------  
+db_recovery_file_dest                string      /u01/app/oracle/fast_recovery_area  
+db_recovery_file_dest_size           big integer 10G  
+SQL&amp;gt;  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;So, to move it elsewhere, first create the new directory&lt;/p&gt;
+
+&lt;p&gt;[root@ms3 ~]# mkdir /opt/fra&lt;/p&gt;
+
+&lt;p&gt;Change the owner to oracle and the group to dba&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;[root@ms3 ~]# chown oracle:dba /opt/fra  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now, change the &lt;code&gt;DB_RECOVERY_FILE_DEST&lt;/code&gt; to the location you selected above.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;SQL&amp;gt; ALTER SYSTEM SET DB_RECOVERY_FILE_DEST = &#39;/opt/fra&#39;;  
+
+System altered.  
+
+SQL&amp;gt;  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;To move the files use the &lt;code&gt;movelog.sql&lt;/code&gt; script:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;SQL&amp;gt; @?/sqlplus/admin/movelogs  
+SQL&amp;gt; SET FEEDBACK 1  
+SQL&amp;gt; SET NUMWIDTH 10  
+SQL&amp;gt; SET LINESIZE 80  
+SQL&amp;gt; SET TRIMSPOOL ON  
+SQL&amp;gt; SET TAB OFF  
+SQL&amp;gt; SET PAGESIZE 100  
+SQL&amp;gt; declare  
+  2     cursor rlc is  
+  3        select group# grp, thread# thr, bytes/1024 bytes_k  
+  4          from v$log  
+  5        order by 1;  
+  6     stmt     varchar2(2048);  
+  7     swtstmt  varchar2(1024) := &#39;alter system switch logfile&#39;;  
+  8     ckpstmt  varchar2(1024) := &#39;alter system checkpoint global&#39;;  
+  9  begin  
+ 10     for rlcRec in rlc loop  
+ 11    stmt := &#39;alter database add logfile thread &#39; ||  
+ 12                 rlcRec.thr || &#39; size &#39; ||  
+ 13                 rlcRec.bytes_k || &#39;K&#39;;  
+ 14        execute immediate stmt;  
+ 15        begin  
+ 16           stmt := &#39;alter database drop logfile group &#39; || rlcRec.grp;  
+ 17           execute immediate stmt;  
+ 18        exception  
+ 19           when others then  
+ 20              execute immediate swtstmt;  
+ 21              execute immediate ckpstmt;  
+ 22              execute immediate stmt;  
+ 23        end;  
+ 24        execute immediate swtstmt;  
+ 25     end loop;  
+ 26  end;  
+ 27  /  
+
+PL/SQL procedure successfully completed.  
+
+SQL&amp;gt;  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now, set an appropriate size for the Fast Recovery Area. Use &lt;code&gt;df -h&lt;/code&gt; to insure that there is ample space.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;SQL&amp;gt; ALTER SYSTEM SET DB_RECOVERY_FILE_DEST_SIZE = 20G;  
+
+System altered.  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Verify the new location and size.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;SQL&amp;gt; show parameter DB_RECOVERY_FILE_DEST;  
+
+NAME                                 TYPE        VALUE  
+------------------------------------ ----------- ------------------------------  
+db_recovery_file_dest                string      /opt/fra  
+db_recovery_file_dest_size           big integer 20G  
+SQL&amp;gt;  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;step-6-add-redo-log-members-to-groups:34c03553785d5ab65849cb13a5623d5b&#34;&gt;Step 6: Add Redo Log Members to Groups&lt;/h2&gt;
+
+&lt;p&gt;You should have at least two Redo Log Groups and each group should have at least two members.&lt;/p&gt;
+
+&lt;p&gt;Additionally, the members should be spread across disks (or at least directories)&lt;/p&gt;
+
+&lt;p&gt;For whatever reason, only one member is created per group on install.&lt;/p&gt;
+
+&lt;p&gt;You can view the redo log files using&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;SQL&amp;gt; SELECT * FROM V$LOGFILE;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Since the default location for the two members is the Flash Recovery Area, the two existing members have been moved to our new FRA.&lt;/p&gt;
+
+&lt;p&gt;You should now add an additional member for each group under &lt;code&gt;/u01/app/oracle/oradata/XE&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;SQL&amp;gt; ALTER DATABASE ADD LOGFILE MEMBER &#39;/u01/app/oracle/oradata/XE/log1b.LOG&#39; TO GROUP 1;  
+
+Database altered.  
+
+SQL&amp;gt; ALTER DATABASE ADD LOGFILE MEMBER &#39;/u01/app/oracle/oradata/XE/log2b.LOG&#39; TO GROUP 2;  
+
+Database altered.  
+
+SQL&amp;gt;  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;step-7-set-sessions-and-processes-parameters:34c03553785d5ab65849cb13a5623d5b&#34;&gt;Step 7: Set Sessions and Processes Parameters&lt;/h2&gt;
+
+&lt;p&gt;The default values for parameters and sessions is quite low on the default installation.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;SQL&amp;gt; show parameters sessions;  
+
+NAME                                 TYPE        VALUE  
+------------------------------------ ----------- ------------------------------  
+java_max_sessionspace_size           integer     0  
+java_soft_sessionspace_limit         integer     0  
+license_max_sessions                 integer     0  
+license_sessions_warning             integer     0  
+sessions                             integer     172  
+shared_server_sessions               integer  
+
+SQL&amp;gt; show parameters processes;  
+
+NAME                                 TYPE        VALUE  
+------------------------------------ ----------- ------------------------------  
+aq_tm_processes                      integer     0  
+db_writer_processes                  integer     1  
+gcs_server_processes                 integer     0  
+global_txn_processes                 integer     1  
+job_queue_processes                  integer     4  
+log_archive_max_processes            integer     4  
+processes                            integer     100  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You can increase these parameters.&lt;/p&gt;
+
+&lt;p&gt;After each change, you will need to restart the database.&lt;/p&gt;
+
+&lt;p&gt;Increase sessions and then bounce database.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;SQL&amp;gt; alter system set sessions=250 scope=spfile;  
+
+System altered.  
+
+SQL&amp;gt; shutdown immediate  
+Database closed.  
+Database dismounted.  
+ORACLE instance shut down.  
+SQL&amp;gt; startup  
+ORACLE instance started.  
+
+Total System Global Area 1068937216 bytes  
+Fixed Size                  2233344 bytes  
+Variable Size             780143616 bytes  
+Database Buffers          281018368 bytes  
+Redo Buffers                5541888 bytes  
+Database mounted.  
+Database opened.  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Verify change to sessions parameter:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;SQL&amp;gt; show parameters sessions;  
+
+NAME                                 TYPE        VALUE  
+------------------------------------ ----------- ------------------------------  
+java_max_sessionspace_size           integer     0  
+java_soft_sessionspace_limit         integer     0  
+license_max_sessions                 integer     0  
+license_sessions_warning             integer     0  
+sessions                             integer     252  
+shared_server_sessions               integer  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Increase processes and restart database&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;SQL&amp;gt; alter system set processes=200 scope=spfile;  
+
+System altered.  
+
+SQL&amp;gt; shutdown immediate;
+
+Database dismounted.  
+ORACLE instance shut down.  
+SQL&amp;gt; startup  
+ORACLE instance started.  
+
+Total System Global Area 1068937216 bytes  
+Fixed Size                  2233344 bytes  
+Variable Size             763366400 bytes  
+Database Buffers          297795584 bytes  
+Redo Buffers                5541888 bytes  
+Database mounted.  
+Database opened.  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Verify change to processes parameter:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;SQL&amp;gt;  show parameters processes;  
+
+NAME                                 TYPE        VALUE  
+------------------------------------ ----------- ------------------------------  
+aq_tm_processes                      integer     0  
+db_writer_processes                  integer     1  
+gcs_server_processes                 integer     0  
+global_txn_processes                 integer     1  
+job_queue_processes                  integer     4  
+log_archive_max_processes            integer     4  
+processes                            integer     200  
+SQL&amp;gt;  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;step-8-enable-archivelog-mode:34c03553785d5ab65849cb13a5623d5b&#34;&gt;Step 8: Enable Archivelog Mode&lt;/h2&gt;
+
+&lt;p&gt;To enable online or &amp;ldquo;hot&amp;rdquo; backups, Archivelog Mode must be enabled.&lt;/p&gt;
+
+&lt;p&gt;Additionally, if you do not enable Archivelog Mode and take only offline or &amp;ldquo;cold&amp;rdquo; backups, should you need to restore the database you will only be able to restore to the last backup&lt;/p&gt;
+
+&lt;p&gt;To enable Archivelog Mode, shutdown the database and then startup mount:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;SQL&amp;gt; shutdown immediate  
+Database closed.  
+Database dismounted.  
+ORACLE instance shut down.  
+SQL&amp;gt; startup mount  
+ORACLE instance started.  
+
+Total System Global Area 1068937216 bytes  
+Fixed Size                  2233344 bytes  
+Variable Size             763366400 bytes  
+Database Buffers          297795584 bytes  
+Redo Buffers                5541888 bytes  
+Database mounted.  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Enable Archivelog Mode&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;SQL&amp;gt; alter database archivelog;  
+
+Database altered.  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Open the database and verify that Archivelog Mode is enabled&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;SQL&amp;gt; alter database open;  
+
+Database altered.  
+
+SQL&amp;gt; SELECT LOG_MODE FROM SYS.V$DATABASE;  
+
+LOG_MODE  
+------------  
+ARCHIVELOG  
+
+SQL&amp;gt;  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;step-9-create-online-backup-script:34c03553785d5ab65849cb13a5623d5b&#34;&gt;Step 9: Create Online Backup Script&lt;/h2&gt;
+
+&lt;p&gt;To create automated backups, you can modify the &lt;code&gt;backup.sh&lt;/code&gt; included under &lt;code&gt;/u01/app/oracle/product/11.2.0/xe/config/scripts&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Create a directory for your backup script&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;[root@ms3 ~]# mkdir /opt/ora_backup  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Change the owner to oracle and the group to dba&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;[root@ms3 ~]# chown oracle:dba /opt/ora_backup  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Copy the &lt;code&gt;backup.sh&lt;/code&gt; script from &lt;code&gt;/u01/app/oracle/product/11.2.0/xe/config/scripts&lt;/code&gt; to the directory you created above.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;[root@ms3 ~]# cp  /u01/app/oracle/product/11.2.0/xe/config/scripts/backup.sh /opt/ora_backup/backup.sh  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Open the &lt;code&gt;backup.sh&lt;/code&gt; script in a text editor or vi. The last section will look like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;else  
+   echo Backup of the database succeeded.  
+   echo Log file is at $rman_backup_current.  
+fi  
+
+#Wait for user to press any key  
+echo -n &amp;quot;Press ENTER key to exit&amp;quot;  
+read userinp   
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Change it to:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;else  
+   echo Backup of the database succeeded.  
+   echo Log file is at $rman_backup_current.  
+   mail -s &#39;Oracle Backup Completed&#39; &#39;david@davidghedini.com&#39; &amp;lt; /u01/app/oracle/oxe_backup_current.log  
+fi  
+
+#Wait for user to press any key  
+#echo -n &amp;quot;Press ENTER key to exit&amp;quot;  
+#read userinp   
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The line we added above, &lt;code&gt;mail -s &#39;Oracle Backup Completed&#39; &#39;david@davidghedini.com&#39; &amp;lt; /u01/app/oracle/oxe_backup_current.log&lt;/code&gt;, will send us an email notification that the backup has completed as well as cat the backup log to the body of the email.&lt;/p&gt;
+
+&lt;p&gt;Note that we have also commented out the last two lines of the script (the prompt).&lt;/p&gt;
+
+&lt;p&gt;Create a cron job to run the script as user oracle.&lt;/p&gt;
+
+&lt;p&gt;You should run it at least once a day. With Archivelog Mode enabled, it is important that backups be taken regularly to prevent the Flash Recovery Area from filling.&lt;/p&gt;
+
+&lt;h2 id=&#34;step-10-oracle-11g-xe-and-application-express-apex:34c03553785d5ab65849cb13a5623d5b&#34;&gt;Step 10: Oracle 11g XE and Application Express (APEX)&lt;/h2&gt;
+
+&lt;p&gt;Oracle 11g Express Edition comes with Application Express 4.0.2 already installed.&lt;/p&gt;
+
+&lt;p&gt;If you elect to upgrade to the latest version (4.1 as of this writing), you can do so but will loose access to the XE GUI. Not a huge loss, but something to keep in mind.&lt;/p&gt;
+
+&lt;p&gt;Although Apex is already installed, you will need to set the Internal Admin password.&lt;/p&gt;
+
+&lt;p&gt;To do so, run the apxchpwd.sql located under &lt;code&gt;/u01/app/oracle/product/11.2.0/xe/apex&lt;/code&gt;:&lt;/p&gt;
+
+&lt;p&gt;Note: pick something simple like &lt;code&gt;Password123!&lt;/code&gt; as you will be prompted to change it on first log in anyways.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;SQL&amp;gt; @/u01/app/oracle/product/11.2.0/xe/apex/apxchpwd.sql  
+Enter a value below for the password for the Application Express ADMIN user.  
+
+
+Enter a password for the ADMIN user              []  
+
+Session altered.  
+
+...changing password for ADMIN  
+
+PL/SQL procedure successfully completed.  
+
+
+Commit complete.  
+
+SQL&amp;gt;  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You can access the Application Express GUI at:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;http://localhost:8080/apex/f?p=4550:1
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Replace localhost above with your IP or domain as required.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Workspace: Internal
+User Name: admin
+Password: (whatever you selected above).
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Alternatively, you can access via &lt;code&gt;http://localhost:8080/apex/f?p=4550:10&lt;/code&gt; or &lt;code&gt;http://localhost:8080/apex/apex_admin&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Again, replace localhost above with your IP or domain as required.&lt;/p&gt;
+
+&lt;h2 id=&#34;step-11-oracle-11g-xe-configure-epg-or-apex-listener:34c03553785d5ab65849cb13a5623d5b&#34;&gt;Step 11: Oracle 11g XE: Configure EPG or Apex Listener&lt;/h2&gt;
+
+&lt;p&gt;Unless you have a license for Oracle HTTP Server (OHS), your options are the embedded PLSQL Gateway (EPG) or Apex Listener.&lt;/p&gt;
+
+&lt;p&gt;The Application Express that comes installed with Oracle 11g XE is configured using the EPG.&lt;/p&gt;
+
+&lt;p&gt;While the EPG is simpler than Apex Listener, it can be painfully slow as of Apex 3.2.&lt;/p&gt;
+
+&lt;p&gt;Apex Listener, while quite fast, adds an extra layer of complexity.&lt;/p&gt;
+
+&lt;p&gt;You will need to install an application server to run Apex Listener.&lt;/p&gt;
+
+&lt;p&gt;I have run Apex Listener on both Tomcat (unsupported) as well as Oracle GlassFish 3.x (supported) and was not impressed with either.&lt;/p&gt;
+
+&lt;p&gt;A lot of people who know far more than I do about APEX (read: 99.9999% of the population) like the Apex Listener.&lt;/p&gt;
+
+&lt;p&gt;Apex Listener and it&amp;rsquo;s installation guide can be found &lt;a href=&#34;http://www.oracle.com/technetwork/developer-tools/apex-listener/overview/index.html&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;The Apex Listener installation guide is well done and simple to follow.&lt;/p&gt;
+
+&lt;p&gt;If you need to install Oracle GlassFish or GlassFish CE (basic installation is the same), you can use my GlassFish 3.1 instructions &lt;a href=&#34;http://www.davidghedini.com/pg/entry/install_glassfish_3_1_on&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;If you want to be an outlaw and use Tomcat, you can use my Tomcat 6 installation guide &lt;a href=&#34;http://www.davidghedini.com/pg/entry/install_tomcat_6_on_centos&#34;&gt;here&lt;/a&gt;, or my Tomcat 7 installation guide &lt;a href=&#34;http://www.davidghedini.com/pg/entry/install_tomcat_7_on_centos&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Installing Oracle XE 11gR2 on CentOS 6</title>
+      <link>http://localhost:1314/post/installing-oracle-xe-11gr2-on-centos-6/</link>
+      <pubDate>Sat, 06 Oct 2012 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1314/post/installing-oracle-xe-11gr2-on-centos-6/</guid>
+      <description>
+
+&lt;p&gt;&lt;a href=&#34;http://www.davidghedini.com/pg/entry/install_oracle_11g_xe_on&#34;&gt;This&lt;/a&gt; great tutorial covers all aspects
+of installation Oracle XE 11gR2 on CentOS 6. I even did &lt;a href=&#34;http://localhost:1314/post/install-oracle-xe-on-centos-6&#34;&gt;backup post&lt;/a&gt; of it.&lt;/p&gt;
+
+&lt;p&gt;Except some things.&lt;/p&gt;
+
+&lt;h2 id=&#34;swap-file:77c954fc6993db658c5c4a709c7b2925&#34;&gt;Swap file&lt;/h2&gt;
+
+&lt;p&gt;Oracle XE &lt;a href=&#34;http://docs.oracle.com/cd/E17781_01/install.112/e18802/toc.htm&#34;&gt;requires&lt;/a&gt; minimum 2 Gb of swap file. To verify your swap space use &lt;code&gt;# cat /proc/swaps&lt;/code&gt;. If there is no enough swap size – add it. Manual is &lt;a href=&#34;http://www.centos.org/docs/5/html/Deployment_Guide-en-US/s1-swap-adding.html&#34;&gt;here&lt;/a&gt;. I add it by using this:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;h4 id=&#34;5-2-3-creating-a-swap-file:77c954fc6993db658c5c4a709c7b2925&#34;&gt;5.2.3. Creating a Swap File&lt;/h4&gt;
+
+&lt;p&gt;To add a swap file:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Determine the size of the new swap file in megabytes and multiply by 1024 to determine the number of blocks. For example, the block size of a 64 MB swap file is 65536.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;At a shell prompt as root, type the following command with count being equal to the desired block size:&lt;/p&gt;
+
+&lt;p&gt;dd if=/dev/zero of=/swapfile bs=1024 count=65536&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Setup the swap file with the command:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;mkswap /swapfile
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;3.1 Check file permissions, they should be 0600 and 0644 as they were in my case.
+Change it to 0600 using&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    chmod 0600 /swapfile
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;If you use virtual machine with Open VZ supervisor you&amp;rsquo;ll get an error
+&amp;ldquo;Operation not permitted&amp;rdquo;. Then you have to cheat and do the following trick
+(found &lt;a href=&#34;http://linux-problem-solver.blogspot.ru/2013/08/create-fake-swap-in-openvz-vps-if-you-get-swapon-failed-operation-not-permitted-error.html&#34;&gt;here&lt;/a&gt;):&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;#!/bin/bash
+SWAP=&amp;quot;${1:-512}&amp;quot;
+NEW=&amp;quot;$[SWAP*1024]&amp;quot;; TEMP=&amp;quot;${NEW//?/ }&amp;quot;; OLD=&amp;quot;${TEMP:1}0&amp;quot;
+umount /proc/meminfo 2&amp;gt; /dev/null
+sed &amp;quot;/^Swap\(Total\|Free\):/s,$OLD,$NEW,&amp;quot; /proc/meminfo &amp;gt; /etc/fake_meminfo
+mount --bind /etc/fake_meminfo /proc/meminfo
+free -m
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;To enable the swap file immediately but not automatically at boot time:&lt;/p&gt;
+
+&lt;p&gt;swapon /swapfile&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;To enable it at boot time, edit /etc/fstab to include the following entry:&lt;/p&gt;
+
+&lt;p&gt;/swapfile          swap            swap    defaults        0 0&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;The next time the system boots, it enables the new swap file.&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;After adding the new swap file and enabling it, verify it is enabled by viewing the output of the command cat &lt;code&gt;/proc/swaps&lt;/code&gt; or &lt;code&gt;free&lt;/code&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&#34;hostname-resolving:77c954fc6993db658c5c4a709c7b2925&#34;&gt;Hostname resolving&lt;/h2&gt;
+
+&lt;p&gt;There is an error during configuration of database&amp;rsquo;s setup (Step 2, running &lt;code&gt;oracle-xe configure&lt;/code&gt; command). It fails with the following statement:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Database Configuration failed. Look into /u01/app/oracle/product/11.2.0/xe/config/log for details&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;I found a solution in &lt;a href=&#34;http://arnekroeger.blogspot.com/2011/09/oracle-11g-xe-installation-error.html&#34;&gt;Arne Kroger&amp;rsquo;s blog&lt;/a&gt; — if you&amp;rsquo;ll check errors in log files, mentioned inerror message, with &lt;code&gt;cat *.log | grep ORA-&lt;/code&gt; you&amp;rsquo;ll see that it can&amp;rsquo;t find a host with your system name. All you have to do is edit &lt;code&gt;/etc/hosts&lt;/code&gt; file adding the line&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;127.0.0.1   centos63
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;After restarting of &lt;code&gt;oracle-xe configure&lt;/code&gt; everything should be fine.&lt;/p&gt;
+
+&lt;h2 id=&#34;changing-http-port-of-apex:77c954fc6993db658c5c4a709c7b2925&#34;&gt;Changing HTTP port of APEX&lt;/h2&gt;
+
+&lt;p&gt;During install I put APEX on port 80. It&amp;rsquo;s privileged port and can be runned only by root, not oracle. So, after setup APEX wasn&amp;rsquo;t working. I changed port to 8080 with this commands:&lt;/p&gt;
+
+&lt;p&gt;Getting info about current port:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;SQL&amp;gt; select dbms_xdb.gethttpport as &amp;quot;HTTP-Port&amp;quot;
+            , dbms_xdb.getftpport as &amp;quot;FTP-Port&amp;quot; from dual;
+
+HTTP-Port   FTP-Port
+---------- ----------
+        80          0
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Changing to desired value:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;SQL&amp;gt; begin
+ 2    dbms_xdb.sethttpport(&#39;8080&#39;);
+ 3    dbms_xdb.setftpport(&#39;2100&#39;);
+ 4  end;
+ 5  /
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;0 means that port is disabled.&lt;/p&gt;
+
+&lt;p&gt;Additional info in &lt;a href=&#34;http://daust.blogspot.ru/2006/01/xe-changing-default-http-port.html&#34;&gt;this&lt;/a&gt; post by daust.&lt;/p&gt;
+
+&lt;h2 id=&#34;upgrading-apex:77c954fc6993db658c5c4a709c7b2925&#34;&gt;Upgrading APEX&lt;/h2&gt;
+
+&lt;p&gt;Default APEX in Oracle XE is outdated. Download new version and install. Upgrade process is &lt;a href=&#34;http://www.oracle.com/technetwork/developer-tools/apex/upgrade-apex-for-xe-154969.html&#34;&gt;covered here&lt;/a&gt;. Complete manual is &lt;a href=&#34;http://docs.oracle.com/cd/E37097_01/doc/install.42/e35123/toc.htm&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://docs.oracle.com/cd/E17781_01/index.htm&#34;&gt;Official documentation of Oracle XE.&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Tested on CentOS 6.3 and 6.4.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

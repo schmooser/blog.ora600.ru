@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+  <url>
+    <loc>http://localhost:1314/</loc>
+    <lastmod>2015-06-20T01:12:30+03:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1314/post/gister/</loc>
+    <lastmod>2015-06-20T01:12:30+03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1314/post/enable-authentication-in-mongodb/</loc>
+    <lastmod>2015-06-04T10:21:07+03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1314/post/installing-oracle-12-on-openvz-vps/</loc>
+    <lastmod>2015-05-31T10:17:52+03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1314/post/cheat/</loc>
+    <lastmod>2015-05-30T10:21:07+03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1314/page/about/</loc>
+    <lastmod>2015-05-30T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1314/post/vim-rooter-plugin/</loc>
+    <lastmod>2015-05-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1314/page/bmf/</loc>
+    <lastmod>2015-05-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1314/post/starting-hugo-site/</loc>
+    <lastmod>2015-05-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1314/post/install-oracle-xe-on-centos-6/</loc>
+    <lastmod>2013-05-24T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1314/post/installing-oracle-xe-11gr2-on-centos-6/</loc>
+    <lastmod>2012-10-06T00:00:00+00:00</lastmod>
+  </url>
+  
+</urlset>

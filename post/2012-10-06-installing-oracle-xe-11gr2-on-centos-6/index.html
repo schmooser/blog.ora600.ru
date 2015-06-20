@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ora600 &mdash; Personal site of Pavel Popov &middot; Installing Oracle XE 11gR2 on CentOS 6  </title>
+  <link rel="stylesheet" href="http://localhost:1314/css/bmf.css" />
+</head>
+<body>
+
+<header>
+  <h1>Installing Oracle XE 11gR2 on CentOS 6</h1>
+  <aside>
+    Posted by Pavel Popov on 6 October 2012
+    <a href="http://localhost:1314/post/2012-10-06-installing-oracle-xe-11gr2-on-centos-6/">&infin;</a>
+  </aside>
+</header>
+  <article>
+    
+
+<p><a href="http://www.davidghedini.com/pg/entry/install_oracle_11g_xe_on">This</a> great tutorial covers all aspects of installation Oracle XE 11gR2 on CentOS 6.</p>
+
+<p>I also did <a href="/post/install-oracle-xe-on-centos-6">backup post</a> of it.</p>
+
+<p>Except some things.</p>
+
+<h2 id="swap-file:42e88c44aa09eca87bb5d3a6af84b073">Swap file</h2>
+
+<p>Oracle XE <a href="http://docs.oracle.com/cd/E17781_01/install.112/e18802/toc.htm">requires</a> minimum 2 Gb of swap file. To verify your swap space use <code># cat /proc/swaps</code>. If there is no enough swap size – add it. Manual is <a href="http://www.centos.org/docs/5/html/Deployment_Guide-en-US/s1-swap-adding.html">here</a>. I add it by using this:</p>
+
+<blockquote>
+<p>####5.2.3. Creating a Swap File</p>
+
+<p>To add a swap file:</p>
+
+<ol>
+<li><p>Determine the size of the new swap file in megabytes and multiply by 1024 to determine the number of blocks. For example, the block size of a 64 MB swap file is 65536.</p></li>
+
+<li><p>At a shell prompt as root, type the following command with count being equal to the desired block size:</p>
+
+<p>dd if=/dev/zero of=/swapfile bs=1024 count=65536</p></li>
+
+<li><p>Setup the swap file with the command:</p>
+
+<p>mkswap /swapfile</p></li>
+
+<li><p>To enable the swap file immediately but not automatically at boot time:</p>
+
+<p>swapon /swapfile</p></li>
+
+<li><p>To enable it at boot time, edit /etc/fstab to include the following entry:</p>
+
+<p>/swapfile          swap            swap    defaults        0 0</p></li>
+</ol>
+
+<p>The next time the system boots, it enables the new swap file.</p>
+
+<ol>
+<li>After adding the new swap file and enabling it, verify it is enabled by viewing the output of the command cat <code>/proc/swaps</code> or <code>free</code>.</li>
+</ol>
+</blockquote>
+
+<h2 id="hostname-resolving:42e88c44aa09eca87bb5d3a6af84b073">Hostname resolving</h2>
+
+<p>There is an error during configuration of database&rsquo;s setup (Step 2, running <code>oracle-xe configure</code> command). It fails with the following statement:</p>
+
+<blockquote>
+<p>Database Configuration failed. Look into /u01/app/oracle/product/11.2.0/xe/config/log for details</p>
+</blockquote>
+
+<p>I found a solution in <a href="http://arnekroeger.blogspot.com/2011/09/oracle-11g-xe-installation-error.html">Arne Kroger&rsquo;s blog</a> — if you&rsquo;ll check errors in log files, mentioned inerror message, with <code>cat *.log | grep ORA-</code> you&rsquo;ll see that it can&rsquo;t find a host with your system name. All you have to do is edit <code>/etc/hosts</code> file adding the line</p>
+
+<p>{% highlight ini %}
+127.0.0.1   centos63
+{% endhighlight %}</p>
+
+<p>After restarting of <code>oracle-xe configure</code> everything should be fine.</p>
+
+<h2 id="changing-http-port-of-apex:42e88c44aa09eca87bb5d3a6af84b073">Changing HTTP port of APEX</h2>
+
+<p>During install I put APEX on port 80. It&rsquo;s privileged port and can be runned only by root, not oracle. So, after setup APEX wasn&rsquo;t working. I changed port to 8080 with this commands:</p>
+
+<p>Getting info about current port:</p>
+
+<pre><code>SQL&gt; select dbms_xdb.gethttpport as &quot;HTTP-Port&quot;
+            , dbms_xdb.getftpport as &quot;FTP-Port&quot; from dual;
+
+HTTP-Port   FTP-Port
+---------- ----------
+        80          0
+</code></pre>
+
+<p>Changing to desired value:</p>
+
+<pre><code>SQL&gt; begin
+ 2    dbms_xdb.sethttpport('8080');
+ 3    dbms_xdb.setftpport('2100');
+ 4  end;
+ 5  /
+</code></pre>
+
+<p>0 means that port is disabled.</p>
+
+<p>Additional info in <a href="http://daust.blogspot.ru/2006/01/xe-changing-default-http-port.html">this</a> post by daust.</p>
+
+<h2 id="upgrading-apex:42e88c44aa09eca87bb5d3a6af84b073">Upgrading APEX</h2>
+
+<p>Default APEX in Oracle XE is outdated. Download new version and install. Upgrade process is <a href="http://www.oracle.com/technetwork/developer-tools/apex/upgrade-apex-for-xe-154969.html">covered here</a>. Complete manual is <a href="http://docs.oracle.com/cd/E37097_01/doc/install.42/e35123/toc.htm">here</a>.</p>
+
+<p><a href="http://docs.oracle.com/cd/E17781_01/index.htm">Official documentation of Oracle XE.</a></p>
+
+<p>Tested on CentOS 6.3 and 6.4.</p>
+
+  </article>
+
+<nav>
+  
+  
+   <a href="http://localhost:1314/">Home</a>
+  
+
+  
+    <a href="http://localhost:1314/page">Pages</a>
+  
+    <a href="http://localhost:1314/post">Posts</a>
+  
+
+</nav>
+
+
+<footer>
+  <p>
+  &copy; Pavel Popov.
+  
+  
+    Follow me <a href="http://twitter.com/schmooser">@schmooser</a>.
+  
+  </p>
+</footer>
+<script data-no-instant>document.write('<script src="http://'
+        + (location.host || 'localhost').split(':')[0]
+		+ ':1314/livereload.js?mindelay=10"></'
+        + 'script>')</script></body>
+</html>
+

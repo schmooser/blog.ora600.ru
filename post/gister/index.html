@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ora600 &mdash; Some random thoughts &middot; Gister  </title>
+  <link rel="stylesheet" href="http://localhost:1314/css/bmf.css" />
+</head>
+<body>
+
+<header>
+  <h1>Gister</h1>
+  <aside>
+    Posted by schmooser on <a href="http://localhost:1314/post/gister/">20 June 2015</a>
+  </aside>
+</header>
+  <article>
+    
+
+<p>Today I went through <a href="https://github.com/golang/go/wiki/Projects">list of projects</a> written in Go and found a command
+line utility working with <a href="http://gist.github.com">Github Gists</a> -
+<a href="https://github.com/dutchcoders/gister">dutchcoders/gister</a>.</p>
+
+<p>It allows you to create/view/edit your gists in very efficient manner.</p>
+
+<p>Here are a couple of notes:</p>
+
+<h3 id="token:e3a0499fd074c5b0d7b64f6fe49c09dd">Token</h3>
+
+<p>It&rsquo;s useful to define environment variable GITHUB_TOKEN with token to access Github
+API. I defined it in my .zhsrc file:</p>
+
+<pre><code>GITHUB_TOKEN=actual_token_here
+export GITHUB_TOKEN
+</code></pre>
+
+<p>Do not forget to export variable, otherwise it won&rsquo;t be visible for gister.</p>
+
+<h3 id="combining-with-fzf:e3a0499fd074c5b0d7b64f6fe49c09dd">Combining with fzf</h3>
+
+<p>To view/edit existing gist it&rsquo;s required to provide gist&rsquo;s id. It&rsquo;s not useful
+to do <code>gister list</code> then manually copy-paste gist&rsquo;s id. Especially when we have
+[fzf] in our toolchain.</p>
+
+<p>So I added the following function to <code>.zshrc</code>:</p>
+
+<pre><code>fzf-gister() {
+    gister list | fzf | sed -E &quot;s/^[^ ]+\/([^ ]*).*$/\1/&quot;
+}
+</code></pre>
+
+<p>and now use gister in this way:</p>
+
+<pre><code>$ gister cat --gist=$(fzf-gister)
+$ gister edit --gist=$(fzf-gister)
+</code></pre>
+
+<p>Then I pick gist I&rsquo;m interested with in fzf interface and voila.</p>
+
+<h3 id="multiple-files-support:e3a0499fd074c5b0d7b64f6fe49c09dd">Multiple files support</h3>
+
+<p>gister supports multiple-filed gists. When editing such gist it downloads all
+the files and loads them into editor (for vim into separate buffers). You can
+edit them and when you&rsquo;ll exit from editor, gister will update files in gist
+accordingly.</p>
+
+<p>You can even create new files in the same temporary directory gister created for
+you. If you have <code>autochdir on</code> in vim then you&rsquo;ll be at the file&rsquo;s directory
+from the beginning and by <code>:new filename</code> you&rsquo;d create new file in the gist.
+Easy!</p>
+
+<h3 id="my-gists:e3a0499fd074c5b0d7b64f6fe49c09dd">My gists</h3>
+
+<p>You can find my gists here - <a href="https://gist.github.com/schmooser">https://gist.github.com/schmooser</a>.</p>
+
+  </article>
+
+<nav>
+  
+  
+   <a href="http://localhost:1314/">Home</a>
+  
+
+  
+    <a href="http://localhost:1314/page">Pages</a>
+  
+    <a href="http://localhost:1314/post">Posts</a>
+  
+
+</nav>
+
+
+<footer>
+  <p>
+  &copy; schmooser.
+  
+  
+    Follow me <a href="http://twitter.com/schmooser">@schmooser</a>.
+  
+  </p>
+</footer>
+<script data-no-instant>document.write('<script src="http://'
+        + (location.host || 'localhost').split(':')[0]
+		+ ':1314/livereload.js?mindelay=10"></'
+        + 'script>')</script></body>
+</html>
+

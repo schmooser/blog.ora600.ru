@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ora600 &mdash; Some random thoughts &middot; Installing Oracle 12c on OpenVZ VPS  </title>
+  <link rel="stylesheet" href="http://localhost:1314/css/bmf.css" />
+</head>
+<body>
+
+<header>
+  <h1>Installing Oracle 12c on OpenVZ VPS</h1>
+  <aside>
+    Posted by schmooser on <a href="http://localhost:1314/post/installing-oracle-12-on-openvz-vps/">31 May 2015</a>
+  </aside>
+</header>
+  <article>
+    
+
+<p>I have a relatively free server with enough memory and disk space for installing
+oracle Database. One caveat here is that it&rsquo;s running under OpenVZ. That means
+that there is no swap file available.</p>
+
+<p>I tried to install Oracle XE on this host, cheating a little bit so it think
+that there is enough swap file, but when starting oracle-xe configure it failed
+with &ldquo;Unable to attach to shared memory segment&rdquo; error and Linux error &ldquo;No space
+left on device&rdquo;. I didn&rsquo;t resolve that problem, because <code>/dev/shm</code> was present
+of enough space and I was able to read/write data there.</p>
+
+<p>So I decided to try to install full-featured Oracle 12c on the server to play
+around.</p>
+
+<p>I write this post during installation. Here I&rsquo;ll write all steps and problems
+I&rsquo;ll face during installation.</p>
+
+<p>Here are some interesting tutorials I found on web:</p>
+
+<ul>
+<li><a href="http://www.tecmint.com/oracle-12c-installation-in-centos-6/">http://www.tecmint.com/oracle-12c-installation-in-centos-6/</a></li>
+<li><a href="http://dbaora.com/install-oracle-12c-release-1-12-1-on-centos-linux-7/">http://dbaora.com/install-oracle-12c-release-1-12-1-on-centos-linux-7/</a></li>
+</ul>
+
+<h1 id="0-initial-config-before-installation:2e0daa52bbc4f230cd1ccd7f02d6358f">0. Initial config before installation</h1>
+
+<p>What we have:</p>
+
+<ul>
+<li><p>oracle user from Oracle XE installation</p>
+
+<pre><code>$ cat /etc/passwd | grep oracle
+oracle:x:502:502::/u01/app/oracle:/bin/bash
+</code></pre></li>
+
+<li><p>dba user group from Oracle XE installation</p>
+
+<pre><code>$ cat /etc/group | grep 502
+dba:x:502:
+</code></pre></li>
+</ul>
+
+<h1 id="1-intall-prerequisites:2e0daa52bbc4f230cd1ccd7f02d6358f">1. Intall prerequisites</h1>
+
+<p>It&rsquo;s very convinient to install all prerequisites from single rpm package <code>oracle-rdbms-server-12cR1-preinstall</code>:</p>
+
+<pre><code># /etc/yum.repos.d/
+# wget http://public-yum.oracle.com/public-yum-ol6.repo
+# cd /etc/pki/rpm-gpg
+# wget https://oss.oracle.com/el6/RPM-GPG-KEY-oracle
+# yum install oracle-rdbms-server-12cR1-preinstall -y
+</code></pre>
+
+<p>Additional information here - <a href="http://www.oracle.com/technetwork/articles/servers-storage-admin/ginnydbinstallonlinux-488779.html">How I Simplified Oracle Database 12c and 11g Installations on Oracle Linux 6</a>.</p>
+
+  </article>
+
+<nav>
+  
+  
+   <a href="http://localhost:1314/">Home</a>
+  
+
+  
+    <a href="http://localhost:1314/page">Pages</a>
+  
+    <a href="http://localhost:1314/post">Posts</a>
+  
+
+</nav>
+
+
+<footer>
+  <p>
+  &copy; schmooser.
+  
+  
+    Follow me <a href="http://twitter.com/schmooser">@schmooser</a>.
+  
+  </p>
+</footer>
+<script data-no-instant>document.write('<script src="http://'
+        + (location.host || 'localhost').split(':')[0]
+		+ ':1314/livereload.js?mindelay=10"></'
+        + 'script>')</script></body>
+</html>
+

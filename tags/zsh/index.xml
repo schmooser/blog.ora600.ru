@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Zsh on Ora600 &amp;mdash; Some random thoughts</title>
+    <link>http://localhost:1314/tags/zsh/</link>
+    <description>Recent content in Zsh on Ora600 &amp;mdash; Some random thoughts</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 20 Jun 2015 01:12:30 +0300</lastBuildDate>
+    <atom:link href="http://localhost:1314/tags/zsh/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Gister</title>
+      <link>http://localhost:1314/post/gister/</link>
+      <pubDate>Sat, 20 Jun 2015 01:12:30 +0300</pubDate>
+      
+      <guid>http://localhost:1314/post/gister/</guid>
+      <description>
+
+&lt;p&gt;Today I went through &lt;a href=&#34;https://github.com/golang/go/wiki/Projects&#34;&gt;list of projects&lt;/a&gt; written in Go and found a command
+line utility working with &lt;a href=&#34;http://gist.github.com&#34;&gt;Github Gists&lt;/a&gt; -
+&lt;a href=&#34;https://github.com/dutchcoders/gister&#34;&gt;dutchcoders/gister&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;It allows you to create/view/edit your gists in very efficient manner.&lt;/p&gt;
+
+&lt;p&gt;Here are a couple of notes:&lt;/p&gt;
+
+&lt;h3 id=&#34;token:e3a0499fd074c5b0d7b64f6fe49c09dd&#34;&gt;Token&lt;/h3&gt;
+
+&lt;p&gt;It&amp;rsquo;s useful to define environment variable GITHUB_TOKEN with token to access Github
+API. I defined it in my .zhsrc file:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;GITHUB_TOKEN=actual_token_here
+export GITHUB_TOKEN
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Do not forget to export variable, otherwise it won&amp;rsquo;t be visible for gister.&lt;/p&gt;
+
+&lt;h3 id=&#34;combining-with-fzf:e3a0499fd074c5b0d7b64f6fe49c09dd&#34;&gt;Combining with fzf&lt;/h3&gt;
+
+&lt;p&gt;To view/edit existing gist it&amp;rsquo;s required to provide gist&amp;rsquo;s id. It&amp;rsquo;s not useful
+to do &lt;code&gt;gister list&lt;/code&gt; then manually copy-paste gist&amp;rsquo;s id. Especially when we have
+[fzf] in our toolchain.&lt;/p&gt;
+
+&lt;p&gt;So I added the following function to &lt;code&gt;.zshrc&lt;/code&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;fzf-gister() {
+    gister list | fzf | sed -E &amp;quot;s/^[^ ]+\/([^ ]*).*$/\1/&amp;quot;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;and now use gister in this way:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ gister cat --gist=$(fzf-gister)
+$ gister edit --gist=$(fzf-gister)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Then I pick gist I&amp;rsquo;m interested with in fzf interface and voila.&lt;/p&gt;
+
+&lt;h3 id=&#34;multiple-files-support:e3a0499fd074c5b0d7b64f6fe49c09dd&#34;&gt;Multiple files support&lt;/h3&gt;
+
+&lt;p&gt;gister supports multiple-filed gists. When editing such gist it downloads all
+the files and loads them into editor (for vim into separate buffers). You can
+edit them and when you&amp;rsquo;ll exit from editor, gister will update files in gist
+accordingly.&lt;/p&gt;
+
+&lt;p&gt;You can even create new files in the same temporary directory gister created for
+you. If you have &lt;code&gt;autochdir on&lt;/code&gt; in vim then you&amp;rsquo;ll be at the file&amp;rsquo;s directory
+from the beginning and by &lt;code&gt;:new filename&lt;/code&gt; you&amp;rsquo;d create new file in the gist.
+Easy!&lt;/p&gt;
+
+&lt;h3 id=&#34;my-gists:e3a0499fd074c5b0d7b64f6fe49c09dd&#34;&gt;My gists&lt;/h3&gt;
+
+&lt;p&gt;You can find my gists here - &lt;a href=&#34;https://gist.github.com/schmooser&#34;&gt;https://gist.github.com/schmooser&lt;/a&gt;.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
