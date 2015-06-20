@@ -14,19 +14,23 @@ always struggling with set up. That's why I keep notes on this topic here.
 2. Create `admin` user with `userAdminAnyDatabase` role:
 
         > use admin
-        > db.createUser({user: "admin", pwd: "somestrongpassword", roles: [{role: "userAdminAnyDatabase", db: "admin"}]})
+        > db.createUser({user: "admin", pwd: "somestrongpassword",
+            roles: [{role: "userAdminAnyDatabase", db: "admin"}]})
         > exit
 
 3. Login with created admin user and add other users:
 
-        $ mongo localhost:27017 --username admin --password "somestrongpassword" --authenticationDatabase admin
+        $ mongo localhost:27017 --username admin --password "somepwd"\
+        --authenticationDatabase admin
         > use reports
-        > db.createUser({user: reports, pwd: "12345", roles: [{role: "readWrite", db: "reports"}]})
+        > db.createUser({user: reports, pwd: "12345",
+             roles: [{role: "readWrite", db: "reports"}]})
         > exit
 
 4. Check that created user is able to login
 
-        $ mongo localhost:27017/reports --username reports --password "12345" --authenticationDatabase reports
+        $ mongo localhost:27017/reports --username reports\
+        --password "12345" --authenticationDatabase reports
         > 
 
 That's it. [Documentation].
