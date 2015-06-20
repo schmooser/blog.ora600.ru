@@ -40,21 +40,25 @@ there without password</p></li>
 <li><p>Create <code>admin</code> user with <code>userAdminAnyDatabase</code> role:</p>
 
 <pre><code>&gt; use admin
-&gt; db.createUser({user: &quot;admin&quot;, pwd: &quot;somestrongpassword&quot;, roles: [{role: &quot;userAdminAnyDatabase&quot;, db: &quot;admin&quot;}]})
+&gt; db.createUser({user: &quot;admin&quot;, pwd: &quot;somestrongpassword&quot;,
+    roles: [{role: &quot;userAdminAnyDatabase&quot;, db: &quot;admin&quot;}]})
 &gt; exit
 </code></pre></li>
 
 <li><p>Login with created admin user and add other users:</p>
 
-<pre><code>$ mongo localhost:27017 --username admin --password &quot;somestrongpassword&quot; --authenticationDatabase admin
+<pre><code>$ mongo localhost:27017 --username admin --password &quot;somepwd&quot;\
+--authenticationDatabase admin
 &gt; use reports
-&gt; db.createUser({user: reports, pwd: &quot;12345&quot;, roles: [{role: &quot;readWrite&quot;, db: &quot;reports&quot;}]})
+&gt; db.createUser({user: reports, pwd: &quot;12345&quot;,
+     roles: [{role: &quot;readWrite&quot;, db: &quot;reports&quot;}]})
 &gt; exit
 </code></pre></li>
 
 <li><p>Check that created user is able to login</p>
 
-<pre><code>$ mongo localhost:27017/reports --username reports --password &quot;12345&quot; --authenticationDatabase reports
+<pre><code>$ mongo localhost:27017/reports --username reports\
+--password &quot;12345&quot; --authenticationDatabase reports
 &gt; 
 </code></pre></li>
 </ol>
