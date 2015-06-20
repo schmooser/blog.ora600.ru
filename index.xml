@@ -91,23 +91,24 @@ there without password&lt;/p&gt;&lt;/li&gt;
 
 &lt;li&gt;&lt;p&gt;Create &lt;code&gt;admin&lt;/code&gt; user with &lt;code&gt;userAdminAnyDatabase&lt;/code&gt; role:&lt;/p&gt;
 
-&lt;blockquote&gt;
-&lt;p&gt;use admin
-db.createUser({user: &amp;ldquo;admin&amp;rdquo;, pwd: &amp;ldquo;somestrongpassword&amp;rdquo;, roles: [{role: &amp;ldquo;userAdminAnyDatabase&amp;rdquo;, db: &amp;ldquo;admin&amp;rdquo;}]})
-exit&lt;/p&gt;
-&lt;/blockquote&gt;&lt;/li&gt;
+&lt;pre&gt;&lt;code&gt;&amp;gt; use admin
+&amp;gt; db.createUser({user: &amp;quot;admin&amp;quot;, pwd: &amp;quot;somestrongpassword&amp;quot;, roles: [{role: &amp;quot;userAdminAnyDatabase&amp;quot;, db: &amp;quot;admin&amp;quot;}]})
+&amp;gt; exit
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 
 &lt;li&gt;&lt;p&gt;Login with created admin user and add other users:&lt;/p&gt;
 
-&lt;p&gt;$ mongo localhost:27017 &amp;ndash;username admin &amp;ndash;password &amp;ldquo;somestrongpassword&amp;rdquo; &amp;ndash;authenticationDatabase admin
+&lt;pre&gt;&lt;code&gt;$ mongo localhost:27017 --username admin --password &amp;quot;somestrongpassword&amp;quot; --authenticationDatabase admin
 &amp;gt; use reports
-&amp;gt; db.createUser({user: reports, pwd: &amp;ldquo;12345&amp;rdquo;, roles: [{role: &amp;ldquo;readWrite&amp;rdquo;, db: &amp;ldquo;reports&amp;rdquo;}]})
-&amp;gt; exit&lt;/p&gt;&lt;/li&gt;
+&amp;gt; db.createUser({user: reports, pwd: &amp;quot;12345&amp;quot;, roles: [{role: &amp;quot;readWrite&amp;quot;, db: &amp;quot;reports&amp;quot;}]})
+&amp;gt; exit
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 
 &lt;li&gt;&lt;p&gt;Check that created user is able to login&lt;/p&gt;
 
-&lt;p&gt;$ mongo localhost:27017/reports &amp;ndash;username reports &amp;ndash;password &amp;ldquo;12345&amp;rdquo; &amp;ndash;authenticationDatabase reports
-&amp;gt;&lt;/p&gt;&lt;/li&gt;
+&lt;pre&gt;&lt;code&gt;$ mongo localhost:27017/reports --username reports --password &amp;quot;12345&amp;quot; --authenticationDatabase reports
+&amp;gt; 
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;p&gt;That&amp;rsquo;s it. &lt;a href=&#34;http://docs.mongodb.org/v2.6/core/security-introduction/&#34;&gt;Documentation&lt;/a&gt;.&lt;/p&gt;

@@ -4,18 +4,32 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Ora600 &mdash; Some random thoughts &middot; Enable authentication in mongodb  </title>
-  <link rel="stylesheet" href="http://blog.ora600.ru/css/bmf.css" />
+  <link rel="stylesheet" href="http://blog.ora600.ru/css/main.css" />
 </head>
 <body>
 
-<header>
-  <h1>Enable authentication in mongodb</h1>
-  <aside>
-    Posted by schmooser on <a href="http://blog.ora600.ru/post/enable-authentication-in-mongodb/">4 June 2015</a>
-  </aside>
+<header class="highlight">
+  <p>
+  Blog by <strong>schmooser</strong>. 
+
+  
+  
+    Follow me on <a href="http://twitter.com/schmooser">Twitter</a>.
+  
+  </p>
 </header>
-  <article>
-    <p>If you intended to use your mongodb server from outer world you need to enable
+
+<section>
+  <a href="http://blog.ora600.ru/">
+    &larr; Go back to post index
+  </a>
+</section>
+<article>
+  <h1>Enable authentication in mongodb</h1>
+  <span class="details">
+    Posted on <a href="http://blog.ora600.ru/post/enable-authentication-in-mongodb/">4 June 2015</a>
+  </span>
+  <p>If you intended to use your mongodb server from outer world you need to enable
 authentication. I think that authentication scheme in mongo is far from good and
 always struggling with set up. That&rsquo;s why I keep notes on this topic here.</p>
 
@@ -25,52 +39,30 @@ there without password</p></li>
 
 <li><p>Create <code>admin</code> user with <code>userAdminAnyDatabase</code> role:</p>
 
-<blockquote>
-<p>use admin
-db.createUser({user: &ldquo;admin&rdquo;, pwd: &ldquo;somestrongpassword&rdquo;, roles: [{role: &ldquo;userAdminAnyDatabase&rdquo;, db: &ldquo;admin&rdquo;}]})
-exit</p>
-</blockquote></li>
+<pre><code>&gt; use admin
+&gt; db.createUser({user: &quot;admin&quot;, pwd: &quot;somestrongpassword&quot;, roles: [{role: &quot;userAdminAnyDatabase&quot;, db: &quot;admin&quot;}]})
+&gt; exit
+</code></pre></li>
 
 <li><p>Login with created admin user and add other users:</p>
 
-<p>$ mongo localhost:27017 &ndash;username admin &ndash;password &ldquo;somestrongpassword&rdquo; &ndash;authenticationDatabase admin
+<pre><code>$ mongo localhost:27017 --username admin --password &quot;somestrongpassword&quot; --authenticationDatabase admin
 &gt; use reports
-&gt; db.createUser({user: reports, pwd: &ldquo;12345&rdquo;, roles: [{role: &ldquo;readWrite&rdquo;, db: &ldquo;reports&rdquo;}]})
-&gt; exit</p></li>
+&gt; db.createUser({user: reports, pwd: &quot;12345&quot;, roles: [{role: &quot;readWrite&quot;, db: &quot;reports&quot;}]})
+&gt; exit
+</code></pre></li>
 
 <li><p>Check that created user is able to login</p>
 
-<p>$ mongo localhost:27017/reports &ndash;username reports &ndash;password &ldquo;12345&rdquo; &ndash;authenticationDatabase reports
-&gt;</p></li>
+<pre><code>$ mongo localhost:27017/reports --username reports --password &quot;12345&quot; --authenticationDatabase reports
+&gt; 
+</code></pre></li>
 </ol>
 
 <p>That&rsquo;s it. <a href="http://docs.mongodb.org/v2.6/core/security-introduction/">Documentation</a>.</p>
 
-  </article>
-
-<nav>
-  
-  
-   <a href="http://blog.ora600.ru/">Home</a>
-  
-
-  
-    <a href="http://blog.ora600.ru/page">Pages</a>
-  
-    <a href="http://blog.ora600.ru/post">Posts</a>
-  
-
-</nav>
-
-
+</article>
 <footer>
-  <p>
-  &copy; schmooser.
-  
-  
-    Follow me <a href="http://twitter.com/schmooser">@schmooser</a>.
-  
-  </p>
 </footer>
 </body>
 </html>
