@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Github on Ora600 &amp;mdash; Some random thoughts</title>
-    <link>http://ora600.ru/tags/github/</link>
+    <link>http://blog.ora600.ru/tags/github/</link>
     <description>Recent content in Github on Ora600 &amp;mdash; Some random thoughts</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 20 Jun 2015 01:12:30 +0300</lastBuildDate>
-    <atom:link href="http://ora600.ru/tags/github/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://blog.ora600.ru/tags/github/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Gister</title>
-      <link>http://ora600.ru/post/gister/</link>
+      <link>http://blog.ora600.ru/post/gister/</link>
       <pubDate>Sat, 20 Jun 2015 01:12:30 +0300</pubDate>
       
-      <guid>http://ora600.ru/post/gister/</guid>
+      <guid>http://blog.ora600.ru/post/gister/</guid>
       <description>
 
 &lt;p&gt;Today I went through &lt;a href=&#34;https://github.com/golang/go/wiki/Projects&#34;&gt;list of projects&lt;/a&gt; written in Go and found a command
