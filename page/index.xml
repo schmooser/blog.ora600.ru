@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Pages on Ora600 &amp;mdash; Some random thoughts</title>
-    <link>http://localhost:1314/page/</link>
+    <link>http://ora600.ru/page/</link>
     <description>Recent content in Pages on Ora600 &amp;mdash; Some random thoughts</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 30 May 2015 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1314/page/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://ora600.ru/page/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>About</title>
-      <link>http://localhost:1314/page/about/</link>
+      <link>http://ora600.ru/page/about/</link>
       <pubDate>Sat, 30 May 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1314/page/about/</guid>
+      <guid>http://ora600.ru/page/about/</guid>
       <description>&lt;p&gt;Hi, my name is Pavel Popov. I&amp;rsquo;m living in Moscow and working in software
 development company.&lt;/p&gt;
 
@@ -24,10 +24,10 @@ development company.&lt;/p&gt;
     
     <item>
       <title>Better Motherfucking website</title>
-      <link>http://localhost:1314/page/bmf/</link>
+      <link>http://ora600.ru/page/bmf/</link>
       <pubDate>Thu, 28 May 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1314/page/bmf/</guid>
+      <guid>http://ora600.ru/page/bmf/</guid>
       <description>&lt;p&gt;Theme of this site was inspired by &lt;a href=&#34;http://bettermotherfuckingwebsite.com&#34;&gt;bettermotherfuckingwebsite.com&lt;/a&gt;.&lt;/p&gt;
 </description>
     </item>

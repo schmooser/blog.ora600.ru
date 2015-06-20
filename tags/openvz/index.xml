@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Openvz on Ora600 &amp;mdash; Some random thoughts</title>
-    <link>http://localhost:1314/tags/openvz/</link>
+    <link>http://ora600.ru/tags/openvz/</link>
     <description>Recent content in Openvz on Ora600 &amp;mdash; Some random thoughts</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 31 May 2015 10:17:52 +0300</lastBuildDate>
-    <atom:link href="http://localhost:1314/tags/openvz/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://ora600.ru/tags/openvz/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Installing Oracle 12c on OpenVZ VPS</title>
-      <link>http://localhost:1314/post/installing-oracle-12-on-openvz-vps/</link>
+      <link>http://ora600.ru/post/installing-oracle-12-on-openvz-vps/</link>
       <pubDate>Sun, 31 May 2015 10:17:52 +0300</pubDate>
       
-      <guid>http://localhost:1314/post/installing-oracle-12-on-openvz-vps/</guid>
+      <guid>http://ora600.ru/post/installing-oracle-12-on-openvz-vps/</guid>
       <description>
 
 &lt;p&gt;I have a relatively free server with enough memory and disk space for installing

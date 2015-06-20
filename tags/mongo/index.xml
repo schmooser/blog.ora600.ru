@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Mongo on Ora600 &amp;mdash; Some random thoughts</title>
-    <link>http://localhost:1314/tags/mongo/</link>
+    <link>http://ora600.ru/tags/mongo/</link>
     <description>Recent content in Mongo on Ora600 &amp;mdash; Some random thoughts</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 04 Jun 2015 10:21:07 +0300</lastBuildDate>
-    <atom:link href="http://localhost:1314/tags/mongo/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://ora600.ru/tags/mongo/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Enable authentication in mongodb</title>
-      <link>http://localhost:1314/post/enable-authentication-in-mongodb/</link>
+      <link>http://ora600.ru/post/enable-authentication-in-mongodb/</link>
       <pubDate>Thu, 04 Jun 2015 10:21:07 +0300</pubDate>
       
-      <guid>http://localhost:1314/post/enable-authentication-in-mongodb/</guid>
+      <guid>http://ora600.ru/post/enable-authentication-in-mongodb/</guid>
       <description>&lt;p&gt;If you intended to use your mongodb server from outer world you need to enable
 authentication. I think that authentication scheme in mongo is far from good and
 always struggling with set up. That&amp;rsquo;s why I keep notes on this topic here.&lt;/p&gt;

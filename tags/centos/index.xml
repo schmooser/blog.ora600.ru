@@ -2,23 +2,23 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Centos on Ora600 &amp;mdash; Some random thoughts</title>
-    <link>http://localhost:1314/tags/centos/</link>
+    <link>http://ora600.ru/tags/centos/</link>
     <description>Recent content in Centos on Ora600 &amp;mdash; Some random thoughts</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 06 Oct 2012 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1314/tags/centos/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://ora600.ru/tags/centos/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Installing Oracle XE 11gR2 on CentOS 6</title>
-      <link>http://localhost:1314/post/installing-oracle-xe-11gr2-on-centos-6/</link>
+      <link>http://ora600.ru/post/installing-oracle-xe-11gr2-on-centos-6/</link>
       <pubDate>Sat, 06 Oct 2012 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1314/post/installing-oracle-xe-11gr2-on-centos-6/</guid>
+      <guid>http://ora600.ru/post/installing-oracle-xe-11gr2-on-centos-6/</guid>
       <description>
 
 &lt;p&gt;&lt;a href=&#34;http://www.davidghedini.com/pg/entry/install_oracle_11g_xe_on&#34;&gt;This&lt;/a&gt; great tutorial covers all aspects
-of installation Oracle XE 11gR2 on CentOS 6. I even did &lt;a href=&#34;http://localhost:1314/post/install-oracle-xe-on-centos-6&#34;&gt;backup post&lt;/a&gt; of it.&lt;/p&gt;
+of installation Oracle XE 11gR2 on CentOS 6. I even did &lt;a href=&#34;http://ora600.ru/post/install-oracle-xe-on-centos-6&#34;&gt;backup post&lt;/a&gt; of it.&lt;/p&gt;
 
 &lt;p&gt;Except some things.&lt;/p&gt;
 

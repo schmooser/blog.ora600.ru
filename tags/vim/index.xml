@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Vim on Ora600 &amp;mdash; Some random thoughts</title>
-    <link>http://localhost:1314/tags/vim/</link>
+    <link>http://ora600.ru/tags/vim/</link>
     <description>Recent content in Vim on Ora600 &amp;mdash; Some random thoughts</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 29 May 2015 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1314/tags/vim/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://ora600.ru/tags/vim/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>vim-rooter plugin and how I get rid of NERDTree</title>
-      <link>http://localhost:1314/post/vim-rooter-plugin/</link>
+      <link>http://ora600.ru/post/vim-rooter-plugin/</link>
       <pubDate>Fri, 29 May 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1314/post/vim-rooter-plugin/</guid>
+      <guid>http://ora600.ru/post/vim-rooter-plugin/</guid>
       <description>&lt;p&gt;Recently I decided to reduce number of plugins I use in VIM. First of all, [I
 switched off all motion plugins], then I started replacing &lt;a href=&#34;http://github.com/kien/ctrlp.vim&#34;&gt;CtrlP&lt;/a&gt; and
 &lt;a href=&#34;http://github.com/scrooloose/nerdtree&#34;&gt;NERDTree&lt;/a&gt; with a single &lt;a href=&#34;http://github.com/junegunn/fzf&#34;&gt;FZF&lt;/a&gt; plugin.&lt;/p&gt;

@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on Ora600 &amp;mdash; Some random thoughts</title>
-    <link>http://localhost:1314/post/</link>
+    <link>http://ora600.ru/post/</link>
     <description>Recent content in Posts on Ora600 &amp;mdash; Some random thoughts</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 20 Jun 2015 01:12:30 +0300</lastBuildDate>
-    <atom:link href="http://localhost:1314/post/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://ora600.ru/post/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Gister</title>
-      <link>http://localhost:1314/post/gister/</link>
+      <link>http://ora600.ru/post/gister/</link>
       <pubDate>Sat, 20 Jun 2015 01:12:30 +0300</pubDate>
       
-      <guid>http://localhost:1314/post/gister/</guid>
+      <guid>http://ora600.ru/post/gister/</guid>
       <description>
 
 &lt;p&gt;Today I went through &lt;a href=&#34;https://github.com/golang/go/wiki/Projects&#34;&gt;list of projects&lt;/a&gt; written in Go and found a command
@@ -77,10 +77,10 @@ Easy!&lt;/p&gt;
     
     <item>
       <title>Enable authentication in mongodb</title>
-      <link>http://localhost:1314/post/enable-authentication-in-mongodb/</link>
+      <link>http://ora600.ru/post/enable-authentication-in-mongodb/</link>
       <pubDate>Thu, 04 Jun 2015 10:21:07 +0300</pubDate>
       
-      <guid>http://localhost:1314/post/enable-authentication-in-mongodb/</guid>
+      <guid>http://ora600.ru/post/enable-authentication-in-mongodb/</guid>
       <description>&lt;p&gt;If you intended to use your mongodb server from outer world you need to enable
 authentication. I think that authentication scheme in mongo is far from good and
 always struggling with set up. That&amp;rsquo;s why I keep notes on this topic here.&lt;/p&gt;
@@ -116,10 +116,10 @@ exit&lt;/p&gt;
     
     <item>
       <title>Installing Oracle 12c on OpenVZ VPS</title>
-      <link>http://localhost:1314/post/installing-oracle-12-on-openvz-vps/</link>
+      <link>http://ora600.ru/post/installing-oracle-12-on-openvz-vps/</link>
       <pubDate>Sun, 31 May 2015 10:17:52 +0300</pubDate>
       
-      <guid>http://localhost:1314/post/installing-oracle-12-on-openvz-vps/</guid>
+      <guid>http://ora600.ru/post/installing-oracle-12-on-openvz-vps/</guid>
       <description>
 
 &lt;p&gt;I have a relatively free server with enough memory and disk space for installing
@@ -180,10 +180,10 @@ dba:x:502:
     
     <item>
       <title>Cheat</title>
-      <link>http://localhost:1314/post/cheat/</link>
+      <link>http://ora600.ru/post/cheat/</link>
       <pubDate>Sat, 30 May 2015 10:21:07 +0300</pubDate>
       
-      <guid>http://localhost:1314/post/cheat/</guid>
+      <guid>http://ora600.ru/post/cheat/</guid>
       <description>&lt;p&gt;[cheat] is a very very useful tool not to just quickly getting cheatsheets of
 existing utilities and protocols but also for creating new ones. And not only
 cheatsheets but to any meaningful notes and list of commands, for example.&lt;/p&gt;
@@ -205,10 +205,10 @@ convenient to have them saved into fav file.&lt;/p&gt;
     
     <item>
       <title>vim-rooter plugin and how I get rid of NERDTree</title>
-      <link>http://localhost:1314/post/vim-rooter-plugin/</link>
+      <link>http://ora600.ru/post/vim-rooter-plugin/</link>
       <pubDate>Fri, 29 May 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1314/post/vim-rooter-plugin/</guid>
+      <guid>http://ora600.ru/post/vim-rooter-plugin/</guid>
       <description>&lt;p&gt;Recently I decided to reduce number of plugins I use in VIM. First of all, [I
 switched off all motion plugins], then I started replacing &lt;a href=&#34;http://github.com/kien/ctrlp.vim&#34;&gt;CtrlP&lt;/a&gt; and
 &lt;a href=&#34;http://github.com/scrooloose/nerdtree&#34;&gt;NERDTree&lt;/a&gt; with a single &lt;a href=&#34;http://github.com/junegunn/fzf&#34;&gt;FZF&lt;/a&gt; plugin.&lt;/p&gt;
@@ -246,10 +246,10 @@ nnoremap &amp;lt;Leader&amp;gt;f :lcd %:p:h&amp;lt;CR&amp;gt;:pwd&amp;lt;CR&amp;
     
     <item>
       <title>Starting New Site, again</title>
-      <link>http://localhost:1314/post/starting-hugo-site/</link>
+      <link>http://ora600.ru/post/starting-hugo-site/</link>
       <pubDate>Thu, 28 May 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1314/post/starting-hugo-site/</guid>
+      <guid>http://ora600.ru/post/starting-hugo-site/</guid>
       <description>&lt;p&gt;Hey there, I decided to start new site using &lt;a href=&#34;http://gohugo.io&#34;&gt;Hugo&lt;/a&gt; for site generation. It
 seems like more flexible and way more quicker then &lt;a href=&#34;http://jekyllrb.org&#34;&gt;Jekyll&lt;/a&gt;.&lt;/p&gt;
 
@@ -265,14 +265,14 @@ it&amp;rsquo;s just awesome.&lt;/p&gt;
     
     <item>
       <title>Install Oracle 11g Express (XE) on CentOS</title>
-      <link>http://localhost:1314/post/install-oracle-xe-on-centos-6/</link>
+      <link>http://ora600.ru/post/install-oracle-xe-on-centos-6/</link>
       <pubDate>Fri, 24 May 2013 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1314/post/install-oracle-xe-on-centos-6/</guid>
+      <guid>http://ora600.ru/post/install-oracle-xe-on-centos-6/</guid>
       <description>
 
 &lt;p&gt;This is full copy of the &lt;a href=&#34;http://www.davidghedini.com/pg/entry/install_oracle_11g_xe_on&#34;&gt;post&lt;/a&gt; by David Ghedini for backup
-purposes. Refer to &lt;a href=&#34;http://localhost:1314/post/installing-oracle-xe-11gr2-on-centos-6&#34;&gt;my post&lt;/a&gt; about swap file on server and localhost&amp;rsquo;s
+purposes. Refer to &lt;a href=&#34;http://ora600.ru/post/installing-oracle-xe-11gr2-on-centos-6&#34;&gt;my post&lt;/a&gt; about swap file on server and localhost&amp;rsquo;s
 name.&lt;/p&gt;
 
 &lt;blockquote&gt;
@@ -313,7 +313,7 @@ oracle-xe-11.2.0-1.0.x86_64.rpm  response  upgrade
 &lt;h3 id=&#34;step-1-1-swapfile:34c03553785d5ab65849cb13a5623d5b&#34;&gt;Step 1.1: Swapfile&lt;/h3&gt;
 
 &lt;p&gt;Check swapfile size using &lt;code&gt;# cat /proc/swaps&lt;/code&gt;! If it&amp;rsquo;s less than 2 Gb then
-create it, instructions are &lt;a href=&#34;http://localhost:1314/post/installing-oracle-xe-11gr2-on-centos-6&#34;&gt;here&lt;/a&gt;. Oracle won&amp;rsquo;t install if there will
+create it, instructions are &lt;a href=&#34;http://ora600.ru/post/installing-oracle-xe-11gr2-on-centos-6&#34;&gt;here&lt;/a&gt;. Oracle won&amp;rsquo;t install if there will
 be no swap file of enough size.&lt;/p&gt;
 
 &lt;blockquote&gt;
@@ -815,14 +815,14 @@ Password: (whatever you selected above).
     
     <item>
       <title>Installing Oracle XE 11gR2 on CentOS 6</title>
-      <link>http://localhost:1314/post/installing-oracle-xe-11gr2-on-centos-6/</link>
+      <link>http://ora600.ru/post/installing-oracle-xe-11gr2-on-centos-6/</link>
       <pubDate>Sat, 06 Oct 2012 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1314/post/installing-oracle-xe-11gr2-on-centos-6/</guid>
+      <guid>http://ora600.ru/post/installing-oracle-xe-11gr2-on-centos-6/</guid>
       <description>
 
 &lt;p&gt;&lt;a href=&#34;http://www.davidghedini.com/pg/entry/install_oracle_11g_xe_on&#34;&gt;This&lt;/a&gt; great tutorial covers all aspects
-of installation Oracle XE 11gR2 on CentOS 6. I even did &lt;a href=&#34;http://localhost:1314/post/install-oracle-xe-on-centos-6&#34;&gt;backup post&lt;/a&gt; of it.&lt;/p&gt;
+of installation Oracle XE 11gR2 on CentOS 6. I even did &lt;a href=&#34;http://ora600.ru/post/install-oracle-xe-on-centos-6&#34;&gt;backup post&lt;/a&gt; of it.&lt;/p&gt;
 
 &lt;p&gt;Except some things.&lt;/p&gt;
 
