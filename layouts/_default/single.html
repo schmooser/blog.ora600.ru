@@ -1,0 +1,15 @@
+{{ partial "head.html" . }}
+{{ partial "header.html" . }}
+<section>
+  <a href="{{ .Site.BaseURL }}">
+    &larr; Go back to post index
+  </a>
+</section>
+<article>
+  <h1>{{ .Title }}</h1>
+  <span class="details">
+    Posted on <a href="{{ .Permalink }}">{{ .Date.Format "2 January 2006" }}</a>
+  </span>
+  {{ .Content }}
+</article>
+{{ partial "footer.html" . }}

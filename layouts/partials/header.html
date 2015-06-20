@@ -1,0 +1,10 @@
+<header class="highlight">
+  <p>
+  Blog by <strong>{{ .Site.Author.Name }}</strong>. 
+
+  {{ $twitter := .Site.Author.Twitter }}
+  {{ if  $twitter }}
+    Follow me on <a href="http://twitter.com/{{ $twitter }}">Twitter</a>.
+  {{ end }}
+  </p>
+</header>
