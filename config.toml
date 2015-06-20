@@ -1,4 +1,4 @@
-baseurl = "http://ora600.ru/"
+baseurl = "http://blog.ora600.ru/"
 languageCode = "en-us"
 title = "Ora600 &mdash; Some random thoughts"
 theme = "bmf-hugo-theme"

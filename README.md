@@ -1,4 +1,4 @@
-#Source of ora600.ru
+#Source of blog.ora600.ru
 
 Hi there, this is a repository with source code of ora600.ru.
 
