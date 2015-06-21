@@ -1,13 +1,8 @@
 {{ partial "head.html" . }}
 {{ partial "header.html" . }}
-<nav>
-  <a href="{{ .Site.BaseURL }}">
-    &larr; Go back to Home
-  </a>
-</nav>
 <section class="index">
 <ul>
-{{ range .Data.Pages }}
+{{ range  where .Data.Pages "Section" "post" }}
   {{ .Render "li" }}
 {{ end }}
 </ul>
