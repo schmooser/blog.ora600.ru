@@ -1,6 +1,6 @@
 +++
 Title = "Clojure Maven example"
-Date = "2015-07-16"
+Date = "2015-07-15"
 +++
 
 Standard mechanism to dealing with Clojure projects is Leiningen. But if you
