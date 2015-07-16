@@ -10,9 +10,55 @@
     <atom:link href="http://blog.ora600.ru/post/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Safe remove directory contents in shell</title>
+      <link>http://blog.ora600.ru/post/safe-dir-remove-in-shell/</link>
+      <pubDate>Thu, 16 Jul 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://blog.ora600.ru/post/safe-dir-remove-in-shell/</guid>
+      <description>&lt;p&gt;Sometimes you might need to delete content of a directory but not the directory
+itself. For example, you have git project and need to clean-up the content to
+put generated code further, but you don&amp;rsquo;t want to delete entire directory along
+with &lt;code&gt;.git&lt;/code&gt; folder inside.&lt;/p&gt;
+
+&lt;p&gt;Obvious way to do it is this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ rm -rf $DIR/*
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;I used to use this pattern a lot (even for generating this blog, &lt;a href=&#34;https://github.com/schmooser/blog.ora600.ru/blob/hugo/generate.sh&#34;&gt;generate.sh&lt;/a&gt;
+script). Until yesterday. Developer in my team wrote the following code, but
+when something went wrong on the first attempt he thought that the problem is
+that variable (Jenkins &lt;code&gt;$WORKSPACE&lt;/code&gt; variable) should be written in lowercase.
+And&amp;hellip; ta-da&amp;hellip; it successfully completed. But, sinse &lt;code&gt;$workspace&lt;/code&gt; variable has
+not been defined, bash shanged it to empty string and the command became:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ rm -rf /*
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;And it deleted everything for the user he was warking on. Luckily enough, we use
+least required privileges approach so nothing harmful was done.&lt;/p&gt;
+
+&lt;p&gt;So, to protect yourself from anything bad happens use the following form:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ rm -rf ${DIR:-&amp;quot;NULL&amp;quot;}/*
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This form allows to check whether &lt;code&gt;$DIR&lt;/code&gt; variable is not set or is empty and in
+such case replace it with &lt;code&gt;NULL&lt;/code&gt; string. Thus you&amp;rsquo;ll prevent yourself from
+disaster.&lt;/p&gt;
+
+&lt;p&gt;Links:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.tldp.org/LDP/abs/html/parameter-substitution.html&#34;&gt;Parameter Substitution in Bash&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Clojure Maven example</title>
       <link>http://blog.ora600.ru/post/clojure-maven-example/</link>
-      <pubDate>Thu, 16 Jul 2015 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 15 Jul 2015 00:00:00 +0000</pubDate>
       
       <guid>http://blog.ora600.ru/post/clojure-maven-example/</guid>
       <description>&lt;p&gt;Standard mechanism to dealing with Clojure projects is Leiningen. But if you

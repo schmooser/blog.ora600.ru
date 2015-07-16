@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ora600 &mdash; Some random thoughts &middot; Safe remove directory contents in shell  </title>
+  <link rel="stylesheet" href="http://blog.ora600.ru/css/main.css" />
+</head>
+<body>
+
+<header class="highlight">
+  <p>
+  Blog by <strong>schmooser</strong>. 
+
+  
+  
+    Follow me on <a href="http://twitter.com/schmooser">Twitter</a>.
+  
+  </p>
+</header>
+
+<nav>
+  <a href="http://blog.ora600.ru/">
+    &larr; Go back to post index
+  </a>
+</nav>
+<article>
+  <h1>Safe remove directory contents in shell</h1>
+  <span class="details">
+    Posted on <a href="http://blog.ora600.ru/post/safe-dir-remove-in-shell/">16 July 2015</a>
+  </span>
+  <p>Sometimes you might need to delete content of a directory but not the directory
+itself. For example, you have git project and need to clean-up the content to
+put generated code further, but you don&rsquo;t want to delete entire directory along
+with <code>.git</code> folder inside.</p>
+
+<p>Obvious way to do it is this:</p>
+
+<pre><code>$ rm -rf $DIR/*
+</code></pre>
+
+<p>I used to use this pattern a lot (even for generating this blog, <a href="https://github.com/schmooser/blog.ora600.ru/blob/hugo/generate.sh">generate.sh</a>
+script). Until yesterday. Developer in my team wrote the following code, but
+when something went wrong on the first attempt he thought that the problem is
+that variable (Jenkins <code>$WORKSPACE</code> variable) should be written in lowercase.
+And&hellip; ta-da&hellip; it successfully completed. But, sinse <code>$workspace</code> variable has
+not been defined, bash shanged it to empty string and the command became:</p>
+
+<pre><code>$ rm -rf /*
+</code></pre>
+
+<p>And it deleted everything for the user he was warking on. Luckily enough, we use
+least required privileges approach so nothing harmful was done.</p>
+
+<p>So, to protect yourself from anything bad happens use the following form:</p>
+
+<pre><code>$ rm -rf ${DIR:-&quot;NULL&quot;}/*
+</code></pre>
+
+<p>This form allows to check whether <code>$DIR</code> variable is not set or is empty and in
+such case replace it with <code>NULL</code> string. Thus you&rsquo;ll prevent yourself from
+disaster.</p>
+
+<p>Links:</p>
+
+<ul>
+<li><a href="http://www.tldp.org/LDP/abs/html/parameter-substitution.html">Parameter Substitution in Bash</a></li>
+</ul>
+
+</article>
+<footer>
+</footer>
+</body>
+</html>
+
