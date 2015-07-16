@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ora600 &mdash; Some random thoughts &middot; Install Oracle client on OS X  </title>
+  <link rel="stylesheet" href="http://blog.ora600.ru/css/main.css" />
+</head>
+<body>
+
+<header class="highlight">
+  <p>
+  Blog by <strong>schmooser</strong>. 
+
+  
+  
+    Follow me on <a href="http://twitter.com/schmooser">Twitter</a>.
+  
+  </p>
+</header>
+
+<nav>
+  <a href="http://blog.ora600.ru/">
+    &larr; Go back to post index
+  </a>
+</nav>
+<article>
+  <h1>Install Oracle client on OS X</h1>
+  <span class="details">
+    Posted on <a href="http://blog.ora600.ru/post/install-oracle-client-on-os-x/">14 July 2015</a>
+  </span>
+  <p>To install Oracle Database instant client (small version of Oracle Database
+thick client) do the following:</p>
+
+<ol>
+<li><p>Download client package from <a href="http://www.oracle.com/technetwork/topics/intel-macsoft-096467.html">Instant Client download page for Mac OS X</a>.
+I downloaded InstantClient 11.2.0.4 64-bit version. You need Basic package,
+SQL*Plus package and SDK package if you want to use 3rd party tools like
+Python Oracle module cx_Oracle.</p></li>
+
+<li><p>Unzip downloaded files into <code>/usr/local/Oracle</code> folder (I assume you&rsquo;re using <a href="http://brew.sh">homebrew</a>,
+don&rsquo;t you?).</p></li>
+
+<li><p>Create symlink for sqlplus in <code>/usr/local/bin</code> directory pointing to
+<code>/usr/local/Oracle/instantclient_11_2/sqlplus</code>:</p>
+
+<pre><code>cd /usr/local/bin
+ln -s ../Oracle/instantclient_11_2/sqlplus sqlplus
+</code></pre></li>
+
+<li><p>Create symlinks for libraries:</p>
+
+<pre><code>ln -s libclntsh.dylib.11.1 libclntsh.dylib
+ln -s libocci.dylib.11.1 libocci.dylib
+</code></pre></li>
+
+<li><p>Add the following env variables to your <code>.bashrc</code> or <code>.zshrc</code> file:</p>
+
+<pre><code>export ORACLE_HOME=/usr/local/Oracle/instantclient_11_2
+export DYLD_LIBRARY_PATH=$ORACLE_HOME
+export LD_LIBRARY_PATH=$ORACLE_HOME
+export TNS_ADMIN=$ORACLE_HOME
+export SQLPATH=~/Projects/sql
+</code></pre></li>
+
+<li><p>Reload your shell, and start using sqlplus.</p></li>
+</ol>
+
+</article>
+<footer>
+</footer>
+</body>
+</html>
+

@@ -6,8 +6,87 @@
     <description>Recent content on Ora600 &amp;mdash; Some random thoughts</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 20 Jun 2015 01:12:30 +0300</lastBuildDate>
+    <lastBuildDate>Thu, 16 Jul 2015 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://blog.ora600.ru/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Clojure Maven example</title>
+      <link>http://blog.ora600.ru/post/clojure-maven-example/</link>
+      <pubDate>Thu, 16 Jul 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://blog.ora600.ru/post/clojure-maven-example/</guid>
+      <description>&lt;p&gt;Standard mechanism to dealing with Clojure projects is Leiningen. But if you
+want to use Clojure code in big enterprize where most things are writte in Java
+chances that you don&amp;rsquo;t have Leiningen available. But there is Maven as a tool to
+build and deploy Java projects.&lt;/p&gt;
+
+&lt;p&gt;So, in such case you might want to use Maven to build Clojure project. To build
+Clojure with Maven there is a plugin &lt;a href=&#34;https://github.com/talios/clojure-maven-example&#34;&gt;clojure-maven-plugin&lt;/a&gt;. The trickiest part
+here is to prepare &lt;code&gt;pom.xml&lt;/code&gt; file which will be used by Maven to build the
+project.&lt;/p&gt;
+
+&lt;p&gt;Without further words, I show you the code - &lt;a href=&#34;https://github.com/schmooser/clojure-maven-example&#34;&gt;clojure-maven-example&lt;/a&gt;. The most interesting part is the
+&lt;code&gt;pom.xml&lt;/code&gt; file.&lt;/p&gt;
+
+&lt;p&gt;To run the code, install Maven (and git), then clone repository somewhere, cd
+there and run:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ mvn clean install &amp;amp;&amp;amp; java -jar target/clojure-maven-example-1.0-SNAPSHOT.jar
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Useful links:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://alexott.net/en/clojure/ClojureMaven.html&#34;&gt;How to use Maven to build Clojure code&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/yogthos/clojure-maven-examples&#34;&gt;Example Clojure project plotting Mandelbrot set building with Maven&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Install Oracle client on OS X</title>
+      <link>http://blog.ora600.ru/post/install-oracle-client-on-os-x/</link>
+      <pubDate>Tue, 14 Jul 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://blog.ora600.ru/post/install-oracle-client-on-os-x/</guid>
+      <description>&lt;p&gt;To install Oracle Database instant client (small version of Oracle Database
+thick client) do the following:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Download client package from &lt;a href=&#34;http://www.oracle.com/technetwork/topics/intel-macsoft-096467.html&#34;&gt;Instant Client download page for Mac OS X&lt;/a&gt;.
+I downloaded InstantClient 11.2.0.4 64-bit version. You need Basic package,
+SQL*Plus package and SDK package if you want to use 3rd party tools like
+Python Oracle module cx_Oracle.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Unzip downloaded files into &lt;code&gt;/usr/local/Oracle&lt;/code&gt; folder (I assume you&amp;rsquo;re using &lt;a href=&#34;http://brew.sh&#34;&gt;homebrew&lt;/a&gt;,
+don&amp;rsquo;t you?).&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Create symlink for sqlplus in &lt;code&gt;/usr/local/bin&lt;/code&gt; directory pointing to
+&lt;code&gt;/usr/local/Oracle/instantclient_11_2/sqlplus&lt;/code&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;cd /usr/local/bin
+ln -s ../Oracle/instantclient_11_2/sqlplus sqlplus
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Create symlinks for libraries:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ln -s libclntsh.dylib.11.1 libclntsh.dylib
+ln -s libocci.dylib.11.1 libocci.dylib
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Add the following env variables to your &lt;code&gt;.bashrc&lt;/code&gt; or &lt;code&gt;.zshrc&lt;/code&gt; file:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;export ORACLE_HOME=/usr/local/Oracle/instantclient_11_2
+export DYLD_LIBRARY_PATH=$ORACLE_HOME
+export LD_LIBRARY_PATH=$ORACLE_HOME
+export TNS_ADMIN=$ORACLE_HOME
+export SQLPATH=~/Projects/sql
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Reload your shell, and start using sqlplus.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
     
     <item>
       <title>Gister</title>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ora600 &mdash; Some random thoughts &middot; Clojure Maven example  </title>
+  <link rel="stylesheet" href="http://blog.ora600.ru/css/main.css" />
+</head>
+<body>
+
+<header class="highlight">
+  <p>
+  Blog by <strong>schmooser</strong>. 
+
+  
+  
+    Follow me on <a href="http://twitter.com/schmooser">Twitter</a>.
+  
+  </p>
+</header>
+
+<nav>
+  <a href="http://blog.ora600.ru/">
+    &larr; Go back to post index
+  </a>
+</nav>
+<article>
+  <h1>Clojure Maven example</h1>
+  <span class="details">
+    Posted on <a href="http://blog.ora600.ru/post/clojure-maven-example/">16 July 2015</a>
+  </span>
+  <p>Standard mechanism to dealing with Clojure projects is Leiningen. But if you
+want to use Clojure code in big enterprize where most things are writte in Java
+chances that you don&rsquo;t have Leiningen available. But there is Maven as a tool to
+build and deploy Java projects.</p>
+
+<p>So, in such case you might want to use Maven to build Clojure project. To build
+Clojure with Maven there is a plugin <a href="https://github.com/talios/clojure-maven-example">clojure-maven-plugin</a>. The trickiest part
+here is to prepare <code>pom.xml</code> file which will be used by Maven to build the
+project.</p>
+
+<p>Without further words, I show you the code - <a href="https://github.com/schmooser/clojure-maven-example">clojure-maven-example</a>. The most interesting part is the
+<code>pom.xml</code> file.</p>
+
+<p>To run the code, install Maven (and git), then clone repository somewhere, cd
+there and run:</p>
+
+<pre><code>$ mvn clean install &amp;&amp; java -jar target/clojure-maven-example-1.0-SNAPSHOT.jar
+</code></pre>
+
+<p>Useful links:</p>
+
+<ul>
+<li><a href="http://alexott.net/en/clojure/ClojureMaven.html">How to use Maven to build Clojure code</a></li>
+<li><a href="https://github.com/yogthos/clojure-maven-examples">Example Clojure project plotting Mandelbrot set building with Maven</a></li>
+</ul>
+
+</article>
+<footer>
+</footer>
+</body>
+</html>
+
