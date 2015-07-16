@@ -1,7 +1,7 @@
 SRC_DIR=~/Projects/ora600.ru
 TARGET_DIR=~/Projects/ora600.ru-gh-pages
 
-/bin/rm -rf $TARGET_DIR/*
+/bin/rm -rf ${TARGET_DIR:-"NULL"}/*
 
 hugo --source=$SRC_DIR --destination=$TARGET_DIR
 
