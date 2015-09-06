@@ -1,5 +1,5 @@
 SRC_DIR=~/Projects/ora600.ru
-TARGET_DIR=~/Projects/ora600.ru-gh-pages
+TARGET_DIR=~/Sites/ora600.ru
 
 /bin/rm -rf ${TARGET_DIR:-"NULL"}/*
 

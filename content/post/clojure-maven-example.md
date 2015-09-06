@@ -1,6 +1,7 @@
 +++
 Title = "Clojure Maven example"
 Date = "2015-07-15"
+Tags = ["clojure"]
 +++
 
 Standard mechanism to dealing with Clojure projects is Leiningen. But if you
