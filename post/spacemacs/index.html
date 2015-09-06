@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ora600 &mdash; Some random thoughts &middot; Switching from VIM to Spacemacs  </title>
+  <link rel="stylesheet" href="http://blog.ora600.ru/css/main.css" />
+</head>
+<body>
+
+<header class="highlight">
+  <p>
+  Blog by <strong>schmooser</strong>. 
+
+  
+  
+    Follow me on <a href="http://twitter.com/schmooser">Twitter</a>.
+  
+  </p>
+</header>
+
+<nav>
+  <a href="http://blog.ora600.ru/">
+    &larr; Go back to post index
+  </a>
+</nav>
+<article>
+  <h1>Switching from VIM to Spacemacs</h1>
+  <span class="details">
+    Posted on <a href="http://blog.ora600.ru/post/spacemacs/">5 September 2015</a>
+  </span>
+  
+
+<p><a href="https://github.com/syl20bnr/spacemacs">Spacemacs</a> is a new modal editor based on Emacs, designed specifically for former VIM users.</p>
+
+<h3 id="shortcuts-and-their-mnemonics:e5346ddfd2d1768208c36bcf04c68a82">Shortcuts and their mnemonics</h3>
+
+<ul>
+<li><p><code>SPC b b</code> - list of opened Buffers</p></li>
+
+<li><p><code>SPC p f</code> - Project Files - all project files</p></li>
+
+<li><p><code>SPC p r</code> - Project Recent - recenty edited project files</p></li>
+
+<li><p><code>SPC p p</code> - Project Previously - previously used projects</p></li>
+
+<li><p><code>SPC f f</code> - File Find - search in current directory</p></li>
+
+<li><p><code>SPC f r</code> - File Recent - recently edited files (across all projects)</p></li>
+
+<li><p><code>SPC f e h</code> - Files Emacs Helm - search through available Spacemacs layers</p></li>
+
+<li><p><code>SPC /</code> - opens search window with all files under cursor</p></li>
+</ul>
+
+<h3 id="found-bugs:e5346ddfd2d1768208c36bcf04c68a82">Found bugs</h3>
+
+<ul>
+<li><code>SPC : term i echo &quot;asdf&quot;</code> - f jumps to the beginning of line</li>
+</ul>
+
+<h3 id="issues-to-be-resolved-to-use-as-a-main-editor:e5346ddfd2d1768208c36bcf04c68a82">Issues to be resolved to use as a main editor</h3>
+
+<ul>
+<li><p>Ctrl-p to access list of previously edited files<br />
+Solution: Use <code>SPC b b</code> or <code>SPC f r</code></p></li>
+
+<li><p>Ctrl-b to access the buffer list<br />
+Solution: Use <code>SPC b b</code></p></li>
+
+<li><p>Visual selection, then <code>s</code><br />
+Solution: Use <code>c</code> instead, because <code>s</code> in Spacemacs used for surround - more useful. [<a href="https://github.com/syl20bnr/spacemacs/blob/master/doc/DOCUMENTATION.org#the-vim-surround-case">1</a>]</p></li>
+
+<li><p>Ctrl-a / Ctrl-z to increase/decrease number under cursor<br />
+Solution: Use <code>SPC n -</code> to decrease, <code>SPC n +</code> to increase</p></li>
+
+<li><p>Leader-w to write file<br />
+Solution: Use <code>:w</code></p></li>
+
+<li><p>Open buffers vertically/horizontally<br />
+Solution: Use <code>C-C o</code> when in Helm</p></li>
+
+<li><p>Ctrl-f to fuzzy search through files in project<br />
+Solution: Use <code>SPC p f</code></p></li>
+
+<li><p>NERDTree
+Solution: Use <code>SPC f t</code> to toggle tree. Further investigation is required to get similar funtionality as NERDTree.</p></li>
+
+<li><p>relative numbering
+Solution: Use <code>SPC l</code> to quickly jump to line</p></li>
+
+<li><p>Ctrl-c Ctrl-c (vim-slime)</p></li>
+
+<li><p>themes</p></li>
+
+<li><p>go</p></li>
+
+<li><p>clojure</p></li>
+
+<li><p>sqlplus</p></li>
+
+<li><p>Ag</p></li>
+</ul>
+
+</article>
+<footer>
+</footer>
+</body>
+</html>
+

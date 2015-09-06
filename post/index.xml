@@ -6,8 +6,124 @@
     <description>Recent content in Posts on Ora600 &amp;mdash; Some random thoughts</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 16 Jul 2015 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 05 Sep 2015 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://blog.ora600.ru/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Switching from VIM to Spacemacs</title>
+      <link>http://blog.ora600.ru/post/spacemacs/</link>
+      <pubDate>Sat, 05 Sep 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://blog.ora600.ru/post/spacemacs/</guid>
+      <description>
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/syl20bnr/spacemacs&#34;&gt;Spacemacs&lt;/a&gt; is a new modal editor based on Emacs, designed specifically for former VIM users.&lt;/p&gt;
+
+&lt;h3 id=&#34;shortcuts-and-their-mnemonics:e5346ddfd2d1768208c36bcf04c68a82&#34;&gt;Shortcuts and their mnemonics&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;SPC b b&lt;/code&gt; - list of opened Buffers&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;SPC p f&lt;/code&gt; - Project Files - all project files&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;SPC p r&lt;/code&gt; - Project Recent - recenty edited project files&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;SPC p p&lt;/code&gt; - Project Previously - previously used projects&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;SPC f f&lt;/code&gt; - File Find - search in current directory&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;SPC f r&lt;/code&gt; - File Recent - recently edited files (across all projects)&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;SPC f e h&lt;/code&gt; - Files Emacs Helm - search through available Spacemacs layers&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;SPC /&lt;/code&gt; - opens search window with all files under cursor&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;found-bugs:e5346ddfd2d1768208c36bcf04c68a82&#34;&gt;Found bugs&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;SPC : term i echo &amp;quot;asdf&amp;quot;&lt;/code&gt; - f jumps to the beginning of line&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;issues-to-be-resolved-to-use-as-a-main-editor:e5346ddfd2d1768208c36bcf04c68a82&#34;&gt;Issues to be resolved to use as a main editor&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Ctrl-p to access list of previously edited files&lt;br /&gt;
+Solution: Use &lt;code&gt;SPC b b&lt;/code&gt; or &lt;code&gt;SPC f r&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Ctrl-b to access the buffer list&lt;br /&gt;
+Solution: Use &lt;code&gt;SPC b b&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Visual selection, then &lt;code&gt;s&lt;/code&gt;&lt;br /&gt;
+Solution: Use &lt;code&gt;c&lt;/code&gt; instead, because &lt;code&gt;s&lt;/code&gt; in Spacemacs used for surround - more useful. [&lt;a href=&#34;https://github.com/syl20bnr/spacemacs/blob/master/doc/DOCUMENTATION.org#the-vim-surround-case&#34;&gt;1&lt;/a&gt;]&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Ctrl-a / Ctrl-z to increase/decrease number under cursor&lt;br /&gt;
+Solution: Use &lt;code&gt;SPC n -&lt;/code&gt; to decrease, &lt;code&gt;SPC n +&lt;/code&gt; to increase&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Leader-w to write file&lt;br /&gt;
+Solution: Use &lt;code&gt;:w&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Open buffers vertically/horizontally&lt;br /&gt;
+Solution: Use &lt;code&gt;C-C o&lt;/code&gt; when in Helm&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Ctrl-f to fuzzy search through files in project&lt;br /&gt;
+Solution: Use &lt;code&gt;SPC p f&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;NERDTree
+Solution: Use &lt;code&gt;SPC f t&lt;/code&gt; to toggle tree. Further investigation is required to get similar funtionality as NERDTree.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;relative numbering
+Solution: Use &lt;code&gt;SPC l&lt;/code&gt; to quickly jump to line&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Ctrl-c Ctrl-c (vim-slime)&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;themes&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;go&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;clojure&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;sqlplus&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Ag&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>VIM setup for Clojure development</title>
+      <link>http://blog.ora600.ru/post/vim-setup-for-clojure-development/</link>
+      <pubDate>Mon, 20 Jul 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://blog.ora600.ru/post/vim-setup-for-clojure-development/</guid>
+      <description>
+
+&lt;p&gt;Most of Clojure developers use Emacs or LightTable to run and edit Clojure
+source code. I also tried to use Emacs but it requires so much time to learn to
+become proficient so I stayed with VIM.&lt;/p&gt;
+
+&lt;p&gt;VIM setup for Clojure is pretty simple. The main goal is to select right plugins
+that fit your setup well. I try to use &amp;ldquo;Less plugins - better&amp;rdquo; principle, so I
+ended up with the following setup:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/guns/vim-sexp&#34;&gt;guns/vim-sexp&lt;/a&gt; to run and edit labmda-expressions&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/jpalardy/vim-slime&#34;&gt;jpalardy/vim-slime&lt;/a&gt; to run clojure code in REPL&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;guns-vim-sexp:1d578908908682f35198a327f1c436f3&#34;&gt;guns/vim-sexp&lt;/h2&gt;
+
+&lt;h2 id=&#34;jpalardy-vim-slime:1d578908908682f35198a327f1c436f3&#34;&gt;jpalardy/vim-slime&lt;/h2&gt;
+
+&lt;h2 id=&#34;other-plugins:1d578908908682f35198a327f1c436f3&#34;&gt;Other plugins&lt;/h2&gt;
+
+&lt;p&gt;Here are other plugins many people use for Clojure editing in VIM:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/tpope/vim-fireplace&#34;&gt;fireplace&lt;/a&gt; by Tim Pope&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>Safe remove directory contents in shell</title>

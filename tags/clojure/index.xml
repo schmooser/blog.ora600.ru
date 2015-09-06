@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Clojure on Ora600 &amp;mdash; Some random thoughts</title>
+    <link>http://blog.ora600.ru/tags/clojure/</link>
+    <description>Recent content in Clojure on Ora600 &amp;mdash; Some random thoughts</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 20 Jul 2015 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://blog.ora600.ru/tags/clojure/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>VIM setup for Clojure development</title>
+      <link>http://blog.ora600.ru/post/vim-setup-for-clojure-development/</link>
+      <pubDate>Mon, 20 Jul 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://blog.ora600.ru/post/vim-setup-for-clojure-development/</guid>
+      <description>
+
+&lt;p&gt;Most of Clojure developers use Emacs or LightTable to run and edit Clojure
+source code. I also tried to use Emacs but it requires so much time to learn to
+become proficient so I stayed with VIM.&lt;/p&gt;
+
+&lt;p&gt;VIM setup for Clojure is pretty simple. The main goal is to select right plugins
+that fit your setup well. I try to use &amp;ldquo;Less plugins - better&amp;rdquo; principle, so I
+ended up with the following setup:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/guns/vim-sexp&#34;&gt;guns/vim-sexp&lt;/a&gt; to run and edit labmda-expressions&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/jpalardy/vim-slime&#34;&gt;jpalardy/vim-slime&lt;/a&gt; to run clojure code in REPL&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;guns-vim-sexp:1d578908908682f35198a327f1c436f3&#34;&gt;guns/vim-sexp&lt;/h2&gt;
+
+&lt;h2 id=&#34;jpalardy-vim-slime:1d578908908682f35198a327f1c436f3&#34;&gt;jpalardy/vim-slime&lt;/h2&gt;
+
+&lt;h2 id=&#34;other-plugins:1d578908908682f35198a327f1c436f3&#34;&gt;Other plugins&lt;/h2&gt;
+
+&lt;p&gt;Here are other plugins many people use for Clojure editing in VIM:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/tpope/vim-fireplace&#34;&gt;fireplace&lt;/a&gt; by Tim Pope&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Clojure Maven example</title>
+      <link>http://blog.ora600.ru/post/clojure-maven-example/</link>
+      <pubDate>Wed, 15 Jul 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://blog.ora600.ru/post/clojure-maven-example/</guid>
+      <description>&lt;p&gt;Standard mechanism to dealing with Clojure projects is Leiningen. But if you
+want to use Clojure code in big enterprize where most things are writte in Java
+chances that you don&amp;rsquo;t have Leiningen available. But there is Maven as a tool to
+build and deploy Java projects.&lt;/p&gt;
+
+&lt;p&gt;So, in such case you might want to use Maven to build Clojure project. To build
+Clojure with Maven there is a plugin &lt;a href=&#34;https://github.com/talios/clojure-maven-example&#34;&gt;clojure-maven-plugin&lt;/a&gt;. The trickiest part
+here is to prepare &lt;code&gt;pom.xml&lt;/code&gt; file which will be used by Maven to build the
+project.&lt;/p&gt;
+
+&lt;p&gt;Without further words, I show you the code - &lt;a href=&#34;https://github.com/schmooser/clojure-maven-example&#34;&gt;clojure-maven-example&lt;/a&gt;. The most interesting part is the
+&lt;code&gt;pom.xml&lt;/code&gt; file.&lt;/p&gt;
+
+&lt;p&gt;To run the code, install Maven (and git), then clone repository somewhere, cd
+there and run:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ mvn clean install &amp;amp;&amp;amp; java -jar target/clojure-maven-example-1.0-SNAPSHOT.jar
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Useful links:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://alexott.net/en/clojure/ClojureMaven.html&#34;&gt;How to use Maven to build Clojure code&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/yogthos/clojure-maven-examples&#34;&gt;Example Clojure project plotting Mandelbrot set building with Maven&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
